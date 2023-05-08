@@ -5,33 +5,39 @@
 @inject UserService UserService
 @inject NavigationManager NavigationManager
 
-<h1>Register</h1>
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-sm-8 col-md-6 col-lg-4">
+        <form class="p-5 rounded shadow" @onsubmit="HandleRegistration">
+            <h2 class="text-center mb-4">Register</h2>
 
-@if (!string.IsNullOrEmpty(ErrorMessage))
-{
-    <p>@ErrorMessage</p>
-}
+            @if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ErrorMessage
+                </div>
+            }
 
-<form class="mt-4" @onsubmit="HandleRegistration">
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="RegisterEmail">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="RegisterEmail">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" @bind-value="RegisterPassword">
+            </div>
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" @bind-value="RegisterFirstName">
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" @bind-value="RegisterLastName">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-4">Register</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password" @bind-value="RegisterPassword">
-    </div>
-    <div class="mb-3">
-        <label for="firstName" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" @bind-value="RegisterFirstName">
-    </div>
-    <div class="mb-3">
-        <label for="lastName" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" @bind-value="RegisterLastName">
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+</div>
 
 
 @code {
