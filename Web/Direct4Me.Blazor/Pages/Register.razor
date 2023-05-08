@@ -1,0 +1,64 @@
+@page "/register"
+
+@using Direct4Me.Blazor.Data
+@using Direct4Me.Blazor.Models
+@inject UserService UserService
+@inject NavigationManager NavigationManager
+
+<h1>Register</h1>
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <p>@ErrorMessage</p>
+}
+
+<form class="mt-4" @onsubmit="HandleRegistration">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="RegisterEmail">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" @bind-value="RegisterPassword">
+    </div>
+    <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" @bind-value="RegisterFirstName">
+    </div>
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" @bind-value="RegisterLastName">
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+
+@code {
+
+    private string RegisterEmail { get; set; } = null!;
+
+    private string RegisterPassword { get; set; } = null!;
+
+    private string RegisterFirstName { get; set; } = null!;
+
+    private string RegisterLastName { get; set; } = null!;
+
+    private string? ErrorMessage { get; set; }
+
+    private async Task HandleRegistration()
+    {
+        var user = new UserModel(Guid.NewGuid(), RegisterEmail, RegisterPassword, RegisterFirstName, RegisterLastName);
+
+        var result = await UserService.RegisterUserAsync(user);
+
+        if (!result)
+        {
+            ErrorMessage = "User with this email already exists";
+            return;
+        }
+
+        NavigationManager.NavigateTo("/login");
+    }
+
+}

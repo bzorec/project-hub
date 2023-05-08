@@ -1,12 +1,16 @@
-﻿@inherits LayoutComponentBase
+﻿@using Direct4Me.Blazor.Data
+@inherits LayoutComponentBase
+@inject UserService UserService
 
 <PageTitle>Direct4Me.Blazor</PageTitle>
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
-
+    @if (IsAuthenticated)
+    {
+        <div class="sidebar">
+            <NavMenu/>
+        </div>
+    }
     <main>
         <div class="top-row px-4">
             <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
@@ -17,3 +21,14 @@
         </article>
     </main>
 </div>
+
+@code{
+
+    private bool IsAuthenticated { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsAuthenticated = await UserService.IsAuthenticated();
+    }
+
+}
