@@ -1,0 +1,63 @@
+/* Global styles */
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-fluid {
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.main {
+    height: 100%;
+    padding: 16px;
+}
+
+/* Light mode styles */
+
+.light-mode {
+    color-scheme: light;
+}
+
+/* Dark mode styles */
+
+.dark-mode {
+    color-scheme: dark;
+}
+
+.navbar-dark .navbar-brand {
+    color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.btn-outline-dark {
+    color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-outline-light {
+    color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+.btn-outline-dark:hover {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.btn-outline-light:hover {
+    color: #343a40;
+    background-color: #f8f9fa;
+}
