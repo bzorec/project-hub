@@ -4,25 +4,27 @@
 @inject UserService UserService
 @inject NavigationManager NavigationManager
 
-<h1>Login</h1>
+<h1 class="text-center mb-4">Sign in</h1>
 
-@if (!string.IsNullOrEmpty(ErrorMessage))
-{
-    <div class="alert alert-danger">@ErrorMessage</div>
-}
+<div class="container col-md-6 col-lg-4">
+    @if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="alert alert-danger">@ErrorMessage</div>
+    }
 
-<form class="mt-4" @onsubmit="HandleLogin">
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="LoginEmail">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password" @bind-value="LoginPassword">
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+    <form class="mt-4" @onsubmit="HandleLogin">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="LoginEmail">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" @bind-value="LoginPassword">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
 
 @code {
 
