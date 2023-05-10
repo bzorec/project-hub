@@ -27,26 +27,26 @@
 </div>
 
 @code {
-    private bool _isDarkMode;
-
-    protected override async Task OnInitializedAsync()
-    {
-        _isDarkMode = await JsRuntime.InvokeAsync<bool>("getDarkMode");
-
-        await JsRuntime.InvokeVoidAsync("registerDarkModeListener", DotNetObjectReference.Create(this));
-    }
-
-    public async Task ToggleDarkMode()
-    {
-        _isDarkMode = !_isDarkMode;
-        await JsRuntime.InvokeVoidAsync("setDarkMode", _isDarkMode);
-    }
-
-    [JSInvokable]
-    public void UpdateDarkMode(bool isDarkMode)
-    {
-        _isDarkMode = isDarkMode;
-        StateHasChanged();
-    }
+    // private bool _isDarkMode;
+    //
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     _isDarkMode = await JsRuntime.InvokeAsync<bool>("getDarkMode");
+    //
+    //     await JsRuntime.InvokeVoidAsync("registerDarkModeListener", DotNetObjectReference.Create(this));
+    // }
+    //
+    // public async Task ToggleDarkMode()
+    // {
+    //     _isDarkMode = !_isDarkMode;
+    //     await JsRuntime.InvokeVoidAsync("setDarkMode", _isDarkMode);
+    // }
+    //
+    // [JSInvokable]
+    // public void UpdateDarkMode(bool isDarkMode)
+    // {
+    //     _isDarkMode = isDarkMode;
+    //     StateHasChanged();
+    // }
 
 }

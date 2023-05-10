@@ -2,3 +2,5 @@
 /Web/Direct4Me.Minimal.Api/bin
 /Web/Direct4Me.Blazor/bin
 /Web/Direct4Me.Blazor/obj
+/Web/Direct4Me.Repository/obj
+/Web/Direct4Me.Repository/bin
