@@ -3,14 +3,10 @@ using Direct4Me.Blazor.Modules;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-
 builder.Services.ConfigureAppsettings();
-
 builder.Services.AddAuthenticationServiceCollection(builder.Configuration);
-
+builder.Services.AddRazorPages();
 builder.Services.AddModuleServices();
-
 builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
@@ -27,9 +23,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
-
 app.UseRouting();
 
 app.MapBlazorHub();

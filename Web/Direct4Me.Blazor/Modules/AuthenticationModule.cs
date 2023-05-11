@@ -7,10 +7,10 @@ namespace Direct4Me.Blazor.Modules;
 
 public static class AuthenticationModule
 {
-    public static AuthenticationBuilder AddAuthenticationServiceCollection(this IServiceCollection services,
+    public static void AddAuthenticationServiceCollection(this IServiceCollection services,
         IConfiguration configuration)
     {
-        return services.AddAuthentication(options =>
+        services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
