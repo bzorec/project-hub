@@ -27,7 +27,25 @@
     </NotFound>
 </Router>
 
-@code
-{
+@code {
+
+    [Inject]
+    private NavigationManager Navigation { get; set; }
+
     public bool IsLoggedIn { get; set; }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        IsLoggedIn = false;
+
+        RedirectToLogin();
+
+        return Task.CompletedTask;
+    }
+
+    private void RedirectToLogin()
+    {
+        Navigation.NavigateTo(!IsLoggedIn ? "/login" : "/dashboard");
+    }
+
 }

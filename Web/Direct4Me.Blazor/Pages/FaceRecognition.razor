@@ -1,0 +1,67 @@
+@page "/facerecognition"
+@inject NavigationManager Navigation
+
+<div class="container-fluid bg-dark min-vh-100 pt-4">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="col-sm-10 col-md-8 col-lg-6">
+            <h2 class="text-center mb-4">Sign in (Face Recognition)</h2>
+            @if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ErrorMessage
+                </div>
+            }
+            <div class="p-5 rounded shadow">
+                <div class="mb-3">
+                    <video id="camera-stream" class="w-100 h-100 border"></video>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mt-4" disabled="@IsLoading">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
+                    Take Picture
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+
+    private IJSObjectReference _video;
+    private IJSObjectReference _button;
+
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
+    // {
+    //     if (firstRender)
+    //     {
+    //         _video = await JSRuntime.InvokeAsync<IJSObjectReference>("eval", "document.getElementById('camera-stream');");
+    //         _button = await JSRuntime.InvokeAsync<IJSObjectReference>("eval", "document.getElementById('take-picture');");
+    //
+    //         await JSRuntime.InvokeVoidAsync("navigator.mediaDevices.getUserMedia", new {video = true});
+    //         await _video.InvokeVoidAsync("play");
+    //
+    //         await _button.InvokeVoidAsync("addEventListener", "click", DotNetObjectReference.Create(this));
+    //     }
+    // }
+    //
+    // [JSInvokable]
+    // public async Task TakePicture()
+    // {
+    //     var canvas = await JSRuntime.InvokeAsync<IJSObjectReference>("eval", new[] {"document.createElement('canvas');"});
+    //     await canvas.InvokeVoidAsync("setAttribute", "width", await _video.InvokeAsync<int>("getVideoWidth"));
+    //     await canvas.InvokeVoidAsync("setAttribute", "height", await _video.InvokeAsync<int>("getVideoHeight"));
+    //
+    //     var ctx = await canvas.InvokeAsync<IJSObjectReference>("getContext", "2d");
+    //     await ctx.InvokeVoidAsync("drawImage", _video, 0, 0, await _video.InvokeAsync<int>("getVideoWidth"), await _video.InvokeAsync<int>("getVideoHeight"));
+    //
+    //     var dataURL = await canvas.InvokeAsync<string>("toDataURL");
+    //
+    //     await JSRuntime.InvokeAsync<void>("localStorage.setItem", "faceRecognitionData", dataURL);
+    //
+    //     await JSRuntime.InvokeAsync<void>("stream.getTracks().forEach", new[] {DotNetObjectReference.Create(this)});
+    //     await Navigation.NavigateTo("/login");
+    // }
+    public string? ErrorMessage { get; set; }
+    public bool IsLoading { get; set; }
+
+}
