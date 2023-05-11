@@ -1,14 +1,22 @@
-using Direct4Me.Blazor.Data;
+using Direct4Me.Blazor.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.ConfigureAppsettings();
+
+builder.Services.AddAuthenticationServiceCollection(builder.Configuration);
+
+builder.Services.AddModuleServices();
+
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddSingleton<UserService>();
 
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

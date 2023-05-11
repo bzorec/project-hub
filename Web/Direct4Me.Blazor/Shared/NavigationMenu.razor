@@ -1,4 +1,129 @@
+@using Microsoft.IdentityModel.Tokens
+@using Direct4Me.Blazor.Models
+@using System.Security.Authentication
 @inherits LayoutComponentBase
+@inject NavigationManager Navigation
 
-@inject NavigationManager NavigationManager
+@if (NavigationType == NavigationType.Login)
+{
+    @if (Navigation.Uri.Contains("login"))
+    {
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Direct4Me</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/register">(Sign up)</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/facerecognition">Sign in (Face recognition)</NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+    else if (Navigation.Uri.Contains("register"))
+    {
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Direct4Me</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/login">(Sign in)</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/facerecognition">Sign in (Face recognition)</NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+    else
+    {
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Direct4Me</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/login">(Sign in)</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/register">(Sign up)</NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+}
+@if (NavigationType == NavigationType.Default)
+{
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <NavLink class="nav-link navbar-brand text-uppercase" href="/dashboard">DIRECT4ME</NavLink>
 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="/dashboard">(Dashboard)</NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="/postboxes">(Postboxes)</NavLink>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="collapse navbar-collapse justify-content-end pe-5" id="navbarUser">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Welcome, @Username
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <NavLink class="dropdown-item" href="/login">Sign out</NavLink>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+}
+
+@code{
+
+    [Parameter]
+    public NavigationType NavigationType { get; set; }
+
+    [Parameter]
+    public string? Username { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (NavigationType == NavigationType.Default && Username.IsNullOrEmpty())
+            throw new AuthenticationException();
+    }
+
+}

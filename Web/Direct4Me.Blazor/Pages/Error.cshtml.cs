@@ -21,6 +21,8 @@ public class ErrorModel : PageModel
 
     public void OnGet()
     {
+        _logger.LogError("Error occured with ID: {RequestId}", RequestId);
+
         RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
     }
 }

@@ -1,0 +1,39 @@
+@page "/postboxes"
+@attribute [Authorize]
+
+<div class="container-fluid bg-dark min-vh-100 pt-4">
+    <div class="row ms-3 me-3">
+        @foreach (var postbox in _postboxList)
+        {
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Postbox @postbox.Id</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Last unlock: @postbox.LastUnlock</h5>
+                        <p class="card-text">Unlock count: @postbox.UnlockCount</p>
+                        <a href="@($"/postboxes/{postbox.Id}/unlock-nfc")" class="btn btn-success">Unlock with NFC</a>
+                        <a href="@($"/postboxes/{postbox.Id}/unlock-qr")" class="btn btn-warning">Unlock with QR Code</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+
+    private readonly List<Postbox> _postboxList = new()
+    {
+        new Postbox {Id = 1, LastUnlock = new DateTime(2023, 5, 10, 10, 30, 0), UnlockCount = 100},
+        new Postbox {Id = 2, LastUnlock = new DateTime(2023, 5, 9, 9, 15, 0), UnlockCount = 50},
+        new Postbox {Id = 3, LastUnlock = new DateTime(2023, 5, 8, 14, 45, 0), UnlockCount = 75}
+    };
+
+    private class Postbox
+    {
+        public int Id { get; set; }
+        public DateTime LastUnlock { get; set; }
+        public int UnlockCount { get; set; }
+    }
+
+}

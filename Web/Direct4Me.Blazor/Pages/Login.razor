@@ -1,7 +1,8 @@
 @page "/login"
 @using Direct4Me.Blazor.Data
-@inject UserService UserService
+@inject IUserService UserService
 @inject NavigationManager NavigationManager
+@inject IHttpContextAccessor HttpContextAccessor
 
 <div class="container-fluid bg-dark min-vh-100 pt-4">
     <div class="d-flex justify-content-center align-items-center h-100">
@@ -13,7 +14,7 @@
                     @ErrorMessage
                 </div>
             }
-            <form class="p-5 rounded shadow" @onsubmit="HandleLogin">
+            <form class="p-5 rounded shadow" @onsubmit="@HandleLogin">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="LoginEmail" autofocus required>
@@ -52,7 +53,8 @@
             return;
         }
 
-    // Session.Set("LoggedInUser", user.Id);
+    // Save the JWT to the session
+        HttpContextAccessor.HttpContext?.Session.SetString("JWT", user.Token ?? throw new InvalidOperationException());
 
         NavigationManager.NavigateTo("/dashboard");
     }

@@ -1,9 +1,26 @@
 using Direct4Me.Blazor.Models;
+using Direct4Me.Blazor.Providers;
 
 namespace Direct4Me.Blazor.Data;
 
-public class UserService
+public interface IUserService
 {
+    Task<bool> RegisterUserAsync(UserModel user);
+
+    Task<UserModel> AuthenticateAsync(string loginEmail, string loginPassword);
+
+    Task<bool> IsAuthenticated();
+}
+
+public class UserService : IUserService
+{
+    private readonly IJwtTokenProvider _jwtTokenProvider;
+
+    public UserService(IJwtTokenProvider jwtTokenProvider)
+    {
+        _jwtTokenProvider = jwtTokenProvider;
+    }
+
     public async Task<bool> RegisterUserAsync(UserModel user)
     {
         await Task.CompletedTask;
@@ -13,9 +30,11 @@ public class UserService
 
     public async Task<UserModel> AuthenticateAsync(string loginEmail, string loginPassword)
     {
-        await Task.CompletedTask;
+        var user = new UserModel(Guid.NewGuid(), loginEmail, loginPassword, "dummy", "dummy");
 
-        return new UserModel(Guid.NewGuid(), "dummy", "dummy", "dummy", "dummy");
+        user.Token = await _jwtTokenProvider.GenerateJwtTokenAsync(user);
+
+        return user;
     }
 
     public async Task<bool> IsAuthenticated()

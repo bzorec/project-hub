@@ -13,7 +13,7 @@ public static class Direct4MeDbContextOptionsBuilderExtensions
         var connectionString = configuration.GetConnectionString("Direct4MeMongoDb");
 
         var mongoClientSettings = MongoClientSettings.FromConnectionString(connectionString);
-        mongoClientSettings.ClusterConfigurator = cb =>
+        mongoClientSettings.ClusterConfigurator = _ =>
         {
             // configure your MongoDB cluster here if needed
         };

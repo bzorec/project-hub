@@ -26,26 +26,3 @@
         }
     </NotFound>
 </Router>
-
-@code {
-
-    [Inject]
-    private NavigationManager Navigation { get; set; }
-
-    public bool IsLoggedIn { get; set; }
-
-    protected override Task OnAfterRenderAsync(bool firstRender)
-    {
-        IsLoggedIn = true;
-
-        RedirectToLogin();
-
-        return Task.CompletedTask;
-    }
-
-    private void RedirectToLogin()
-    {
-        Navigation.NavigateTo(!IsLoggedIn ? "/login" : "/dashboard");
-    }
-
-}
