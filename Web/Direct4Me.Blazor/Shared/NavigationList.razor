@@ -1,0 +1,19 @@
+@using Direct4Me.Blazor.Models
+<ul class="@CssClasses">
+    @foreach (var link in Links)
+    {
+        <li class="nav-item">
+            <NavLink class="nav-link" href="@link.Href">@link.Name</NavLink>
+        </li>
+    }
+</ul>
+
+@code {
+
+    [Parameter]
+    public List<NavListItem> Links { get; set; } = null!;
+
+    [Parameter]
+    public string CssClasses { get; set; } = null!;
+
+}
