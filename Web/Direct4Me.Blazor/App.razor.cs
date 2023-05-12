@@ -1,4 +1,4 @@
-using Direct4Me.Blazor.Data;
+using Direct4Me.Repository.Services;
 using Microsoft.AspNetCore.Components;
 
 namespace Direct4Me.Blazor;
@@ -13,8 +13,6 @@ public partial class App : ComponentBase
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        IsLoggedIn = await UserService.IsAuthenticated();
-
         RedirectToLogin();
     }
 

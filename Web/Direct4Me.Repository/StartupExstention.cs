@@ -1,4 +1,5 @@
 using Direct4Me.Repository.Repositories;
+using Direct4Me.Repository.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
@@ -20,6 +21,10 @@ public static class StartupExstention
             return client.GetDatabase(configuration["MongoDbSettings:DbName"]);
         });
 
-        services.AddSingleton<IUserRepository, UserRepository>();
+        services
+            .AddSingleton<IUserRepository, UserRepository>();
+
+        services
+            .AddSingleton<IUserService, UserService>();
     }
 }

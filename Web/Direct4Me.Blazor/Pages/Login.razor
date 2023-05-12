@@ -1,5 +1,5 @@
 @page "/login"
-@using Direct4Me.Blazor.Data
+@using Direct4Me.Repository.Services
 @inject IUserService UserService
 @inject NavigationManager NavigationManager
 @inject IHttpContextAccessor HttpContextAccessor
@@ -45,18 +45,10 @@
 
     private async Task HandleLogin()
     {
-        var user = await UserService.AuthenticateAsync(LoginEmail, LoginPassword);
-
-        if (user == null)
-        {
-            ErrorMessage = "Invalid email or password";
-            return;
-        }
-
-    // Save the JWT to the session
-        HttpContextAccessor.HttpContext?.Session.SetString("JWT", user.Token ?? throw new InvalidOperationException());
-
-        NavigationManager.NavigateTo("/dashboard");
+    // // Save the JWT to the session
+    //     HttpContextAccessor.HttpContext?.Session.SetString("JWT", user.Token ?? throw new InvalidOperationException());
+    //
+    //     NavigationManager.NavigateTo("/dashboard");
     }
 
 }

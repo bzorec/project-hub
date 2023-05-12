@@ -1,6 +1,6 @@
 @page "/register"
-@using Direct4Me.Blazor.Data
 @using Direct4Me.Blazor.Models
+@using Direct4Me.Repository.Services
 @inject IUserService UserService
 @inject NavigationManager NavigationManager
 
@@ -65,13 +65,6 @@
     {
         var user = new UserModel(Guid.NewGuid(), RegisterEmail, RegisterPassword, RegisterFirstName, RegisterLastName);
 
-        var result = await UserService.RegisterUserAsync(user);
-
-        if (!result)
-        {
-            ErrorMessage = "User with this email already exists";
-            return;
-        }
 
         NavigationManager.NavigateTo("/login");
     }
