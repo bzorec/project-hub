@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  myblazorapi:
+    image: myblazorapi
+    build:
+      context: ../Web/Direct4Me.Minimal.Api
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"

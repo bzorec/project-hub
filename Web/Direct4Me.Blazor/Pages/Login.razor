@@ -1,0 +1,50 @@
+@page "/login"
+
+@using Direct4Me.Blazor.Data
+@inject UserService UserService
+@inject NavigationManager NavigationManager
+
+<h1>Login</h1>
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <div class="alert alert-danger">@ErrorMessage</div>
+}
+
+<form class="mt-4" @onsubmit="HandleLogin">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="LoginEmail">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" @bind-value="LoginPassword">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+@code {
+
+    private string LoginEmail { get; set; } = null!;
+
+    private string LoginPassword { get; set; } = null!;
+
+    private string? ErrorMessage { get; set; }
+
+    private async Task HandleLogin()
+    {
+        var user = await UserService.AuthenticateAsync(LoginEmail, LoginPassword);
+
+        if (user == null)
+        {
+            ErrorMessage = "Invalid email or password";
+            return;
+        }
+
+    // Session.Set("LoggedInUser", user.Id);
+
+        NavigationManager.NavigateTo("/dashboard");
+    }
+
+}
