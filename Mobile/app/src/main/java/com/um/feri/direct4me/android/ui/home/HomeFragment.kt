@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.zxing.integration.android.IntentIntegrator
+import com.um.feri.direct4me.android.R
 import com.um.feri.direct4me.android.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -33,6 +36,18 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val scanButton: Button = view.findViewById(R.id.scanButton)
+        scanButton.setOnClickListener {
+            val integrator = IntentIntegrator.forSupportFragment(this)
+            integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+            integrator.setPrompt("Scan a QR Code")
+            integrator.setOrientationLocked(false)
+            integrator.initiateScan()
+        }
     }
 
     override fun onDestroyView() {
