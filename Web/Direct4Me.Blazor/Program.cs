@@ -1,9 +1,13 @@
 using Direct4Me.Blazor.Modules;
+using Direct4Me.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ConfigureAppsettings();
+
+builder.Services.ConfigureServices();
+
 builder.Services.AddAuthenticationServiceCollection(builder.Configuration);
 builder.Services.AddRazorPages();
 builder.Services.AddModuleServices();

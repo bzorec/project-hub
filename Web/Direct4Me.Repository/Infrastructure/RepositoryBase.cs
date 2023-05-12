@@ -5,40 +5,40 @@ namespace Direct4Me.Repository.Infrastructure;
 
 public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class, IEntity
 {
-    protected RepositoryBase(Direct4MeDbContext dbContext, IMongoDatabase mongoDatabase)
+    protected RepositoryBase(IMongoDatabase mongoDatabase)
     {
-        DbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-        MongoCollection = mongoDatabase.GetCollection<TEntity>(typeof(TEntity).Name.ToLower());
+        MongoDatabase = mongoDatabase ?? throw new ArgumentNullException(nameof(mongoDatabase));
+        MongoCollection = MongoDatabase.GetCollection<TEntity>(typeof(TEntity).Name.ToLower());
     }
 
-    protected Direct4MeDbContext DbContext { get; }
+    protected IMongoDatabase MongoDatabase { get; }
     protected IMongoCollection<TEntity> MongoCollection { get; }
 
-    public virtual async Task AddAsync(TEntity entity)
+    public virtual async Task UpdateAsync(TEntity entity, CancellationToken token)
     {
-        await DbContext.Set<TEntity>().AddAsync(entity);
-        await DbContext.SaveChangesAsync();
+        var filter = Builders<TEntity>.Filter.Eq(e => e.Id, entity.Id);
+        await MongoCollection.ReplaceOneAsync(filter, entity, cancellationToken: token);
     }
 
-    public virtual async Task UpdateAsync(TEntity entity)
+    public virtual async Task DeleteAsync(TEntity entity, CancellationToken token)
     {
-        DbContext.Set<TEntity>().Update(entity);
-        await DbContext.SaveChangesAsync();
+        var filter = Builders<TEntity>.Filter.Eq(e => e.Id, entity.Id);
+        await MongoCollection.DeleteOneAsync(filter, token);
     }
 
-    public virtual async Task DeleteAsync(TEntity entity)
+    public virtual async Task<TEntity> GetByIdAsync(string id, CancellationToken token)
     {
-        DbContext.Set<TEntity>().Remove(entity);
-        await DbContext.SaveChangesAsync();
+        var filter = Builders<TEntity>.Filter.Eq(e => e.Id, id);
+        return await MongoCollection.Find(filter).FirstOrDefaultAsync(token);
     }
 
-    public virtual async Task<TEntity> GetByIdAsync(Guid id)
+    public virtual async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token)
     {
-        return await MongoCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        return await MongoCollection.Find(Builders<TEntity>.Filter.Empty).ToListAsync(token);
     }
 
-    public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+    public virtual async Task AddAsync(TEntity entity, CancellationToken token)
     {
-        return await MongoCollection.Find(x => true).ToListAsync();
+        await MongoCollection.InsertOneAsync(entity, cancellationToken: token);
     }
 }

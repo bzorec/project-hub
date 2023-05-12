@@ -2,13 +2,13 @@ namespace Direct4Me.Repository.Infrastructure.Interfaces;
 
 public interface IRepositoryBase<TEntity>
 {
-    Task AddAsync(TEntity entity);
+    Task AddAsync(TEntity entity, CancellationToken token);
 
-    Task UpdateAsync(TEntity entity);
+    Task UpdateAsync(TEntity entity, CancellationToken token);
 
-    Task DeleteAsync(TEntity entity);
+    Task DeleteAsync(TEntity entity, CancellationToken token);
 
-    Task<TEntity> GetByIdAsync(Guid id);
+    Task<TEntity> GetByIdAsync(string id, CancellationToken token);
 
-    Task<IEnumerable<TEntity>> GetAllAsync();
+    Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token);
 }
