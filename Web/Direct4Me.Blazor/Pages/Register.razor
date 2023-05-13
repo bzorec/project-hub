@@ -1,6 +1,7 @@
 @page "/register"
-@using Direct4Me.Blazor.Models
 @using Direct4Me.Repository.Services
+@using System.ComponentModel.DataAnnotations
+@using Direct4Me.Repository.Entities
 @inject IUserService UserService
 @inject NavigationManager NavigationManager
 
@@ -14,29 +15,31 @@
                     @ErrorMessage
                 </div>
             }
-            <form class="p-5 rounded shadow" @onsubmit="HandleRegistration">
+            <EditForm class="p-5 rounded shadow" Model="@RegisterModel" OnValidSubmit="HandleRegistration">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="RegisterEmail" autofocus required>
+                    <InputText type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-Value="RegisterModel.RegisterEmail"></InputText>
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" @bind-value="RegisterPassword" required>
+                    <InputText type="password" class="form-control" id="password" placeholder="Password" @bind-Value="RegisterModel.RegisterPassword"></InputText>
                 </div>
                 <div class="mb-3">
                     <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" @bind-value="RegisterFirstName" required>
+                    <InputText type="text" class="form-control" id="firstName" placeholder="Enter your first name" @bind-Value="RegisterModel.RegisterFirstName"></InputText>
                 </div>
                 <div class="mb-3">
                     <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" @bind-value="RegisterLastName" required>
+                    <InputText type="text" class="form-control" id="lastName" placeholder="Enter your last name" @bind-Value="RegisterModel.RegisterLastName"></InputText>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mt-4" disabled="@IsLoading">
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
                     Sign up
                 </button>
-            </form>
+            </EditForm>
             @if (IsSuccess)
             {
                 <div class="alert alert-success mt-4" role="alert">
@@ -49,31 +52,50 @@
 
 @code {
 
-    private string RegisterEmail { get; set; } = null!;
+    public class RegistrationModel
+    {
+        [Required]
+        public string RegisterEmail { get; set; } = null!;
 
-    private string RegisterPassword { get; set; } = null!;
+        [Required]
+        public string RegisterPassword { get; set; } = null!;
 
-    private string RegisterFirstName { get; set; } = null!;
+        [Required]
+        public string RegisterFirstName { get; set; } = null!;
 
-    private string RegisterLastName { get; set; } = null!;
+        [Required]
+        public string RegisterLastName { get; set; } = null!;
+    }
+
+    public RegistrationModel RegisterModel { get; set; } = new();
 
     private string? ErrorMessage { get; set; }
 
     public bool IsLoading { get; set; }
 
-    private async Task HandleRegistration(CancellationToken token)
+    private async Task HandleRegistration()
     {
-        var user = new UserModel(Guid.NewGuid(), RegisterEmail, RegisterPassword, RegisterFirstName, RegisterLastName);
-
-        var signedUp = await UserService.TrySignUpAsync(new UserEntity(), token);
-
-        if(!signedUp)
+        try
         {
-            ErrorMessage = "User already exists.";
-            return Task.CompletedTask;
-        }
+            IsSuccess = await UserService.TrySignUpAsync(new UserEntity
+            {
+                Email = RegisterModel.RegisterEmail,
+                Password = RegisterModel.RegisterPassword.Trim(),
+                FirstName = RegisterModel.RegisterFirstName,
+                LastName = RegisterModel.RegisterLastName,
+            });
 
-        NavigationManager.NavigateTo("/login");
+            if (!IsSuccess)
+            {
+                ErrorMessage = "User already exists.";
+            }
+
+            NavigationManager.NavigateTo("/login", true, true);
+        }
+        catch (Exception e)
+        {
+            ErrorMessage = e.Message;
+        }
     }
 
     public bool IsSuccess { get; set; }

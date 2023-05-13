@@ -7,13 +7,13 @@ namespace Direct4Me.Repository.Services;
 
 public interface IUserService
 {
-    Task<UserEntity?> GetUserByEmailAsync(string email, CancellationToken token);
+    Task<UserEntity?> GetUserByEmailAsync(string email, CancellationToken token = default);
 
-    Task<UserEntity?> GetUserByFullnameAsync(string firstname, string lastname, CancellationToken token);
+    Task<UserEntity?> GetUserByFullnameAsync(string firstname, string lastname, CancellationToken token = default);
 
-    Task<bool> TrySignInAsync(string email, string password, CancellationToken token);
+    Task<bool> TrySignInAsync(string email, string password, CancellationToken token = default);
 
-    Task<bool> TrySignUpAsync(UserEntity entity, CancellationToken token);
+    Task<bool> TrySignUpAsync(UserEntity entity, CancellationToken token = default);
 }
 
 public class UserService : IUserService
@@ -66,8 +66,7 @@ public class UserService : IUserService
         try
         {
             var user = await _repository.GetUserByEmailAsync(email, token);
-
-            return user.Password == password;
+            return user.CheckPassword(password);
         }
         catch (Exception e)
         {

@@ -1,5 +1,8 @@
 @page "/dashboard"
-@attribute [Authorize]
+@using Direct4Me.Blazor.Services
+@inject IJwtService JwtService
+@inject NavigationManager NavigationManager
+@inject IJsInteropService JsInteropService
 
 <div class="container-fluid bg-dark min-vh-100 pt-lg-3">
     <div class="row ms-3 me-3">
@@ -93,6 +96,22 @@
 @code {
     public string? ErrorMessage { get; set; }
 
-    public string UserName { get; set; } = "Admin";
+    public string? UserName { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            var isAuth = await JsInteropService.IsUserAuthenticated();
+            if (!isAuth)
+            {
+                NavigationManager.NavigateTo("/login", true, true);
+            }
+        }
+        catch (Exception e)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+    }
 
 }

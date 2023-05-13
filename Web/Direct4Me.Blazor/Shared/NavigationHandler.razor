@@ -1,12 +1,9 @@
 @using Direct4Me.Blazor.Models
-<NavigationMenu NavigationType="NavigationType" Username="@Username"></NavigationMenu>
+<NavigationMenu NavigationType="NavigationType"></NavigationMenu>
 
 @code {
 
     [Parameter]
     public NavigationType NavigationType { get; set; }
-
-    [Parameter]
-    public string? Username { get; set; }
 
 }

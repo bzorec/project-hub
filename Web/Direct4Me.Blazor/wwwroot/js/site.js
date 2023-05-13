@@ -1,37 +1,36 @@
-function getLightMode() {
-    let mode = localStorage.getItem("lightMode");
-    return mode === "true";
+window.jsInterop = {
+    setToken: function (token) {
+        document.cookie = "JWTToken=" + token + "; expires=" + (new Date(Date.now() + 5 * 60 * 1000)).toUTCString() + "; path=/; secure; samesite=none";
+    },
+
+    getToken: function () {
+        var cookies = document.cookie.split("; ");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].split("=");
+            if (cookie[0] === "JWTToken") {
+                return cookie[1];
+            }
+        }
+        return null;
+    },
+
+    removeToken: function () {
+        document.cookie = "JWTToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; samesite=none";
+    }, isAuthenticated: function () {
+        let token = document.cookie.replace(/(?:^|.*;\s*)JWTToken\s*=\s*([^;]*).*$|^.*$/, "$1");
+
+        return token !== ""; // Change this based on your authentication logic
+    }, getUsername: function () {
+        var token = document.cookie.replace(/(?:^|.*;\s*)JWTToken\s*=\s*([^;]*).*$|^.*$/, "$1");
+
+        if (token === "") return null; // No token available
+
+        var jwtData = token.split('.')[1];
+        var decodedJwt = window.atob(jwtData);
+        var jwtClaims = JSON.parse(decodedJwt);
+
+        var username = jwtClaims.name;
+
+        return username || null; // Return the username or null if not found
+    },
 }
-
-function setLightMode(value) {
-    localStorage.setItem("lightMode", value.toString());
-    updateColorScheme();
-}
-
-function getDarkMode() {
-    let mode = localStorage.getItem("darkMode");
-    return mode === "true";
-}
-
-function setDarkMode(value) {
-    localStorage.setItem("darkMode", value.toString());
-    updateColorScheme();
-}
-
-function updateColorScheme() {
-    let isLightMode = getLightMode();
-    let isDarkMode = getDarkMode();
-
-    if (isLightMode) {
-        document.documentElement.classList.remove("dark-mode");
-        document.documentElement.classList.add("light-mode");
-    } else if (isDarkMode) {
-        document.documentElement.classList.remove("light-mode");
-        document.documentElement.classList.add("dark-mode");
-    } else {
-        document.documentElement.classList.remove("light-mode");
-        document.documentElement.classList.remove("dark-mode");
-    }
-}
-
-updateColorScheme();

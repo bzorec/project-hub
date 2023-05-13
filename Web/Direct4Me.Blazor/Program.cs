@@ -5,18 +5,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ConfigureAppsettings();
-
 builder.Services.ConfigureServices();
-
-builder.Services.AddAuthenticationServiceCollection(builder.Configuration);
+builder.Services.ConfigureAuthServices(builder.Configuration);
+builder.Services.AddJsInteropServices();
 builder.Services.AddRazorPages();
-builder.Services.AddModuleServices();
 builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -26,6 +21,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

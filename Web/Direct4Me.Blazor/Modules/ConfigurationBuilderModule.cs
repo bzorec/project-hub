@@ -1,3 +1,5 @@
+using Direct4Me.Blazor.Services;
+
 namespace Direct4Me.Blazor.Modules;
 
 public static class ConfigurationBuilderModule
@@ -14,5 +16,10 @@ public static class ConfigurationBuilderModule
         IConfiguration configuration = configurationBuilder.Build();
 
         services.AddSingleton(configuration);
+    }
+
+    public static void AddJsInteropServices(this IServiceCollection services)
+    {
+        services.AddScoped<IJsInteropService, JsInteropService>();
     }
 }

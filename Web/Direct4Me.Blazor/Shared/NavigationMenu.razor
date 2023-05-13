@@ -1,8 +1,11 @@
 @using Microsoft.IdentityModel.Tokens
 @using Direct4Me.Blazor.Models
+@using Direct4Me.Blazor.Services
 @using System.Security.Authentication
 @inherits LayoutComponentBase
 @inject NavigationManager Navigation
+@inject IJwtService JwtService
+@inject IJsInteropService JsInteropService
 
 @if (NavigationType == NavigationType.Login)
 {
@@ -68,6 +71,7 @@
 
 @code{
 
+
     private List<NavListItem> _navigationListLogin = new()
     {
         new NavListItem {Name = "(Sign up)", Href = "/register"},
@@ -96,13 +100,20 @@
     [Parameter]
     public NavigationType NavigationType { get; set; }
 
-    [Parameter]
     public string? Username { get; set; }
 
-    protected override void OnInitialized()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        Username = await JsInteropService.GetUserName();
+
         if (NavigationType == NavigationType.Default && Username.IsNullOrEmpty())
+        {
+            await JsInteropService.Logout();
+
             throw new AuthenticationException();
+        }
+
+        StateHasChanged(); // Refresh the component's state
     }
 
 }
