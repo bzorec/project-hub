@@ -40,7 +40,7 @@
             @if (IsSuccess)
             {
                 <div class="alert alert-success mt-4" role="alert">
-                    You have successfully registered. Please check your email to verify your account.
+                    You have successfully registered.
                 </div>
             }
         </div>
@@ -61,10 +61,17 @@
 
     public bool IsLoading { get; set; }
 
-    private async Task HandleRegistration()
+    private async Task HandleRegistration(CancellationToken token)
     {
         var user = new UserModel(Guid.NewGuid(), RegisterEmail, RegisterPassword, RegisterFirstName, RegisterLastName);
 
+        var signedUp = await UserService.TrySignUpAsync(new UserEntity(), token);
+
+        if(!signedUp)
+        {
+            ErrorMessage = "User already exists.";
+            return Task.CompletedTask;
+        }
 
         NavigationManager.NavigateTo("/login");
     }

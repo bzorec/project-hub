@@ -43,12 +43,22 @@
 
     public bool IsLoading { get; set; }
 
-    private async Task HandleLogin()
+    private async Task HandleLogin(CancellationToken token)
     {
-    // // Save the JWT to the session
-    //     HttpContextAccessor.HttpContext?.Session.SetString("JWT", user.Token ?? throw new InvalidOperationException());
-    //
-    //     NavigationManager.NavigateTo("/dashboard");
+        var signedIn = await UserService.TrySignInAsync(LoginEmail, LoginPassword, token);
+
+        if(!signedIn)
+        {
+            ErrorMessage = "Wrong password.";
+            return Task.CompletedTask;
+        }
+
+        var jwtToken = "";
+
+        // Save the JWT to the session
+        HttpContextAccessor.HttpContext?.Session.SetString("JWT", jwtToken ?? throw new InvalidOperationException());
+
+        NavigationManager.NavigateTo("/dashboard");
     }
 
 }
