@@ -12,9 +12,9 @@ public class PostboxStatisticsEntity : IEntity
 
     [BsonIgnore] public int TotalUnlocks { get; set; }
 
-    public WeeklyStatistics WeeklyStatistics { get; set; }
-    public MonthlyStatistics MonthlyStatistics { get; set; }
-    public DailyStatistics DailyStatistics { get; set; }
+    public WeeklyStatistics WeeklyStatistics { get; set; } = new();
+    public MonthlyStatistics MonthlyStatistics { get; set; } = new();
+    public DailyStatistics DailyStatistics { get; set; } = new();
 
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]

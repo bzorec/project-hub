@@ -6,11 +6,9 @@ namespace Direct4Me.Repository.Entities;
 
 public class PostboxEntity : IEntity
 {
-    [BsonIgnore] public PostboxStatisticsEntity StatisticsEntity { get; set; }
+    public PostboxStatisticsEntity StatisticsEntity { get; set; } = new();
 
     public int PostBoxId { get; set; }
-
-    public string PostBoxStatsId { get; set; }
 
     public string UserId { get; set; }
 

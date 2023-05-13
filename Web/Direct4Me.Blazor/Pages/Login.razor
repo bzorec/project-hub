@@ -73,6 +73,8 @@
 
             await JsInteropService.SetToken(jwtToken);
 
+            await UserService.UpdateLoginCount(LoginModel.Email, LoginType.Default);
+
             NavigationManager.NavigateTo("/dashboard", true, true);
         }
         catch (Exception e)

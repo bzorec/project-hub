@@ -8,7 +8,7 @@ namespace Direct4Me.Repository.Repositories;
 public interface IUserRepository : IRepositoryBase<UserEntity>
 {
     Task<bool> DoseUserExistAsync(string email, CancellationToken token);
-    Task<UserEntity> GetUserByEmailAsync(string email, CancellationToken token);
+    Task<UserEntity> GetUserByEmailAsync(string email, CancellationToken token = default);
     Task<UserEntity?> GetUserByFullnameAsync(string firstname, string lastname, CancellationToken token);
 }
 

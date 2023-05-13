@@ -14,6 +14,8 @@ public interface IUserService
     Task<bool> TrySignInAsync(string email, string password, CancellationToken token = default);
 
     Task<bool> TrySignUpAsync(UserEntity entity, CancellationToken token = default);
+
+    Task UpdateLoginCount(string email, LoginType loginType, CancellationToken token = default);
 }
 
 public class UserService : IUserService
@@ -93,4 +95,40 @@ public class UserService : IUserService
             return false;
         }
     }
+
+    public async Task UpdateLoginCount(string email, LoginType loginType, CancellationToken token = default)
+    {
+        // Retrieve the existing user from the repository
+        var user = await _repository.GetUserByEmailAsync(email, token);
+
+        if (user == null)
+            // User not found, handle accordingly
+            return;
+
+        // Update the login count based on the login type
+        switch (loginType)
+        {
+            case LoginType.Default:
+                user.StatisticsEntity.DefaultLoginCount++;
+                break;
+            case LoginType.Face:
+                user.StatisticsEntity.FaceLoginCount++;
+                break;
+            default:
+                // Invalid login type, handle accordingly
+                return;
+        }
+
+        // Update the last modified date
+        user.StatisticsEntity.LastModified = DateTime.Now;
+
+        // Save the modified user back to the repository
+        await _repository.UpdateAsync(user, token);
+    }
+}
+
+public enum LoginType
+{
+    Default,
+    Face
 }

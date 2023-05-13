@@ -1,11 +1,8 @@
-using Direct4Me.Repository.Infrastructure.Interfaces;
-
 namespace Direct4Me.Repository.Entities;
 
-public class UserStatisticsEntity : IEntity
+public class UserStatisticsEntity
 {
-    public Guid UserFk { get; set; }
-    public string Id { get; set; }
-    public DateTime CreatedOn { get; set; }
-    public DateTime? ModifiedOn { get; set; }
+    public int DefaultLoginCount { get; set; } = 0;
+    public int FaceLoginCount { get; set; } = 0;
+    public DateTime LastModified { get; set; } = DateTime.Now;
 }

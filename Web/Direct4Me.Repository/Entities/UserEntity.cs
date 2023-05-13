@@ -10,6 +10,8 @@ public class UserEntity : IEntity
 {
     [BsonIgnore] private string _password;
 
+    public UserStatisticsEntity StatisticsEntity { get; set; } = new();
+
     public string FirstName { get; set; } = null!;
 
     public string LastName { get; set; } = null!;
