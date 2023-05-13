@@ -1,6 +1,9 @@
 @page "/dashboard"
+@using Direct4Me.Repository.Entities
+@using Direct4Me.Repository.Services
 @using Direct4Me.Blazor.Services
-@inject IJwtService JwtService
+@inject IPostboxService PostboxService
+@inject IUserService UserService
 @inject NavigationManager NavigationManager
 @inject IJsInteropService JsInteropService
 
@@ -44,10 +47,10 @@
             <div class="card text-white bg-danger mb-3">
                 <div class="card-header">Postbox Unlocked by NFC</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total: 10</h5>
-                    <p class="card-text">Today: 2</p>
-                    <p class="card-text">This week: 5</p>
-                    <p class="card-text">This month: 10</p>
+                    <h5 class="card-title">Total: @NfcUnlocksTotal</h5>
+                    <p class="card-text">Today: @NfcUnlocksToday</p>
+                    <p class="card-text">This week: @NfcUnlocksWeek</p>
+                    <p class="card-text">This month: @NfcUnlocksMonth</p>
                 </div>
             </div>
         </div>
@@ -55,10 +58,10 @@
             <div class="card text-white bg-warning mb-3">
                 <div class="card-header">Postbox Unlocked by QR Code</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total: 5</h5>
-                    <p class="card-text">Today: 1</p>
-                    <p class="card-text">This week: 2</p>
-                    <p class="card-text">This month: 5</p>
+                    <h5 class="card-title">Total: @QrUnlocksTotal</h5>
+                    <p class="card-text">Today: @QrUnlocksToday</p>
+                    <p class="card-text">This week: @QrUnlocksWeek</p>
+                    <p class="card-text">This month: @QrUnlocksMonth</p>
                 </div>
             </div>
         </div>
@@ -80,10 +83,21 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>123</td>
-                            <td>2023-05-10 10:30:00</td>
-                            <td>100</td>
+                            @{
+                                var i = 0;
+                            }
+                            @foreach (var box in PostboxEntities)
+                            {
+                                <th scope="row">@i</th>
+
+                                <td>@box.PostBoxId</td>
+                                <td>@(box.StatisticsEntity.ModifiedOn ?? box.StatisticsEntity.CreatedOn)</td>
+                                <td>@box.StatisticsEntity.TotalUnlocks</td>
+                                {
+                                    i++;
+                                }
+                            }
+
                         </tr>
                         </tbody>
                     </table>
@@ -98,6 +112,18 @@
 
     public string? UserName { get; set; }
 
+    public int NfcUnlocksTotal { get; set; }
+    public int NfcUnlocksToday { get; set; }
+    public int NfcUnlocksWeek { get; set; }
+    public int NfcUnlocksMonth { get; set; }
+
+    public int QrUnlocksTotal { get; set; }
+    public int QrUnlocksToday { get; set; }
+    public int QrUnlocksWeek { get; set; }
+    public int QrUnlocksMonth { get; set; }
+
+    public List<PostboxEntity> PostboxEntities { get; set; } = new();
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
@@ -108,10 +134,43 @@
                 NavigationManager.NavigateTo("/login", true, true);
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
             NavigationManager.NavigateTo("/login");
         }
+
+        var email = await JsInteropService.GetUserEmail();
+
+        if (email == null)
+        {
+            return;
+        }
+
+        var user = await UserService.GetUserByEmailAsync(email);
+
+        var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
+
+        if (!boxIds.Any())
+        {
+            return;
+        }
+
+        foreach (var id in boxIds)
+        {
+            PostboxEntities.Add(await PostboxService.GetPostboxAsync(id));
+        }
+
+        NfcUnlocksTotal = PostboxEntities.Sum(i => i.StatisticsEntity.NfcUnlock);
+        NfcUnlocksToday = PostboxEntities.Sum(i => i.StatisticsEntity.DailyStatistics.NfcUnlock);
+        NfcUnlocksWeek = PostboxEntities.Sum(i => i.StatisticsEntity.WeeklyStatistics.NfcUnlock);
+        NfcUnlocksMonth = PostboxEntities.Sum(i => i.StatisticsEntity.MonthlyStatistics.NfcUnlock);
+
+        QrUnlocksTotal = PostboxEntities.Sum(i => i.StatisticsEntity.QrCodeUnlock);
+        QrUnlocksToday = PostboxEntities.Sum(i => i.StatisticsEntity.DailyStatistics.QrCodeUnlock);
+        QrUnlocksWeek = PostboxEntities.Sum(i => i.StatisticsEntity.WeeklyStatistics.QrCodeUnlock);
+        QrUnlocksMonth = PostboxEntities.Sum(i => i.StatisticsEntity.MonthlyStatistics.QrCodeUnlock);
+
+        StateHasChanged();
     }
 
 }

@@ -1,3 +1,5 @@
+using MongoDB.Driver;
+
 namespace Direct4Me.Repository.Infrastructure.Interfaces;
 
 public interface IRepositoryBase<TEntity>
@@ -10,5 +12,7 @@ public interface IRepositoryBase<TEntity>
 
     Task<TEntity> GetByIdAsync(string id, CancellationToken token);
 
-    Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token);
+    Task<IEnumerable<TEntity>> GetAllAsync(
+        FilterDefinition<TEntity> filter = default,
+        CancellationToken token = default);
 }

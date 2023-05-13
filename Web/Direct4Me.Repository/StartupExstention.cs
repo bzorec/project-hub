@@ -22,9 +22,12 @@ public static class StartupExstention
         });
 
         services
+            .AddSingleton<IPostboxRepository, PostboxRepository>()
+            .AddSingleton<IPostboxStatisticsRepository, PostboxStatisticsRepository>()
             .AddSingleton<IUserRepository, UserRepository>();
 
         services
+            .AddSingleton<IPostboxService, PostboxService>()
             .AddSingleton<IUserService, UserService>();
     }
 }

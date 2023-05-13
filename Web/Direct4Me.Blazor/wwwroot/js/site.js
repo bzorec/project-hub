@@ -16,11 +16,15 @@ window.jsInterop = {
 
     removeToken: function () {
         document.cookie = "JWTToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; samesite=none";
-    }, isAuthenticated: function () {
+    },
+
+    isAuthenticated: function () {
         let token = document.cookie.replace(/(?:^|.*;\s*)JWTToken\s*=\s*([^;]*).*$|^.*$/, "$1");
 
         return token !== ""; // Change this based on your authentication logic
-    }, getUsername: function () {
+    },
+
+    getUsername: function () {
         var token = document.cookie.replace(/(?:^|.*;\s*)JWTToken\s*=\s*([^;]*).*$|^.*$/, "$1");
 
         if (token === "") return null; // No token available
@@ -33,4 +37,18 @@ window.jsInterop = {
 
         return username || null; // Return the username or null if not found
     },
+
+    getEmail: function () {
+        var token = document.cookie.replace(/(?:^|.*;\s*)JWTToken\s*=\s*([^;]*).*$|^.*$/, "$1");
+
+        if (token === "") return null; // No token available
+
+        var jwtData = token.split('.')[1];
+        var decodedJwt = window.atob(jwtData);
+        var jwtClaims = JSON.parse(decodedJwt);
+
+        var email = jwtClaims.email;
+
+        return email || null; // Return the emaič or null if not found
+    }
 }

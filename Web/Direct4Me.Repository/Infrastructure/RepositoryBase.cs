@@ -32,13 +32,16 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         return await MongoCollection.Find(filter).FirstOrDefaultAsync(token);
     }
 
-    public virtual async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token)
-    {
-        return await MongoCollection.Find(Builders<TEntity>.Filter.Empty).ToListAsync(token);
-    }
 
     public virtual async Task AddAsync(TEntity entity, CancellationToken token)
     {
         await MongoCollection.InsertOneAsync(entity, cancellationToken: token);
+    }
+
+    public virtual async Task<IEnumerable<TEntity>> GetAllAsync(
+        FilterDefinition<TEntity> filter = default,
+        CancellationToken token = default)
+    {
+        return await MongoCollection.Find(filter).ToListAsync(token);
     }
 }

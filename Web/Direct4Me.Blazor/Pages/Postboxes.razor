@@ -1,43 +1,37 @@
 @page "/postboxes"
+@using Direct4Me.Repository.Entities
+@using Direct4Me.Repository.Services
 @using Direct4Me.Blazor.Services
 @inject NavigationManager NavigationManager
 @inject IJsInteropService JsInteropService
+@inject IPostboxService PostboxService
+@inject IUserService UserService
 
 <div class="container-fluid bg-dark min-vh-100 pt-4">
     <div class="row ms-3 me-3">
-        @foreach (var postbox in _postboxList)
+        @if (PostboxEntities.Any())
         {
-            <div class="col-md-4">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">Postbox @postbox.Id</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Last unlock: @postbox.LastUnlock</h5>
-                        <p class="card-text">Unlock count: @postbox.UnlockCount</p>
-                        <a href="@($"/postboxes/{postbox.Id}/unlock-nfc")" class="btn btn-success">Unlock with NFC</a>
-                        <a href="@($"/postboxes/{postbox.Id}/unlock-qr")" class="btn btn-warning">Unlock with QR Code</a>
+            @foreach (var postbox in PostboxEntities)
+            {
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header">Postbox @postbox.Id</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Last unlock: @(postbox.StatisticsEntity.ModifiedOn ?? postbox.StatisticsEntity.CreatedOn)</h5>
+                            <p class="card-text">Unlock count: @postbox.StatisticsEntity.TotalUnlocks</p>
+                            <a href="@($"/postboxes/{postbox.PostBoxId}/unlock-nfc")" class="btn btn-success">Unlock with NFC</a>
+                            <a href="@($"/postboxes/{postbox.PostBoxId}/unlock-qr")" class="btn btn-warning">Unlock with QR Code</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     </div>
 </div>
 
 @code {
 
-    private readonly List<Postbox> _postboxList = new()
-    {
-        new Postbox {Id = 1, LastUnlock = new DateTime(2023, 5, 10, 10, 30, 0), UnlockCount = 100},
-        new Postbox {Id = 2, LastUnlock = new DateTime(2023, 5, 9, 9, 15, 0), UnlockCount = 50},
-        new Postbox {Id = 3, LastUnlock = new DateTime(2023, 5, 8, 14, 45, 0), UnlockCount = 75},
-        new Postbox {Id = 4, LastUnlock = new DateTime(2023, 5, 8, 14, 45, 0), UnlockCount = 75}
-    };
-
-    private class Postbox
-    {
-        public int Id { get; set; }
-        public DateTime LastUnlock { get; set; }
-        public int UnlockCount { get; set; }
-    }
+    public List<PostboxEntity> PostboxEntities { get; set; } = new();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -49,10 +43,33 @@
                 NavigationManager.NavigateTo("/login", true, true);
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
             NavigationManager.NavigateTo("/login");
         }
+
+        var email = await JsInteropService.GetUserEmail();
+
+        if (email == null)
+        {
+            return;
+        }
+
+        var user = await UserService.GetUserByEmailAsync(email);
+
+        var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
+
+        if (!boxIds.Any())
+        {
+            return;
+        }
+
+        foreach (var id in boxIds)
+        {
+            PostboxEntities.Add(await PostboxService.GetPostboxAsync(id));
+        }
+
+        StateHasChanged();
     }
 
 }

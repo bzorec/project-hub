@@ -24,7 +24,11 @@ public class JsInteropService : IJsInteropService
     public ValueTask<string?> GetUserName()
     {
         return _jsRuntime.InvokeAsync<string?>("jsInterop.getUsername");
+    }
 
+    public ValueTask<string?> GetUserEmail()
+    {
+        return _jsRuntime.InvokeAsync<string?>("jsInterop.getEmail");
     }
 
     public ValueTask Logout()
@@ -45,4 +49,5 @@ public interface IJsInteropService
     ValueTask Logout();
     ValueTask<bool> IsUserAuthenticated();
     ValueTask<string?> GetUserName();
+    ValueTask<string?> GetUserEmail();
 }
