@@ -54,7 +54,7 @@
         public string Password { get; set; } = string.Empty;
     }
 
-    public SigninModel LoginModel { get; set; } = new SigninModel();
+    public SigninModel LoginModel { get; set; } = new();
 
     public async Task HandleLogin()
     {

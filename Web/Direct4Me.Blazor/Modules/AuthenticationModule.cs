@@ -24,7 +24,7 @@ public static class AuthenticationModule
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? throw new
                     InvalidOperationException())),
                 ValidateIssuer = false,
-                ValidateAudience = false,
+                ValidateAudience = false
             };
         });
 

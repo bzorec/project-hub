@@ -51,7 +51,7 @@ public class UserEntity : IEntity
 
     public DateTime? ModifiedOn { get; set; }
 
-    public bool IsAlreadyHashed(string value)
+    public static bool IsAlreadyHashed(string value)
     {
         byte[] hashedBytes;
         try
@@ -66,12 +66,9 @@ public class UserEntity : IEntity
         }
 
         // Compare the length of the hashed bytes with the expected hash length (SHA-256 produces a 32-byte hash)
-        if (hashedBytes.Length != 32) return false;
-
+        return hashedBytes.Length == 32;
         // You can perform additional checks if needed, such as specific byte values or patterns
-
         // If all checks pass, consider it as already hashed
-        return true;
     }
 
     public bool CheckPassword(string passwordToCheck)
