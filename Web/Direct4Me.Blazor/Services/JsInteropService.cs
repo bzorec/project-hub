@@ -33,7 +33,7 @@ public class JsInteropService : IJsInteropService
 
     public ValueTask Logout()
     {
-        return _jsRuntime.InvokeVoidAsync("jsInterop.logout");
+        return _jsRuntime.InvokeVoidAsync("jsInterop.removeToken");
     }
 
     public ValueTask SetToken(string token)

@@ -12,8 +12,6 @@ public class PostboxEntity : IEntity
 
     public string UserId { get; set; }
 
-    [BsonIgnore] public UserEntity UserEntity { get; set; }
-
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }

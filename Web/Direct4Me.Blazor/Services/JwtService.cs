@@ -7,19 +7,15 @@ namespace Direct4Me.Blazor.Services;
 
 public interface IJwtService
 {
-    string GetUsername();
-
     string GenerateJwtToken(string username, string? name);
 }
 
 public class JwtService : IJwtService
 {
     private readonly IConfiguration _configuration;
-    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public JwtService(IHttpContextAccessor httpContextAccessor, IConfiguration configuration)
+    public JwtService(IConfiguration configuration)
     {
-        _httpContextAccessor = httpContextAccessor;
         _configuration = configuration;
     }
 
@@ -44,24 +40,5 @@ public class JwtService : IJwtService
             signingCredentials: credentials);
 
         return new JwtSecurityTokenHandler().WriteToken(token);
-    }
-
-    public string GetUsername()
-    {
-        var token = _httpContextAccessor.HttpContext?.Request.Cookies["JWTToken"];
-
-        if (string.IsNullOrEmpty(token)) return null; // No token available
-
-        var handler = new JwtSecurityTokenHandler();
-        var jwtToken = handler.ReadJwtToken(token);
-
-        var usernameClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == JwtRegisteredClaimNames.Name);
-
-        return usernameClaim?.Value;
-    }
-
-    public string GetToken()
-    {
-        return _httpContextAccessor.HttpContext?.Request.Cookies["JWTToken"];
     }
 }

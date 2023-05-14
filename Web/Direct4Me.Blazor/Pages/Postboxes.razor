@@ -17,7 +17,7 @@
                     <div class="card text-white bg-primary mb-3">
                         <div class="card-header">Postbox @postbox.Id</div>
                         <div class="card-body">
-                            <h5 class="card-title">Last unlock: @(postbox.StatisticsEntity.ModifiedOn ?? postbox.StatisticsEntity.CreatedOn)</h5>
+                            <h5 class="card-title">Last unlock: @(postbox.StatisticsEntity.LastModified)</h5>
                             <p class="card-text">Unlock count: @postbox.StatisticsEntity.TotalUnlocks</p>
                             <a href="@($"/postboxes/{postbox.PostBoxId}/unlock-nfc")" class="btn btn-success">Unlock with NFC</a>
                             <a href="@($"/postboxes/{postbox.PostBoxId}/unlock-qr")" class="btn btn-warning">Unlock with QR Code</a>
@@ -66,7 +66,7 @@
 
         foreach (var id in boxIds)
         {
-            PostboxEntities.Add(await PostboxService.GetPostboxAsync(id));
+            PostboxEntities.Add(await PostboxService.GetPostboxByIdAsync(id));
         }
 
         StateHasChanged();

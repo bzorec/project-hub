@@ -22,10 +22,10 @@
             <div class="card text-white bg-primary mb-3">
                 <div class="card-header">Face Recognition Logins</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total: 50</h5>
-                    <p class="card-text">Today: 10</p>
-                    <p class="card-text">This week: 30</p>
-                    <p class="card-text">This month: 50</p>
+                    <h5 class="card-title">Total: @FaceLoginTotal</h5>
+                    <p class="card-text">Today: @FaceLoginDaily</p>
+                    <p class="card-text">This week: @FaceLoginWeekly</p>
+                    <p class="card-text">This month: @FaceLoginMonthly</p>
                 </div>
             </div>
         </div>
@@ -33,10 +33,11 @@
             <div class="card text-white bg-success mb-3">
                 <div class="card-header">Default Logins</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total: 20</h5>
-                    <p class="card-text">Today: 5</p>
-                    <p class="card-text">This week: 15</p>
-                    <p class="card-text">This month: 20</p>
+                    <h5 class="card-title">Total: @DefaultLoginTotal</h5>
+                    <p class="card-text">Today: @DefaultLoginDaily</p>
+                    <p class="card-text">This week: @DefaultLoginWeekly</p>
+                    <p class="card-text">This month: @DefaultLoginMonthly</p>
+
                 </div>
             </div>
         </div>
@@ -91,7 +92,7 @@
                                 <th scope="row">@i</th>
 
                                 <td>@box.PostBoxId</td>
-                                <td>@(box.StatisticsEntity.ModifiedOn ?? box.StatisticsEntity.CreatedOn)</td>
+                                <td>@(box.StatisticsEntity.LastModified)</td>
                                 <td>@box.StatisticsEntity.TotalUnlocks</td>
                                 {
                                     i++;
@@ -122,6 +123,16 @@
     public int QrUnlocksWeek { get; set; }
     public int QrUnlocksMonth { get; set; }
 
+    public int DefaultLoginTotal { get; set; }
+    public int DefaultLoginDaily { get; set; }
+    public int DefaultLoginWeekly { get; set; }
+    public int DefaultLoginMonthly { get; set; }
+
+    public int FaceLoginTotal { get; set; }
+    public int FaceLoginDaily { get; set; }
+    public int FaceLoginWeekly { get; set; }
+    public int FaceLoginMonthly { get; set; }
+
     public List<PostboxEntity> PostboxEntities { get; set; } = new();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -148,6 +159,18 @@
 
         var user = await UserService.GetUserByEmailAsync(email);
 
+        DefaultLoginTotal = user.StatisticsEntity.DefaultLoginCount;
+        DefaultLoginDaily = user.StatisticsEntity.DailyStatistics.DefaultLoginCount;
+        DefaultLoginWeekly = user.StatisticsEntity.DailyStatistics.DefaultLoginCount;
+        DefaultLoginMonthly = user.StatisticsEntity.DailyStatistics.DefaultLoginCount;
+
+        FaceLoginTotal = user.StatisticsEntity.FaceLoginCount;
+        FaceLoginDaily = user.StatisticsEntity.DailyStatistics.FaceLoginCount;
+        FaceLoginWeekly = user.StatisticsEntity.DailyStatistics.FaceLoginCount;
+        FaceLoginMonthly = user.StatisticsEntity.DailyStatistics.FaceLoginCount;
+
+        StateHasChanged();
+
         var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
 
         if (!boxIds.Any())
@@ -157,7 +180,7 @@
 
         foreach (var id in boxIds)
         {
-            PostboxEntities.Add(await PostboxService.GetPostboxAsync(id));
+            PostboxEntities.Add(await PostboxService.GetPostboxByIdAsync(id));
         }
 
         NfcUnlocksTotal = PostboxEntities.Sum(i => i.StatisticsEntity.NfcUnlock);
@@ -169,8 +192,6 @@
         QrUnlocksToday = PostboxEntities.Sum(i => i.StatisticsEntity.DailyStatistics.QrCodeUnlock);
         QrUnlocksWeek = PostboxEntities.Sum(i => i.StatisticsEntity.WeeklyStatistics.QrCodeUnlock);
         QrUnlocksMonth = PostboxEntities.Sum(i => i.StatisticsEntity.MonthlyStatistics.QrCodeUnlock);
-
-        StateHasChanged();
     }
 
 }

@@ -14,8 +14,6 @@ public interface IUserService
     Task<bool> TrySignInAsync(string email, string password, CancellationToken token = default);
 
     Task<bool> TrySignUpAsync(UserEntity entity, CancellationToken token = default);
-
-    Task UpdateLoginCount(string email, LoginType loginType, CancellationToken token = default);
 }
 
 public class UserService : IUserService
@@ -68,7 +66,14 @@ public class UserService : IUserService
         try
         {
             var user = await _repository.GetUserByEmailAsync(email, token);
-            return user.CheckPassword(password);
+
+
+            var result = user.CheckPassword(password);
+
+            if (result)
+                await UpdateLoginCount(user, LoginType.Default, token);
+
+            return result;
         }
         catch (Exception e)
         {
@@ -96,11 +101,8 @@ public class UserService : IUserService
         }
     }
 
-    public async Task UpdateLoginCount(string email, LoginType loginType, CancellationToken token = default)
+    private async Task UpdateLoginCount(UserEntity user, LoginType loginType, CancellationToken token = default)
     {
-        // Retrieve the existing user from the repository
-        var user = await _repository.GetUserByEmailAsync(email, token);
-
         if (user == null)
             // User not found, handle accordingly
             return;
@@ -109,20 +111,15 @@ public class UserService : IUserService
         switch (loginType)
         {
             case LoginType.Default:
-                user.StatisticsEntity.DefaultLoginCount++;
+                user.StatisticsEntity.UpdateLoginStats(false);
                 break;
             case LoginType.Face:
-                user.StatisticsEntity.FaceLoginCount++;
+                user.StatisticsEntity.UpdateLoginStats(true);
                 break;
             default:
-                // Invalid login type, handle accordingly
                 return;
         }
 
-        // Update the last modified date
-        user.StatisticsEntity.LastModified = DateTime.Now;
-
-        // Save the modified user back to the repository
         await _repository.UpdateAsync(user, token);
     }
 }

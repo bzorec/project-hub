@@ -48,22 +48,8 @@
                 <NavigationList Links="@_navigationListMain" CssClasses="navbar-nav"/>
             </div>
 
-            <div class="collapse navbar-collapse justify-content-end pe-5" id="navbarUser">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Welcome, @Username
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <NavLink class="dropdown-item" href="/login">Sign out</NavLink>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="justify-content-end pe-5">
+                <NavigationList Links="@_navigationListSignOut" CssClasses="navbar-nav"/>
             </div>
         </div>
     </nav>
@@ -97,6 +83,12 @@
             new NavListItem {Name = "(Postboxes)", Href = "/postboxes"}
         };
 
+    private List<NavListItem> _navigationListSignOut = new()
+    {
+        new() {Name = $"Welcome", Href = "/dashboard"},
+        new() {Name = "(Sign out)", Href = "/logout"}
+    };
+
     [Parameter]
     public NavigationType NavigationType { get; set; }
 
@@ -113,6 +105,11 @@
             throw new AuthenticationException();
         }
 
+        _navigationListSignOut = new List<NavListItem>
+        {
+            new() {Name = $"Welcome, {Username}", Href = "/dashboard"},
+            new() {Name = "(Sign out)", Href = "/logout"}
+        };
         StateHasChanged(); // Refresh the component's state
     }
 
