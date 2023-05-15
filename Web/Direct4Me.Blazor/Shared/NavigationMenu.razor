@@ -1,0 +1,116 @@
+@using Microsoft.IdentityModel.Tokens
+@using Direct4Me.Blazor.Models
+@using Direct4Me.Blazor.Services
+@using System.Security.Authentication
+@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+@inject IJwtService JwtService
+@inject IJsInteropService JsInteropService
+
+@if (NavigationType == NavigationType.Login)
+{
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <NavLink class="navbar-brand" href="/login">DIRECT4.ME</NavLink>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                @if (Navigation.Uri.Contains("login"))
+                {
+                    <NavigationList Links="@_navigationListLogin" CssClasses="navbar-nav"/>
+                }
+                else if (Navigation.Uri.Contains("register"))
+                {
+                    <NavigationList Links="@_navigationListRegister" CssClasses="navbar-nav"/>
+                }
+                else
+                {
+                    <NavigationList Links="@_navigationListFaceSignIn" CssClasses="navbar-nav"/>
+                }
+            </div>
+        </div>
+    </nav>
+}
+@if (NavigationType == NavigationType.Default)
+{
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <NavLink class="nav-link navbar-brand text-uppercase" href="/dashboard">DIRECT4.ME</NavLink>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <NavigationList Links="@_navigationListMain" CssClasses="navbar-nav"/>
+            </div>
+
+            <div class="justify-content-end pe-5">
+                <NavigationList Links="@_navigationListSignOut" CssClasses="navbar-nav"/>
+            </div>
+        </div>
+    </nav>
+}
+
+@code{
+
+
+    private List<NavListItem> _navigationListLogin = new()
+    {
+        new NavListItem {Name = "(Sign up)", Href = "/register"},
+        new NavListItem {Name = "Sign in (Face recognition)", Href = "/facerecognition"}
+    };
+
+    private List<NavListItem> _navigationListRegister = new()
+    {
+        new NavListItem {Name = "(Sign in)", Href = "/login"},
+        new NavListItem {Name = "Sign in (Face recognition)", Href = "/facerecognition"}
+    };
+
+    private List<NavListItem> _navigationListFaceSignIn = new()
+    {
+        new NavListItem {Name = "(Sign in)", Href = "/login"},
+        new NavListItem {Name = "(Sign up)", Href = "/register"}
+    };
+
+    private List<NavListItem> _navigationListMain =
+        new()
+        {
+            new NavListItem {Name = "(Dashboard)", Href = "/dashboard"},
+            new NavListItem {Name = "(Postboxes)", Href = "/postboxes"}
+        };
+
+    private List<NavListItem> _navigationListSignOut = new()
+    {
+        new() {Name = $"Welcome", Href = "/dashboard"},
+        new() {Name = "(Sign out)", Href = "/logout"}
+    };
+
+    [Parameter]
+    public NavigationType NavigationType { get; set; }
+
+    public string? Username { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        Username = await JsInteropService.GetUserName();
+
+        if (NavigationType == NavigationType.Default && Username.IsNullOrEmpty())
+        {
+            await JsInteropService.Logout();
+
+            throw new AuthenticationException();
+        }
+
+        _navigationListSignOut = new List<NavListItem>
+        {
+            new() {Name = $"Welcome, {Username}", Href = "/dashboard"},
+            new() {Name = "(Sign out)", Href = "/logout"}
+        };
+        StateHasChanged(); // Refresh the component's state
+    }
+
+}

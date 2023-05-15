@@ -1,0 +1,75 @@
+@page "/postboxes"
+@using Direct4Me.Repository.Entities
+@using Direct4Me.Repository.Services
+@using Direct4Me.Blazor.Services
+@inject NavigationManager NavigationManager
+@inject IJsInteropService JsInteropService
+@inject IPostboxService PostboxService
+@inject IUserService UserService
+
+<div class="container-fluid bg-dark min-vh-100 pt-4">
+    <div class="row ms-3 me-3">
+        @if (PostboxEntities.Any())
+        {
+            @foreach (var postbox in PostboxEntities)
+            {
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header">Postbox @postbox.Id</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Last unlock: @(postbox.StatisticsEntity.LastModified)</h5>
+                            <p class="card-text">Unlock count: @postbox.StatisticsEntity.TotalUnlocks</p>
+                            <a href="@($"/postboxes/{postbox.PostBoxId}/unlock-nfc")" class="btn btn-success">Unlock with NFC</a>
+                            <a href="@($"/postboxes/{postbox.PostBoxId}/unlock-qr")" class="btn btn-warning">Unlock with QR Code</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@code {
+
+    public List<PostboxEntity> PostboxEntities { get; set; } = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            var isAuth = await JsInteropService.IsUserAuthenticated();
+            if (!isAuth)
+            {
+                NavigationManager.NavigateTo("/login", true, true);
+            }
+        }
+        catch (Exception)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+
+        var email = await JsInteropService.GetUserEmail();
+
+        if (email == null)
+        {
+            return;
+        }
+
+        var user = await UserService.GetUserByEmailAsync(email);
+
+        var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
+
+        if (!boxIds.Any())
+        {
+            return;
+        }
+
+        foreach (var id in boxIds)
+        {
+            PostboxEntities.Add(await PostboxService.GetPostboxByIdAsync(id));
+        }
+
+        StateHasChanged();
+    }
+
+}

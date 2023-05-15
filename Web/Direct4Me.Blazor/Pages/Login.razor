@@ -1,50 +1,84 @@
 @page "/login"
-
-@using Direct4Me.Blazor.Data
-@inject UserService UserService
+@using Direct4Me.Repository.Services
+@using Direct4Me.Blazor.Services
+@using System.ComponentModel.DataAnnotations
+@inject IUserService UserService
 @inject NavigationManager NavigationManager
+@inject IJwtService JwtService
+@inject IJsInteropService JsInteropService
 
-<h1>Login</h1>
-
-@if (!string.IsNullOrEmpty(ErrorMessage))
-{
-    <div class="alert alert-danger">@ErrorMessage</div>
-}
-
-<form class="mt-4" @onsubmit="HandleLogin">
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="LoginEmail">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<div class="container-fluid bg-dark min-vh-100 pt-4">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="col-sm-10 col-md-8 col-lg-6">
+            <h2 class="text-center mb-4">Sign in</h2>
+            @if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ErrorMessage
+                </div>
+            }
+            <EditForm Model="@LoginModel" OnValidSubmit="HandleLogin">
+                <div class="p-5 rounded shadow">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <InputText id="email" class="form-control" @bind-Value="LoginModel.Email"></InputText>
+                        <ValidationMessage For="@(() => LoginModel.Email)"/>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <InputText type="password" id="password" class="form-control" @bind-Value="LoginModel.Password"></InputText>
+                        <ValidationMessage For="@(() => LoginModel.Password)"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-4" disabled="@IsLoading">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
+                        Sign in
+                    </button>
+                </div>
+            </EditForm>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password" @bind-value="LoginPassword">
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+</div>
 
 @code {
-
-    private string LoginEmail { get; set; } = null!;
-
-    private string LoginPassword { get; set; } = null!;
-
     private string? ErrorMessage { get; set; }
+    public bool IsLoading { get; set; }
 
-    private async Task HandleLogin()
+    public class SigninModel
     {
-        var user = await UserService.AuthenticateAsync(LoginEmail, LoginPassword);
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email format.")]
+        public string Email { get; set; } = string.Empty;
 
-        if (user == null)
+        [Required(ErrorMessage = "Password is required.")]
+        public string Password { get; set; } = string.Empty;
+    }
+
+    public SigninModel LoginModel { get; set; } = new();
+
+    public async Task HandleLogin()
+    {
+        var signedIn = await UserService.TrySignInAsync(LoginModel.Email, LoginModel.Password);
+
+        if (!signedIn)
         {
-            ErrorMessage = "Invalid email or password";
+            ErrorMessage = "Wrong email or password.";
             return;
         }
 
-    // Session.Set("LoggedInUser", user.Id);
+        var user = await UserService.GetUserByEmailAsync(LoginModel.Email);
+        try
+        {
+            var jwtToken = JwtService.GenerateJwtToken(LoginModel.Email, user?.Fullname);
 
-        NavigationManager.NavigateTo("/dashboard");
+            await JsInteropService.SetToken(jwtToken);
+
+            NavigationManager.NavigateTo("/dashboard", true, true);
+        }
+        catch (Exception e)
+        {
+            ErrorMessage = e.Message;
+        }
     }
 
 }
