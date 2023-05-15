@@ -14,9 +14,10 @@ public interface IUserService
     Task<bool> TrySignInAsync(string email, string password, CancellationToken token = default);
 
     Task<bool> TrySignUpAsync(UserEntity entity, CancellationToken token = default);
+    Task<List<UserEntity>> GetAllUsersAsync();
 }
 
-public class UserService : IUserService
+internal class UserService : IUserService
 {
     private readonly ILogger<UserService> _logger;
     private readonly IUserRepository _repository;
@@ -98,6 +99,21 @@ public class UserService : IUserService
             _logger.LogError("Error occured while adding user: {Excepiton}", e);
 
             return false;
+        }
+    }
+
+    public async Task<List<UserEntity>> GetAllUsersAsync()
+    {
+        try
+        {
+            var list = await _repository.GetAllAsync();
+
+            return list.ToList();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error occured while retriving data: {Message}", e.Message);
+            return new List<UserEntity>();
         }
     }
 

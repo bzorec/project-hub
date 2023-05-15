@@ -1,5 +1,6 @@
 namespace Direct4Me.Repository.Entities;
 
+[Serializable]
 public class UserStatisticsEntity
 {
     public int DefaultLoginCount { get; set; }

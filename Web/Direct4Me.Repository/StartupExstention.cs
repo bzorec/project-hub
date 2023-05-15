@@ -8,7 +8,7 @@ namespace Direct4Me.Repository;
 
 public static class StartupExstention
 {
-    public static void ConfigureServices(this IServiceCollection services)
+    public static void ConfigureRepositoryServices(this IServiceCollection services)
     {
         services.AddSingleton<IMongoDatabase>(sp =>
         {

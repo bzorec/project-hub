@@ -39,9 +39,10 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     }
 
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync(
-        FilterDefinition<TEntity> filter = default,
+        FilterDefinition<TEntity> filter = null,
         CancellationToken token = default)
     {
+        filter ??= FilterDefinition<TEntity>.Empty;
         return await MongoCollection.Find(filter).ToListAsync(token);
     }
 }

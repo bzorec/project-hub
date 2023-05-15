@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Direct4Me.Repository.Entities;
 
+[Serializable]
 public class PostboxEntity : IEntity
 {
     public PostboxStatisticsEntity StatisticsEntity { get; set; } = new();

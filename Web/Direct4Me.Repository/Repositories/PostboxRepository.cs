@@ -9,7 +9,7 @@ public interface IPostboxRepository : IRepositoryBase<PostboxEntity>
 {
 }
 
-public class PostboxRepository : RepositoryBase<PostboxEntity>, IPostboxRepository
+internal class PostboxRepository : RepositoryBase<PostboxEntity>, IPostboxRepository
 {
     public PostboxRepository(IMongoDatabase mongoDatabase)
         : base(mongoDatabase)

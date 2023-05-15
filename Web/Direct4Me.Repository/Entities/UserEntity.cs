@@ -6,6 +6,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Direct4Me.Repository.Entities;
 
+[Serializable]
 public class UserEntity : IEntity
 {
     [BsonIgnore] private string _password;

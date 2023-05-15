@@ -1,10 +1,11 @@
+using Direct4Me.Minimal.Api.Infrastructure;
+using Direct4Me.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ConfigureRepositoryServices();
+builder.Services.AddEndpointDefinitions(typeof(EndpointDefinitionExtensions));
+
 var app = builder.Build();
-
-app.MapGet("/", () => "Hello World!");
-
-app.MapGet("/postboxes/{postbox.Id}/unlock-nfc", (string postbox) => $"nfc {postbox}");
-
-app.MapGet("/postboxes/{postbox.Id}/unlock-qr", (string postbox) => $"qr {postbox}");
-
+app.UseEndpointDefinitions();
 app.Run();

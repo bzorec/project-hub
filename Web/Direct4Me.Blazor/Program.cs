@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ConfigureAppsettings();
-builder.Services.ConfigureServices();
+builder.Services.ConfigureRepositoryServices();
 builder.Services.ConfigureAuthServices(builder.Configuration);
 builder.Services.AddJsInteropServices();
 builder.Services.AddRazorPages();

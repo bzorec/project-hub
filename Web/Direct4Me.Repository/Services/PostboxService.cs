@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 namespace Direct4Me.Repository.Services;
 
-public class PostboxService : IPostboxService
+internal class PostboxService : IPostboxService
 {
     private readonly IPostboxRepository _repository;
 
