@@ -10,6 +10,7 @@ public class UserStatisticsEntity
     public MonthlyStatistics MonthlyStatistics { get; set; } = new();
     public DailyStatistics DailyStatistics { get; set; } = new();
     public DateTime LastModified { get; set; } = DateTime.Now;
+    public int TotalLogins => DefaultLoginCount + FaceLoginCount;
 
     public void UpdateLoginStats(bool isFaceLogin)
     {

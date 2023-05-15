@@ -83,23 +83,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            @{
-                                var i = 0;
-                            }
-                            @foreach (var box in PostboxEntities)
-                            {
+                        @{
+                            var i = 0;
+                        }
+                        @foreach (var box in PostboxEntities.Distinct())
+                        {
+                            <tr>
                                 <th scope="row">@i</th>
-
                                 <td>@box.PostBoxId</td>
                                 <td>@(box.StatisticsEntity.LastModified)</td>
                                 <td>@box.StatisticsEntity.TotalUnlocks</td>
-                                {
+                                @{
                                     i++;
                                 }
-                            }
+                            </tr>
+                        }
 
-                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -137,6 +136,7 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+    //TODO:bzorec fix bug on state change the table add column this not godd
         try
         {
             var isAuth = await JsInteropService.IsUserAuthenticated();
@@ -168,6 +168,7 @@
         FaceLoginDaily = user.StatisticsEntity.DailyStatistics.FaceLoginCount;
         FaceLoginWeekly = user.StatisticsEntity.WeeklyStatistics.FaceLoginCount;
         FaceLoginMonthly = user.StatisticsEntity.MonthlyStatistics.FaceLoginCount;
+        UserName = user.Fullname;
 
         StateHasChanged();
 

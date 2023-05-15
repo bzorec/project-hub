@@ -1,5 +1,5 @@
 using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
-using Direct4Me.Repository.Entities;
+using Direct4Me.Minimal.Api.Models;
 using Direct4Me.Repository.Services;
 
 namespace Direct4Me.Minimal.Api.EndpointDefinitions;
@@ -8,8 +8,8 @@ public class UserEndpointDefinition : IEndpointDefinition
 {
     public void DefineEndpoints(WebApplication app)
     {
-        app.MapGet("/users/{email}", GetAllUsersAsync);
-        app.MapGet("/users", GetUserByEmailAsync);
+        app.MapGet("/users/{email}", GetUserByEmailAsync);
+        app.MapGet("/users", GetAllUsersAsync);
         app.MapPost("/users/signIn/email/{email}/password/{password}", TrySignInUserAsync);
     }
 
@@ -17,16 +17,23 @@ public class UserEndpointDefinition : IEndpointDefinition
     {
     }
 
-    private static async Task<UserEntity> GetUserByEmailAsync(IUserService service, string email)
+    private static async Task<User?> GetUserByEmailAsync(IUserService service, string email)
     {
-        return await service.GetUserByEmailAsync(email);
+        var user = await service.GetUserByEmailAsync(email);
+
+        if (user != null)
+            return new User(user.Id, user.Email, user.Password, user.Fullname, user.StatisticsEntity.TotalLogins,
+                user.StatisticsEntity.LastModified);
+
+        return null;
     }
 
-    private static async Task<List<UserEntity>> GetAllUsersAsync(IUserService service, string email)
+    private static async Task<List<User>> GetAllUsersAsync(IUserService service)
     {
-        var list = await service.GetAllUsersAsync();
+        var users = await service.GetAllUsersAsync();
 
-        return list.ToList();
+        return users.Select(user => new User(user.Id, user.Email, user.Password, user.Fullname,
+            user.StatisticsEntity.TotalLogins, user.StatisticsEntity.LastModified)).ToList();
     }
 
     private static async Task<IResult> TrySignInUserAsync(IUserService service, string email, string password)
