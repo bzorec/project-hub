@@ -161,13 +161,13 @@
 
         DefaultLoginTotal = user.StatisticsEntity.DefaultLoginCount;
         DefaultLoginDaily = user.StatisticsEntity.DailyStatistics.DefaultLoginCount;
-        DefaultLoginWeekly = user.StatisticsEntity.DailyStatistics.DefaultLoginCount;
-        DefaultLoginMonthly = user.StatisticsEntity.DailyStatistics.DefaultLoginCount;
+        DefaultLoginWeekly = user.StatisticsEntity.WeeklyStatistics.DefaultLoginCount;
+        DefaultLoginMonthly = user.StatisticsEntity.MonthlyStatistics.DefaultLoginCount;
 
         FaceLoginTotal = user.StatisticsEntity.FaceLoginCount;
         FaceLoginDaily = user.StatisticsEntity.DailyStatistics.FaceLoginCount;
-        FaceLoginWeekly = user.StatisticsEntity.DailyStatistics.FaceLoginCount;
-        FaceLoginMonthly = user.StatisticsEntity.DailyStatistics.FaceLoginCount;
+        FaceLoginWeekly = user.StatisticsEntity.WeeklyStatistics.FaceLoginCount;
+        FaceLoginMonthly = user.StatisticsEntity.MonthlyStatistics.FaceLoginCount;
 
         StateHasChanged();
 
