@@ -1,7 +1,11 @@
+using Direct4Me.Minimal.Api.Infrastructure;
+using Direct4Me.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ConfigureRepositoryServices();
+builder.Services.AddEndpointDefinitions(typeof(EndpointDefinitionExtensions));
+
 var app = builder.Build();
-
-app.MapGet("/", () => "Hello World!");
-app.MapPost("/postTest", () => "Hello World!");
-
+app.UseEndpointDefinitions();
 app.Run();

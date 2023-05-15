@@ -1,9 +1,25 @@
 ﻿@page "/"
+@using Direct4Me.Blazor.Services
+@inherits LayoutComponentBase
+@inject IJsInteropService JsInteropService
+@inject NavigationManager NavigationManager
 
-<PageTitle>Index</PageTitle>
+@code{
 
-<h1>Hello, world!</h1>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            var isAuth = await JsInteropService.IsUserAuthenticated();
+            if (!isAuth)
+            {
+                NavigationManager.NavigateTo("/login", true, true);
+            }
+        }
+        catch (Exception)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+    }
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?"/>
+}
