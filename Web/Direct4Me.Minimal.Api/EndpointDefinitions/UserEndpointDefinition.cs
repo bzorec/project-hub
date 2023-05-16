@@ -2,6 +2,7 @@ using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
 using Direct4Me.Minimal.Api.Models;
 using Direct4Me.Repository.Entities;
 using Direct4Me.Repository.Services;
+using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -9,13 +10,13 @@ namespace Direct4Me.Minimal.Api.EndpointDefinitions;
 
 public class UserEndpointDefinition : IEndpointDefinition
 {
-    private readonly Logger<UserEndpointDefinition> _logger;
+    private readonly ILogger<UserEndpointDefinition> _logger;
 
     public UserEndpointDefinition()
     {
     }
 
-    public UserEndpointDefinition(Logger<UserEndpointDefinition> logger)
+    public UserEndpointDefinition(ILogger<UserEndpointDefinition> logger)
     {
         _logger = logger;
     }

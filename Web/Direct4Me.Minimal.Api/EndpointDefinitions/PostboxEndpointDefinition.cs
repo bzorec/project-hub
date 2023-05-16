@@ -2,19 +2,20 @@ using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
 using Direct4Me.Minimal.Api.Models;
 using Direct4Me.Repository.Entities;
 using Direct4Me.Repository.Services;
+using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Direct4Me.Minimal.Api.EndpointDefinitions;
 
 public class PostboxEndpointDefinition : IEndpointDefinition
 {
-    private readonly Logger<PostboxEndpointDefinition> _logger;
+    private readonly ILogger<PostboxEndpointDefinition> _logger;
 
     public PostboxEndpointDefinition()
     {
     }
 
-    public PostboxEndpointDefinition(Logger<PostboxEndpointDefinition> logger)
+    public PostboxEndpointDefinition(ILogger<PostboxEndpointDefinition> logger)
     {
         _logger = logger;
     }

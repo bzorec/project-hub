@@ -1,27 +1,11 @@
 using Direct4Me.Repository.Entities;
-using Direct4Me.Repository.Repositories;
+using Direct4Me.Repository.Enums;
+using Direct4Me.Repository.Repositories.Interfaces;
+using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Direct4Me.Repository.Services;
-
-public interface IUserService
-{
-    Task<UserEntity?> GetUserByEmailAsync(string email, CancellationToken token = default);
-
-    Task<UserEntity?> GetUserByFullnameAsync(string firstname, string lastname, CancellationToken token = default);
-
-    Task<bool> TrySignInAsync(string email, string password, CancellationToken token = default);
-
-    Task<bool> TrySignUpAsync(UserEntity entity, CancellationToken token = default);
-    Task<List<UserEntity>> GetAllAsync();
-
-    Task<bool> AddAsync(
-        UserEntity userEntity);
-
-    Task DeleteAsync(string guid);
-    Task UpdateAsync(UserEntity userEntity);
-}
 
 internal class UserService : IUserService
 {
@@ -159,10 +143,4 @@ internal class UserService : IUserService
 
         await _repository.UpdateAsync(user, token);
     }
-}
-
-public enum LoginType
-{
-    Default,
-    Face
 }
