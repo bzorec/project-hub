@@ -1,6 +1,5 @@
 using Direct4Me.Repository.Entities;
 using Direct4Me.Repository.Enums;
-using Direct4Me.Repository.Repositories;
 using Direct4Me.Repository.Repositories.Interfaces;
 using Direct4Me.Repository.Services.Interfaces;
 using MongoDB.Driver;

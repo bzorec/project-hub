@@ -1,7 +1,6 @@
 using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
 using Direct4Me.Minimal.Api.Models;
 using Direct4Me.Repository.Entities;
-using Direct4Me.Repository.Services;
 using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
