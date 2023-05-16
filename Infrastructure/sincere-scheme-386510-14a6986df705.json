@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sincere-scheme-386510",
+  "private_key_id": "14a6986df705eb97b3ce399d409e905538877b53",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDJgqo4SlN1wiJl\nASx4pR9+fKfOOPaBQQ+YKXeOTDljFM5xACqJBN3GRm3wOJG4B3zLjtaUWKBGLT4Y\nnKjROgMwfUEAT2XxY4JH3nYv4ZlVF23IIb7VGmOZdt4R3SwX3YzFO5fRa7MFh5dy\nYJ5euwkxUJZL0NAdUOOBCEnZfMEAWsdDJKH6Ke+sDAZ3C80qLpJ2EiaDIlKnQYg4\nAd64k2+IBtvuQ3Gdp5uz4CabxJ2INn+K7Gir8T7UHti4S4Gqd1M9pF3SNKu2r5Pc\nwJwPul64Cyrh/2rXFfuZl/k/5FPwqRKrh/AW80wt3E4x6hnwd7B0wxSpdtnldSPj\nOmNHQdzXAgMBAAECggEAC7KCWtnzRhxhIb4NMx2ms95DLjhMeuYbcSJEsEwIosTd\nucQgM/iTC4QhtDZpPKajaskqXjPwB2xvgXJw/3nS68XBkbKKNBZ2+BQLH643vkkQ\nLg3J0mLOeEvLPUjUJ+uyiCDa9PGmOgJydKKOK7XHJVRmI3vsfZJcYN+c/257lGxJ\nQY4PSAlnZB/clpr2UT8FhBqPdH7DvBqQExji3ErB8qipd1bsMzKyycOCJph7QIsF\nnjomzSTCEgAyWccWnC9qRwKYKlumFK47KOrM3NJUvo+O2Mse+2uuU1xUqKkGoh0l\n/pEi3SntJVAXL40Uw1NfNlBFkFZdnegPIO4/4lXtbQKBgQD+Q9SJEqFnXXClT1BH\nNrYYV38XcAvHibWcEWEK8jbX9tZVJptQovbWrJzk5M2PXYh9CJF46l+tMIZTseNi\nyl5wfHaQc4z3Qrwyy1mEicihIt4fD1T+Cta0JxdIzkQx0HpjEAOASUdnIoevVi8c\n+cNgxqcSfY9/mH+q6oo+991RawKBgQDK4q3QEwFQQC0KHWgPIe00apibRjck/qqT\nV1tx7TcMCRcbx0Ku3Ra35vZxDD4NXUIi3CpgY+hA/fVD3h3AAHTUZ/wirDHtZoFB\nZ1nghhYG3wycXP5vLxTy+q2joBJZUqjXUMz4EEO5wlzzkCLycFAF5SYalaNZqciQ\n6HH2eLyBRQKBgQDy+ZjJYD9TCozRvAhH9TVv73Tozc7D4Inm2Qi2MB5OpHfPKTR0\nizZ8kLjhVvBElyoN6bkyJi5Fz0AeDLjxN9elgJrAkVtdEa3MkFw79nr92NcQMVOT\n7IGd6Fks3sd2HvZFYhEmb2BHY0zsNdyRwO9+tHcFiW0ujmk5yCVR5QTefwKBgQC7\n+fRS8hjoct2IHqDYTHXLd+w3CYJ0S2RdqbW3Q7MZ+p4nhaJaA8xVza+OJGql1T8+\nr0CwGEELXoFNRVHJIGMenc21jlef/rZJk+lpJrLn4Od9RIgVGclOK0aQcPIvQm/f\nNyUBvYgSZ2vZ2zUV7Uunep2oSfaUT8PdxxA37buyBQKBgQCF0LBW+nCPyNOLJWrT\nJqt63oTCiXcS2zBftVZiSQyB9Rl/x8uln/9GpUVYN+fM1u1EKxcWQ8eRSJp2WFMn\nNrzUssXRpSxioTj93DD00yzSDIevKXQ/M63n0WWgLSI3qUEtlwbtSgEkx7HrmXm7\nEA0pk/VMZeiLipB1okBh6/EURw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sprotkacloud66@sincere-scheme-386510.iam.gserviceaccount.com",
+  "client_id": "103540904665892630409",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sprotkacloud66%40sincere-scheme-386510.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

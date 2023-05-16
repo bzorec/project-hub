@@ -2,12 +2,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore "Direct4Me.Minimal.Api.csproj"
-RUN dotnet build "Direct4Me.Minimal.Api.csproj" -c Release -o /app/build
+RUN dotnet restore "./Direct4Me.Minimal.Api/Direct4Me.Minimal.Api.csproj"
+RUN dotnet build "./Direct4Me.Minimal.Api/Direct4Me.Minimal.Api.csproj" -c Release -o /app/build
 
 # Stage 2
 FROM build AS publish
-RUN dotnet publish "Direct4Me.Minimal.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "./Direct4Me.Minimal.Api/Direct4Me.Minimal.Api.csproj" -c Release -o /app/publish
 
 # Stage 3
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
