@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -40,7 +41,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val scanButton: Button = view.findViewById(R.id.scanButton)
+        val scanButton: ImageButton = view.findViewById(R.id.scanButton)
         scanButton.setOnClickListener {
             val integrator = IntentIntegrator.forSupportFragment(this)
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
