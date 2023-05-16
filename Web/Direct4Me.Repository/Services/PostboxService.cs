@@ -70,6 +70,26 @@ internal class PostboxService : IPostboxService
         await _repository.AddAsync(entity, token);
     }
 
+    public Task<List<PostboxEntity>> GetAllAsync(string? userId, string? postboxId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task AddAsync(PostboxEntity postboxEntity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteAsync(string guid)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task UpdateAsync(string guid)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task UnlockPostboxAsync(string postboxId, UnlockType unlockType, CancellationToken token = default)
     {
         // Retrieve the existing postbox from the repository
@@ -109,4 +129,8 @@ public interface IPostboxService
     Task<PostboxEntity> GetPostboxByIdAsync(string postboxId, CancellationToken token = default);
     Task<List<PostboxEntity>> GetPostboxesByUserIdAsync(string userId, CancellationToken token = default);
     Task AddPostBoxAsync(string postBoxId, string userId, CancellationToken token = default);
+    Task<List<PostboxEntity>> GetAllAsync(string? userId, string? postboxId);
+    Task AddAsync(PostboxEntity postboxEntity);
+    Task DeleteAsync(string guid);
+    Task UpdateAsync(string guid);
 }

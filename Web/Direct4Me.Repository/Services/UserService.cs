@@ -14,7 +14,13 @@ public interface IUserService
     Task<bool> TrySignInAsync(string email, string password, CancellationToken token = default);
 
     Task<bool> TrySignUpAsync(UserEntity entity, CancellationToken token = default);
-    Task<List<UserEntity>> GetAllUsersAsync();
+    Task<List<UserEntity>> GetAllAsync();
+
+    Task<bool> AddAsync(
+        UserEntity userEntity);
+
+    Task DeleteAsync(string guid);
+    Task UpdateAsync(UserEntity userEntity);
 }
 
 internal class UserService : IUserService
@@ -102,7 +108,7 @@ internal class UserService : IUserService
         }
     }
 
-    public async Task<List<UserEntity>> GetAllUsersAsync()
+    public async Task<List<UserEntity>> GetAllAsync()
     {
         try
         {
@@ -115,6 +121,21 @@ internal class UserService : IUserService
             _logger.LogError("Error occured while retriving data: {Message}", e.Message);
             return new List<UserEntity>();
         }
+    }
+
+    public Task<bool> AddAsync(UserEntity userEntity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteAsync(string guid)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task UpdateAsync(UserEntity userEntity)
+    {
+        throw new NotImplementedException();
     }
 
     private async Task UpdateLoginCount(UserEntity user, LoginType loginType, CancellationToken token = default)
