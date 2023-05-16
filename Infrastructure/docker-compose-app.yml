@@ -4,8 +4,8 @@ services:
     myblazorapp:
         image: myblazorapp
         build:
-            context: ../Web/Direct4Me.Blazor
-            dockerfile: Dockerfile
+            context: ../Web
+            dockerfile: DockerfileWebApp
         ports:
             - "8080:80"
     

@@ -1,5 +1,198 @@
 @page "/dashboard"
+@using Direct4Me.Repository.Entities
+@using Direct4Me.Repository.Services
+@using Direct4Me.Blazor.Services
+@inject IPostboxService PostboxService
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
+@inject IJsInteropService JsInteropService
+
+<div class="container-fluid bg-dark min-vh-100 pt-lg-3">
+    <div class="row ms-3 me-3">
+        <h2 class="mb-4">Dashboard</h2>
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                @ErrorMessage
+            </div>
+        }
+    </div>
+    <div class="row ms-3 me-3">
+        <div class="col-md-6">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Face Recognition Logins</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total: @FaceLoginTotal</h5>
+                    <p class="card-text">Today: @FaceLoginDaily</p>
+                    <p class="card-text">This week: @FaceLoginWeekly</p>
+                    <p class="card-text">This month: @FaceLoginMonthly</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Default Logins</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total: @DefaultLoginTotal</h5>
+                    <p class="card-text">Today: @DefaultLoginDaily</p>
+                    <p class="card-text">This week: @DefaultLoginWeekly</p>
+                    <p class="card-text">This month: @DefaultLoginMonthly</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 ms-3 me-3">
+        <div class="col-md-6">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header">Postbox Unlocked by NFC</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total: @NfcUnlocksTotal</h5>
+                    <p class="card-text">Today: @NfcUnlocksToday</p>
+                    <p class="card-text">This week: @NfcUnlocksWeek</p>
+                    <p class="card-text">This month: @NfcUnlocksMonth</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Postbox Unlocked by QR Code</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total: @QrUnlocksTotal</h5>
+                    <p class="card-text">Today: @QrUnlocksToday</p>
+                    <p class="card-text">This week: @QrUnlocksWeek</p>
+                    <p class="card-text">This month: @QrUnlocksMonth</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 ms-3 me-3">
+        <div class="col-md-12">
+            <div class="card text-white bg-secondary">
+                <div class="card-header">User Postboxes (@UserName)</div>
+                <div class="card-body">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Postbox ID</th>
+                            <th scope="col">Last Unlock</th>
+                            <th scope="col">Unlock Count</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @{
+                            var i = 0;
+                        }
+                        @foreach (var box in PostboxEntities.Distinct())
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>@box.PostBoxId</td>
+                                <td>@(box.StatisticsEntity.LastModified)</td>
+                                <td>@box.StatisticsEntity.TotalUnlocks</td>
+                                @{
+                                    i++;
+                                }
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
+    public string? ErrorMessage { get; set; }
+
+    public string? UserName { get; set; }
+
+    public int NfcUnlocksTotal { get; set; }
+    public int NfcUnlocksToday { get; set; }
+    public int NfcUnlocksWeek { get; set; }
+    public int NfcUnlocksMonth { get; set; }
+
+    public int QrUnlocksTotal { get; set; }
+    public int QrUnlocksToday { get; set; }
+    public int QrUnlocksWeek { get; set; }
+    public int QrUnlocksMonth { get; set; }
+
+    public int DefaultLoginTotal { get; set; }
+    public int DefaultLoginDaily { get; set; }
+    public int DefaultLoginWeekly { get; set; }
+    public int DefaultLoginMonthly { get; set; }
+
+    public int FaceLoginTotal { get; set; }
+    public int FaceLoginDaily { get; set; }
+    public int FaceLoginWeekly { get; set; }
+    public int FaceLoginMonthly { get; set; }
+
+    public List<PostboxEntity> PostboxEntities { get; set; } = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+    //TODO:bzorec fix bug on state change the table add column this not godd
+        try
+        {
+            var isAuth = await JsInteropService.IsUserAuthenticated();
+            if (!isAuth)
+            {
+                NavigationManager.NavigateTo("/login", true, true);
+            }
+        }
+        catch (Exception)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+
+        var email = await JsInteropService.GetUserEmail();
+
+        if (email == null)
+        {
+            return;
+        }
+
+        var user = await UserService.GetUserByEmailAsync(email);
+
+        DefaultLoginTotal = user.StatisticsEntity.DefaultLoginCount;
+        DefaultLoginDaily = user.StatisticsEntity.DailyStatistics.DefaultLoginCount;
+        DefaultLoginWeekly = user.StatisticsEntity.WeeklyStatistics.DefaultLoginCount;
+        DefaultLoginMonthly = user.StatisticsEntity.MonthlyStatistics.DefaultLoginCount;
+
+        FaceLoginTotal = user.StatisticsEntity.FaceLoginCount;
+        FaceLoginDaily = user.StatisticsEntity.DailyStatistics.FaceLoginCount;
+        FaceLoginWeekly = user.StatisticsEntity.WeeklyStatistics.FaceLoginCount;
+        FaceLoginMonthly = user.StatisticsEntity.MonthlyStatistics.FaceLoginCount;
+        UserName = user.Fullname;
+
+        StateHasChanged();
+
+        var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
+
+        if (!boxIds.Any())
+        {
+            return;
+        }
+
+        foreach (var id in boxIds)
+        {
+            PostboxEntities.Add(await PostboxService.GetPostboxByIdAsync(id));
+        }
+
+        NfcUnlocksTotal = PostboxEntities.Sum(i => i.StatisticsEntity.NfcUnlock);
+        NfcUnlocksToday = PostboxEntities.Sum(i => i.StatisticsEntity.DailyStatistics.NfcUnlock);
+        NfcUnlocksWeek = PostboxEntities.Sum(i => i.StatisticsEntity.WeeklyStatistics.NfcUnlock);
+        NfcUnlocksMonth = PostboxEntities.Sum(i => i.StatisticsEntity.MonthlyStatistics.NfcUnlock);
+
+        QrUnlocksTotal = PostboxEntities.Sum(i => i.StatisticsEntity.QrCodeUnlock);
+        QrUnlocksToday = PostboxEntities.Sum(i => i.StatisticsEntity.DailyStatistics.QrCodeUnlock);
+        QrUnlocksWeek = PostboxEntities.Sum(i => i.StatisticsEntity.WeeklyStatistics.QrCodeUnlock);
+        QrUnlocksMonth = PostboxEntities.Sum(i => i.StatisticsEntity.MonthlyStatistics.QrCodeUnlock);
+    }
 
 }

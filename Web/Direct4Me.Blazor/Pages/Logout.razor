@@ -1,0 +1,15 @@
+@page "/logout"
+@using Direct4Me.Blazor.Services
+@inject NavigationManager NavigationManager
+@inject IJsInteropService JsInteropService
+
+@code {
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JsInteropService.Logout();
+        
+        NavigationManager.NavigateTo("/login", true, true);
+    }
+
+}
