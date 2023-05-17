@@ -67,17 +67,17 @@ class HomeFragment : Fragment() {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null && result.contents != null) {
             val boxId = result.contents
-            val tokenFormat = 0 // Prilagodite glede na potrebe
+            val tokenFormat = 0
 
-            // Kličite metodo OpenBox prek API-ja in izvedite potrebne ukrepe z žetonom
+            // Klic metode OpenBox prek API-ja
             openBox(boxId, tokenFormat)
         }
     }
 
     private fun openBox(boxId: String, tokenFormat: Int) {
-        // Uporabite Retrofit za izvajanje HTTP klicev
+        // Uporabita Retrofit za izvajanje HTTP klicev
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api-d4me-stage.direct4.me/sandbox/v1/") // Prilagodite glede na dejanski naslov API-ja
+            .baseUrl("https://api-d4me-stage.direct4.me/sandbox/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
