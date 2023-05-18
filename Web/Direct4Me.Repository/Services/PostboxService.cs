@@ -48,13 +48,10 @@ internal class PostboxService : IPostboxService
         var postbox = await _repository.GetByIdAsync(postboxId, token);
 
         if (postbox == null)
-            // Postbox not found, handle accordingly
             return null;
 
-        // Update the statistics dates based on the current date
         postbox.StatisticsEntity.UpdateStatisticsDates();
 
-        // Save the updated postbox back to the database
         await _repository.UpdateAsync(postbox, token);
 
         return postbox;
@@ -136,35 +133,5 @@ internal class PostboxService : IPostboxService
             _logger.LogError("Error occured while deleting postbox: {Message}", e.Message);
             return false;
         }
-    }
-
-    public async Task<List<PostboxEntity>> GetPostboxesByUserIdAsync(string userId, CancellationToken token = default)
-    {
-        var filter = Builders<PostboxEntity>.Filter.Eq(e => e.UserId, userId);
-
-        var postboxes = await _repository.GetAllAsync(filter, token);
-
-        if (postboxes == null)
-            return null;
-
-        var postboxEntities = postboxes.ToList();
-
-        foreach (var box in postboxEntities)
-        {
-            box.StatisticsEntity.UpdateStatisticsDates();
-            await _repository.UpdateAsync(box, token);
-        }
-
-        return postboxEntities;
-    }
-
-    public async Task AddPostBoxAsync(string postBoxId, string userId, CancellationToken token = default)
-    {
-        var entity = new PostboxEntity
-        {
-            PostBoxId = Convert.ToInt32(postBoxId),
-            UserId = userId
-        };
-        await _repository.AddAsync(entity, token);
     }
 }

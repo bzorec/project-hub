@@ -1,9 +1,4 @@
 @page "/register"
-@using System.ComponentModel.DataAnnotations
-@using Direct4Me.Repository.Entities
-@using Direct4Me.Repository.Services.Interfaces
-@inject IUserService UserService
-@inject NavigationManager NavigationManager
 
 <div class="container-fluid bg-dark min-vh-100 pt-4">
     <div class="d-flex justify-content-center align-items-center h-100">
@@ -49,55 +44,3 @@
         </div>
     </div>
 </div>
-
-@code {
-
-    public class RegistrationModel
-    {
-        [Required]
-        public string RegisterEmail { get; set; } = null!;
-
-        [Required]
-        public string RegisterPassword { get; set; } = null!;
-
-        [Required]
-        public string RegisterFirstName { get; set; } = null!;
-
-        [Required]
-        public string RegisterLastName { get; set; } = null!;
-    }
-
-    public RegistrationModel RegisterModel { get; set; } = new();
-
-    private string? ErrorMessage { get; set; }
-
-    public bool IsLoading { get; set; }
-
-    private async Task HandleRegistration()
-    {
-        try
-        {
-            IsSuccess = await UserService.TrySignUpAsync(new UserEntity
-            {
-                Email = RegisterModel.RegisterEmail,
-                Password = RegisterModel.RegisterPassword.Trim(),
-                FirstName = RegisterModel.RegisterFirstName,
-                LastName = RegisterModel.RegisterLastName
-            });
-
-            if (!IsSuccess)
-            {
-                ErrorMessage = "User already exists.";
-            }
-
-            NavigationManager.NavigateTo("/login", true, true);
-        }
-        catch (Exception e)
-        {
-            ErrorMessage = e.Message;
-        }
-    }
-
-    public bool IsSuccess { get; set; }
-
-}

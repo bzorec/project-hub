@@ -9,7 +9,7 @@ namespace Direct4Me.Repository.Entities;
 [Serializable]
 public class UserEntity : IEntity
 {
-    [BsonIgnore] private string _password;
+    [BsonIgnore] private string? _password;
 
     public UserStatisticsEntity StatisticsEntity { get; set; } = new();
 

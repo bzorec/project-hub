@@ -11,11 +11,11 @@ public class PostboxEntity : IEntity
 
     public int PostBoxId { get; set; }
 
-    public string UserId { get; set; }
+    public string UserId { get; set; } = null!;
 
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
+    public string Id { get; set; } = null!;
 
     public DateTime CreatedOn { get; set; }
     public DateTime? ModifiedOn { get; set; }
