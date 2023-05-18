@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
 using Microsoft.OpenApi.Models;
 
 namespace Direct4Me.Minimal.Api.EndpointDefinitions;
 
+[SuppressMessage("ReSharper", "UnusedType.Global")]
 public class SwaggerEnpointDefinition : IEndpointDefinition
 {
     public void DefineEndpoints(WebApplication app)

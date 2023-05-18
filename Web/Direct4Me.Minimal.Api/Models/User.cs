@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Direct4Me.Minimal.Api.Models;
 
 [Serializable]
-internal record User(
+public record User(
     [Required] string Guid,
     [Required] string Email,
     [Required] string Password,

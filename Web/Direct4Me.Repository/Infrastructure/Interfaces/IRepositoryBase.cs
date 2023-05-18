@@ -8,11 +8,11 @@ public interface IRepositoryBase<TEntity>
 
     Task UpdateAsync(TEntity entity, CancellationToken token = default);
 
-    Task DeleteAsync(TEntity entity, CancellationToken token = default);
+    Task DeleteAsync(string id, CancellationToken token = default);
 
     Task<TEntity> GetByIdAsync(string id, CancellationToken token = default);
 
     Task<IEnumerable<TEntity>> GetAllAsync(
-        FilterDefinition<TEntity> filter = default,
+        FilterDefinition<TEntity>? filter = default,
         CancellationToken token = default);
 }

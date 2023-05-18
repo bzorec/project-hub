@@ -98,7 +98,6 @@
                                 }
                             </tr>
                         }
-
                         </tbody>
                     </table>
                 </div>
@@ -156,8 +155,8 @@
         {
             return;
         }
-
         var user = await UserService.GetUserByEmailAsync(email);
+
 
         DefaultLoginTotal = user.StatisticsEntity.DefaultLoginCount;
         DefaultLoginDaily = user.StatisticsEntity.DailyStatistics.DefaultLoginCount;
@@ -172,18 +171,6 @@
 
         StateHasChanged();
 
-        var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
-
-        if (!boxIds.Any())
-        {
-            return;
-        }
-
-        foreach (var id in boxIds)
-        {
-            PostboxEntities.Add(await PostboxService.GetPostboxByIdAsync(id));
-        }
-
         NfcUnlocksTotal = PostboxEntities.Sum(i => i.StatisticsEntity.NfcUnlock);
         NfcUnlocksToday = PostboxEntities.Sum(i => i.StatisticsEntity.DailyStatistics.NfcUnlock);
         NfcUnlocksWeek = PostboxEntities.Sum(i => i.StatisticsEntity.WeeklyStatistics.NfcUnlock);
@@ -193,6 +180,20 @@
         QrUnlocksToday = PostboxEntities.Sum(i => i.StatisticsEntity.DailyStatistics.QrCodeUnlock);
         QrUnlocksWeek = PostboxEntities.Sum(i => i.StatisticsEntity.WeeklyStatistics.QrCodeUnlock);
         QrUnlocksMonth = PostboxEntities.Sum(i => i.StatisticsEntity.MonthlyStatistics.QrCodeUnlock);
+
+        if (firstRender)
+        {
+            var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
+
+            if (!boxIds.Any())
+            {
+                return;
+            }
+            foreach (var id in boxIds)
+            {
+                PostboxEntities.Add(await PostboxService.GetPostboxByIdAsync(id));
+            }
+        }
     }
 
 }

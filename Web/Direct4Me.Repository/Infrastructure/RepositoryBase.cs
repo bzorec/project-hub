@@ -20,9 +20,9 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         await MongoCollection.ReplaceOneAsync(filter, entity, cancellationToken: token);
     }
 
-    public virtual async Task DeleteAsync(TEntity entity, CancellationToken token)
+    public virtual async Task DeleteAsync(string id, CancellationToken token)
     {
-        var filter = Builders<TEntity>.Filter.Eq(e => e.Id, entity.Id);
+        var filter = Builders<TEntity>.Filter.Eq(e => e.Id, id);
         await MongoCollection.DeleteOneAsync(filter, token);
     }
 
@@ -39,7 +39,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     }
 
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync(
-        FilterDefinition<TEntity> filter = null,
+        FilterDefinition<TEntity>? filter = null,
         CancellationToken token = default)
     {
         filter ??= FilterDefinition<TEntity>.Empty;

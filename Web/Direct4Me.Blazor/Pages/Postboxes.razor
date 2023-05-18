@@ -57,18 +57,20 @@
 
         var user = await UserService.GetUserByEmailAsync(email);
 
-        var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
-
-        if (!boxIds.Any())
+        if (firstRender)
         {
-            return;
-        }
+            var boxIds = await PostboxService.GetPostboxIdsForUser(user?.Id ?? throw new InvalidOperationException());
 
-        foreach (var id in boxIds)
-        {
-            PostboxEntities.Add(await PostboxService.GetPostboxByIdAsync(id));
-        }
+            if (!boxIds.Any())
+            {
+                return;
+            }
 
+            foreach (var id in boxIds)
+            {
+                PostboxEntities.Add(await PostboxService.GetPostboxByIdAsync(id));
+            }
+        }
         StateHasChanged();
     }
 

@@ -6,16 +6,15 @@ public interface IUserService
 {
     Task<UserEntity?> GetUserByEmailAsync(string email, CancellationToken token = default);
 
-    Task<UserEntity?> GetUserByFullnameAsync(string firstname, string lastname, CancellationToken token = default);
-
     Task<bool> TrySignInAsync(string email, string password, CancellationToken token = default);
 
     Task<bool> TrySignUpAsync(UserEntity entity, CancellationToken token = default);
-    Task<List<UserEntity>> GetAllAsync();
 
-    Task<bool> AddAsync(
-        UserEntity userEntity);
+    Task<List<UserEntity>> GetAllAsync(string? firstname, string? lastname, DateTime? lastAccessed,
+        CancellationToken token = default);
 
-    Task DeleteAsync(string guid);
-    Task UpdateAsync(UserEntity userEntity);
+    Task<bool> AddAsync(UserEntity userEntity, CancellationToken token = default);
+
+    Task<bool> DeleteAsync(string guid, CancellationToken token = default);
+    Task<bool> UpdateAsync(UserEntity userEntity, CancellationToken token = default);
 }

@@ -4,6 +4,7 @@ using Direct4Me.Repository.Repositories.Interfaces;
 using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
 
 namespace Direct4Me.Repository.Services;
 
@@ -18,6 +19,48 @@ internal class UserService : IUserService
         _logger = logger;
     }
 
+    public async Task<bool> AddAsync(UserEntity userEntity, CancellationToken token = default)
+    {
+        try
+        {
+            await _repository.AddAsync(userEntity, token);
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error occured while adding user: {Message}", e.Message);
+            return false;
+        }
+    }
+
+    public async Task<bool> DeleteAsync(string guid, CancellationToken token = default)
+    {
+        try
+        {
+            await _repository.DeleteAsync(guid, token);
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error occured while updating user: {Message}", e.Message);
+            return false;
+        }
+    }
+
+    public async Task<bool> UpdateAsync(UserEntity userEntity, CancellationToken token = default)
+    {
+        try
+        {
+            await _repository.UpdateAsync(userEntity, token);
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error occured while updating user: {Message}", e.Message);
+            return false;
+        }
+    }
+
     public async Task<UserEntity?> GetUserByEmailAsync(string email, CancellationToken token)
     {
         try
@@ -27,24 +70,6 @@ internal class UserService : IUserService
         catch (Exception e)
         {
             _logger.LogError("Error occured while getting user by email: {Excepiton}", e);
-
-            return null;
-        }
-    }
-
-    public async Task<UserEntity?> GetUserByFullnameAsync(string firstname, string lastname,
-        CancellationToken token)
-    {
-        if (firstname.IsNullOrEmpty() && lastname.IsNullOrEmpty())
-            return null;
-
-        try
-        {
-            return await _repository.GetUserByFullnameAsync(firstname, lastname, token);
-        }
-        catch (Exception e)
-        {
-            _logger.LogError("Error occured while adding user: {Excepiton}", e);
 
             return null;
         }
@@ -92,11 +117,23 @@ internal class UserService : IUserService
         }
     }
 
-    public async Task<List<UserEntity>> GetAllAsync()
+    public async Task<List<UserEntity>> GetAllAsync(string? firstname, string? lastname, DateTime? lastAccessed,
+        CancellationToken token = default)
     {
         try
         {
-            var list = await _repository.GetAllAsync();
+            FilterDefinition<UserEntity>? filter = FilterDefinition<UserEntity>.Empty;
+
+            if (!firstname.IsNullOrEmpty())
+                filter &= Builders<UserEntity>.Filter.Eq(e => e.FirstName, firstname);
+
+            if (!lastname.IsNullOrEmpty())
+                filter &= Builders<UserEntity>.Filter.Eq(e => e.LastName, lastname);
+
+            if (lastAccessed != null)
+                filter &= Builders<UserEntity>.Filter.Eq(e => e.StatisticsEntity.LastModified, lastAccessed);
+
+            var list = await _repository.GetAllAsync(filter, token);
 
             return list.ToList();
         }
@@ -107,28 +144,28 @@ internal class UserService : IUserService
         }
     }
 
-    public Task<bool> AddAsync(UserEntity userEntity)
+    public async Task<UserEntity?> GetUserByFullnameAsync(string firstname, string lastname,
+        CancellationToken token = default)
     {
-        throw new NotImplementedException();
-    }
+        if (firstname.IsNullOrEmpty() && lastname.IsNullOrEmpty())
+            return null;
 
-    public Task DeleteAsync(string guid)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateAsync(UserEntity userEntity)
-    {
-        throw new NotImplementedException();
+        try
+        {
+            return await _repository.GetUserByFullnameAsync(firstname, lastname, token);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error occured while adding user: {Excepiton}", e);
+            return null;
+        }
     }
 
     private async Task UpdateLoginCount(UserEntity user, LoginType loginType, CancellationToken token = default)
     {
         if (user == null)
-            // User not found, handle accordingly
             return;
 
-        // Update the login count based on the login type
         switch (loginType)
         {
             case LoginType.Default:
