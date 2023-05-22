@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Last unlock: @(postbox.StatisticsEntity.LastModified)</h5>
                             <p class="card-text">Unlock count: @postbox.StatisticsEntity.TotalUnlocks</p>
-                            <a href="@($"/postboxes/{postbox.PostBoxId}/unlock-nfc")" class="btn btn-success">Unlock with NFC</a>
+                            <a class="btn btn-success">Unlock with NFC</a>
                             <a @onclick="() => CallApiOnClick(postbox.PostBoxId)" class="btn btn-warning">Unlock with QR Code</a>
                         </div>
                     </div>
