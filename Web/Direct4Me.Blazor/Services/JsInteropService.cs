@@ -31,6 +31,11 @@ public class JsInteropService : IJsInteropService
         return _jsRuntime.InvokeAsync<string?>("jsInterop.getEmail");
     }
 
+    public ValueTask PlayMp3FromResponse(byte[] mp3)
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.playAndCloseAnimation", mp3);
+    }
+
     public ValueTask Logout()
     {
         return _jsRuntime.InvokeVoidAsync("jsInterop.removeToken");
@@ -50,4 +55,5 @@ public interface IJsInteropService
     ValueTask<bool> IsUserAuthenticated();
     ValueTask<string?> GetUserName();
     ValueTask<string?> GetUserEmail();
+    ValueTask PlayMp3FromResponse(byte[] mp3);
 }

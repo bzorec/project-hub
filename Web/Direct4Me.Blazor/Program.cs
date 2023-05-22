@@ -10,6 +10,7 @@ builder.Services.ConfigureAuthServices(builder.Configuration);
 builder.Services.AddJsInteropServices();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddTransient<HttpClient>();
 
 var app = builder.Build();
 

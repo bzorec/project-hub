@@ -50,5 +50,24 @@ window.jsInterop = {
         var email = jwtClaims.email;
 
         return email || null; // Return the emaič or null if not found
+    },
+
+    playAndCloseAnimation(audioData) {
+        var audio = document.createElement("audio");
+
+        var blob = new Blob([audioData], {type: "audio/mp3"});
+
+        audio.src = URL.createObjectURL(blob);
+
+        document.body.appendChild(audio);
+
+        audio.play();
+
+        audio.addEventListener("ended", function () {
+            closeAnimation();
+        });
     }
+}
+
+function closeAnimation() {
 }
