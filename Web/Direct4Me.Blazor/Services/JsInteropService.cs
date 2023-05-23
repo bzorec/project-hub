@@ -11,6 +11,16 @@ public class JsInteropService : IJsInteropService
         _jsRuntime = jsRuntime;
     }
 
+    public ValueTask OpenModalWindow()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.openModal");
+    }
+
+    public ValueTask CloseModalWindow()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.closeModal");
+    }
+
     public ValueTask<string> GetToken()
     {
         return _jsRuntime.InvokeAsync<string>("jsInterop.getToken");
@@ -50,10 +60,12 @@ public class JsInteropService : IJsInteropService
 public interface IJsInteropService
 {
     ValueTask SetToken(string token);
+    ValueTask OpenModalWindow();
     ValueTask<string> GetToken();
     ValueTask Logout();
     ValueTask<bool> IsUserAuthenticated();
     ValueTask<string?> GetUserName();
     ValueTask<string?> GetUserEmail();
     ValueTask PlayMp3FromResponse(byte[] mp3);
+    ValueTask CloseModalWindow();
 }

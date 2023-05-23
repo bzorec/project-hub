@@ -66,6 +66,10 @@ window.jsInterop = {
         audio.addEventListener("ended", function () {
             closeAnimation();
         });
+    }, closeModal() {
+        $('#updateModal').modal('hide');
+    }, openModal() {
+        $('#updateModal').modal('show');
     }
 }
 

@@ -1,4 +1,6 @@
 @using Microsoft.IdentityModel.Tokens
+@using Direct4Me.Blazor.Utils
+@using Direct4Me.Repository.Services.Interfaces
 @using Direct4Me.Blazor.Models
 @using Direct4Me.Blazor.Services
 @using System.Security.Authentication
@@ -6,6 +8,7 @@
 @inject NavigationManager Navigation
 @inject IJwtService JwtService
 @inject IJsInteropService JsInteropService
+@inject IUserService Service
 
 @if (NavigationType == NavigationType.Login)
 {
@@ -85,7 +88,7 @@
 
     private List<NavListItem> _navigationListSignOut = new()
     {
-        new() {Name = $"Welcome", Href = "/dashboard"},
+        new() {Name = "Welcome", Href = "/dashboard"},
         new() {Name = "(Sign out)", Href = "/logout"}
     };
 
@@ -93,10 +96,12 @@
     public NavigationType NavigationType { get; set; }
 
     public string? Username { get; set; }
+    public string? Email { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         Username = await JsInteropService.GetUserName();
+        Email = await JsInteropService.GetUserEmail();
 
         if (NavigationType == NavigationType.Default && Username.IsNullOrEmpty())
         {
@@ -111,6 +116,15 @@
             new() {Name = "(Sign out)", Href = "/logout"}
         };
         StateHasChanged(); // Refresh the component's state
+
+        if (firstRender)
+        {
+            if ((Email ?? string.Empty).IsAdmin())
+            {
+                _navigationListMain.Add(new NavListItem {Name = "(Users)", Href = "/users"});
+            }
+        }
     }
+
 
 }
