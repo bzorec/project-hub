@@ -7,6 +7,8 @@ namespace Direct4Me.Blazor.Pages;
 
 public partial class Login
 {
+    private const string GuideContent = "This is the login page. Enter your email address and password to sign in.";
+    private const string GuideTitle = "Welcome!";
     [Inject] private IUserService UserService { get; set; }
     [Inject] private NavigationManager NavigationManager { get; set; }
     [Inject] private IJwtService JwtService { get; set; }
@@ -16,6 +18,8 @@ public partial class Login
     public bool IsLoading { get; set; }
 
     public SigninModel LoginModel { get; set; } = new();
+
+    private bool ShowPopupGuide { get; set; } = true;
 
     public async Task HandleLogin()
     {
@@ -41,6 +45,12 @@ public partial class Login
             ErrorMessage = e.Message;
         }
     }
+
+    private void HandleClosePopup(bool value)
+    {
+        ShowPopupGuide = false;
+    }
+
 
     public class SigninModel
     {

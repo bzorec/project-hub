@@ -9,6 +9,7 @@
 @inject IJwtService JwtService
 @inject IJsInteropService JsInteropService
 @inject IUserService Service
+@inject IJSRuntime JsRuntime
 
 @if (NavigationType == NavigationType.Login)
 {
@@ -48,18 +49,18 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <NavigationList Links="@_navigationListMain" CssClasses="navbar-nav"/>
-            </div>
-
-            <div class="justify-content-end pe-5">
-                <NavigationList Links="@_navigationListSignOut" CssClasses="navbar-nav"/>
+                <div class="navbar-nav flex-grow-1">
+                    <NavigationList Links="@_navigationListMain" CssClasses="navbar-nav"/>
+                </div>
+                <div class="justify-content-end">
+                    <NavigationList Links="@_navigationListSignOut" CssClasses="navbar-nav"/>
+                </div>
             </div>
         </div>
     </nav>
 }
 
 @code{
-
 
     private List<NavListItem> _navigationListLogin = new()
     {

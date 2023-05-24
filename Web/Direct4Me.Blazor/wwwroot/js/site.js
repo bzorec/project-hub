@@ -1,4 +1,7 @@
 window.jsInterop = {
+    getBoundingClientRect: function (element) {
+        return element.getBoundingClientRect();
+    },
     setToken: function (token) {
         document.cookie = "JWTToken=" + token + "; expires=" + (new Date(Date.now() + 5 * 60 * 1000)).toUTCString() + "; path=/; secure; samesite=none";
     },
