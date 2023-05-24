@@ -7,6 +7,12 @@ namespace Direct4Me.Blazor.Pages;
 
 public partial class Users
 {
+    private const string GuideContent =
+        "This is the users page. As an admin, you can view and manage user accounts and permissions.";
+
+    private const string GuideTitle = "Users Guide";
+    private bool ShowPopupGuide { get; set; } = true;
+
     private UserEntity UserModel { get; set; } = new();
 
     [Inject] private IJsInteropService JsInteropService { get; set; }
@@ -18,6 +24,12 @@ public partial class Users
 
     public string? UserName { get; set; }
     public List<UserEntity>? UserList { get; set; }
+
+
+    private void HandleClosePopup(bool value)
+    {
+        ShowPopupGuide = false;
+    }
 
     protected override void OnInitialized()
     {

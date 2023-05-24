@@ -7,6 +7,11 @@ namespace Direct4Me.Blazor.Pages;
 
 public partial class Dashboard
 {
+    private const string GuideContent =
+        "This is the dashboard page. Here you can view and manage your postboxes.";
+
+    private const string GuideTitle = "Dashboard Guide";
+    private bool ShowPopupGuide { get; set; } = true;
     [Inject] private IJsInteropService JsInteropService { get; set; }
     [Inject] private NavigationManager NavigationManager { get; set; }
     [Inject] private IPostboxService PostboxService { get; set; }
@@ -37,6 +42,12 @@ public partial class Dashboard
     public int FaceLoginMonthly { get; set; }
 
     public List<PostboxEntity> PostboxEntities { get; set; } = new();
+
+
+    private void HandleClosePopup(bool value)
+    {
+        ShowPopupGuide = false;
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

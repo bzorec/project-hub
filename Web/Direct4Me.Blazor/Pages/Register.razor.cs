@@ -7,6 +7,11 @@ namespace Direct4Me.Blazor.Pages;
 
 public partial class Register
 {
+    private const string GuideContent =
+        "This is the sign-up page. Fill out the required information to create a new account.";
+
+    private const string GuideTitle = "Sign Up Guide";
+    private bool ShowPopupGuide { get; set; } = true;
     [Inject] private IUserService UserService { get; set; }
     [Inject] private NavigationManager NavigationManager { get; set; }
     public RegistrationModel RegisterModel { get; set; } = new();
@@ -16,6 +21,12 @@ public partial class Register
     public bool IsLoading { get; set; }
 
     public bool IsSuccess { get; set; }
+
+
+    private void HandleClosePopup(bool value)
+    {
+        ShowPopupGuide = false;
+    }
 
     private async Task HandleRegistration()
     {

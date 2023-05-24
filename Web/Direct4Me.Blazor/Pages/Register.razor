@@ -44,3 +44,7 @@
         </div>
     </div>
 </div>
+@if (ShowPopupGuide)
+{
+    <PopupGuide Title="@GuideTitle" Content="@GuideContent" IsPopupVisible="true" ClosePopupRequested="@HandleClosePopup"/>
+}

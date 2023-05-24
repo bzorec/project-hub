@@ -11,6 +11,11 @@ namespace Direct4Me.Blazor.Pages;
 
 public partial class Postboxes
 {
+    private const string GuideContent =
+        "This is the postboxes page. Here you can access and manage your postboxes.";
+
+    private const string GuideTitle = "Postboxes Guide";
+    private bool ShowPopupGuide { get; set; } = true;
     [Inject] private NavigationManager NavigationManager { get; set; }
     [Inject] private IJsInteropService JsInteropService { get; set; }
     [Inject] private IPostboxService PostboxService { get; set; }
@@ -19,6 +24,12 @@ public partial class Postboxes
     public List<PostboxEntity> PostboxEntities { get; set; } = new();
 
     public string? ErrorMessage { get; set; }
+
+
+    private void HandleClosePopup(bool value)
+    {
+        ShowPopupGuide = false;
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

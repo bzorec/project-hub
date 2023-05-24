@@ -2,6 +2,13 @@ namespace Direct4Me.Blazor.Pages;
 
 public partial class FaceRecognition
 {
+    private const string GuideContent =
+        "This is the face unlock page. Use your facial recognition to securely log in to your account.";
+
+    private const string GuideTitle = "Face Unlock Guide";
+
+    private bool ShowPopupGuide { get; set; } = true;
+
     // protected override async Task OnAfterRenderAsync(bool firstRender)
     // {
     //     if (firstRender)
@@ -35,4 +42,10 @@ public partial class FaceRecognition
     // }
     public string? ErrorMessage { get; set; }
     public bool IsLoading { get; set; }
+
+
+    private void HandleClosePopup(bool value)
+    {
+        ShowPopupGuide = false;
+    }
 }
