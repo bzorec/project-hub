@@ -37,9 +37,8 @@ public class JsInteropService : IJsInteropService
 
     public async Task<byte[]> FaceUnlockEnable()
     {
-        return await _jsRuntime.InvokeAsync<byte[]>("faceUnlock.enable");
+        return await _jsRuntime.InvokeAsync<byte[]>("faceUnlock.enableFaceUnlock");
     }
-
 
     public ValueTask<string> GetToken()
     {

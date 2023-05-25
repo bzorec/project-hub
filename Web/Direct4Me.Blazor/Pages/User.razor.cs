@@ -38,11 +38,6 @@ public partial class User
         }
     }
 
-    private void HandleClosePopup(bool value)
-    {
-        ShowPopupGuide = false;
-    }
-
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -53,6 +48,12 @@ public partial class User
 
         StateHasChanged();
     }
+
+    private void HandleClosePopup(bool value)
+    {
+        ShowPopupGuide = false;
+    }
+
 
     private async Task OpenUpdateModal()
     {
