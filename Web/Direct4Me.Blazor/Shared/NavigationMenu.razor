@@ -89,7 +89,7 @@
 
     private List<NavListItem> _navigationListSignOut = new()
     {
-        new() {Name = "Welcome", Href = "/dashboard"},
+        new() {Name = "Welcome", Href = "/user"},
         new() {Name = "(Sign out)", Href = "/logout"}
     };
 
@@ -113,7 +113,7 @@
 
         _navigationListSignOut = new List<NavListItem>
         {
-            new() {Name = $"Welcome, {Username}", Href = "/dashboard"},
+            new() {Name = $"Welcome, {Username}", Href = "/user"},
             new() {Name = "(Sign out)", Href = "/logout"}
         };
         StateHasChanged(); // Refresh the component's state

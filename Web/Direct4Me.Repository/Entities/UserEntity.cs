@@ -51,6 +51,7 @@ public class UserEntity : IEntity
     public DateTime CreatedOn { get; set; }
 
     public DateTime? ModifiedOn { get; set; }
+    public bool IsFaceUnlock { get; set; }
 
     public static bool IsAlreadyHashed(string value)
     {
