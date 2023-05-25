@@ -43,9 +43,9 @@
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
                         Edit
                     </button>
-                    <button type="submit" class="btn btn-primary p-2 m-2" style="width: 46%" disabled="@(IsLoading || UserModel.IsFaceUnlock)">
+                    <button type="submit" class="btn btn-primary p-2 m-2" style="width: 46%" disabled="@(IsLoading)" @onclick="() => EnableFaceUnlock()">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
-                        Enable face unlock
+                        @(UserModel.IsFaceUnlock ? "Redo" : "Enable") face unlock
                     </button>
                 </div>
             </div>

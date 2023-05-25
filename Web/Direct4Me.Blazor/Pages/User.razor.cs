@@ -21,8 +21,22 @@ public partial class User
 
     private bool ShowPopupGuide { get; set; } = true;
 
-    public UserEntity UserModel { get; set; } = new UserEntity();
+    public UserEntity UserModel { get; set; } = new();
 
+    private async Task EnableFaceUnlock()
+    {
+        try
+        {
+            var image = await JsInteropService.FaceUnlockEnable();
+            UserModel.Image = image;
+
+            await UserService.UpdateAsync(UserModel);
+        }
+        catch (Exception e)
+        {
+            ErrorMessage = e.Message;
+        }
+    }
 
     private void HandleClosePopup(bool value)
     {
@@ -72,16 +86,4 @@ public partial class User
             ErrorMessage = e.Message;
         }
     }
-}
-
-public class UserModel
-{
-    public string? Email { get; set; }
-    public DateTime LastAccess { get; set; }
-    public int TotalUnlocks { get; set; }
-    public string? Fullname { get; set; }
-    public bool FaceUnlock { get; set; }
-    public string Password { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
 }

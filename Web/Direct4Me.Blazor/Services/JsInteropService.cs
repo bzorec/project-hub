@@ -13,6 +13,7 @@ public interface IJsInteropService
     ValueTask<string?> GetUserEmail();
     ValueTask PlayMp3FromResponse(byte[] mp3);
     ValueTask CloseModalWindow();
+    Task<byte[]> FaceUnlockEnable();
 }
 
 public class JsInteropService : IJsInteropService
@@ -33,6 +34,12 @@ public class JsInteropService : IJsInteropService
     {
         return _jsRuntime.InvokeVoidAsync("jsInterop.closeModal");
     }
+
+    public async Task<byte[]> FaceUnlockEnable()
+    {
+        return await _jsRuntime.InvokeAsync<byte[]>("faceUnlock.enable");
+    }
+
 
     public ValueTask<string> GetToken()
     {

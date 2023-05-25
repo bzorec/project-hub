@@ -45,6 +45,10 @@ public class UserEntity : IEntity
 
     public bool IsFaceUnlock { get; set; }
 
+    [BsonElement]
+    [BsonRepresentation(BsonType.Binary)]
+    public byte[]? Image { get; set; }
+
 
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
