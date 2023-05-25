@@ -2,6 +2,19 @@ using Microsoft.JSInterop;
 
 namespace Direct4Me.Blazor.Services;
 
+public interface IJsInteropService
+{
+    ValueTask SetToken(string token);
+    ValueTask OpenModalWindow();
+    ValueTask<string> GetToken();
+    ValueTask Logout();
+    ValueTask<bool> IsUserAuthenticated();
+    ValueTask<string?> GetUserName();
+    ValueTask<string?> GetUserEmail();
+    ValueTask PlayMp3FromResponse(byte[] mp3);
+    ValueTask CloseModalWindow();
+}
+
 public class JsInteropService : IJsInteropService
 {
     private readonly IJSRuntime _jsRuntime;
@@ -55,17 +68,4 @@ public class JsInteropService : IJsInteropService
     {
         return _jsRuntime.InvokeVoidAsync("jsInterop.setToken", token);
     }
-}
-
-public interface IJsInteropService
-{
-    ValueTask SetToken(string token);
-    ValueTask OpenModalWindow();
-    ValueTask<string> GetToken();
-    ValueTask Logout();
-    ValueTask<bool> IsUserAuthenticated();
-    ValueTask<string?> GetUserName();
-    ValueTask<string?> GetUserEmail();
-    ValueTask PlayMp3FromResponse(byte[] mp3);
-    ValueTask CloseModalWindow();
 }

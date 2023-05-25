@@ -1,5 +1,4 @@
 using Direct4Me.Repository.Entities;
-using Direct4Me.Repository.Enums;
 using Direct4Me.Repository.Repositories.Interfaces;
 using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -55,32 +54,6 @@ internal class PostboxService : IPostboxService
         await _repository.UpdateAsync(postbox, token);
 
         return postbox;
-    }
-
-
-    public async Task UnlockPostboxAsync(string postboxId, UnlockType unlockType, CancellationToken token = default)
-    {
-        // Retrieve the existing postbox from the repository
-        var postbox = await _repository.GetByIdAsync(postboxId, token);
-
-        if (postbox == null)
-            // Postbox not found, handle accordingly
-            return;
-
-        // Update the unlock count based on the unlock type
-        switch (unlockType)
-        {
-            case UnlockType.Nfc:
-                postbox.StatisticsEntity.IncrementUnlockCount(true);
-                break;
-            case UnlockType.QrCode:
-                postbox.StatisticsEntity.IncrementUnlockCount(false);
-                break;
-            default:
-                return;
-        }
-
-        await _repository.UpdateAsync(postbox, token);
     }
 
     public async Task<List<PostboxEntity>> GetAllAsync(string? userId, string? postboxId,

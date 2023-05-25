@@ -1,12 +1,9 @@
 using Direct4Me.Repository.Entities;
-using Direct4Me.Repository.Enums;
 
 namespace Direct4Me.Repository.Services.Interfaces;
 
 public interface IPostboxService
 {
-    Task UnlockPostboxAsync(string postboxId, UnlockType unlockType, CancellationToken token = default);
-
     Task<List<string>> GetPostboxIdsForUser(string userId, CancellationToken token = default);
 
     Task<PostboxEntity> GetPostboxByIdAsync(string postboxId, CancellationToken token = default);

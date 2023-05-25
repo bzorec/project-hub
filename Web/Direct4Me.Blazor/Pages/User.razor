@@ -39,7 +39,7 @@
                     <span class="form-control">@(UserModel.IsFaceUnlock ? "Enabled" : "Disabled")</span>
                 </div>
                 <div class="d-flex flex-wrap justify-content-center">
-                    <button type="submit" class="btn btn-primary p-2 m-2" @onclick="()=>OpenUpdateModal()" style="width: 46%" disabled="@IsLoading">
+                    <button type="submit" class="btn btn-primary p-2 m-2" @onclick="() => OpenUpdateModal()" style="width: 46%" disabled="@IsLoading">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
                         Edit
                     </button>

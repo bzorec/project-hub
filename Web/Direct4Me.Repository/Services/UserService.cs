@@ -144,23 +144,6 @@ internal class UserService : IUserService
         }
     }
 
-    public async Task<UserEntity?> GetUserByFullnameAsync(string firstname, string lastname,
-        CancellationToken token = default)
-    {
-        if (firstname.IsNullOrEmpty() && lastname.IsNullOrEmpty())
-            return null;
-
-        try
-        {
-            return await _repository.GetUserByFullnameAsync(firstname, lastname, token);
-        }
-        catch (Exception e)
-        {
-            _logger.LogError("Error occured while adding user: {Excepiton}", e);
-            return null;
-        }
-    }
-
     private async Task UpdateLoginCount(UserEntity user, LoginType loginType, CancellationToken token = default)
     {
         if (user == null)

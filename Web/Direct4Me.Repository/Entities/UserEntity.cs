@@ -43,6 +43,8 @@ public class UserEntity : IEntity
         }
     }
 
+    public bool IsFaceUnlock { get; set; }
+
 
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
@@ -51,7 +53,6 @@ public class UserEntity : IEntity
     public DateTime CreatedOn { get; set; }
 
     public DateTime? ModifiedOn { get; set; }
-    public bool IsFaceUnlock { get; set; }
 
     public static bool IsAlreadyHashed(string value)
     {
