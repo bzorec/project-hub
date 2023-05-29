@@ -73,6 +73,11 @@ window.jsInterop = {
         $('#updateModal').modal('hide');
     }, openModal() {
         $('#updateModal').modal('show');
+    },
+    closeHistoryModal() {
+        $('#grantAccessModal').modal('hide');
+    }, openHistoryModal() {
+        $('#grantAccessModal').modal('show');
     }
 }
 

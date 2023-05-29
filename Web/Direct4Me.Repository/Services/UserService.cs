@@ -75,6 +75,20 @@ internal class UserService : IUserService
         }
     }
 
+    public async Task<UserEntity?> GetUserByIdAsync(string id, CancellationToken token = default)
+    {
+        try
+        {
+            return await _repository.GetByIdAsync(id, token);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error occured while getting user by email: {Excepiton}", e);
+
+            return null;
+        }
+    }
+
     public async Task<bool> TrySignInAsync(string email, string password, CancellationToken token)
     {
         if (!await _repository.DoseUserExistAsync(email, token)) return false;

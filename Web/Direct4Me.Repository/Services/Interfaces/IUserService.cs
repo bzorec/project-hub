@@ -5,6 +5,7 @@ namespace Direct4Me.Repository.Services.Interfaces;
 public interface IUserService
 {
     Task<UserEntity?> GetUserByEmailAsync(string email, CancellationToken token = default);
+    Task<UserEntity?> GetUserByIdAsync(string id, CancellationToken token = default);
 
     Task<bool> TrySignInAsync(string email, string password, CancellationToken token = default);
 

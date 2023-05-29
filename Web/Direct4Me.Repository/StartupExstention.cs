@@ -25,10 +25,12 @@ public static class StartupExstention
 
         services
             .AddSingleton<IPostboxRepository, PostboxRepository>()
+            .AddSingleton<IPostboxHistoryRepository, PostboxHistoryRepository>()
             .AddSingleton<IUserRepository, UserRepository>();
 
         services
             .AddSingleton<IPostboxService, PostboxService>()
+            .AddSingleton<IHistoryService, HistoryService>()
             .AddSingleton<IUserService, UserService>();
     }
 }

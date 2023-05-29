@@ -14,6 +14,8 @@ public interface IJsInteropService
     ValueTask PlayMp3FromResponse(byte[] mp3);
     ValueTask CloseModalWindow();
     Task<byte[]> FaceUnlockEnable();
+    ValueTask CloseModalHistoryWindow();
+    ValueTask OpenModalHistoryWindow();
 }
 
 public class JsInteropService : IJsInteropService
@@ -38,6 +40,16 @@ public class JsInteropService : IJsInteropService
     public async Task<byte[]> FaceUnlockEnable()
     {
         return await _jsRuntime.InvokeAsync<byte[]>("faceUnlock.enableFaceUnlock");
+    }
+
+    public ValueTask CloseModalHistoryWindow()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.closeHistoryModal");
+    }
+
+    public ValueTask OpenModalHistoryWindow()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.openHistoryModal");
     }
 
     public ValueTask<string> GetToken()

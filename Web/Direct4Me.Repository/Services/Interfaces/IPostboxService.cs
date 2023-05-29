@@ -15,4 +15,6 @@ public interface IPostboxService
     Task<bool> DeleteAsync(string guid, CancellationToken token = default);
 
     Task<bool> UpdateAsync(PostboxEntity entity, CancellationToken token = default);
+
+    Task<List<string>> GetOtherPostboxIdsForUser(string userId, CancellationToken token = default);
 }

@@ -94,6 +94,14 @@ internal class PostboxService : IPostboxService
         }
     }
 
+    public async Task<List<string>> GetOtherPostboxIdsForUser(string userId, CancellationToken token = default)
+    {
+        var postboxes = await _repository.GetAllAsync(token: token);
+        var postboxIds = postboxes.Where(i => i.AccessList.Contains(userId)).Select(p => p.Id).ToList();
+
+        return postboxIds;
+    }
+
     public async Task<bool> DeleteAsync(string guid, CancellationToken token = default)
     {
         try

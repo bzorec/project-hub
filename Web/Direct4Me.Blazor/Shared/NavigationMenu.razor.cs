@@ -27,7 +27,8 @@ public partial class NavigationMenu : ComponentBase
         new()
         {
             new NavListItem {Name = "(Dashboard)", Href = "/dashboard"},
-            new NavListItem {Name = "(Postboxes)", Href = "/postboxes"}
+            new NavListItem {Name = "(Postboxes)", Href = "/postboxes"},
+            new NavListItem {Name = "(History)", Href = "/history"}
         };
 
     private List<NavListItem> _navigationListRegister = new()
