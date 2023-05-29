@@ -1,0 +1,89 @@
+[{
+  "_id": {
+    "$oid": "64608ef04f23dbc925a4e90d"
+  },
+  "StatisticsEntity": {
+    "DefaultLoginCount": 73,
+    "FaceLoginCount": 0,
+    "WeeklyStatistics": {
+      "DefaultLoginCount": 56,
+      "FaceLoginCount": 0,
+      "StartDate": {
+        "$date": "2023-05-22T12:13:17.648Z"
+      }
+    },
+    "MonthlyStatistics": {
+      "DefaultLoginCount": 73,
+      "FaceLoginCount": 0,
+      "StartDate": {
+        "$date": "2023-05-14T07:34:15.089Z"
+      }
+    },
+    "DailyStatistics": {
+      "DefaultLoginCount": 1,
+      "FaceLoginCount": 0,
+      "Date": {
+        "$date": "2023-05-29T13:26:12.376Z"
+      }
+    },
+    "LastModified": {
+      "$date": "2023-05-29T13:26:12.376Z"
+    }
+  },
+  "FirstName": "Blaz",
+  "LastName": "Zorec",
+  "Email": "bzorec@gmail.com",
+  "Password": "n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=",
+  "IsFaceUnlock": false,
+  "Image": null,
+  "CreatedOn": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  },
+  "ModifiedOn": null
+},{
+  "_id": {
+    "$oid": "64749be4627380de680446b6"
+  },
+  "StatisticsEntity": {
+    "DefaultLoginCount": 5,
+    "FaceLoginCount": 0,
+    "WeeklyStatistics": {
+      "DefaultLoginCount": 5,
+      "FaceLoginCount": 0,
+      "StartDate": {
+        "$date": "2023-05-29T12:59:14.098Z"
+      }
+    },
+    "MonthlyStatistics": {
+      "DefaultLoginCount": 5,
+      "FaceLoginCount": 0,
+      "StartDate": {
+        "$date": "2023-05-29T12:59:14.098Z"
+      }
+    },
+    "DailyStatistics": {
+      "DefaultLoginCount": 1,
+      "FaceLoginCount": 0,
+      "Date": {
+        "$date": "2023-05-29T13:27:28.038Z"
+      }
+    },
+    "LastModified": {
+      "$date": "2023-05-29T13:27:28.038Z"
+    }
+  },
+  "FirstName": "Blaz",
+  "LastName": "Zorec",
+  "Email": "bzorec1@gmail.com",
+  "Password": "n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=",
+  "IsFaceUnlock": false,
+  "Image": null,
+  "CreatedOn": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  },
+  "ModifiedOn": null
+}]

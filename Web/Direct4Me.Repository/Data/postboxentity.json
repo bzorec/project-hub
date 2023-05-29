@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "64623ca83e6eed24a7fc1cd1"
+  },
+  "StatisticsEntity": {
+    "NfcUnlock": 0,
+    "QrCodeUnlock": 0,
+    "LastModified": {
+      "$date": "2023-05-29T13:27:39.888Z"
+    },
+    "WeeklyStatistics": {
+      "NfcUnlock": 0,
+      "QrCodeUnlock": 0,
+      "StartDate": {
+        "$date": "2023-05-28T22:00:00.000Z"
+      }
+    },
+    "MonthlyStatistics": {
+      "NfcUnlock": 0,
+      "QrCodeUnlock": 0,
+      "StartDate": {
+        "$date": "2023-05-14T22:00:00.000Z"
+      }
+    },
+    "DailyStatistics": {
+      "NfcUnlock": 0,
+      "QrCodeUnlock": 0,
+      "Date": {
+        "$date": "2023-05-28T22:00:00.000Z"
+      }
+    }
+  },
+  "PostBoxId": 123,
+  "UserId": "64608ef04f23dbc925a4e90d",
+  "AccessList": [
+    "bzorec1@gmail.com",
+    "bzorec1@gmail.com",
+    "64749be4627380de680446b6"
+  ],
+  "CreatedOn": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  },
+  "ModifiedOn": null
+}]

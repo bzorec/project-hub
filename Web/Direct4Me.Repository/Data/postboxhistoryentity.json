@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "647489697a19c36bdc18bb75"
+  },
+  "Date": {
+    "$date": "2023-05-29T11:15:52.149Z"
+  },
+  "UserName": "Blaz Zorec",
+  "PostboxId": "123",
+  "Success": false,
+  "CreatedOn": {
+    "$date": "2023-05-29T11:15:52.151Z"
+  },
+  "ModifiedOn": null
+},{
+  "_id": {
+    "$oid": "647489e48848e2d48b2193fc"
+  },
+  "Date": {
+    "$date": "2023-05-29T11:17:55.831Z"
+  },
+  "UserName": "Blaz Zorec",
+  "PostboxId": "123",
+  "Type": "QR Code",
+  "Success": false,
+  "CreatedOn": {
+    "$date": "2023-05-29T11:17:55.834Z"
+  },
+  "ModifiedOn": null
+},{
+  "_id": {
+    "$oid": "6474a3eb0b531260f237e757"
+  },
+  "Date": {
+    "$date": "2023-05-29T13:08:58.738Z"
+  },
+  "UserName": "Blaz Zorec",
+  "PostboxId": "123",
+  "Type": "QR Code",
+  "Success": false,
+  "CreatedOn": {
+    "$date": "2023-05-29T13:08:58.750Z"
+  },
+  "ModifiedOn": null
+}]
