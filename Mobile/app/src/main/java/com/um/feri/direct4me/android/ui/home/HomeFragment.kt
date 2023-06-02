@@ -3,6 +3,7 @@ package com.um.feri.direct4me.android.ui.home
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,17 +12,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
 import com.um.feri.direct4me.android.R
-import com.um.feri.direct4me.android.api.Direct4meService
 import com.um.feri.direct4me.android.databinding.FragmentHomeBinding
 import com.um.feri.direct4me.android.model.OpenBoxRequest
-import com.um.feri.direct4me.android.model.TokenResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import makeApiRequest
+import java.io.OutputStream
+import java.net.HttpURLConnection
+import java.net.URL
 
 class HomeFragment : Fragment() {
 
@@ -65,70 +64,19 @@ class HomeFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (result != null && result.contents != null) {
-            val boxId = result.contents
-            val tokenFormat = 0
-
-            // Klic metode OpenBox prek API-ja
-            openBox(boxId, tokenFormat)
-        }
-    }
-
-    private fun openBox(boxId: String, tokenFormat: Int) {
-        // Uporabite Retrofit za izvajanje HTTP klicev
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api-d4me-stage.direct4.me/sandbox/v1/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val direct4meService = retrofit.create(Direct4meService::class.java)
-
-        val openBoxRequest = OpenBoxRequest(boxId, tokenFormat)
-        val call = direct4meService.openBox(openBoxRequest)
-
-        call.enqueue(object : Callback<TokenResponse> {
-            override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {
-                if (response.isSuccessful) {
-                    val tokenResponse = response.body()
-                    if (tokenResponse != null) {
-                        val token = tokenResponse.token
-                        playToken(token)
-                    } else {
-                        showToast("Napaka: Neveljaven odgovor od strežnika")
-                    }
-                } else {
-                    showToast("Napaka pri izvajanju klica API-ja")
-                }
-            }
-
-            override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
-                showToast("Napaka pri izvajanju klica API-ja")
-            }
-        })
-    }
-
-    private fun playToken(token: String) {
-        val mediaPlayer = MediaPlayer()
-
         try {
-            mediaPlayer.setDataSource(token)
-            mediaPlayer.prepare()
-            mediaPlayer.setOnCompletionListener {
-                // Žeton je bil predvajan, lahko nadaljujemo z odpiranjem paketnika
-                openSmartLocker()
+            if (result != null && result.contents != null) {
+                val boxId = "542"
+
+                // Klic metode OpenBox prek API-ja
+                makeApiRequest(boxId.toInt(),"9ea96945-3a37-4638-a5d4-22e89fbc998f")
             }
-            mediaPlayer.start()
-        } catch (e: Exception) {
-            e.printStackTrace()
+        }
+        catch (e:Exception){
+
+            Log.e("qrError", e.message.toString())
         }
     }
 
-    private fun openSmartLocker() {
-
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
 }
 
