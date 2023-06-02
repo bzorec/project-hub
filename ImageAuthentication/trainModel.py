@@ -104,7 +104,7 @@ model.compile(optimizer=Adam(), loss='categorical_crossentropy', metrics=['accur
 callbacks = [EarlyStopping(monitor='val_loss', patience=5),
              ModelCheckpoint(filepath='best_model.h5', monitor='val_loss', save_best_only=True)]
 
-history = model.fit(features_train, labels_train, epochs=100, batch_size=32, validation_split=0.2, callbacks=callbacks)
+history = model.fit(features_train, labels_train, epochs=10, batch_size=32, validation_split=0.2)#, callbacks=callbacks)
 
 # Save the model
 model.save('face_recognition_model.h5')

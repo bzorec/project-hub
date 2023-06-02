@@ -8,6 +8,7 @@ import io
 from keras.models import load_model
 from extractFeatures import extract_face_features
 from io import BytesIO
+import pickle
 
 app = FastAPI()
 
@@ -32,6 +33,11 @@ collection = db[COLLECTION_NAME]
 
 # Load the model
 model = load_model('face_recognition_model.h5')
+
+# Load the mappings
+with open('user_neuron_mapping.pkl', 'rb') as f:
+    user_ids, user_to_neuron = pickle.load(f)
+    
 
 # Function to predict the user from an image file
 def predict_user(image):
@@ -97,12 +103,21 @@ async def img_authenticate(image: UploadFile = File(...)):
     nparr = np.fromstring(contents, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    user_id, confidence = predict_user(img)
+    encoded_user_id, confidence = predict_user(img)
 
-    if user_id is not None:
+    if encoded_user_id is not None:
+        # Retrieve the original userId from the mapping
+        user_id = user_ids[encoded_user_id]
         print(f'Predicted user_id: {user_id} with confidence {confidence}')
     else:
         print('Prediction failed.')
+        user_id = None
+
+    # Convert numpy.int64 to Python native types
+    if isinstance(user_id, np.int64):
+        user_id = int(user_id)
+    if isinstance(confidence, np.float32):  # if confidence is a float
+        confidence = float(confidence)
 
     return {"user_id": user_id, "confidence": confidence}
 
