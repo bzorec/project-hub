@@ -113,7 +113,7 @@ public partial class Postboxes
         var content = new StringContent(payloadJson, Encoding.UTF8, "application/json");
 
         // Add the Bearer token to the request headers
-        HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "<your-token>");
+        HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "9ea96945-3a37-4638-a5d4-22e89fbc998f");
 
         // Make the POST request to the API
         HttpResponseMessage response =
