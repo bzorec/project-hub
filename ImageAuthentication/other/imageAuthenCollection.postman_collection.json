@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "df1fae1f-9167-423f-b9d2-547589f145eb",
+		"name": "imageAuthenCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27780315"
+	},
+	"item": [
+		{
+			"name": "Hello World",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/helloWorld",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"helloWorld"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/misel/repos/project-hub/ImageAuthentication/other/maxresdefault.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/imgAuthenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"imgAuthenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uploadImage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/misel/repos/project-hub/ImageAuthentication/other/Snapchat-92159484.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/uploadImage?userId=idOfUser",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"uploadImage"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "idOfUser"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
