@@ -9,6 +9,7 @@ from keras.models import load_model
 from extractFeatures import extract_face_features
 from io import BytesIO
 import pickle
+import tempfile  # To create temporary files
 
 app = FastAPI()
 
@@ -21,7 +22,6 @@ IMG_SIZE = 96  # The size to resize images to
 
 # Establish database connection
 client = MongoClient(DB_URL)
-# Send a ping to confirm a successful connection
 try:
     client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
@@ -37,14 +37,14 @@ model = load_model('face_recognition_model.h5')
 # Load the mappings
 with open('user_neuron_mapping.pkl', 'rb') as f:
     user_ids, user_to_neuron = pickle.load(f)
-    
 
-# Function to predict the user from an image file
+
 def predict_user(image):
     face_features = extract_face_features(image)
     if face_features is not None:
         face_features = np.expand_dims(face_features, axis=0)
-        predictions = model.predict(face_features)
+        flat_data = np.reshape(face_features, (face_features.shape[0], -1))
+        predictions = model.predict(flat_data)
         predicted_class = np.argmax(predictions)
         confidence = predictions[0, predicted_class]
         return predicted_class, confidence
@@ -53,70 +53,51 @@ def predict_user(image):
 
 @app.post("/getImageContents")
 async def getImage(imgPath: str):
-    # Read image file
     with open(imgPath, "rb") as file:
         file_content = file.read()
 
-    # Decode image file content as image
     nparr = np.frombuffer(file_content, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    # Process the image as needed
-    # ...
-
-    # Return image bytes as raw response
     ret, image_bytes = cv2.imencode('.png', img)
     return Response(content=image_bytes.tobytes(), media_type="image/png")
-    
-#    encoded_image = cv2.imencode(".jpg", img)
-#    encoded_image_str = encoded_image.tostring()
-#    file_like = BytesIO(encoded_image_str)
-#    image_file = UploadFile(file=file_like, filename="image.jpg")
-#    return image_file
 
 
 @app.post("/uploadImage")
 async def upload_image(userId: str, image: UploadFile = File(...)):
-    # Read image file SUPPORTED 720 X 720
     contents = await image.read()
-    nparr = np.fromstring(contents, np.uint8)
+    nparr = np.frombuffer(contents, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    
-    # Check if an entry for this user already exists
-    #user_entry = collection.find_one({'userId': userId})
-    
-    #if user_entry is not None:
-        # If the user entry exists, append the new image to the images array
-        #updated_images = user_entry['images'] + [img.tolist()]
-        #collection.update_one({'userId': userId}, {'$set': {'images': updated_images}})
-    #else:
-        # If the user entry does not exist, create a new entry
+
     collection.insert_one({'userId': userId, 'images': [img.tolist()]})
-    
+
     return {"status": "success"}
 
 
 @app.post("/imgAuthenticate")
 async def img_authenticate(image: UploadFile = File(...)):
-    # Read image file
     contents = await image.read()
-    nparr = np.fromstring(contents, np.uint8)
+    nparr = np.frombuffer(contents, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+
+    # Save the image to a temporary file
+    #temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
+    #cv2.imwrite(temp_file.name, img)
 
     encoded_user_id, confidence = predict_user(img)
 
+    #temp_file.close()  # Don't forget to close the file
+
     if encoded_user_id is not None:
-        # Retrieve the original userId from the mapping
         user_id = user_ids[encoded_user_id]
         print(f'Predicted user_id: {user_id} with confidence {confidence}')
     else:
         print('Prediction failed.')
         user_id = None
 
-    # Convert numpy.int64 to Python native types
     if isinstance(user_id, np.int64):
         user_id = int(user_id)
-    if isinstance(confidence, np.float32):  # if confidence is a float
+    if isinstance(confidence, np.float32):
         confidence = float(confidence)
 
     return {"user_id": user_id, "confidence": confidence}
