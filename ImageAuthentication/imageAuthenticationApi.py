@@ -31,25 +31,7 @@ except Exception as e:
 db = client[DB_NAME]
 collection = db[COLLECTION_NAME]
 
-# Load the model
-model = load_model('face_recognition_model.h5')
-
-# Load the mappings
-with open('user_neuron_mapping.pkl', 'rb') as f:
-    user_ids, user_to_neuron = pickle.load(f)
-
-
-def predict_user(image):
-    face_features = extract_face_features(image)
-    if face_features is not None:
-        face_features = np.expand_dims(face_features, axis=0)
-        flat_data = np.reshape(face_features, (face_features.shape[0], -1))
-        predictions = model.predict(flat_data)
-        predicted_class = np.argmax(predictions)
-        confidence = predictions[0, predicted_class]
-        return predicted_class, confidence
-    return None, None
-
+# Move model and mappings loading into the functions where they're used.
 
 @app.post("/getImageContents")
 async def getImage(imgPath: str):
@@ -76,6 +58,11 @@ async def upload_image(userId: str, image: UploadFile = File(...)):
 
 @app.post("/imgAuthenticate")
 async def img_authenticate(image: UploadFile = File(...)):
+    # Load the model and mappings here so it won't fail on import if there's an issue
+    model = load_model('face_recognition_model.h5')
+    with open('user_neuron_mapping.pkl', 'rb') as f:
+        user_ids, user_to_neuron = pickle.load(f)
+
     contents = await image.read()
     nparr = np.frombuffer(contents, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
@@ -84,7 +71,7 @@ async def img_authenticate(image: UploadFile = File(...)):
     #temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
     #cv2.imwrite(temp_file.name, img)
 
-    encoded_user_id, confidence = predict_user(img)
+    encoded_user_id, confidence = predict_user(img, model, user_ids, user_to_neuron)
 
     #temp_file.close()  # Don't forget to close the file
 
@@ -106,3 +93,15 @@ async def img_authenticate(image: UploadFile = File(...)):
 @app.get("/helloWorld")
 async def hello():
     return "helloWorld"
+
+
+def predict_user(image, model, user_ids, user_to_neuron):
+    face_features = extract_face_features(image)
+    if face_features is not None:
+        face_features = np.expand_dims(face_features, axis=0)
+        flat_data = np.reshape(face_features, (face_features.shape[0], -1))
+        predictions = model.predict(flat_data)
+        predicted_class = np.argmax(predictions)
+        confidence = predictions[0, predicted_class]
+        return predicted_class, confidence
+    return None, None
