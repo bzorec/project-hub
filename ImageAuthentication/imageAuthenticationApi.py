@@ -16,7 +16,7 @@ app = FastAPI()
 # Constants
 DB_URL = "mongodb+srv://bzorec:mHUURWihVWohmxBa@db.8rqwamq.mongodb.net/"
 #DB_URL = "mongodb+srv://miselcucek:LKAQmmOTJu06QRzn@raimc.l14qt4n.mongodb.net/?retryWrites=true&w=majority"
-DB_NAME = "raiMC"  # Use the name of your database
+DB_NAME = "db"  # Use the name of your database
 COLLECTION_NAME = "imgAuth"  # Use the name of your collection
 IMG_SIZE = 96  # The size to resize images to
 
