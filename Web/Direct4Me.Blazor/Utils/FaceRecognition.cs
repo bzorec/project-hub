@@ -29,8 +29,8 @@ namespace Direct4Me.Blazor.Utils
         {
             var list = new List<string>
             {
-                "Cucek01",
-                "Bezjak01"
+                "cucek_01",
+                "bezjak_01"
             };
             var user = userEmail switch
             {
@@ -51,7 +51,8 @@ namespace Direct4Me.Blazor.Utils
                 var timeoutTask = Task.Delay(TimeSpan.FromSeconds(30), timeoutCancellationTokenSource.Token);
 
                 var responseTask =
-                    _httpClient.PostAsync("/imgAuthenticate", content, timeoutCancellationTokenSource.Token);
+                    _httpClient.PostAsync("localhost:8000/imgAuthenticate", content,
+                        timeoutCancellationTokenSource.Token);
 
                 // Wait for either the response or the timeout
                 var completedTask = await Task.WhenAny(responseTask, timeoutTask);
@@ -101,7 +102,7 @@ namespace Direct4Me.Blazor.Utils
                     content.Add(imageContent, "image", $"{Guid.NewGuid()}.png");
                     content.Add(new StringContent(user), "userId"); // Add the userId parameter
 
-                    var response = await _httpClient.PostAsync("/uploadImage", content);
+                    var response = await _httpClient.PostAsync("localhost:8000/uploadImage", content);
 
                     if (response.IsSuccessStatusCode) continue;
 
