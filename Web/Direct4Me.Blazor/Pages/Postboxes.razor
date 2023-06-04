@@ -26,8 +26,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Last unlock: @(postbox.StatisticsEntity.LastModified)</h5>
                             <p class="card-text">Unlock count: @postbox.StatisticsEntity.TotalUnlocks</p>
-                            <a class="btn btn-success" @onclick="() => CallApiOnClick(postbox.PostBoxId)">NFC</a>
-                            <a @onclick="() => CallApiOnClick(postbox.PostBoxId)" class="btn btn-warning">QR Code</a>
+                            <a class="btn btn-success" @onclick="() => CallApiOnClick(postbox.PostBoxId, Nfc)">NFC</a>
+                            <a @onclick="() => CallApiOnClick(postbox.PostBoxId, Qr)" class="btn btn-warning">QR Code</a>
                             <a @onclick="() => OpenGrantAccessModal(postbox.PostBoxId)" class="btn btn-outline-dark">Give access</a>
                         </div>
                     </div>
@@ -44,8 +44,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Last unlock: @(postbox.StatisticsEntity.LastModified)</h5>
                             <p class="card-text">Unlock count: @postbox.StatisticsEntity.TotalUnlocks</p>
-                            <a class="btn btn-success" @onclick="() => CallApiOnClick(postbox.PostBoxId)">NFC</a>
-                            <a @onclick="() => CallApiOnClick(postbox.PostBoxId)" class="btn btn-warning">QR Code</a>
+                            <a class="btn btn-success" @onclick="() => CallApiOnClick(postbox.PostBoxId, Nfc)">NFC</a>
+                            <a @onclick="() => CallApiOnClick(postbox.PostBoxId, Qr)" class="btn btn-warning">QR Code</a>
                         </div>
                     </div>
                 </div>
