@@ -1,107 +1,59 @@
-let canvasElement;
-let context;
-let byteArrayResolver;
-let capturedImages = [];
-
-window.faceUnlock = {
-    enable: function (userId) {
+window.initializeCamera = function () {
+    return new Promise(function (resolve, reject) {
+        // Check for camera availability
         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-            // Check if the browser supports media devices and getUserMedia
-            alert("Sorry, your browser doesn't support camera access.");
+            reject('Camera not available');
             return;
         }
 
-        // Access the user's camera and display the video stream
+        // Request permission to use the camera
         navigator.mediaDevices.getUserMedia({video: true})
             .then(function (stream) {
-                const videoElement = document.createElement("video");
-                videoElement.srcObject = stream;
-                videoElement.play();
+                // If permission is granted, assign the video stream to the video element
+                var video = document.getElementById('camera-stream');
+                if ('srcObject' in video) {
+                    video.srcObject = stream;
+                } else {
+                    // Older browsers may not have srcObject
+                    video.src = window.URL.createObjectURL(stream);
+                }
 
-                // Create a canvas element to draw the captured image
-                canvasElement = document.createElement("canvas");
-                canvasElement.width = videoElement.videoWidth;
-                canvasElement.height = videoElement.videoHeight;
-
-                // Draw the video frame on the canvas
-                context = canvasElement.getContext("2d");
-                context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
-
-                // Show the modal
-                const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
-                imageModal.show();
+                video.onloadedmetadata = function () {
+                    video.play();
+                    resolve(); // The stream is ready
+                };
             })
-            .catch(function (error) {
-                console.error("Error accessing camera:", error);
+            .catch(function (err) {
+                // An error occurred
+                reject('An error occurred: ' + err);
             });
-    },
-    enableFaceUnlock: function (userId) {
-        return new Promise((resolve) => {
-            byteArrayResolver = resolve;
-            window.faceUnlock.enable(userId);
-        });
-    }
+    });
 };
 
-function captureImage(userId) {
-    // Draw the current video frame on the canvas
-    context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+window.playVideo = function (videoElement) {
+    videoElement.play();
+};
 
-    // Convert the canvas image to a data URL
-    const imageUrl = canvasElement.toDataURL();
-
-    // Convert the data URL to a byte array
-    const byteArray = base64ToByteArray(imageUrl);
-
-    // Save the byte array to the capturedImages array
-    capturedImages.push(byteArray);
-
-    if (capturedImages.length < 5) {
-        // Show the modal again to capture more images
-        const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
-        imageModal.show();
-    } else {
-        // Close the modal and send the captured images to the API
-        const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
-        imageModal.hide();
-
-        sendCapturedImages(userId);
-    }
-}
-
-function sendCapturedImages(userId) {
-
-    for (let i = 0; i < capturedImages.length; i++) {
-        const imageData = capturedImages[i];
-
-        // Create a new FormData object to send the image data
-        const formData = new FormData();
-        formData.append("userId", userId);
-        formData.append("image", new Blob([imageData]));
-
-        // Send the POST request to the API endpoint
-        fetch("/uploadImage", {
-            method: "POST",
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // Handle the API response if needed
-            })
-            .catch(error => {
-                console.error("Error uploading image:", error);
-            });
+window.captureImageFromVideo = function () {
+    var video = document.getElementById('camera-stream');
+    if (!video || video.paused || video.ended) {
+        console.log('Video is not ready');
+        return null;
     }
 
-    // Clear the capturedImages array
-    capturedImages = [];
-}
+    var canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    var context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 
-function base64ToByteArray(base64String) {
-    const binaryString = window.atob(base64String.split(",")[1]);
-    const byteArray = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-        byteArray[i] = binaryString.charCodeAt(i);
+    // Convert image to byte array
+    var dataUrl = canvas.toDataURL('image/jpeg');
+    var base64 = dataUrl.split(',')[1];
+    var binary = atob(base64);
+    var array = [];
+    for (var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
     }
-    return byteArray;
-}
+    return new Uint8Array(array);
+};

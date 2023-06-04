@@ -87,4 +87,9 @@ public partial class User
             ErrorMessage = e.Message;
         }
     }
+
+    public void NavigateTo()
+    {
+        NavigationManager.NavigateTo("/facerecognition");
+    }
 }

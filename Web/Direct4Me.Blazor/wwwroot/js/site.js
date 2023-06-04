@@ -69,83 +69,21 @@ window.jsInterop = {
         audio.addEventListener("ended", function () {
             closeAnimation();
         });
-    }, closeModal() {
+    },
+
+    closeModal() {
         $('#updateModal').modal('hide');
-    }, openModal() {
+    },
+
+    openModal() {
         $('#updateModal').modal('show');
     },
+
     closeHistoryModal() {
         $('#grantAccessModal').modal('hide');
-    }, openHistoryModal() {
+    },
+
+    openHistoryModal() {
         $('#grantAccessModal').modal('show');
-    }, captureImageFromCamera: function () {
-        return new Promise((resolve, reject) => {
-            const videoElement = document.getElementById("camera-stream");
-            const canvasElement = document.createElement("canvas");
-            const context = canvasElement.getContext("2d");
-
-            // Access the user's camera and display the video stream
-            navigator.mediaDevices.getUserMedia({video: true})
-                .then(function (stream) {
-                    videoElement.srcObject = stream;
-                    videoElement.play();
-
-                    // Draw the video frame on the canvas
-                    context.drawImage(videoElement, 0, 0, videoElement.videoWidth, videoElement.videoHeight);
-
-                    // Convert the canvas image to a data URL
-                    const imageUrl = canvasElement.toDataURL();
-
-                    // Stop the video stream and release resources
-                    videoElement.srcObject = null;
-                    stream.getVideoTracks().forEach(track => track.stop());
-
-                    resolve(imageUrl);
-                })
-                .catch(function (error) {
-                    reject(error);
-                });
-        });
-    },
-
-    authenticateImage: function (byteArray) {
-        return new Promise((resolve, reject) => {
-            const formData = new FormData();
-            formData.append("image", new Blob([byteArray]));
-
-            // Send the POST request to the API endpoint for image authentication
-            fetch("/imgAuthenticate", {
-                method: "POST",
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const userId = data.user_id;
-                    const confidence = data.confidence;
-
-                    if (userId !== null) {
-                        console.log(`Predicted user_id: ${userId} with confidence ${confidence}`);
-                        resolve(true);
-                    } else {
-                        console.log("Prediction failed.");
-                        resolve(false);
-                    }
-                })
-                .catch(error => {
-                    reject(error);
-                });
-        });
-    },
-
-    base64ToByteArray: function (base64String) {
-        const binaryString = window.atob(base64String.split(",")[1]);
-        const byteArray = new Uint8Array(binaryString.length);
-        for (let i = 0; i < binaryString.length; i++) {
-            byteArray[i] = binaryString.charCodeAt(i);
-        }
-        return byteArray;
     }
-}
-
-function closeAnimation() {
-}
+};

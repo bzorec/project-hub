@@ -1,4 +1,5 @@
 using Direct4Me.Blazor.Modules;
+using Direct4Me.Blazor.Utils;
 using Direct4Me.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddJsInteropServices();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddTransient<HttpClient>();
+builder.Services.AddTransient<IFaceRecognitionService, FaceRecognitionService>();
 
 var app = builder.Build();
 
