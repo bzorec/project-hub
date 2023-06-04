@@ -13,7 +13,10 @@ public interface IJsInteropService
     ValueTask<string?> GetUserEmail();
     ValueTask PlayMp3FromResponse(byte[] mp3);
     ValueTask CloseModalWindow();
-    Task<byte[]> FaceUnlockEnable();
+    Task<string> CaptureImageFromCamera();
+    Task<bool> AuthenticateImage(byte[] byteArray);
+    Task<byte[]> Base64ToByteArray(string base64String);
+    Task<byte[]> FaceUnlockEnable(string userModelId);
     ValueTask CloseModalHistoryWindow();
     ValueTask OpenModalHistoryWindow();
 }
@@ -27,6 +30,21 @@ public class JsInteropService : IJsInteropService
         _jsRuntime = jsRuntime;
     }
 
+    public async Task<string> CaptureImageFromCamera()
+    {
+        return await _jsRuntime.InvokeAsync<string>("jsInterop.captureImageFromCamera");
+    }
+
+    public async Task<bool> AuthenticateImage(byte[] byteArray)
+    {
+        return await _jsRuntime.InvokeAsync<bool>("jsInterop.authenticateImage", byteArray);
+    }
+
+    public async Task<byte[]> Base64ToByteArray(string base64String)
+    {
+        return await _jsRuntime.InvokeAsync<byte[]>("jsInterop.base64ToByteArray", base64String);
+    }
+
     public ValueTask OpenModalWindow()
     {
         return _jsRuntime.InvokeVoidAsync("jsInterop.openModal");
@@ -35,21 +53,6 @@ public class JsInteropService : IJsInteropService
     public ValueTask CloseModalWindow()
     {
         return _jsRuntime.InvokeVoidAsync("jsInterop.closeModal");
-    }
-
-    public async Task<byte[]> FaceUnlockEnable()
-    {
-        return await _jsRuntime.InvokeAsync<byte[]>("faceUnlock.enableFaceUnlock");
-    }
-
-    public ValueTask CloseModalHistoryWindow()
-    {
-        return _jsRuntime.InvokeVoidAsync("jsInterop.closeHistoryModal");
-    }
-
-    public ValueTask OpenModalHistoryWindow()
-    {
-        return _jsRuntime.InvokeVoidAsync("jsInterop.openHistoryModal");
     }
 
     public ValueTask<string> GetToken()
@@ -85,5 +88,20 @@ public class JsInteropService : IJsInteropService
     public ValueTask SetToken(string token)
     {
         return _jsRuntime.InvokeVoidAsync("jsInterop.setToken", token);
+    }
+
+    public async Task<byte[]> FaceUnlockEnable(string userModelId)
+    {
+        return await _jsRuntime.InvokeAsync<byte[]>("faceUnlock.enableFaceUnlock", userModelId);
+    }
+
+    public ValueTask CloseModalHistoryWindow()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.closeHistoryModal");
+    }
+
+    public ValueTask OpenModalHistoryWindow()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.openHistoryModal");
     }
 }

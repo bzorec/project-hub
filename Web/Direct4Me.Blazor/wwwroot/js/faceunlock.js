@@ -1,9 +1,10 @@
 let canvasElement;
 let context;
 let byteArrayResolver;
+let capturedImages = [];
 
 window.faceUnlock = {
-    enable: function () {
+    enable: function (userId) {
         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
             // Check if the browser supports media devices and getUserMedia
             alert("Sorry, your browser doesn't support camera access.");
@@ -33,15 +34,16 @@ window.faceUnlock = {
             .catch(function (error) {
                 console.error("Error accessing camera:", error);
             });
-    }, enableFaceUnlock: function () {
+    },
+    enableFaceUnlock: function (userId) {
         return new Promise((resolve) => {
             byteArrayResolver = resolve;
-            window.faceUnlock.enable();
+            window.faceUnlock.enable(userId);
         });
     }
 };
 
-function captureImage() {
+function captureImage(userId) {
     // Draw the current video frame on the canvas
     context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
 
@@ -51,12 +53,48 @@ function captureImage() {
     // Convert the data URL to a byte array
     const byteArray = base64ToByteArray(imageUrl);
 
-    // Close the modal
-    const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
-    imageModal.hide();
+    // Save the byte array to the capturedImages array
+    capturedImages.push(byteArray);
 
-    // Resolve the byte array promise
-    byteArrayResolver(byteArray);
+    if (capturedImages.length < 5) {
+        // Show the modal again to capture more images
+        const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
+        imageModal.show();
+    } else {
+        // Close the modal and send the captured images to the API
+        const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
+        imageModal.hide();
+
+        sendCapturedImages(userId);
+    }
+}
+
+function sendCapturedImages(userId) {
+
+    for (let i = 0; i < capturedImages.length; i++) {
+        const imageData = capturedImages[i];
+
+        // Create a new FormData object to send the image data
+        const formData = new FormData();
+        formData.append("userId", userId);
+        formData.append("image", new Blob([imageData]));
+
+        // Send the POST request to the API endpoint
+        fetch("/uploadImage", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Handle the API response if needed
+            })
+            .catch(error => {
+                console.error("Error uploading image:", error);
+            });
+    }
+
+    // Clear the capturedImages array
+    capturedImages = [];
 }
 
 function base64ToByteArray(base64String) {
@@ -67,5 +105,3 @@ function base64ToByteArray(base64String) {
     }
     return byteArray;
 }
-
-

@@ -4,6 +4,8 @@ namespace Direct4Me.Repository.Services.Interfaces;
 
 public interface IPostboxService
 {
+    Task LogBoxUnlockAsync(string boxId, string type, bool isSuccess, CancellationToken token = default);
+
     Task<List<string>> GetPostboxIdsForUser(string userId, CancellationToken token = default);
 
     Task<PostboxEntity> GetPostboxByIdAsync(string postboxId, CancellationToken token = default);
@@ -17,4 +19,5 @@ public interface IPostboxService
     Task<bool> UpdateAsync(PostboxEntity entity, CancellationToken token = default);
 
     Task<List<string>> GetOtherPostboxIdsForUser(string userId, CancellationToken token = default);
+    Task<PostboxEntity> GetPostboxByBoxIdAsync(string boxId, CancellationToken token = default);
 }
