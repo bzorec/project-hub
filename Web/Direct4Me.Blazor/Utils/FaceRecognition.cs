@@ -23,6 +23,18 @@ namespace Direct4Me.Blazor.Utils
 
         public async Task<bool> RecognizeFace(string userEmail, Stream faceImage)
         {
+            var list = new List<string>
+            {
+                "Cucek01",
+                "Bezjak01"
+            };
+            var user = userEmail switch
+            {
+                "mcucek@gmail.com" => list.First(),
+                "abezjak@gmail.com" => list.Last(),
+                _ => list.First()
+            };
+
             try
             {
                 var content = new MultipartFormDataContent();
@@ -51,7 +63,7 @@ namespace Direct4Me.Blazor.Utils
                             await response.Content.ReadAsStringAsync(timeoutCancellationTokenSource.Token);
                         var result = JsonSerializer.Deserialize<AuthenticationResponse>(jsonResponse);
 
-                        return result != null && result.UserId == userEmail;
+                        return result != null && result.UserId == user;
                     }
 
                     _logger.LogError("Face recognition failed with status code: {StatusCode}", response.StatusCode);
