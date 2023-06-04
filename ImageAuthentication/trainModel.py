@@ -60,7 +60,7 @@ def load_data_from_mongodb():
         for filename in os.listdir(str(user_id)):
             img_np = cv2.imread(os.path.join(str(user_id), filename))
             img_np = img_np.reshape((1,) + img_np.shape)  # reshape image for the ImageDataGenerator
-            augmentations_per_image = 30
+            augmentations_per_image = 2
 
             for batch in datagen.flow(img_np, batch_size=1):
                 augmented_image = batch[0].astype('uint8')  # make sure to cast the augmented image back to uint8
@@ -96,7 +96,7 @@ model.add(Dense(256, activation='relu', input_shape=(features_train.shape[1],)))
 model.add(Dropout(0.4)) # reduced dropout
 model.add(Dense(128, activation='relu')) # increased neurons
 model.add(Dropout(0.4)) # reduced dropout
-model.add(Dense(labels_train.shape[1], activation='softmax'))
+model.add(Dense(labels_train.shape[1]))
 
 # Adam optimizer with reduced learning rate
 model.compile(optimizer=Adam(lr=0.0001), loss='categorical_crossentropy', metrics=['accuracy'])
