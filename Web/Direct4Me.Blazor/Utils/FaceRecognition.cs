@@ -1,6 +1,7 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Direct4Me.Blazor.Services;
 
 namespace Direct4Me.Blazor.Utils
 {
@@ -13,12 +14,15 @@ namespace Direct4Me.Blazor.Utils
     public class FaceRecognitionService : IFaceRecognitionService
     {
         private readonly HttpClient _httpClient;
+        private readonly IJsInteropService _jsInterop;
         private readonly ILogger<FaceRecognitionService> _logger;
 
-        public FaceRecognitionService(ILogger<FaceRecognitionService> logger, HttpClient httpClient)
+        public FaceRecognitionService(ILogger<FaceRecognitionService> logger, HttpClient httpClient,
+            IJsInteropService jsInterop)
         {
             _logger = logger;
             _httpClient = httpClient;
+            _jsInterop = jsInterop;
         }
 
         public async Task<bool> RecognizeFace(string userEmail, Stream faceImage)
@@ -84,6 +88,8 @@ namespace Direct4Me.Blazor.Utils
 
         public async Task<bool> SetupFaceRecognition(IEnumerable<Stream> faceImages)
         {
+            var user = await _jsInterop.GetUserEmail();
+
             try
             {
                 foreach (var faceImage in faceImages)
@@ -93,15 +99,15 @@ namespace Direct4Me.Blazor.Utils
                     imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
 
                     content.Add(imageContent, "image", $"{Guid.NewGuid()}.png");
+                    content.Add(new StringContent(user), "userId"); // Add the userId parameter
 
                     var response = await _httpClient.PostAsync("/uploadImage", content);
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        _logger.LogError("Face recognition setup failed with status code: {StatusCode}",
-                            response.StatusCode);
-                        return false;
-                    }
+                    if (response.IsSuccessStatusCode) continue;
+
+                    _logger.LogError("Face recognition setup failed with status code: {StatusCode}",
+                        response.StatusCode);
+                    return false;
                 }
 
                 return true;
