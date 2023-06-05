@@ -12,6 +12,7 @@ class PostboxAdapter(private val postboxList: List<String>) :
     // Interface for item click listener
     interface OnItemClickListener {
         fun onItemClick(postboxId: String)
+        fun onItemLongClick(postboxId: String)
     }
 
     private var itemClickListener: OnItemClickListener? = null
@@ -31,6 +32,11 @@ class PostboxAdapter(private val postboxList: List<String>) :
 
             itemView.setOnClickListener {
                 itemClickListener?.onItemClick(postboxId)
+            }
+
+            itemView.setOnLongClickListener {
+                itemClickListener?.onItemLongClick(postboxId)
+                true // Return true to consume the long click event
             }
         }
     }

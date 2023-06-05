@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.um.feri.direct4me.android.PostboxAdapter
 import com.um.feri.direct4me.android.R
+import com.um.feri.direct4me.android.ui.history.PostboxHistoryFragment
 import com.um.feri.direct4me.android.ui.notifications.NotificationsFragment
 import makeApiRequest
 
@@ -47,6 +48,14 @@ class DashboardFragment : Fragment() {
                 val boxId = postboxId.toInt()
                 val apiKey = "9ea96945-3a37-4638-a5d4-22e89fbc998f"
                 makeApiRequest(boxId, apiKey)
+            }
+
+            override fun onItemLongClick(postboxId: String) {
+                val postboxHistoryFragment = PostboxHistoryFragment.newInstance(postboxId)
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment_activity_main, postboxHistoryFragment)
+                    .addToBackStack(null)
+                    .commit()
             }
         })
 
