@@ -28,7 +28,20 @@ public static class CustomMapperExstansions
         {
             PostBoxId = postbox.PostboxId,
             Id = postbox.Guid,
-            UserId = postbox.UserGuid,
+            UserId = postbox.UserGuid
+        };
+    }
+
+    public static PostboxHistoryEntity MapHistoryToPostboxHistoryEntity(this History history)
+    {
+        return new PostboxHistoryEntity
+        {
+            Date = DateTime.Now,
+            UserName = history.UserName,
+            PostboxId = history.BoxId,
+            Type = history.Type,
+            Success = history.Success,
+            Id = history.Guid
         };
     }
 }

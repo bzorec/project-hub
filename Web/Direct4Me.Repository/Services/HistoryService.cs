@@ -21,6 +21,24 @@ public class HistoryService : IHistoryService
         _postboxService = postboxService;
     }
 
+    public async Task<List<PostboxHistoryEntity>> GetFullHistorySingleAsync(string boxId,
+        CancellationToken token = default)
+    {
+        try
+        {
+            var entity = await _postboxService.GetPostboxByIdAsync(boxId, token);
+
+            var postboxHistoryEntities = await _repository.GetAllAsync(token: token);
+
+            return postboxHistoryEntities.Where(i => entity.PostBoxId.ToString().Contains(i.PostboxId)).ToList();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error occured while getting history: {Message}", e.Message);
+            return new List<PostboxHistoryEntity>();
+        }
+    }
+
     public async Task LogHistoryAsync(PostboxHistoryEntity entity, CancellationToken token = default)
     {
         try

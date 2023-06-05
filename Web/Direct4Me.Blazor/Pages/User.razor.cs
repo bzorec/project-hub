@@ -27,9 +27,8 @@ public partial class User
     {
         try
         {
-            var image = await JsInteropService.FaceUnlockEnable();
-            UserModel.Image = image;
-
+            await JsInteropService.FaceUnlockEnable(UserModel.Id);
+            UserModel.IsFaceUnlock = true;
             await UserService.UpdateAsync(UserModel);
         }
         catch (Exception e)
@@ -38,11 +37,12 @@ public partial class User
         }
     }
 
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            string email = await JsInteropService.GetUserEmail();
+            var email = await JsInteropService.GetUserEmail() ?? throw new InvalidOperationException();
             if (email != null) UserModel = await UserService.GetUserByEmailAsync(email) ?? new UserEntity();
         }
 
@@ -86,5 +86,10 @@ public partial class User
         {
             ErrorMessage = e.Message;
         }
+    }
+
+    public void NavigateTo()
+    {
+        NavigationManager.NavigateTo("/facerecognition");
     }
 }

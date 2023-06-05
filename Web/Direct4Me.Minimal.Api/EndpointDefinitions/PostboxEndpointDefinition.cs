@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Direct4Me.Minimal.Api.Infrastructure;
 using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
 using Direct4Me.Minimal.Api.Models;
+using Direct4Me.Repository.Entities;
 using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,13 +14,51 @@ public class PostboxEndpointDefinition : IEndpointDefinition
     public void DefineEndpoints(WebApplication app)
     {
         app.MapGet("/postboxes", GetAllAsync);
+        app.MapGet("/postboxes/history/user/{userGuid}", GetPostboxHistoryForUserAsync);
+        app.MapGet("/postboxes/history/box/{boxGuid}", GetPostboxHistoryForSingleAsync);
+
         app.MapPost("/postboxes", AddAsync);
+        app.MapPost("/postboxes/history", AddLogAsync);
+
         app.MapPut("/postboxes/{guid}/update", UpdateAsync);
+
         app.MapDelete("/postboxes/{guid}/delete", DeleteAsync);
     }
 
     public void DefineServices(IServiceCollection services)
     {
+    }
+
+    private static async Task<IResult> AddLogAsync(IHistoryService service, IPostboxService postboxService,
+        History model)
+    {
+        var entity = model.MapHistoryToPostboxHistoryEntity();
+
+        try
+        {
+            await postboxService.LogBoxUnlockAsync(entity.PostboxId, entity.Type ?? throw new
+                InvalidOperationException(), entity.Success);
+            
+            await service.LogHistoryAsync(entity);
+            return Results.Ok("History log added successfully");
+        }
+        catch (Exception e)
+        {
+            return Results.BadRequest("Error occured while logging history.");
+        }
+    }
+
+    private static async Task<List<PostboxHistoryEntity>> GetPostboxHistoryForSingleAsync(IHistoryService service,
+        string boxGuid
+    )
+    {
+        return await service.GetFullHistorySingleAsync(boxGuid);
+    }
+
+    private static async Task<List<PostboxHistoryEntity>> GetPostboxHistoryForUserAsync(IHistoryService service,
+        string userGuid)
+    {
+        return await service.GetFullHistoryAsync(userGuid);
     }
 
     private static async Task<IResult> UpdateAsync(IPostboxService service, string guid, Postbox model)

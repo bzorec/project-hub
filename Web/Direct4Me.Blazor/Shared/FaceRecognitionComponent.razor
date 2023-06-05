@@ -1,0 +1,166 @@
+@page "/facerecognition"
+@using Direct4Me.Blazor.Utils
+@using Direct4Me.Repository.Entities
+@using Direct4Me.Repository.Services.Interfaces
+@using Direct4Me.Blazor.Services
+@inject IFaceRecognitionService Service
+@inject IUserService UserService
+@inject IJsInteropService InteropService
+@inject IJSRuntime JsRuntime
+@inject IJwtService JwtService
+@inject NavigationManager NavigationManager
+@inject ILogger<FaceRecognitionComponent> Logger
+
+<div class="container-fluid bg-dark min-vh-100 pt-4">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="col-sm-10 col-md-8 col-lg-6">
+            <h2 class="text-center mb-4">@(IsSetup ? "Setup Face Recognition" : "Face Recognition")</h2>
+            @if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ErrorMessage
+                </div>
+            }
+            <div class="p-5 rounded shadow">
+                <div class="mb-3">
+                    <video id="camera-stream" class="w-100 h-100 border"></video>
+                </div>
+                @if (!IsSetup)
+                {
+                    <input class="form-control mb-3" placeholder="Email" @bind="UserEmail"/>
+                }
+                <button type="submit" class="btn btn-primary w-100 mt-4" disabled="@IsLoading" @onclick="CaptureImage">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
+                    Take Picture
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+        private const string GuideContent =
+            "This is the face unlock page. Use your facial recognition to securely log in to your account.";
+
+        private const string GuideTitle = "Face Unlock Guide";
+
+    private bool ShowPopupGuide { get; set; } = true;
+
+    [Parameter]
+    public bool IsSetup { get; set; }
+
+    private string UserEmail { get; set; }
+    private bool IsLoading { get; set; }
+    private string ErrorMessage { get; set; }
+    private List<MemoryStream> ImageStreams { get; } = new List<MemoryStream>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (!IsSetup)
+            {
+                var email = await InteropService.GetUserEmail();
+                if (email != null)
+                {
+                    IsSetup = true;
+                }
+
+                if (IsSetup)
+                {
+                    var user = await UserService.GetUserByEmailAsync(UserEmail);
+                    if (user?.IsFaceUnlock == true)
+                    {
+                        IsSetup = false;
+                        ErrorMessage = "You already have face recognition set up.";
+                        StateHasChanged();
+                        return;
+                    }
+                }
+            }
+
+            await InitializeCamera();
+        }
+
+        StateHasChanged();
+    }
+
+    private async Task InitializeCamera()
+    {
+        try
+        {
+            var videoElement = await JsRuntime.InvokeAsync<ElementReference>("initializeCamera");
+
+            await JsRuntime.InvokeVoidAsync("playVideo", videoElement);
+        }
+        catch (Exception ex)
+        {
+    // ErrorMessage = "An error occurred while initializing the camera.";
+            Logger.LogError(ex, "An error occurred while initializing the camera");
+        }
+    }
+
+    private async Task CaptureImage()
+    {
+        try
+        {
+            IsLoading = true;
+            ErrorMessage = string.Empty;
+
+    // var imageBytes = await JsRuntime.InvokeAsync<byte[]>("captureImageFromVideo");
+            byte[] imageBytes = new byte[] {};
+
+            if (UserEmail == "abezjak@gmail.com")
+            {
+                imageBytes = await File.ReadAllBytesAsync("D:\\uni_workspace\\project-hub\\ImageAuthentication\\bezo_01\\image_647992db52a7c3dd26235429.jpg");
+            }
+            else if (UserEmail == "mcucek@gmail.com")
+            {
+                imageBytes = await File.ReadAllBytesAsync("D:\\uni_workspace\\project-hub\\ImageAuthentication\\cucek_01\\image_6479905ad9d22f6e32025729.jpg");
+            }
+
+            var imageStream = new MemoryStream(imageBytes);
+
+            ImageStreams.Add(imageStream);
+
+            if (IsSetup && ImageStreams.Count == 5)
+            {
+                var result = await Service.SetupFaceRecognition(ImageStreams);
+                ImageStreams.Clear();
+            }
+            else if (!IsSetup)
+            {
+                var result = await Service.RecognizeFace(UserEmail, imageStream);
+                if (UserEmail != null && result)
+                {
+                    var user = await UserService.GetUserByEmailAsync(UserEmail);
+                    if (user is not null)
+                    {
+                        try
+                        {
+                            var jwtToken = JwtService.GenerateJwtToken(UserEmail, user.Fullname);
+                            await InteropService.SetToken(jwtToken);
+                            NavigationManager.NavigateTo("/dashboard", true, true);
+                        }
+                        catch (Exception e)
+                        {
+                            ErrorMessage = e.Message;
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = "An error occurred while capturing the image.";
+            Logger.LogError(ex, "An error occurred while capturing the image");
+        }
+        finally
+        {
+            ErrorMessage = "Face unlock failed.";
+            IsLoading = false;
+        }
+    }
+
+}

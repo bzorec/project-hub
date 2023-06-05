@@ -43,28 +43,11 @@
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
                         Edit
                     </button>
-                    <button type="submit" class="btn btn-primary p-2 m-2" style="width: 46%" disabled="@(IsLoading)" @onclick="() => EnableFaceUnlock()">
+                    <button type="submit" class="btn btn-primary p-2 m-2" style="width: 46%" disabled="@(IsLoading)" @onclick="@NavigateTo">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
                         @(UserModel.IsFaceUnlock ? "Redo" : "Enable") face unlock
                     </button>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- modal element to display the captured image -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">Captured Image</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img id="capturedImage" class="img-fluid" alt="Captured Image">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="captureImage()">Take Picture</button>
             </div>
         </div>
     </div>

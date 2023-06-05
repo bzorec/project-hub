@@ -15,6 +15,9 @@ public partial class Postboxes
     private const string GuideContent =
         "This is the postboxes page. Here you can access and manage your postboxes. Blue cards are owners postboxes. Red ones where given access from other user.";
 
+    private const string Qr = "QR";
+    private const string Nfc = "NFC";
+
     private const string GuideTitle = "Postboxes Guide";
     private bool ShowPopupGuide { get; set; } = true;
     [Inject] private NavigationManager NavigationManager { get; set; }
@@ -83,7 +86,7 @@ public partial class Postboxes
         StateHasChanged();
     }
 
-    private async Task CallApiOnClick(int boxId)
+    private async Task CallApiOnClick(int boxId, string type)
     {
         var historyLog = new PostboxHistoryEntity
         {
@@ -93,14 +96,14 @@ public partial class Postboxes
             Success = false,
             CreatedOn = DateTime.Now,
             ModifiedOn = null,
-            Type = "QR Code"
+            Type = type
         };
 
         // Create the payload
         var payload = new
         {
             deliveryId = 0,
-            boxId = boxId,
+            boxId,
             tokenFormat = 5,
             isMultibox = false,
             addAccessLog = true
@@ -113,10 +116,11 @@ public partial class Postboxes
         var content = new StringContent(payloadJson, Encoding.UTF8, "application/json");
 
         // Add the Bearer token to the request headers
-        HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "9ea96945-3a37-4638-a5d4-22e89fbc998f");
+        HttpClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", "9ea96945-3a37-4638-a5d4-22e89fbc998f");
 
         // Make the POST request to the API
-        HttpResponseMessage response =
+        var response =
             await HttpClient.PostAsync("https://api-d4me-stage.direct4.me/sandbox/v1/Access/openbox", content);
 
         if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -142,18 +146,21 @@ public partial class Postboxes
         // Check if the API call was successful
         if (!response.IsSuccessStatusCode || json.Result != 0)
         {
-            ErrorMessage = $"{json.ErrorNumber} {json.ValidationErrors}";
+            ErrorMessage =
+                $"Error occured while unlocking postbox[{boxId}], {json.ErrorNumber} {json.ValidationErrors}";
             historyLog.Success = false;
             await HistoryService.LogHistoryAsync(historyLog);
             return;
         }
 
-        byte[] mp3Bytes = FromBase64String(json.Data);
+        var mp3Bytes = FromBase64String(json.Data);
 
         // Call the JavaScript function to play the audio and close the animation
         await JsInteropService.PlayMp3FromResponse(mp3Bytes);
 
         historyLog.Success = true;
+        await PostboxService.LogBoxUnlockAsync(historyLog.PostboxId, historyLog.Type, historyLog.Success);
+
         await HistoryService.LogHistoryAsync(historyLog);
     }
 
@@ -221,7 +228,7 @@ internal class Direct4MeResponseModel
 
     public List<string>? ValidationErrors { get; set; }
 
-    public string ErrorNumber { get; set; }
+    public int ErrorNumber { get; set; }
 
     public string Data { get; set; }
 }

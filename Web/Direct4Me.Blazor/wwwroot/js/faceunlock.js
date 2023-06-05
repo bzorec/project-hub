@@ -1,71 +1,79 @@
-let canvasElement;
-let context;
-let byteArrayResolver;
-
-window.faceUnlock = {
-    enable: function () {
+window.initializeCamera = function () {
+    return new Promise(function (resolve, reject) {
+        // Check for camera availability
         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-            // Check if the browser supports media devices and getUserMedia
-            alert("Sorry, your browser doesn't support camera access.");
+            reject('Camera not available');
             return;
         }
 
-        // Access the user's camera and display the video stream
+        // Request permission to use the camera
         navigator.mediaDevices.getUserMedia({video: true})
             .then(function (stream) {
-                const videoElement = document.createElement("video");
-                videoElement.srcObject = stream;
-                videoElement.play();
+                // If permission is granted, assign the video stream to the video element
+                var video = document.getElementById('camera-stream');
+                if ('srcObject' in video) {
+                    video.srcObject = stream;
+                } else {
+                    // Older browsers may not have srcObject
+                    video.src = window.URL.createObjectURL(stream);
+                }
 
-                // Create a canvas element to draw the captured image
-                canvasElement = document.createElement("canvas");
-                canvasElement.width = videoElement.videoWidth;
-                canvasElement.height = videoElement.videoHeight;
-
-                // Draw the video frame on the canvas
-                context = canvasElement.getContext("2d");
-                context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
-
-                // Show the modal
-                const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
-                imageModal.show();
+                video.onloadedmetadata = function () {
+                    video.play();
+                    resolve(); // The stream is ready
+                };
             })
-            .catch(function (error) {
-                console.error("Error accessing camera:", error);
+            .catch(function (err) {
+                // An error occurred
+                reject('An error occurred: ' + err);
             });
-    }, enableFaceUnlock: function () {
-        return new Promise((resolve) => {
-            byteArrayResolver = resolve;
-            window.faceUnlock.enable();
-        });
-    }
+    });
 };
 
-function captureImage() {
-    // Draw the current video frame on the canvas
-    context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+window.playVideo = function (videoElement) {
+    videoElement.play();
+};
 
-    // Convert the canvas image to a data URL
-    const imageUrl = canvasElement.toDataURL();
+window.captureImageFromVideo = async function () {
+    try {
+        var video = document.getElementById('camera-stream');
+        if (!video || video.paused || video.ended) {
+            console.log('Video is not ready');
+            return null;
+        }
 
-    // Convert the data URL to a byte array
-    const byteArray = base64ToByteArray(imageUrl);
+        // Create a temporary canvas to hold the resized image
+        var tempCanvas = document.createElement('canvas');
+        var tempContext = tempCanvas.getContext('2d');
 
-    // Close the modal
-    const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
-    imageModal.hide();
+        // Set the desired dimensions for the resized image
+        var maxWidth = 800; // Set your desired maximum width
+        var maxHeight = 600; // Set your desired maximum height
 
-    // Resolve the byte array promise
-    byteArrayResolver(byteArray);
-}
+        // Calculate the scaled dimensions
+        var videoWidth = video.videoWidth;
+        var videoHeight = video.videoHeight;
+        var scaleFactor = Math.min(maxWidth / videoWidth, maxHeight / videoHeight);
+        var scaledWidth = videoWidth * scaleFactor;
+        var scaledHeight = videoHeight * scaleFactor;
 
-function base64ToByteArray(base64String) {
-    const binaryString = window.atob(base64String.split(",")[1]);
-    const byteArray = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-        byteArray[i] = binaryString.charCodeAt(i);
+        // Resize the image using the temporary canvas
+        tempCanvas.width = scaledWidth;
+        tempCanvas.height = scaledHeight;
+        tempContext.drawImage(video, 0, 0, scaledWidth, scaledHeight);
+
+        // Convert the resized image to a byte array
+        var resizedDataUrl = tempCanvas.toDataURL('image/jpeg');
+        var resizedBase64 = resizedDataUrl.split(',')[1];
+        var resizedBinary = atob(resizedBase64);
+        var resizedArray = new Uint8Array(resizedBinary.length);
+        for (var i = 0; i < resizedBinary.length; i++) {
+            resizedArray[i] = resizedBinary.charCodeAt(i);
+        }
+
+        return resizedArray;
+    } catch (e) {
+        console.log(e);
+        return null;
     }
-    return byteArray;
-}
-
-
+};

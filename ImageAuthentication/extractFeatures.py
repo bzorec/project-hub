@@ -1,64 +1,61 @@
-import cv2
-import dlib
+from keras.models import load_model
+from keras.preprocessing import image
+from mtcnn import MTCNN
+from keras.models import Model
 import numpy as np
+import cv2
+from keras_vggface.vggface import VGGFace
+from keras_vggface.utils import preprocess_input
 
-# Load the detector
-detector = dlib.get_frontal_face_detector()
+# Load the VGGFace model
+base_model = VGGFace(model='resnet50', include_top=False)
+# Remove the last layer to get features instead of predictions
+model = Model(inputs=base_model.inputs, outputs=base_model.layers[-2].output)
 
-# Load the predictor
-predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
-def extract_face_features(img):
-    # read the image
-    #img = cv2.imread(image_path)
-    
-    # Convert image into grayscale
-    gray = cv2.cvtColor(src=img, code=cv2.COLOR_BGR2GRAY).astype('uint8')
-    
-    # Use detector to find faces
-    #cv2.imshow("gray", gray)
-    #cv2.waitKey(0)
-    
-    cnn_face_detector = dlib.cnn_face_detection_model_v1('mmod_human_face_detector.dat')
-    faces = cnn_face_detector(gray)
-    
-    #faces = detector(gray)
-    face_features = []
-    
-    if len(faces) > 0:
-        print("Extracting.\n")
-        # Assume the first face is the one we want
-        face = faces[0]
-        
-        # get the rectangle object from the mmod_rectangle object
-        rect = face.rect
-        
-        x1 = rect.left()  # left point
-        y1 = rect.top()  # top point
-        x2 = rect.right()  # right point
-        y2 = rect.bottom()  # bottom point
-        
-        # Create landmark object
-        landmarks = predictor(image=gray, box=rect)
-        
-        # Loop through all the points
-        for n in range(0, 68):
-            x = landmarks.part(n).x
-            y = landmarks.part(n).y
-            # append x and y separately
-            face_features.extend([x, y])
-            
-            # Draw a circle
-            cv2.circle(img=img, center=(x, y), radius=3, color=(0, 255, 0), thickness=-1)
-    else:
+# Instantiate a MTCNN detector for face detection and alignment
+mtcnn_detector = MTCNN()
+
+def create_vggface_model():
+    # load the VGGFace model (for example, VGG16)
+    base_model = VGGFace(model='vgg16', include_top=False)
+    model = Model(inputs=base_model.inputs, outputs=base_model.layers[-2].output)
+    return model
+
+
+def extract_face_features(image):
+    # Convert the image from BGR to RGB
+    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+    # Detect faces in the image
+    faces = mtcnn_detector.detect_faces(image_rgb)
+
+    if len(faces) == 0:
         print("No faces detected in the image.")
-    
+        return None
+
+    print("extracting")
+    # Assume the first face is the one we want
+    face = faces[0]
+
+    # Extract the bounding box from the requested face
+    x, y, width, height = face['box']
+
+    # Extract the face from the image using the bounding box coordinates
+    face_img = image_rgb[y:y + height, x:x + width]
+
+    # Resize the image to 224x224 for the VGGFace model
+    face_img = cv2.resize(face_img, (224, 224))
+
+    # Preprocess the image for the VGGFace model
+    face_img = face_img.astype('float64')
+    face_img = np.expand_dims(face_img, axis=0)
+    face_img = preprocess_input(face_img, version=2)  # version 2 is used for RESNET50
+
+    # Extract features from the face
+    face_features = model.predict(face_img)[0]
+
     return face_features
 
 
-# Test on an image
-#features = extract_face_features('img.png')
-#if features is not None:
-#    print(features)
-#else:
-#    print("Feature extraction failed.")
+

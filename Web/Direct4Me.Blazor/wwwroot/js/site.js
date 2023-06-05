@@ -69,17 +69,21 @@ window.jsInterop = {
         audio.addEventListener("ended", function () {
             closeAnimation();
         });
-    }, closeModal() {
+    },
+
+    closeModal() {
         $('#updateModal').modal('hide');
-    }, openModal() {
+    },
+
+    openModal() {
         $('#updateModal').modal('show');
     },
+
     closeHistoryModal() {
         $('#grantAccessModal').modal('hide');
-    }, openHistoryModal() {
+    },
+
+    openHistoryModal() {
         $('#grantAccessModal').modal('show');
     }
-}
-
-function closeAnimation() {
-}
+};

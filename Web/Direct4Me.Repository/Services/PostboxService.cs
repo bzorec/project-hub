@@ -1,4 +1,5 @@
 using Direct4Me.Repository.Entities;
+using Direct4Me.Repository.Infrastructure;
 using Direct4Me.Repository.Repositories.Interfaces;
 using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -32,6 +33,18 @@ internal class PostboxService : IPostboxService
         }
     }
 
+    public async Task LogBoxUnlockAsync(string boxId, string type, bool isSuccess, CancellationToken token = default)
+    {
+        if (isSuccess)
+        {
+            var box = await GetPostboxByBoxIdAsync(boxId, token);
+
+            box.UpdateUnlockCount(type);
+
+            await UpdateAsync(box, token);
+        }
+    }
+
     public async Task<List<string>> GetPostboxIdsForUser(string userId, CancellationToken token)
     {
         var filter = Builders<PostboxEntity>.Filter.Eq("UserId", userId);
@@ -61,7 +74,7 @@ internal class PostboxService : IPostboxService
     {
         try
         {
-            FilterDefinition<PostboxEntity>? filter = Builders<PostboxEntity>.Filter.Empty;
+            var filter = Builders<PostboxEntity>.Filter.Empty;
 
             if (!userId.IsNullOrEmpty())
                 filter &= Builders<PostboxEntity>.Filter.Eq(e => e.UserId, userId);
@@ -100,6 +113,22 @@ internal class PostboxService : IPostboxService
         var postboxIds = postboxes.Where(i => i.AccessList.Contains(userId)).Select(p => p.Id).ToList();
 
         return postboxIds;
+    }
+
+    public async Task<PostboxEntity> GetPostboxByBoxIdAsync(string boxId, CancellationToken token = default)
+    {
+        var postboxes = await _repository.GetAllAsync(token: token);
+
+        var postbox = postboxes.FirstOrDefault(i => i.PostBoxId.ToString() == boxId);
+
+        if (postbox == null)
+            return null;
+
+        postbox.StatisticsEntity.UpdateStatisticsDates();
+
+        await _repository.UpdateAsync(postbox, token);
+
+        return postbox;
     }
 
     public async Task<bool> DeleteAsync(string guid, CancellationToken token = default)
