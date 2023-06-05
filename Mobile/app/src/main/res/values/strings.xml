@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Direct4Me</string>
     <string name="title_home">Welcome</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">PostBoxes</string>
+    <string name="title_notifications">History</string>
 </resources>

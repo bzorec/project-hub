@@ -66,10 +66,19 @@ class HomeFragment : Fragment() {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         try {
             if (result != null && result.contents != null) {
-                val boxId = "542"
+                val url = result.contents
+                val pathSegments = URL(url).path.split("/")
+                val extractedValue =
+                    pathSegments.find { it.isNotEmpty() && it != "/" && it.length == 6 }
 
-                // Klic metode OpenBox prek API-ja
-                makeApiRequest(boxId.toInt(),"9ea96945-3a37-4638-a5d4-22e89fbc998f")
+                if (extractedValue != null) {
+                    val boxId = extractedValue
+
+                    // Klic metode OpenBox prek API-ja
+                    makeApiRequest(boxId.toInt(), "9ea96945-3a37-4638-a5d4-22e89fbc998f")
+                } else {
+                    Log.e("qrError", "Unable to extract box ID from URL.")
+                }
             }
         }
         catch (e:Exception){
