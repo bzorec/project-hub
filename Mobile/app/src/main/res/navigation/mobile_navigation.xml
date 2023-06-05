@@ -29,8 +29,8 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.um.feri.direct4me.android.ui.dashboard.NotificationsFragment"
+        android:id="@+id/navigation_history"
+        android:name="com.um.feri.direct4me.android.ui.history.UserHistoryFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_user_history" />
 </navigation>

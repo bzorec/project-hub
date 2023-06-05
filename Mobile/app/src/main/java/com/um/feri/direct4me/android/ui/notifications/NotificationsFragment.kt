@@ -1,4 +1,4 @@
-package com.um.feri.direct4me.android.ui.dashboard
+package com.um.feri.direct4me.android.ui.notifications
 
 import android.os.Bundle
 import android.text.TextUtils

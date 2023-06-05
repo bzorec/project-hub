@@ -10,6 +10,7 @@ import android.widget.Button
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -42,16 +43,22 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_dashboard, R.id.navigation_home, R.id.navigation_notifications
+                R.id.navigation_dashboard, R.id.navigation_home, R.id.navigation_history
             )
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Set listener to handle navigation item reselection
+        navView.setOnItemReselectedListener { item ->
+            if (item.itemId == R.id.navigation_dashboard) {
+                // Pop all fragments from the back stack to clear the stack
+                supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
+        }
 
         // Observe loginSuccess
         loginViewModel.loginSuccess.observe(this) { loginSuccessful ->
@@ -69,3 +76,4 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.show()
     }
 }
+

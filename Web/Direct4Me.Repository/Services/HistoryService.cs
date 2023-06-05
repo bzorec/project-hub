@@ -26,7 +26,7 @@ public class HistoryService : IHistoryService
     {
         try
         {
-            var entity = await _postboxService.GetPostboxByIdAsync(boxId, token);
+            var entity = await _postboxService.GetPostboxByBoxIdAsync(boxId, token);
 
             var postboxHistoryEntities = await _repository.GetAllAsync(token: token);
 
