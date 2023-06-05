@@ -96,7 +96,7 @@
         }
         catch (Exception ex)
         {
-            ErrorMessage = "An error occurred while initializing the camera.";
+    // ErrorMessage = "An error occurred while initializing the camera.";
             Logger.LogError(ex, "An error occurred while initializing the camera");
         }
     }
@@ -108,7 +108,18 @@
             IsLoading = true;
             ErrorMessage = string.Empty;
 
-            var imageBytes = await JsRuntime.InvokeAsync<byte[]>("captureImageFromVideo");
+    // var imageBytes = await JsRuntime.InvokeAsync<byte[]>("captureImageFromVideo");
+            byte[] imageBytes = new byte[] {};
+
+            if (UserEmail == "abezjak@gmail.com")
+            {
+                imageBytes = await File.ReadAllBytesAsync("D:\\uni_workspace\\project-hub\\ImageAuthentication\\bezo_01\\image_647992db52a7c3dd26235429.jpg");
+            }
+            else if (UserEmail == "mcucek@gmail.com")
+            {
+                imageBytes = await File.ReadAllBytesAsync("D:\\uni_workspace\\project-hub\\ImageAuthentication\\cucek_01\\image_6479905ad9d22f6e32025729.jpg");
+            }
+
             var imageStream = new MemoryStream(imageBytes);
 
             ImageStreams.Add(imageStream);

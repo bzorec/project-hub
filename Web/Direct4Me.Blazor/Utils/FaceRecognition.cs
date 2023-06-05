@@ -27,10 +27,16 @@ namespace Direct4Me.Blazor.Utils
 
         public async Task<bool> RecognizeFace(string userEmail, Stream faceImage)
         {
+            if (faceImage.Length <= 0)
+            {
+                Thread.Sleep(3000);
+                return false;
+            }
+
             var list = new List<string>
             {
                 "cucek_01",
-                "bezjak_01"
+                "bezo_01"
             };
             var user = userEmail switch
             {
@@ -51,7 +57,7 @@ namespace Direct4Me.Blazor.Utils
                 var timeoutTask = Task.Delay(TimeSpan.FromSeconds(30), timeoutCancellationTokenSource.Token);
 
                 var responseTask =
-                    _httpClient.PostAsync("localhost:8000/imgAuthenticate", content,
+                    _httpClient.PostAsync("http://localhost:8000/imgAuthenticate", content,
                         timeoutCancellationTokenSource.Token);
 
                 // Wait for either the response or the timeout
