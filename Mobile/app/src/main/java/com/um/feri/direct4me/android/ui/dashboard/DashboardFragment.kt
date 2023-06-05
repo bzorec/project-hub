@@ -1,20 +1,17 @@
 package com.um.feri.direct4me.android.ui.dashboard
 
-import PostboxViewModel
+import com.um.feri.direct4me.android.PostboxViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.um.feri.direct4me.android.PostboxAdapter
 import com.um.feri.direct4me.android.R
 import com.um.feri.direct4me.android.ui.history.PostboxHistoryFragment
-import com.um.feri.direct4me.android.ui.notifications.NotificationsFragment
 import makeApiRequest
 
 class DashboardFragment : Fragment() {
@@ -28,7 +25,7 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        recyclerView = rootView.findViewById(R.id.recyclerView)
+        recyclerView = rootView.findViewById(R.id.recyclerViewBoard)
 
         return rootView
     }
@@ -39,7 +36,7 @@ class DashboardFragment : Fragment() {
         postboxViewModel = ViewModelProvider(requireActivity())[PostboxViewModel::class.java]
         adapter = PostboxAdapter(postboxViewModel.getPostboxList())
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewBoard)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
@@ -52,12 +49,17 @@ class DashboardFragment : Fragment() {
 
             override fun onItemLongClick(postboxId: String) {
                 val postboxHistoryFragment = PostboxHistoryFragment.newInstance(postboxId)
+                requireActivity().supportFragmentManager.popBackStack()
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.nav_host_fragment_activity_main, postboxHistoryFragment)
-                    .addToBackStack(null)
                     .commit()
             }
+
         })
+        postboxViewModel.observePostboxList { postboxList ->
+            adapter.setPostboxList(postboxList)
+            adapter.notifyDataSetChanged()
+        }
 
     }
 

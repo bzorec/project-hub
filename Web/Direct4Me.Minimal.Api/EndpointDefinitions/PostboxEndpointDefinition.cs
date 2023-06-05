@@ -15,7 +15,7 @@ public class PostboxEndpointDefinition : IEndpointDefinition
     {
         app.MapGet("/postboxes", GetAllAsync);
         app.MapGet("/postboxes/history/user/{userGuid}", GetPostboxHistoryForUserAsync);
-        app.MapGet("/postboxes/history/box/{boxGuid}", GetPostboxHistoryForSingleAsync);
+        app.MapGet("/postboxes/history/box/{boxId}", GetPostboxHistoryForSingleAsync);
 
         app.MapPost("/postboxes", AddAsync);
         app.MapPost("/postboxes/history", AddLogAsync);
@@ -38,7 +38,7 @@ public class PostboxEndpointDefinition : IEndpointDefinition
         {
             await postboxService.LogBoxUnlockAsync(entity.PostboxId, entity.Type ?? throw new
                 InvalidOperationException(), entity.Success);
-            
+
             await service.LogHistoryAsync(entity);
             return Results.Ok("History log added successfully");
         }
@@ -49,10 +49,10 @@ public class PostboxEndpointDefinition : IEndpointDefinition
     }
 
     private static async Task<List<PostboxHistoryEntity>> GetPostboxHistoryForSingleAsync(IHistoryService service,
-        string boxGuid
+        string boxId
     )
     {
-        return await service.GetFullHistorySingleAsync(boxGuid);
+        return await service.GetFullHistorySingleAsync(boxId);
     }
 
     private static async Task<List<PostboxHistoryEntity>> GetPostboxHistoryForUserAsync(IHistoryService service,
@@ -93,11 +93,29 @@ public class PostboxEndpointDefinition : IEndpointDefinition
     private static async Task<List<Postbox>> GetAllAsync(
         IPostboxService service,
         [FromQuery] string? userId,
-        [FromQuery] string? postboxId)
+        [FromQuery] string? postboxId,
+        [FromQuery] bool? isFromAccessList)
     {
         var postboxes = await service.GetAllAsync(userId, postboxId);
 
-        return postboxes != null && postboxes.Any()
+        if (userId == null || isFromAccessList != true)
+            return postboxes != null && postboxes.Any()
+                ? postboxes.Select(box => new Postbox(
+                    box.Id,
+                    box.PostBoxId,
+                    box.UserId,
+                    box.StatisticsEntity.TotalUnlocks,
+                    box.StatisticsEntity.LastModified)).ToList()
+                : new List<Postbox>();
+
+        var otherIds = await service.GetOtherPostboxIdsForUser(userId);
+
+        List<PostboxEntity> otherBoxes = new();
+        foreach (var id in otherIds) otherBoxes.Add(await service.GetPostboxByIdAsync(id));
+
+        postboxes.AddRange(otherBoxes.Distinct());
+
+        return postboxes.Any()
             ? postboxes.Select(box => new Postbox(
                 box.Id,
                 box.PostBoxId,

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -33,5 +34,14 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Set listener to handle navigation item reselection
+        navView.setOnItemReselectedListener { item ->
+            if (item.itemId == R.id.navigation_dashboard) {
+                // Pop all fragments from the back stack to clear the stack
+                supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
+        }
     }
 }
+

@@ -40,14 +40,16 @@ class PostboxHistoryFragment : Fragment() {
         adapter = PostboxHistoryAdapter()
         recyclerView.adapter = adapter
 
+        val postboxId = arguments?.getString(ARG_POSTBOX_ID)
         viewModel = ViewModelProvider(this)[PostboxHistoryViewModel::class.java]
         viewModel.postboxHistory.observe(viewLifecycleOwner) { postboxHistory ->
             adapter.setPostboxHistory(postboxHistory)
         }
 
-        viewModel.fetchPostboxHistory("")
+        if (!postboxId.isNullOrEmpty()) {
+            viewModel.fetchPostboxHistory(postboxId)
+        }
 
         return view
     }
 }
-

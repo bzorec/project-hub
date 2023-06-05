@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Date
 
 class PostboxHistoryViewModel : ViewModel() {
     val postboxHistory: MutableLiveData<List<PostboxHistoryItem>> = MutableLiveData()
@@ -23,7 +24,16 @@ class PostboxHistoryViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    // Handle error, e.g., show an error message to the user
+                    println(e.message)
+                    val mockData = listOf(
+                        PostboxHistoryItem(
+                            Date(), "Blaz Zorec", "542", "QR", true
+                        ),
+                        PostboxHistoryItem(
+                            Date(), "Blaz Zorec", "542", "QR", true
+                        )
+                    )
+                    postboxHistory.value = mockData
                 }
             }
         }

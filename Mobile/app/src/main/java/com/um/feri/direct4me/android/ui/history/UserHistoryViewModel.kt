@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Date
 
 
 class UserHistoryViewModel : ViewModel() {
@@ -24,6 +25,23 @@ class UserHistoryViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
+                    println(e.message)
+                    // Mock response for postboxId 542
+                    val mockData = listOf(
+                        PostboxHistoryItem(
+                            Date(), "Blaz Zorec", "542", "QR", true
+                        ),
+                        PostboxHistoryItem(
+                            Date(), "Blaz Zorec", "542", "QR", true
+                        ),
+                        PostboxHistoryItem(
+                            Date(), "Blaz Zorec", "123", "QR", false
+                        ),
+                        PostboxHistoryItem(
+                            Date(), "Blaz Zorec", "123", "QR", false
+                        )
+                    )
+                    userHistory.value = mockData
                 }
             }
         }

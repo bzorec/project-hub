@@ -33,7 +33,7 @@ class UserHistoryFragment : Fragment() {
             adapter.setPostboxHistory(userHistory)
         }
 
-        viewModel.fetchUserHistory("")
+        viewModel.fetchUserHistory("647ccc745144659960953181")
 
         return view
     }

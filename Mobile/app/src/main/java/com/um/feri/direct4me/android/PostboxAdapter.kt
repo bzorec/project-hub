@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PostboxAdapter(private val postboxList: List<String>) :
+class PostboxAdapter(private var postboxList: List<String>) :
     RecyclerView.Adapter<PostboxAdapter.ViewHolder>() {
 
     // Interface for item click listener
@@ -54,5 +54,9 @@ class PostboxAdapter(private val postboxList: List<String>) :
 
     override fun getItemCount(): Int {
         return postboxList.size
+    }
+
+    fun setPostboxList(list: List<String>) {
+        postboxList = list
     }
 }
