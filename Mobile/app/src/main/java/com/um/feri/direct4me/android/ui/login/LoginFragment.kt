@@ -1,5 +1,6 @@
 package com.um.feri.direct4me.android.ui.login
 
+import android.net.Uri
 import LoginViewModel
 import android.Manifest
 import android.app.Activity
@@ -88,8 +89,17 @@ class LoginFragment : Fragment() {
         }
 
         binding.registerButton.setOnClickListener {
-            //TODO redirect to webpage
-            //findNavController().navigate(R.id.action_loginFragment_to_webViewFragment)
+            Toast.makeText(requireContext(), "Opening webpage...", Toast.LENGTH_SHORT).show()
+
+            // redirect to webpage
+            val webPage: Uri = Uri.parse("https://feri.um.si/")
+            val intent = Intent(Intent.ACTION_VIEW, webPage)
+            if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(intent)
+            } else {
+                // show a toast message when no app can handle the Intent
+                Toast.makeText(requireContext(), "No application can handle this request.", Toast.LENGTH_LONG).show()
+            }
         }
 
         binding.anotherUserButton.setOnClickListener {

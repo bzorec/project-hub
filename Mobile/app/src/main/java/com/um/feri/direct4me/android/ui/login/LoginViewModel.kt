@@ -18,6 +18,7 @@ class LoginViewModel : ViewModel() {
     val takePictureEvent = MutableLiveData<Boolean>()
 
     fun loginWithUsernameAndPassword(context: Context, username: String, password: String) {
+
         sharedPreferences = context.getSharedPreferences("LoginPreferences", Context.MODE_PRIVATE)
 
         // Create the request body with the login details
@@ -69,6 +70,8 @@ class LoginViewModel : ViewModel() {
     fun loginWithFaceUnlock(context: Context) {
         // Instead of sending the API request directly, post a value to takePictureEvent to take a picture first
         takePictureEvent.postValue(true)
+
+        loginWithFaceUnlockWithImage(context, "")
     }
 
     fun loginWithFaceUnlockWithImage(context: Context, takenImage: String) {
