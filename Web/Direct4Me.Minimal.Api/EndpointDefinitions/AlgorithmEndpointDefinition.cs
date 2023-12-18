@@ -1,4 +1,3 @@
-using Direct4Me.Core.ImageProccessing;
 using Direct4Me.Core.ImageProccessing.Interfaces;
 using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
 
@@ -30,7 +29,7 @@ public class AlgorithmEndpointDefinition : IEndpointDefinition
         }
     }
 
-    public void DefineServices(IServiceCollection services)
-    {
-    }
+    public void DefineServices(IServiceCollection services) => services
+        .AddTransient<IImageProcessingService>()
+        .AddTransient<IPythonAiService>();
 }

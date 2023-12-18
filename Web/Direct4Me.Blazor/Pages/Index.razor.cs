@@ -5,8 +5,8 @@ namespace Direct4Me.Blazor.Pages;
 
 public partial class Index : ComponentBase
 {
-    [Inject] private IJsInteropService JsInteropService { get; set; }
-    [Inject] private NavigationManager NavigationManager { get; set; }
+    [Inject] private IJsInteropService? JsInteropService { get; set; }
+    [Inject] private NavigationManager? NavigationManager { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

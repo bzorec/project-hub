@@ -11,10 +11,10 @@ public partial class Login
         "This is the login page. Enter your email address and password to sign in. Face unlock is also available.";
 
     private const string GuideTitle = "Welcome!";
-    [Inject] private IUserService UserService { get; set; }
-    [Inject] private NavigationManager NavigationManager { get; set; }
-    [Inject] private IJwtService JwtService { get; set; }
-    [Inject] private IJsInteropService JsInteropService { get; set; }
+    [Inject] private IUserService? UserService { get; set; }
+    [Inject] private NavigationManager? NavigationManager { get; set; }
+    [Inject] private IJwtService? JwtService { get; set; }
+    [Inject] private IJsInteropService? JsInteropService { get; set; }
 
     private string? ErrorMessage { get; set; }
     public bool IsLoading { get; set; }
