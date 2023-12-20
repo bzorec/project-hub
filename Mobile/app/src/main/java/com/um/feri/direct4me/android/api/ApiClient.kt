@@ -1,5 +1,6 @@
 package com.um.feri.direct4me.android.api
 
+import com.um.feri.direct4me.android.BuildConfig
 import android.content.Context
 import com.android.volley.Request
 import com.android.volley.Response
@@ -19,7 +20,7 @@ class ApiClient(private val context: Context) {
 
     fun getPostboxHistory(boxGuid: String, callback: (List<PostboxHistoryItem>) -> Unit) {
         val queue = Volley.newRequestQueue(context)
-        val url = "http://10.0.2.2:5000/postboxes/history/box/$boxGuid"
+        val url = "${BuildConfig.API_BASE_URL}postboxes/history/box/$boxGuid"
 
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
@@ -64,7 +65,7 @@ class ApiClient(private val context: Context) {
 
     fun getUserHistory(userGuid: String, callback: (List<PostboxHistoryItem>) -> Unit) {
         val queue = Volley.newRequestQueue(context)
-        val url = "http://10.0.2.2:5000/postboxes/history/user/$userGuid"
+        val url = "${BuildConfig.API_BASE_URL}/postboxes/history/user/$userGuid"
 
         val jsonArrayRequest = JsonArrayRequest(
             Request.Method.GET, url, null,
