@@ -4,7 +4,7 @@ import java.util.*
 
 
 data class PostboxHistoryItem(
-    val date: Date,
+    val date: Date?,
     val userName: String,
     val postboxId: String,
     val type: String?,

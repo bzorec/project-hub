@@ -2,9 +2,14 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="true">
         <trust-anchors>
-            <!-- Add your custom trusted certificates here if required -->
             <certificates src="system" />
             <certificates src="user" />
         </trust-anchors>
     </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <!-- Explicitly allow cleartext for 127.0.0.1 -->
+        <domain includeSubdomains="true">127.0.0.1</domain>
+        <domain includeSubdomains="true">http://127.0.0.1</domain>
+    </domain-config>
 </network-security-config>

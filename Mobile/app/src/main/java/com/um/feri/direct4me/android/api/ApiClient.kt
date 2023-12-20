@@ -1,94 +1,111 @@
 package com.um.feri.direct4me.android.api
 
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonDeserializationContext
-import com.google.gson.JsonDeserializer
-import com.google.gson.JsonElement
-import com.google.gson.reflect.TypeToken
+import android.content.Context
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.Volley
 import com.um.feri.direct4me.android.ui.history.PostboxHistoryItem
-import okhttp3.OkHttpClient
-import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
-import java.lang.reflect.Type
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
 
-object ApiClient {
-    private val client = OkHttpClient.Builder()
-        .connectTimeout(1, TimeUnit.SECONDS) // Set connection timeout to 10 seconds
-        .readTimeout(1, TimeUnit.SECONDS) // Set read timeout to 10 seconds
-        .build()
+class ApiClient(private val context: Context) {
 
-    private const val BASE_URL = "http://192.168.10.207:5000"
-
-    private val gson = GsonBuilder()
-        .registerTypeAdapter(
-            object : TypeToken<List<PostboxHistoryItem>>() {}.type,
-            PostboxHistoryConverter()
-        )
-        .create()
-
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .client(client)
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .build()
-
-    private val apiService: ApiService = retrofit.create(ApiService::class.java)
-
-    fun getUserHistory(userGuid: String): List<PostboxHistoryItem> {
-        val call = apiService.getUserHistory(userGuid)
-        val response = call.execute()
-        return response.body() ?: emptyList()
-    }
-
-    fun getPostboxHistory(boxGuid: String): List<PostboxHistoryItem> {
-        val call = apiService.getPostboxHistory(boxGuid)
-        val response = call.execute()
-        return response.body() ?: emptyList()
-    }
-
-    interface ApiService {
-        @GET("postboxes/history/user/{userGuid}")
-        fun getUserHistory(@Path("userGuid") userGuid: String): Call<List<PostboxHistoryItem>>
-
-        @GET("postboxes/history/box/{boxGuid}")
-        fun getPostboxHistory(@Path("boxGuid") boxGuid: String): Call<List<PostboxHistoryItem>>
-    }
-}
-
-class PostboxHistoryConverter : JsonDeserializer<List<PostboxHistoryItem>> {
-    private val dateFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-
-    override fun deserialize(
-        json: JsonElement?,
-        typeOfT: Type?,
-        context: JsonDeserializationContext?
-    ): List<PostboxHistoryItem> {
-        val jsonArray = json?.asJsonArray ?: return emptyList()
-        val historyItems = mutableListOf<PostboxHistoryItem>()
-
-        for (jsonElement in jsonArray) {
-            val jsonObject = jsonElement.asJsonObject
-
-            val date = jsonObject.get("Date")?.asString ?: ""
-            val userName = jsonObject.get("UserName")?.asString ?: ""
-            val postboxId = jsonObject.get("PostboxId")?.asString ?: ""
-            val type = jsonObject.get("Type")?.asString
-            val success = jsonObject.get("Success")?.asBoolean ?: false
-
-            val parsedDate = dateFormatter.parse(date)
-
-            if (parsedDate != null) {
-                val historyItem = PostboxHistoryItem(parsedDate, userName, postboxId, type, success)
-                historyItems.add(historyItem)
-            }
+    private val dateFormatter =
+        SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).apply {
+            timeZone = TimeZone.getTimeZone("UTC")
         }
 
-        return historyItems
+    fun getPostboxHistory(boxGuid: String, callback: (List<PostboxHistoryItem>) -> Unit) {
+        val queue = Volley.newRequestQueue(context)
+        val url = "http://10.0.2.2:5000/postboxes/history/box/$boxGuid"
+
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
+            Response.Listener { response ->
+                val postboxHistoryItems = mutableListOf<PostboxHistoryItem>()
+                for (i in 0 until response.length()) {
+                    val item = response.getJSONObject(i)
+                    val dateStr = item.optString("date", null) // Use null for the default value
+                    var date: Date? = null
+                    try {
+                        if (dateStr != null) {
+                            date = dateFormatter.parse(dateStr)
+                        }
+                    } catch (e: ParseException) {
+                        e.printStackTrace()
+                        // Handle the parsing error or continue the loop
+                    }
+
+                    if (date != null) {
+                        val userName = item.getString("userName")
+                        val postboxId = item.getString("postboxId")
+                        val type = item.optString("type")
+                        val success = item.getBoolean("success")
+                        postboxHistoryItems.add(
+                            PostboxHistoryItem(
+                                date,
+                                userName,
+                                postboxId,
+                                type,
+                                success
+                            )
+                        )
+                    }
+                }
+                callback(postboxHistoryItems)
+            }
+        ) { error ->
+            error.printStackTrace()
+            callback(emptyList())
+        }
+        queue.add(jsonArrayRequest)
+    }
+
+    fun getUserHistory(userGuid: String, callback: (List<PostboxHistoryItem>) -> Unit) {
+        val queue = Volley.newRequestQueue(context)
+        val url = "http://10.0.2.2:5000/postboxes/history/user/$userGuid"
+
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val userHistoryItems = mutableListOf<PostboxHistoryItem>()
+                for (i in 0 until response.length()) {
+                    val item = response.getJSONObject(i)
+                    val dateStr = item.optString("date", null) // Use null for the default value
+                    var date: Date? = null
+                    try {
+                        if (dateStr != null) {
+                            date = dateFormatter.parse(dateStr)
+                        }
+                    } catch (e: ParseException) {
+                        e.printStackTrace()
+                        // Handle the parsing error or continue the loop
+                    }
+
+                    if (date != null) {
+                        val userName = item.getString("userName")
+                        val postboxId = item.getString("postboxId")
+                        val type = item.optString("type")
+                        val success = item.getBoolean("success")
+                        userHistoryItems.add(
+                            PostboxHistoryItem(
+                                date,
+                                userName,
+                                postboxId,
+                                type,
+                                success
+                            )
+                        )
+                    }
+                }
+                callback(userHistoryItems)
+            },
+        ) { error ->
+            error.printStackTrace()
+            callback(emptyList()) // Or handle the error appropriately
+        }
+
+        queue.add(jsonArrayRequest)
     }
 }

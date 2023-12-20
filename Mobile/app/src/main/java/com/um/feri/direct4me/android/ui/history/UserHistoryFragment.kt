@@ -28,7 +28,8 @@ class UserHistoryFragment : Fragment() {
         adapter = PostboxHistoryAdapter()
         recyclerView.adapter = adapter
 
-        viewModel = ViewModelProvider(this)[UserHistoryViewModel::class.java]
+        val factory = UserHistoryViewModelFactory(requireContext())
+        viewModel = ViewModelProvider(this, factory)[UserHistoryViewModel::class.java]
         viewModel.userHistory.observe(viewLifecycleOwner) { userHistory ->
             adapter.setPostboxHistory(userHistory)
         }
