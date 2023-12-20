@@ -14,7 +14,7 @@ public partial class History
     [Inject] private IJsInteropService? JsInteropService { get; set; }
     [Inject] private IUserService? UserService { get; set; }
 
-    private List<PostboxHistoryEntity> UnlockHistory { get; set; } = [];
+    private List<PostboxHistoryEntity> UnlockHistory { get; set; } = new List<PostboxHistoryEntity>();
     private bool ShowPopupGuide { get; set; } = true;
     private string? ErrorMessage { get; set; }
 
