@@ -1,0 +1,45 @@
+:root {
+    --background-color: #121212; /* Very dark gray, almost black */
+    --card-bg-color: #1C1C1C; /* Dark gray for card background */
+    --input-bg-color: #2C2C2C; /* Darker gray for input fields */
+    --input-text-color: #DDD; /* Light gray for input text */
+    --input-placeholder-color: #666; /* Placeholder text color */
+    --input-border-color: #333; /* Border color for input fields */
+    --card-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Realistic shadow */
+}
+
+body {
+    background-color: var(--background-color);
+    color: white;
+}
+
+.card-body-custom {
+    background-color: var(--card-bg-color);
+    color: white; /* White text color */
+    padding: 2rem; /* Larger padding for bigger card */
+}
+
+.form-control-custom {
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+    border: 1px solid var(--input-border-color);
+}
+
+.form-control-custom::placeholder {
+    color: var(--input-placeholder-color);
+}
+
+.form-control-custom:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* A subtle blue glow */
+}
+
+.card-custom-shadow {
+    box-shadow: var(--card-shadow);
+}
+
+/* Optional: Override Bootstrap's default focus glow */
+.form-control:focus {
+    box-shadow: none;
+}

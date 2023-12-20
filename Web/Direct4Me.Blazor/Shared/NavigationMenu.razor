@@ -1,7 +1,8 @@
 @using Direct4Me.Blazor.Models
+
 @if (NavigationType == NavigationType.Login)
 {
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1d1d1d;">
         <div class="container">
             <NavLink class="navbar-brand" href="/login">DIRECT4.ME</NavLink>
 
@@ -26,9 +27,10 @@
         </div>
     </nav>
 }
+
 @if (NavigationType == NavigationType.Default)
 {
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1d1d1d;">
         <div class="container">
             <NavLink class="nav-link navbar-brand text-uppercase" href="/dashboard">DIRECT4.ME</NavLink>
 

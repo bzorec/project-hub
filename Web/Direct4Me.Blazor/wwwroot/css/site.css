@@ -1,13 +1,11 @@
 /* Global styles */
-html {
-    height: 100%;
-}
-
-body {
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Updated font-family */
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font family */
+    background-color: #121212; /* Dark background for the entire page */
+    color: #ffffff; /* Light text color for better readability */
 }
 
 .container-fluid {
@@ -17,53 +15,42 @@ body {
 }
 
 .main {
-    height: 100%;
     padding: 16px;
-}
-
-/* Light mode styles */
-.light-mode {
-    color-scheme: light;
 }
 
 /* Dark mode styles */
 .dark-mode {
     color-scheme: dark;
+    background-color: #121212;
 }
 
-.navbar-dark .navbar-brand {
-    color: #fff;
-}
-
-.navbar-dark .navbar-nav .nav-link {
-    color: #fff;
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link,
+.btn-outline-light,
+.close-button {
+    color: #ffffff;
 }
 
 .btn-outline-dark {
-    color: #343a40;
-    border-color: #343a40;
-}
-
-.btn-outline-light {
-    color: #f8f9fa;
-    border-color: #f8f9fa;
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
 .btn-outline-dark:hover {
-    color: #fff;
-    background-color: #343a40;
+    color: #121212;
+    background-color: #ffffff;
 }
 
 .btn-outline-light:hover {
-    color: #343a40;
-    background-color: #f8f9fa;
+    color: #ffffff;
+    background-color: #343a40;
 }
 
 .popup-guide-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #fff;
+    background-color: #2C2C2C; /* Dark background for popups */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -71,45 +58,64 @@ body {
     z-index: 9999;
 }
 
-.popup-guide-content {
-    margin-bottom: 10px;
-}
-
-.popup-guide-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
+.popup-guide-content,
+.popup-guide-title,
 .popup-guide-text {
-    font-size: 14px;
-    margin-bottom: 10px;
+    color: #ffffff; /* Light text color for popup content */
 }
 
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
     background: none;
     border: none;
-    color: #888;
-    font-size: 18px;
-    cursor: pointer;
 }
 
 .form-check {
     margin-top: 10px;
-    margin-bottom: 0;
 }
 
 .popup-guide-container:before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    bottom: -8px;
-    left: -8px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 16px;
-    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.1); /* Slight overlay effect for contrast */
+}
+
+/* Additional styles for inputs to match dark theme */
+.form-control {
+    background-color: #333333; /* Dark input fields */
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+.form-control::placeholder {
+    color: #999999;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Override Bootstrap's default focus glow for dark theme compatibility */
+.form-control:focus {
+    box-shadow: none;
+}
+
+/* Update shadows for a more realistic effect */
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+/* Ensure all text is legible on the dark background */
+.text-light {
+    color: #e0e0e0 !important; /* Light grey color for better contrast */
+}
+
+.text-dark {
+    color: #333333 !important; /* Dark color for elements that need to stand out */
 }

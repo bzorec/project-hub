@@ -1,8 +1,8 @@
 @page "/login"
 
-<div class="container-fluid bg-dark min-vh-100 pt-4">
-    <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="col-sm-10 col-md-8 col-lg-6">
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-4">
+    <div class="card card-custom-shadow bg-secondary" style="max-width: 500px; width: 100%;">
+        <div class="card-body card-body-custom">
             <h2 class="text-center mb-4">Sign in</h2>
             @if (!string.IsNullOrEmpty(ErrorMessage))
             {
@@ -11,23 +11,24 @@
                 </div>
             }
             <EditForm Model="@LoginModel" OnValidSubmit="HandleLogin">
-                <div class="p-5 rounded shadow">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <InputText id="email" class="form-control" @bind-Value="LoginModel.Email"></InputText>
-                        <ValidationMessage For="@(() => LoginModel.Email)"/>
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <InputText type="password" id="password" class="form-control" @bind-Value="LoginModel.Password"></InputText>
-                        <ValidationMessage For="@(() => LoginModel.Password)"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-4" disabled="@IsLoading">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: @(IsLoading ? "inline-block" : "none")"></span>
-                        Sign in
-                    </button>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <InputText id="email" class="form-control form-control-custom" @bind-Value="LoginModel.Email" placeholder="Enter email"></InputText>
+                    <ValidationMessage For="@(() => LoginModel.Email)"/>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <InputText type="password" id="password" class="form-control form-control-custom" @bind-Value="LoginModel.Password" placeholder="Password"></InputText>
+                    <ValidationMessage For="@(() => LoginModel.Password)"/>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mt-4" disabled="@IsLoading">
+                    @if (IsLoading)
+                    {
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    }
+                    <span>Sign in</span>
+                </button>
             </EditForm>
         </div>
     </div>
