@@ -29,7 +29,8 @@ public class PostboxEndpointDefinition : IEndpointDefinition
     {
     }
 
-    private static async Task<IResult> AddLogAsync(IHistoryService service, IPostboxService postboxService,
+    private static async Task<IResult> AddLogAsync(ILogger<PostboxEndpointDefinition> logger, IHistoryService service,
+        IPostboxService postboxService,
         History model)
     {
         var entity = model.MapHistoryToPostboxHistoryEntity();
@@ -40,10 +41,13 @@ public class PostboxEndpointDefinition : IEndpointDefinition
                 InvalidOperationException(), entity.Success);
 
             await service.LogHistoryAsync(entity);
+
+            logger.LogInformation("History log added successfully for ID[{ID}]", entity.PostboxId);
             return Results.Ok("History log added successfully");
         }
         catch (Exception e)
         {
+            logger.LogError(e, "Error occured while logging history.");
             return Results.BadRequest("Error occured while logging history.");
         }
     }
@@ -91,6 +95,7 @@ public class PostboxEndpointDefinition : IEndpointDefinition
     }
 
     private static async Task<List<Postbox>> GetAllAsync(
+        ILogger<PostboxEndpointDefinition> logger,
         IPostboxService service,
         [FromQuery] string? userId,
         [FromQuery] string? postboxId,
@@ -99,6 +104,9 @@ public class PostboxEndpointDefinition : IEndpointDefinition
         var postboxes = await service.GetAllAsync(userId, postboxId);
 
         if (userId == null || isFromAccessList != true)
+        {
+            logger.LogInformation("User Id null returning default");
+
             return postboxes != null && postboxes.Any()
                 ? postboxes.Select(box => new Postbox(
                     box.Id,
@@ -107,6 +115,7 @@ public class PostboxEndpointDefinition : IEndpointDefinition
                     box.StatisticsEntity.TotalUnlocks,
                     box.StatisticsEntity.LastModified)).ToList()
                 : new List<Postbox>();
+        }
 
         var otherIds = await service.GetOtherPostboxIdsForUser(userId);
 
@@ -114,6 +123,8 @@ public class PostboxEndpointDefinition : IEndpointDefinition
         foreach (var id in otherIds) otherBoxes.Add(await service.GetPostboxByIdAsync(id));
 
         postboxes.AddRange(otherBoxes.Distinct());
+
+        logger.LogInformation("Retrieved [{Count}] post boxes", postboxes.Count);
 
         return postboxes.Any()
             ? postboxes.Select(box => new Postbox(

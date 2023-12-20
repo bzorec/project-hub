@@ -1,4 +1,5 @@
-using Direct4Me.Core.ImageProccessing.Interfaces;
+using Serilog;
+using Serilog.Formatting.Compact;
 using Direct4Me.Minimal.Api.Infrastructure;
 using Direct4Me.Repository;
 
@@ -10,6 +11,16 @@ builder.Services.ConfigureRepositoryServices();
 //     .AddTransient<IPythonAiService>();
 
 builder.Services.AddEndpointDefinitions(typeof(EndpointDefinitionExtensions));
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .Enrich.WithMachineName()
+    .Enrich.WithThreadId()
+    .WriteTo.Console()
+    .WriteTo.File(new CompactJsonFormatter(), "logs/log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
