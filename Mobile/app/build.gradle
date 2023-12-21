@@ -1,10 +1,3 @@
-import java.net.InetAddress
-
-// Function to get the local IP address
-static def getLocalIpAddress() {
-    return InetAddress.localHost.hostAddress
-}
-
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -39,7 +32,7 @@ android {
     productFlavors {
         phone {
             dimension "device"
-            buildConfigField "String", "API_BASE_URL", '"http://' + getLocalIpAddress() + ':5000"'
+            buildConfigField "String", "API_BASE_URL", '"http://' + InetAddress.localHost.hostAddress.toString() + ':5000/"'
         }
         vm {
             dimension "device"

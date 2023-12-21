@@ -65,7 +65,7 @@ class ApiClient(private val context: Context) {
 
     fun getUserHistory(userGuid: String, callback: (List<PostboxHistoryItem>) -> Unit) {
         val queue = Volley.newRequestQueue(context)
-        val url = "${BuildConfig.API_BASE_URL}/postboxes/history/user/$userGuid"
+        val url = "${BuildConfig.API_BASE_URL}postboxes/history/user/$userGuid"
 
         val jsonArrayRequest = JsonArrayRequest(
             Request.Method.GET, url, null,
