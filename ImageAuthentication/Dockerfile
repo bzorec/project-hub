@@ -17,10 +17,10 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 # Ensure models are available
-COPY face_recognition_model.h5 /application
-COPY mmod_human_face_detector.dat /application
-COPY shape_predictor_68_face_landmarks.dat /application
-COPY user_neuron_mapping.pkl /application
+COPY models/face_recognition_model.h5 /application
+COPY models/mmod_human_face_detector.dat /application
+COPY models/shape_predictor_68_face_landmarks.dat /application
+COPY models/user_neuron_mapping.pkl /application
 
 # Run app.py when the container launches
 #CMD ["python", "trainModel.py"]
