@@ -18,4 +18,8 @@ public interface IUserService
 
     Task<bool> DeleteAsync(string guid, CancellationToken token = default);
     Task<bool> UpdateAsync(UserEntity userEntity, CancellationToken token = default);
+
+    Task<UserEntity> GetAsync(string? id, string? email, string? firstname, string? lastname,
+        DateTime? lastAccessed,
+        CancellationToken token = default);
 }

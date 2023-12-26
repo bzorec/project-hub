@@ -158,6 +158,38 @@ internal class UserService : IUserService
         }
     }
 
+    public async Task<UserEntity> GetAsync(string? id, string? email, string? firstname, string? lastname,
+        DateTime? lastAccessed,
+        CancellationToken token = default)
+    {
+        try
+        {
+            var filter = FilterDefinition<UserEntity>.Empty;
+
+            if (!email.IsNullOrEmpty())
+                filter &= Builders<UserEntity>.Filter.Eq(e => e.Email, email);
+
+            if (!id.IsNullOrEmpty())
+                filter &= Builders<UserEntity>.Filter.Eq(e => e.Id, id);
+
+            if (!firstname.IsNullOrEmpty())
+                filter &= Builders<UserEntity>.Filter.Eq(e => e.FirstName, firstname);
+
+            if (!lastname.IsNullOrEmpty())
+                filter &= Builders<UserEntity>.Filter.Eq(e => e.LastName, lastname);
+
+            if (lastAccessed != null)
+                filter &= Builders<UserEntity>.Filter.Eq(e => e.StatisticsEntity.LastModified, lastAccessed);
+
+            return await _repository.GetAsync(filter, token) ?? throw new Exception();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Error occured while retriving data: {Message}", e.Message);
+            throw;
+        }
+    }
+
     private async Task UpdateLoginCount(UserEntity user, LoginType loginType, CancellationToken token = default)
     {
         if (user == null)

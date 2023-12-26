@@ -1,9 +1,14 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
+using Direct4Me.Core.Auth;
 using Direct4Me.Minimal.Api.Infrastructure;
 using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
 using Direct4Me.Minimal.Api.Models;
+using Direct4Me.Minimal.Api.Models.FaceUnlock;
+using Direct4Me.Minimal.Api.Models.Login;
 using Direct4Me.Repository.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace Direct4Me.Minimal.Api.EndpointDefinitions;
 
@@ -13,8 +18,10 @@ public class UserEndpointDefinition : IEndpointDefinition
     public void DefineEndpoints(WebApplication app)
     {
         app.MapGet("/users", GetAllAsync);
+        app.MapGet("/user", GetAsync);
         app.MapPost("/users", AddAsync);
         app.MapPost("/users/login", LoginAsync);
+        app.MapPost("/users/login/face-login", FaceLoginAsync);
         app.MapPut("/users/{guid}/update", UpdateAsync);
         app.MapDelete("/users/{guid}/delete", DeleteAsync);
     }
@@ -23,11 +30,53 @@ public class UserEndpointDefinition : IEndpointDefinition
     {
     }
 
-    private static async Task<IResult> LoginAsync(IUserService service, User model)
+    private static async Task<IResult> FaceLoginAsync(
+        IUserService service,
+        HttpClient httpClient,
+        FaceUnlockRequest faceUnlock,
+        CancellationToken token = default)
     {
-        return await service.TrySignInAsync(model.Email, model.Password)
-            ? Results.Ok("Signed in.")
-            : Results.BadRequest("Something went wrong.");
+        var user = await service.GetUserByEmailAsync(faceUnlock.Email, token);
+        if (user is { IsFaceUnlock: false }) return Results.Forbid();
+
+        var byteImage = Convert.FromBase64String(faceUnlock.Base64Image);
+        using var imageStream = new MemoryStream(byteImage);
+        var content = new MultipartFormDataContent();
+        var imageContent = new StreamContent(imageStream);
+        imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+
+        content.Add(imageContent, "image", $"{Guid.NewGuid()}.png");
+
+        var response = await httpClient.PostAsync("http://localhost:8000/imgAuthenticate", content, token);
+        if (!response.IsSuccessStatusCode) return Results.BadRequest("Something went wrong.");
+
+        var jsonResponse = await response.Content.ReadAsStringAsync(token);
+        var result = JsonSerializer.Deserialize<AuthenticationResponse>(jsonResponse);
+
+        if (result is { Confidence: >= 1 })
+            return Results.Ok(new FaceUnlockResponse(user.Id,
+                user.Email,
+                user.Fullname,
+                user.StatisticsEntity.TotalLogins,
+                user.StatisticsEntity.LastModified));
+
+        return Results.Forbid();
+    }
+
+    private static async Task<IResult> LoginAsync(IUserService service, LoginRequest model,
+        CancellationToken token = default)
+    {
+        var signedId = await service.TrySignInAsync(model.Email, model.Password, token);
+
+        if (!signedId) return Results.BadRequest("Something went wrong.");
+
+        var user = await service.GetUserByEmailAsync(model.Email, token);
+        return Results.Ok(new LoginResponse(user.Id,
+            user.Email,
+            user.Fullname,
+            user.StatisticsEntity.TotalLogins,
+            user.StatisticsEntity.LastModified,
+            user.IsFaceUnlock));
     }
 
     private static async Task<IResult> UpdateAsync(IUserService service, string guid, User model)
@@ -79,5 +128,24 @@ public class UserEndpointDefinition : IEndpointDefinition
                 user.StatisticsEntity.TotalLogins,
                 user.StatisticsEntity.LastModified)).ToList()
             : new List<User>();
+    }
+
+
+    private static async Task<UserSimple?> GetAsync(
+        IUserService service,
+        [FromQuery] string? id,
+        [FromQuery] string? email,
+        [FromQuery] string? firstname,
+        [FromQuery] string? lastname,
+        [FromQuery] DateTime? lastAccessed)
+    {
+        var user = await service.GetAsync(id, email, firstname, lastname, lastAccessed);
+
+        return new UserSimple(user.Id,
+            user.Email,
+            user.Fullname,
+            user.StatisticsEntity.TotalLogins,
+            user.StatisticsEntity.LastModified,
+            user.IsFaceUnlock);
     }
 }

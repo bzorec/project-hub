@@ -45,4 +45,11 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         filter ??= FilterDefinition<TEntity>.Empty;
         return await MongoCollection.Find(filter).ToListAsync(token);
     }
+
+    public virtual async Task<TEntity> GetAsync(FilterDefinition<TEntity>? filter = null,
+        CancellationToken token = default)
+    {
+        filter ??= FilterDefinition<TEntity>.Empty;
+        return await MongoCollection.Find(filter).FirstOrDefaultAsync(token);
+    }
 }

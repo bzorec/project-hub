@@ -15,4 +15,8 @@ public interface IRepositoryBase<TEntity>
     Task<IEnumerable<TEntity>> GetAllAsync(
         FilterDefinition<TEntity>? filter = default,
         CancellationToken token = default);
+
+    Task<TEntity> GetAsync(
+        FilterDefinition<TEntity>? filter = default,
+        CancellationToken token = default);
 }

@@ -1,7 +1,6 @@
 package com.um.feri.direct4me.android.ui.login
 
 import android.net.Uri
-import LoginViewModel
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
@@ -19,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.um.feri.direct4me.android.BuildConfig
 import com.um.feri.direct4me.android.MainActivity
 import com.um.feri.direct4me.android.R
 import com.um.feri.direct4me.android.databinding.FragmentLoginBinding
@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
@@ -69,43 +69,46 @@ class LoginFragment : Fragment() {
         })
 
         binding.loginButton.setOnClickListener {
-            val username = binding.usernameEditText.text.toString()
+            val email = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
-            loginViewModel.loginWithUsernameAndPassword(requireContext(),username, password)
+            loginViewModel.basicLogin(requireContext(), email, password)
         }
 
         binding.faceUnlockButton.setOnClickListener {
-            // call loginWithFaceUnlock
-            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.CAMERA
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 requestPermissions(arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
             } else {
-
                 val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 if (takePictureIntent.resolveActivity(requireActivity().packageManager) != null) {
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
                 }
             }
-            loginViewModel.loginWithFaceUnlock(requireContext())
         }
 
         binding.registerButton.setOnClickListener {
             Toast.makeText(requireContext(), "Opening webpage...", Toast.LENGTH_SHORT).show()
 
             // redirect to webpage
-            val webPage: Uri = Uri.parse("https://feri.um.si/")
+            val webPage: Uri = Uri.parse(BuildConfig.APP_BASE_URL)
             val intent = Intent(Intent.ACTION_VIEW, webPage)
             if (intent.resolveActivity(requireActivity().packageManager) != null) {
                 startActivity(intent)
             } else {
                 // show a toast message when no app can handle the Intent
-                Toast.makeText(requireContext(), "No application can handle this request.", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(),
+                    "No application can handle this request.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
 
         binding.anotherUserButton.setOnClickListener {
-            // set lastLoggedInUser to null and refresh the fragment
-            loginViewModel.removeLastLoggedInUserId()
-            // refresh fragment:
+            loginViewModel.removeUserModel(requireContext())
             val navController = findNavController()
             navController.popBackStack()
             navController.navigate(R.id.loginFragment)
@@ -113,19 +116,18 @@ class LoginFragment : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            val encodedImage = encodeImage(imageBitmap)
-            // Now call the ViewModel method again passing the taken picture
-            loginViewModel.loginWithFaceUnlockWithImage(requireContext(), encodedImage)
-        }
-    }
 
-    private fun encodeImage(image: Bitmap): String {
-        val baos = ByteArrayOutputStream()
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val imageBytes = baos.toByteArray()
-        return Base64.encodeToString(imageBytes, Base64.DEFAULT)
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as? Bitmap
+            imageBitmap?.let {
+                val stream = ByteArrayOutputStream()
+                it.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+                val byteArrayImage = stream.toByteArray()
+
+                val email = binding.usernameEditText.text.toString()
+                loginViewModel.faceUnlock(requireContext(), email, byteArrayImage)
+            }
+        }
     }
 
     override fun onStart() {
@@ -134,24 +136,34 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        loginViewModel.getLastLoggedInUserId()?.let { userId ->
+        loginViewModel.getUserModel(requireContext())?.let { user ->
             binding.welcomeTextHello.visibility = View.VISIBLE
-            binding.welcomeTextView.text = "$userId"
+            binding.welcomeTextView.text = user.fullname
             binding.welcomeTextView.visibility = View.VISIBLE
-            binding.faceUnlockButton.visibility = View.VISIBLE
+
+            binding.faceUnlockButton.visibility =
+                if (user.isFaceUnlockEnabled) View.VISIBLE else View.GONE
+
             binding.usernameText.visibility = View.GONE
             binding.usernameEditText.visibility = View.GONE
+
             binding.registerButton.visibility = View.GONE
+
             binding.anotherUserButton.visibility = View.VISIBLE
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         when (requestCode) {
             REQUEST_CAMERA_PERMISSION -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
@@ -162,7 +174,8 @@ class LoginFragment : Fragment() {
                     }
                 } else {
                     // permission denied, boo! Disable the functionality that depends on this permission.
-                    Toast.makeText(context, "Permission denied to use Camera", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Permission denied to use Camera", Toast.LENGTH_SHORT)
+                        .show()
                 }
                 return
             }

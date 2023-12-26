@@ -11,3 +11,13 @@ public record User(
     [Required] int TotalLogins,
     [Required] DateTime LastAccess
 );
+
+[Serializable]
+public record UserSimple(
+    [Required] string Guid,
+    [Required] string Email,
+    [Required] string Fullname,
+    [Required] int TotalLogins,
+    [Required] DateTime LastAccess,
+    [Required] bool IsFaceUnlockEnabled
+);

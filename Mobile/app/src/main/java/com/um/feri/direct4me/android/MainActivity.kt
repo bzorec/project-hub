@@ -1,24 +1,19 @@
 package com.um.feri.direct4me.android
 
-import LoginViewModel
-import android.app.Application
+import com.um.feri.direct4me.android.ui.login.LoginViewModel
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.zxing.integration.android.IntentIntegrator
 import com.um.feri.direct4me.android.databinding.ActivityMainBinding
-import com.um.feri.direct4me.android.ui.login.LoginFragment
 
 
 class MainActivity : AppCompatActivity() {

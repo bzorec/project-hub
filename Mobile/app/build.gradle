@@ -33,10 +33,12 @@ android {
         phone {
             dimension "device"
             buildConfigField "String", "API_BASE_URL", '"http://' + InetAddress.localHost.hostAddress.toString() + ':5000/"'
+            buildConfigField "String", "APP_BASE_URL", '"http://' + InetAddress.localHost.hostAddress.toString() + ':8000/"'
         }
         vm {
             dimension "device"
             buildConfigField "String", "API_BASE_URL", '"http://10.0.2.2:5000/"'
+            buildConfigField "String", "APP_BASE_URL", '"http://10.0.2.2:8000/"'
         }
     }
 
