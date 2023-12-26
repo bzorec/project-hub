@@ -53,14 +53,15 @@ public class UserEndpointDefinition : IEndpointDefinition
         var jsonResponse = await response.Content.ReadAsStringAsync(token);
         var result = JsonSerializer.Deserialize<AuthenticationResponse>(jsonResponse);
 
-        if (result is { Confidence: >= 1 })
-            return Results.Ok(new FaceUnlockResponse(user.Id,
+        if (result is not { Confidence: >= 1 }) return Results.Forbid();
+
+        return user != null
+            ? Results.Ok(new FaceUnlockResponse(user.Id,
                 user.Email,
                 user.Fullname,
                 user.StatisticsEntity.TotalLogins,
-                user.StatisticsEntity.LastModified));
-
-        return Results.Forbid();
+                user.StatisticsEntity.LastModified))
+            : Results.Forbid();
     }
 
     private static async Task<IResult> LoginAsync(IUserService service, LoginRequest model,
@@ -71,6 +72,12 @@ public class UserEndpointDefinition : IEndpointDefinition
         if (!signedId) return Results.BadRequest("Something went wrong.");
 
         var user = await service.GetUserByEmailAsync(model.Email, token);
+
+        if (user == null)
+        {
+            return Results.BadRequest();
+        }
+
         return Results.Ok(new LoginResponse(user.Id,
             user.Email,
             user.Fullname,
@@ -110,7 +117,6 @@ public class UserEndpointDefinition : IEndpointDefinition
             : Results.BadRequest("Error occured while adding user.");
     }
 
-
     private static async Task<List<User>> GetAllAsync(
         IUserService service,
         [FromQuery] string? firstname,
@@ -119,7 +125,7 @@ public class UserEndpointDefinition : IEndpointDefinition
     {
         var users = await service.GetAllAsync(firstname, lastname, lastAccessed);
 
-        return users != null && users.Any()
+        return users.Any()
             ? users.Select(user => new User(
                 user.Id,
                 user.Email,
@@ -129,7 +135,6 @@ public class UserEndpointDefinition : IEndpointDefinition
                 user.StatisticsEntity.LastModified)).ToList()
             : new List<User>();
     }
-
 
     private static async Task<UserSimple?> GetAsync(
         IUserService service,
