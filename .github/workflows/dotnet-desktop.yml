@@ -23,9 +23,9 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Restore dependencies
-      run: dotnet restore Direct4Me.sln
+      run: dotnet restore Web/Direct4Me.sln
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release Direct4Me.sln
+      run: dotnet build --no-restore --configuration Release Web/Direct4Me.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal --configuration Release Direct4Me.sln
+      run: dotnet test --no-build --verbosity normal --configuration Release Web/Direct4Me.sln
