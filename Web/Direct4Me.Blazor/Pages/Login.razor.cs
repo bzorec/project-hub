@@ -11,18 +11,18 @@ public partial class Login
         "This is the login page. Enter your email address and password to sign in. Face unlock is also available.";
 
     private const string GuideTitle = "Welcome!";
-    [Inject] private IUserService? UserService { get; set; }
-    [Inject] private NavigationManager? NavigationManager { get; set; }
-    [Inject] private IJwtService? JwtService { get; set; }
-    [Inject] private IJsInteropService? JsInteropService { get; set; }
+    [Inject] private IUserService UserService { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private IJwtService JwtService { get; set; } = null!;
+    [Inject] private IJsInteropService JsInteropService { get; set; } = null!;
+    [Inject] private ILogger<Login> Logger { get; set; } = null!;
 
     private string? ErrorMessage { get; set; }
-    public bool IsLoading { get; set; }
+    private bool IsLoading { get; set; }
 
     public SigninModel LoginModel { get; set; } = new();
 
     private bool ShowPopupGuide { get; set; } = true;
-
 
     private void HandleClosePopup(bool value)
     {
@@ -31,26 +31,41 @@ public partial class Login
 
     public async Task HandleLogin()
     {
-        var signedIn = await UserService.TrySignInAsync(LoginModel.Email, LoginModel.Password);
+        IsLoading = true;
+        ErrorMessage = null;
 
-        if (!signedIn)
+        if (!await UserService.TrySignInAsync(LoginModel.Email, LoginModel.Password))
         {
-            ErrorMessage = "Wrong email or password.";
+            ErrorMessage = "Incorrect email or password. Please try again.";
+            IsLoading = false;
             return;
         }
 
-        var user = await UserService.GetUserByEmailAsync(LoginModel.Email);
+        await ProcessSuccessfulLogin();
+    }
+
+    private async Task ProcessSuccessfulLogin()
+    {
         try
         {
-            var jwtToken = JwtService.GenerateJwtToken(LoginModel.Email, user?.Fullname);
+            var user = await UserService.GetUserByEmailAsync(LoginModel.Email);
+            Logger.LogInformation("Generating JWT token for user: {Email}", user.Email);
+            var jwtToken = JwtService.GenerateJwtToken(user.Email, user.Fullname);
 
             await JsInteropService.SetToken(jwtToken);
+            Logger.LogInformation("JWT token generated and set successfully");
 
             NavigationManager.NavigateTo("/dashboard", true, true);
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            ErrorMessage = e.Message;
+            Logger.LogError(ex, "Error during login process for user: {Email}", LoginModel.Email);
+
+            ErrorMessage = "An error occurred during login. Please try again later.";
+        }
+        finally
+        {
+            IsLoading = false;
         }
     }
 

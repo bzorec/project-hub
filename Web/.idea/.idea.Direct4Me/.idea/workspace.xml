@@ -9,30 +9,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/api/AuthenticationModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/Auth/AuthenticationResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/api/ApiClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/api/ApiClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me.Blazor/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/.idea/.idea.Direct4Me.Blazor/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Utils/FaceRecognition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Utils/FaceRecognition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Minimal.Api/EndpointDefinitions/UserEndpointDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Minimal.Api/EndpointDefinitions/UserEndpointDefinition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Infrastructure/Interfaces/IRepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Infrastructure/Interfaces/IRepositoryBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Infrastructure/RepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Infrastructure/RepositoryBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Services/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Login.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Login.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JwtService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JwtService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Direct4Me.Minimal.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Direct4Me.Minimal.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DockerfileWebApp" beforeDir="false" afterPath="$PROJECT_DIR$/DockerfileWebApp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +32,9 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Repository/Infrastructure/RepositoryBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/DefaultBuilder/src/WebApplication.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/DefaultBuilder/src/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Blazor/Pages/Login.razor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -70,6 +58,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "RiderIisExpressOptionsPageId",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -80,7 +69,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Direct4Me.Minimal.Api: IIS Express">
     <configuration name="Direct4Me.Blazor: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -88,11 +77,11 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
+      <browser name="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="1" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="RUNTIME_TYPE" value="coreclr" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -133,6 +122,7 @@
       <workItem from="1703590633081" duration="601000" />
       <workItem from="1703597001237" duration="2774000" />
       <workItem from="1703605443290" duration="6655000" />
+      <workItem from="1703622171599" duration="4083000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
