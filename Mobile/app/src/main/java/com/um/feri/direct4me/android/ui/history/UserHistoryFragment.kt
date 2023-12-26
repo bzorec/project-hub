@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.um.feri.direct4me.android.R
+import com.um.feri.direct4me.android.core.PreferencesHandler
 
 class UserHistoryFragment : Fragment() {
     private lateinit var viewModel: UserHistoryViewModel
@@ -33,8 +34,10 @@ class UserHistoryFragment : Fragment() {
         viewModel.userHistory.observe(viewLifecycleOwner) { userHistory ->
             adapter.setPostboxHistory(userHistory)
         }
-
-        viewModel.fetchUserHistory("647ccc745144659960953181")
+        val user = PreferencesHandler.getInstance().getUserModel()
+        if (user != null) {
+            viewModel.fetchUserHistory(user.guid)
+        }
 
         return view
     }

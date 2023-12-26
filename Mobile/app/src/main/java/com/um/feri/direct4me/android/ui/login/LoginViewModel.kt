@@ -6,11 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.um.feri.direct4me.android.api.ApiClient
+import com.um.feri.direct4me.android.core.PreferencesHandler
 import java.util.Date
 
 class LoginViewModel : ViewModel() {
-    private val userModelKey = "userModel"
-    private lateinit var sharedPreferences: SharedPreferences
     val loginSuccess = MutableLiveData<Boolean>()
     val takePictureEvent = MutableLiveData<Boolean>()
 
@@ -25,7 +24,7 @@ class LoginViewModel : ViewModel() {
                     totalLogins = response.totalLogins,
                     lastAccess = response.lastAccess
                 )
-                saveUserModel(context, userModel)
+                PreferencesHandler.getInstance().saveUserModel(userModel)
                 loginSuccess.postValue(true)
             } else {
                 loginSuccess.postValue(false)
@@ -44,37 +43,12 @@ class LoginViewModel : ViewModel() {
                     totalLogins = response.totalLogins,
                     lastAccess = response.lastAccess
                 )
-                saveUserModel(context, userModel)
+                PreferencesHandler.getInstance().saveUserModel(userModel)
                 loginSuccess.postValue(true)
             } else {
                 loginSuccess.postValue(false)
             }
         }
-    }
-
-    fun initSharedPreferences(context: Context) {
-        sharedPreferences = context.getSharedPreferences("LoginPreferences", Context.MODE_PRIVATE)
-    }
-
-    private fun saveUserModel(context: Context, userModel: UserSimple) {
-        sharedPreferences = context.getSharedPreferences("LoginPreferences", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        val userModelJson = Gson().toJson(userModel)
-        editor.putString(userModelKey, userModelJson)
-        editor.apply()
-    }
-
-    fun getUserModel(context: Context): UserSimple? {
-        sharedPreferences = context.getSharedPreferences("LoginPreferences", Context.MODE_PRIVATE)
-        val userModelJson = sharedPreferences.getString(userModelKey, null) ?: return null
-        return Gson().fromJson(userModelJson, UserSimple::class.java)
-    }
-
-    fun removeUserModel(context: Context) {
-        sharedPreferences = context.getSharedPreferences("LoginPreferences", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.remove(userModelKey)
-        editor.apply()
     }
 }
 

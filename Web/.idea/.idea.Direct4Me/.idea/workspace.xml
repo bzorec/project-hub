@@ -8,18 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Login.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Login.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JwtService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JwtService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Direct4Me.Minimal.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Direct4Me.Minimal.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DockerfileWebApp" beforeDir="false" afterPath="$PROJECT_DIR$/DockerfileWebApp" afterDir="false" />
-    </list>
+    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +24,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/DefaultBuilder/src/WebApplication.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/DefaultBuilder/src/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Blazor/Pages/Login.razor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Minimal.Api/EndpointDefinitions/UserEndpointDefinition.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -122,7 +112,7 @@
       <workItem from="1703590633081" duration="601000" />
       <workItem from="1703597001237" duration="2774000" />
       <workItem from="1703605443290" duration="6655000" />
-      <workItem from="1703622171599" duration="4083000" />
+      <workItem from="1703622171599" duration="4354000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -140,7 +130,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703097343544</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed generating the jwt token, also added dev environment to docker-file">
+      <option name="closed" value="true" />
+      <created>1703626393317</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703626393317</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed warnings">
+      <option name="closed" value="true" />
+      <created>1703626529554</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703626529554</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +168,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="cleanup" />
     <MESSAGE value="added serilog" />
-    <option name="LAST_COMMIT_MESSAGE" value="added serilog" />
+    <MESSAGE value="fixed generating the jwt token, also added dev environment to docker-file" />
+    <MESSAGE value="fixed warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed warnings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

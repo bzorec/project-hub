@@ -21,6 +21,7 @@ import androidx.navigation.fragment.findNavController
 import com.um.feri.direct4me.android.BuildConfig
 import com.um.feri.direct4me.android.MainActivity
 import com.um.feri.direct4me.android.R
+import com.um.feri.direct4me.android.core.PreferencesHandler
 import com.um.feri.direct4me.android.databinding.FragmentLoginBinding
 import java.io.ByteArrayOutputStream
 
@@ -35,9 +36,7 @@ class LoginFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -47,7 +46,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        loginViewModel.initSharedPreferences(requireContext())
 
         loginViewModel.loginSuccess.observe(viewLifecycleOwner, Observer { isSuccess ->
             if (isSuccess) {
@@ -68,16 +66,21 @@ class LoginFragment : Fragment() {
             }
         })
 
+        val savedUser = PreferencesHandler.getInstance().getUserModel()
+        if (savedUser != null) {
+            binding.usernameEditText.setText(savedUser.email)
+        }
+
         binding.loginButton.setOnClickListener {
-            val email = binding.usernameEditText.text.toString()
+            val email = binding.usernameEditText.text.toString().ifEmpty {
+                savedUser?.email ?: ""
+            }
             val password = binding.passwordEditText.text.toString()
             loginViewModel.basicLogin(requireContext(), email, password)
         }
-
         binding.faceUnlockButton.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.CAMERA
+                    requireContext(), Manifest.permission.CAMERA
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 requestPermissions(arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
@@ -100,15 +103,14 @@ class LoginFragment : Fragment() {
             } else {
                 // show a toast message when no app can handle the Intent
                 Toast.makeText(
-                    requireContext(),
-                    "No application can handle this request.",
-                    Toast.LENGTH_LONG
+                    requireContext(), "No application can handle this request.", Toast.LENGTH_LONG
                 ).show()
             }
         }
 
         binding.anotherUserButton.setOnClickListener {
-            loginViewModel.removeUserModel(requireContext())
+            PreferencesHandler.getInstance().removeUserModel()
+
             val navController = findNavController()
             navController.popBackStack()
             navController.navigate(R.id.loginFragment)
@@ -136,32 +138,48 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        loginViewModel.getUserModel(requireContext())?.let { user ->
-            binding.welcomeTextHello.visibility = View.VISIBLE
-            binding.welcomeTextView.text = user.fullname
-            binding.welcomeTextView.visibility = View.VISIBLE
+        val user = PreferencesHandler.getInstance().getUserModel()
 
-            binding.faceUnlockButton.visibility =
-                if (user.isFaceUnlockEnabled) View.VISIBLE else View.GONE
-
-            binding.usernameText.visibility = View.GONE
-            binding.usernameEditText.visibility = View.GONE
-
-            binding.registerButton.visibility = View.GONE
-
-            binding.anotherUserButton.visibility = View.VISIBLE
+        if (user != null && isValidEmail(user.email)) {
+            showLoggedInUI(user)
+        } else {
+            showLoggedOutUI()
         }
     }
-    
+
+    private fun isValidEmail(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    private fun showLoggedInUI(user: UserSimple) {
+        binding.welcomeTextHello.visibility = View.VISIBLE
+        binding.welcomeTextView.text = user.fullname
+        binding.welcomeTextView.visibility = View.VISIBLE
+        binding.faceUnlockButton.visibility =
+            if (user.isFaceUnlockEnabled) View.VISIBLE else View.GONE
+        binding.usernameText.visibility = View.GONE
+        binding.usernameEditText.visibility = View.GONE
+        binding.registerButton.visibility = View.GONE
+        binding.anotherUserButton.visibility = View.VISIBLE
+    }
+
+    private fun showLoggedOutUI() {
+        binding.welcomeTextHello.visibility = View.GONE
+        binding.welcomeTextView.visibility = View.GONE
+        binding.faceUnlockButton.visibility = View.GONE
+        binding.usernameText.visibility = View.VISIBLE
+        binding.usernameEditText.visibility = View.VISIBLE
+        binding.registerButton.visibility = View.VISIBLE
+        binding.anotherUserButton.visibility = View.GONE
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
         when (requestCode) {
             REQUEST_CAMERA_PERMISSION -> {
