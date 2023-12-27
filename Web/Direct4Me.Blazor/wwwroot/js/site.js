@@ -85,5 +85,29 @@ window.jsInterop = {
 
     openHistoryModal() {
         $('#grantAccessModal').modal('show');
-    }
+    },
+
+    initGoogleMap: initMap,
+
+    addGoogleMapMarker: function (latitude, longitude) {
+        let position = new google.maps.LatLng(latitude, longitude);
+        let marker = new google.maps.Marker({
+            position: position,
+            map: window.map
+        });
+    },
 };
+let map;
+
+async function initMap(latitude = -34.397, longitude = 150.644, zoomLevel = 8) {
+    try {
+        const { Map } = await google.maps.importLibrary("maps");
+
+        map = new Map(document.getElementById("map"), {
+            center: { lat: latitude, lng: longitude },
+            zoom: zoomLevel,
+        });
+    } catch (error) {
+        console.error("Error initializing Google Maps:", error);
+    }
+}
