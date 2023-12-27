@@ -15,10 +15,10 @@ public partial class Users
 
     private UserEntity UserModel { get; set; } = new();
 
-    [Inject] private IJsInteropService JsInteropService { get; set; }
-    [Inject] private NavigationManager NavigationManager { get; set; }
-    [Inject] private IPostboxService PostboxService { get; set; }
-    [Inject] private IUserService UserService { get; set; }
+    [Inject] private IJsInteropService JsInteropService { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private IPostboxService PostboxService { get; set; } = null!;
+    [Inject] private IUserService UserService { get; set; } = null!;
     public string? ErrorMessage { get; set; }
     public string? SuccessMessage { get; set; }
 
@@ -71,7 +71,8 @@ public partial class Users
 
     private UserEntity GetUserById(string userId)
     {
-        return (UserList ?? new List<UserEntity>()).FirstOrDefault(user => user.Id == userId);
+        return (UserList ?? new List<UserEntity>()).FirstOrDefault(user => user.Id == userId) ??
+               throw new InvalidOperationException();
     }
 
     private async Task UpdateUser()

@@ -20,19 +20,19 @@ public partial class Postboxes
 
     private const string GuideTitle = "Postboxes Guide";
     private bool ShowPopupGuide { get; set; } = true;
-    [Inject] private NavigationManager NavigationManager { get; set; }
-    [Inject] private IJsInteropService JsInteropService { get; set; }
-    [Inject] private IPostboxService PostboxService { get; set; }
-    [Inject] private IHistoryService HistoryService { get; set; }
-    [Inject] private IUserService UserService { get; set; }
-    [Inject] private HttpClient HttpClient { get; set; }
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private IJsInteropService JsInteropService { get; set; } = null!;
+    [Inject] private IPostboxService PostboxService { get; set; } = null!;
+    [Inject] private IHistoryService HistoryService { get; set; } = null!;
+    [Inject] private IUserService UserService { get; set; } = null!;
+    [Inject] private HttpClient HttpClient { get; set; } = null!;
     public List<PostboxEntity> PostboxEntities { get; set; } = new();
     public List<PostboxEntity> PostboxOtherEntities { get; set; } = new();
 
     public string? ErrorMessage { get; set; }
 
     private List<UserEntity> UserList { get; set; } = new();
-    private string SelectedUser { get; set; }
+    private string SelectedUser { get; set; } = null!;
     public string SelectedBoxId { get; set; } = string.Empty;
 
     private List<(string, string)> UserStringList { get; set; } = new();
@@ -192,9 +192,9 @@ public partial class Postboxes
             var entity = PostboxEntities.FirstOrDefault(i => i.PostBoxId == ToInt32(SelectedBoxId));
             var user = await UserService.GetUserByIdAsync(SelectedUser);
 
-            entity.AccessList ??= new List<string>();
+            if (entity != null) entity.AccessList ??= new List<string>();
 
-            if (entity?.UserId == user.Id || entity.AccessList.Contains(user.Id))
+            if (entity?.UserId == user!.Id || entity!.AccessList!.Contains(user.Id))
             {
                 await JsInteropService.CloseModalHistoryWindow();
                 ErrorMessage = "You already have access.";
@@ -202,11 +202,8 @@ public partial class Postboxes
                 return;
             }
 
-            if (entity != null)
-            {
-                entity.AccessList?.Add(SelectedUser);
-                await PostboxService.UpdateAsync(entity);
-            }
+            entity.AccessList?.Add(SelectedUser);
+            await PostboxService.UpdateAsync(entity);
 
             await JsInteropService.CloseModalHistoryWindow();
 
@@ -224,11 +221,9 @@ internal class Direct4MeResponseModel
 {
     public int Result { get; set; }
 
-    public string Message { get; set; }
-
     public List<string>? ValidationErrors { get; set; }
 
     public int ErrorNumber { get; set; }
 
-    public string Data { get; set; }
+    public string Data { get; set; } = null!;
 }

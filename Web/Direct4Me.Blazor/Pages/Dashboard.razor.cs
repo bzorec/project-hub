@@ -12,10 +12,10 @@ public partial class Dashboard
 
     private const string GuideTitle = "Dashboard Guide";
     private bool ShowPopupGuide { get; set; } = true;
-    [Inject] private IJsInteropService JsInteropService { get; set; }
-    [Inject] private NavigationManager NavigationManager { get; set; }
-    [Inject] private IPostboxService PostboxService { get; set; }
-    [Inject] private IUserService UserService { get; set; }
+    [Inject] private IJsInteropService JsInteropService { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private IPostboxService PostboxService { get; set; } = null!;
+    [Inject] private IUserService UserService { get; set; } = null!;
 
     public string? ErrorMessage { get; set; }
 

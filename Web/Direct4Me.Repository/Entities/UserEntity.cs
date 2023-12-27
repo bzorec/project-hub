@@ -23,7 +23,7 @@ public class UserEntity : IEntity
 
     public string Password
     {
-        get => _password;
+        get => _password ?? throw new InvalidOperationException();
         set
         {
             // Check if the value matches the expected hashed password format

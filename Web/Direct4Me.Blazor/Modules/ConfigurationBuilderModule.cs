@@ -21,6 +21,7 @@ public static class ConfigurationBuilderModule
     public static void AddJsInteropServices(this IServiceCollection services)
     {
         services.AddScoped<IJsInteropService, JsInteropService>();
+        services.AddScoped<IJsLeafletMapService, JsLeafletMapService>();
         services.AddScoped<IJsGoogleMapsService, JsGoogleMapsService>();
     }
 }

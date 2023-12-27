@@ -10,9 +10,9 @@ public partial class History
     private const string GuideContent = "This is the history page. Here you can see history of postbox unlocks.";
     private const string GuideTitle = "Postbox History";
 
-    [Inject] private IHistoryService? HistoryService { get; set; }
-    [Inject] private IJsInteropService? JsInteropService { get; set; }
-    [Inject] private IUserService? UserService { get; set; }
+    [Inject] private IHistoryService HistoryService { get; set; } = null!;
+    [Inject] private IJsInteropService JsInteropService { get; set; } = null!;
+    [Inject] private IUserService UserService { get; set; } = null!;
 
     private List<PostboxHistoryEntity> UnlockHistory { get; set; } = new List<PostboxHistoryEntity>();
     private bool ShowPopupGuide { get; set; } = true;

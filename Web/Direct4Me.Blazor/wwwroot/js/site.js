@@ -87,27 +87,49 @@ window.jsInterop = {
         $('#grantAccessModal').modal('show');
     },
 
-    initGoogleMap: initMap,
+    initMap: initMap,
+    addMarker: addMarker,
+    drawPath: drawPath,
+    showSpinner: showSpinner,
+    hideSpinner: hideSpinner
 
-    addGoogleMapMarker: function (latitude, longitude) {
-        let position = new google.maps.LatLng(latitude, longitude);
-        let marker = new google.maps.Marker({
-            position: position,
-            map: window.map
-        });
-    },
 };
-let map;
 
-async function initMap(latitude = -34.397, longitude = 150.644, zoomLevel = 8) {
-    try {
-        const { Map } = await google.maps.importLibrary("maps");
+let globalMap;
 
-        map = new Map(document.getElementById("map"), {
-            center: { lat: latitude, lng: longitude },
-            zoom: zoomLevel,
-        });
-    } catch (error) {
-        console.error("Error initializing Google Maps:", error);
+function initMap(latitude, longitude, zoomLevel) {
+    const mapContainer = document.getElementById('map');
+    if (!mapContainer) {
+        console.error('Map container not found');
+        return;
     }
+    if (globalMap) {
+        return;
+    }
+    
+    let map = L.map('map').setView([latitude, longitude], zoomLevel);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    globalMap = map;
+}
+
+function addMarker(latitude, longitude) {
+    L.marker([latitude, longitude]).addTo(globalMap);
+}
+
+function drawPath(latlngs) {
+    let polyline = L.polyline(latlngs, {color: 'blue'}).addTo(globalMap);
+    globalMap.fitBounds(polyline.getBounds());
+}
+
+function showSpinner() {
+    document.getElementById('map-spinner').style.display = 'block';
+}
+
+function hideSpinner() {
+    document.getElementById('map-spinner').style.display = 'none';
 }

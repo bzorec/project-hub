@@ -12,8 +12,8 @@ public partial class Register
 
     private const string GuideTitle = "Sign Up Guide";
     private bool ShowPopupGuide { get; set; } = true;
-    [Inject] private IUserService UserService { get; set; }
-    [Inject] private NavigationManager NavigationManager { get; set; }
+    [Inject] private IUserService UserService { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
     public RegistrationModel RegisterModel { get; set; } = new();
 
     private string? ErrorMessage { get; set; }

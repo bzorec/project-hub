@@ -44,11 +44,11 @@ public partial class NavigationMenu : ComponentBase
         new() {Name = "(Sign out)", Href = "/logout"}
     };
 
-    [Inject] private NavigationManager Navigation { get; set; }
-    [Inject] private IJwtService JwtService { get; set; }
-    [Inject] private IJsInteropService JsInteropService { get; set; }
-    [Inject] private IUserService Service { get; set; }
-    [Inject] private IJSRuntime JsRuntime { get; set; }
+    [Inject] private NavigationManager Navigation { get; set; } = null!;
+    [Inject] private IJwtService JwtService { get; set; } = null!;
+    [Inject] private IJsInteropService JsInteropService { get; set; } = null!;
+    [Inject] private IUserService Service { get; set; } = null!;
+    [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
 
     [Parameter] public NavigationType NavigationType { get; set; }
 

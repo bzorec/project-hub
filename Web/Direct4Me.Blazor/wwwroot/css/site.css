@@ -8,10 +8,6 @@ html, body {
     color: #ffffff; /* Light text color for better readability */
 }
 
-#map {
-    height: 100%;
-}
-
 .container-fluid {
     height: 100%;
     padding-left: 0;

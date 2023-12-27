@@ -1,6 +1,5 @@
 @page "/facerecognition"
 @using Direct4Me.Blazor.Utils
-@using Direct4Me.Repository.Entities
 @using Direct4Me.Repository.Services.Interfaces
 @using Direct4Me.Blazor.Services
 @inject IFaceRecognitionService Service
@@ -40,20 +39,19 @@
 
 @code {
 
-        private const string GuideContent =
-            "This is the face unlock page. Use your facial recognition to securely log in to your account.";
+    private const string GuideContent =
+        "This is the face unlock page. Use your facial recognition to securely log in to your account.";
 
-        private const string GuideTitle = "Face Unlock Guide";
+    private const string GuideTitle = "Face Unlock Guide";
 
     private bool ShowPopupGuide { get; set; } = true;
 
-    [Parameter]
-    public bool IsSetup { get; set; }
+    [Parameter] public bool IsSetup { get; set; }
 
-    private string UserEmail { get; set; }
+    private string UserEmail { get; set; } = null!;
     private bool IsLoading { get; set; }
-    private string ErrorMessage { get; set; }
-    private List<MemoryStream> ImageStreams { get; } = new List<MemoryStream>();
+    private string ErrorMessage { get; set; } = null!;
+    private List<MemoryStream> ImageStreams { get; } = new();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -96,7 +94,7 @@
         }
         catch (Exception ex)
         {
-    // ErrorMessage = "An error occurred while initializing the camera.";
+            // ErrorMessage = "An error occurred while initializing the camera.";
             Logger.LogError(ex, "An error occurred while initializing the camera");
         }
     }
@@ -108,8 +106,8 @@
             IsLoading = true;
             ErrorMessage = string.Empty;
 
-    // var imageBytes = await JsRuntime.InvokeAsync<byte[]>("captureImageFromVideo");
-            byte[] imageBytes = new byte[] {};
+            // var imageBytes = await JsRuntime.InvokeAsync<byte[]>("captureImageFromVideo");
+            byte[] imageBytes = { };
 
             if (UserEmail == "abezjak@gmail.com")
             {
@@ -124,30 +122,36 @@
 
             ImageStreams.Add(imageStream);
 
-            if (IsSetup && ImageStreams.Count == 5)
+            switch (IsSetup)
             {
-                var result = await Service.SetupFaceRecognition(ImageStreams);
-                ImageStreams.Clear();
-            }
-            else if (!IsSetup)
-            {
-                var result = await Service.RecognizeFace(UserEmail, imageStream);
-                if (UserEmail != null && result)
+                case true when ImageStreams.Count == 5:
                 {
-                    var user = await UserService.GetUserByEmailAsync(UserEmail);
-                    if (user is not null)
+                    var result = await Service.SetupFaceRecognition(ImageStreams);
+                    ImageStreams.Clear();
+                    break;
+                }
+                case false:
+                {
+                    var result = await Service.RecognizeFace(UserEmail, imageStream);
+                    if (result)
                     {
-                        try
+                        var user = await UserService.GetUserByEmailAsync(UserEmail);
+                        if (user is not null)
                         {
-                            var jwtToken = JwtService.GenerateJwtToken(UserEmail, user.Fullname);
-                            await InteropService.SetToken(jwtToken);
-                            NavigationManager.NavigateTo("/dashboard", true, true);
-                        }
-                        catch (Exception e)
-                        {
-                            ErrorMessage = e.Message;
+                            try
+                            {
+                                var jwtToken = JwtService.GenerateJwtToken(UserEmail, user.Fullname);
+                                await InteropService.SetToken(jwtToken);
+                                NavigationManager.NavigateTo("/dashboard", true, true);
+                            }
+                            catch (Exception e)
+                            {
+                                ErrorMessage = e.Message;
+                            }
                         }
                     }
+
+                    break;
                 }
             }
         }

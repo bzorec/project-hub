@@ -11,10 +11,10 @@ public partial class User
         "This is the profile page. Here you can edit your profile. Face unlock is also available, to enable it click the button and take a selfie.";
 
     private const string GuideTitle = "Profile guide!";
-    [Inject] private IUserService UserService { get; set; }
-    [Inject] private NavigationManager NavigationManager { get; set; }
-    [Inject] private IJwtService JwtService { get; set; }
-    [Inject] private IJsInteropService JsInteropService { get; set; }
+    [Inject] private IUserService UserService { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private IJwtService JwtService { get; set; } = null!;
+    [Inject] private IJsInteropService JsInteropService { get; set; } = null!;
     public string? SuccessMessage { get; set; }
     private string? ErrorMessage { get; set; }
     public bool IsLoading { get; set; }

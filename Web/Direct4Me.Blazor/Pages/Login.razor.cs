@@ -49,10 +49,14 @@ public partial class Login
         try
         {
             var user = await UserService.GetUserByEmailAsync(LoginModel.Email);
-            Logger.LogInformation("Generating JWT token for user: {Email}", user.Email);
-            var jwtToken = JwtService.GenerateJwtToken(user.Email, user.Fullname);
+            Logger.LogInformation("Generating JWT token for user: {Email}", user?.Email);
+            if (user != null)
+            {
+                var jwtToken = JwtService.GenerateJwtToken(user.Email, user.Fullname);
 
-            await JsInteropService.SetToken(jwtToken);
+                await JsInteropService.SetToken(jwtToken);
+            }
+
             Logger.LogInformation("JWT token generated and set successfully");
 
             NavigationManager.NavigateTo("/dashboard", true, true);

@@ -1,8 +1,11 @@
 @page "/map"
 @inherits Direct4Me.Blazor.Components.MapBase
-<div id="map"></div>
 
-@* @if (IsPostman) *@
-@* { *@
-@*     <button @onclick="CalculateOptimalRoute">Calculate Optimal Route</button> *@
-@* } *@
+<div class="map-layout">
+    <div class="sidebar">
+        <button @onclick="CalculateOptimalRoute">Calculate Optimal Route</button>
+    </div>
+    <div id="map" class="map"></div>
+</div>
+
+<div id="map-spinner" class="spinner"></div>

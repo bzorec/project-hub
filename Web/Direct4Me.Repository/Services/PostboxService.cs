@@ -59,9 +59,6 @@ internal class PostboxService : IPostboxService
     {
         var postbox = await _repository.GetByIdAsync(postboxId, token);
 
-        if (postbox == null)
-            return null;
-
         postbox.StatisticsEntity.UpdateStatisticsDates();
 
         await _repository.UpdateAsync(postbox, token);
@@ -110,7 +107,7 @@ internal class PostboxService : IPostboxService
     public async Task<List<string>> GetOtherPostboxIdsForUser(string userId, CancellationToken token = default)
     {
         var postboxes = await _repository.GetAllAsync(token: token);
-        var postboxIds = postboxes.Where(i => i.AccessList.Contains(userId)).Select(p => p.Id).ToList();
+        var postboxIds = postboxes.Where(i => i.AccessList != null && i.AccessList.Contains(userId)).Select(p => p.Id).ToList();
 
         return postboxIds;
     }
@@ -121,12 +118,9 @@ internal class PostboxService : IPostboxService
 
         var postbox = postboxes.FirstOrDefault(i => i.PostBoxId.ToString() == boxId);
 
-        if (postbox == null)
-            return null;
+        postbox?.StatisticsEntity.UpdateStatisticsDates();
 
-        postbox.StatisticsEntity.UpdateStatisticsDates();
-
-        await _repository.UpdateAsync(postbox, token);
+        await _repository.UpdateAsync(postbox ?? throw new InvalidOperationException(), token);
 
         return postbox;
     }

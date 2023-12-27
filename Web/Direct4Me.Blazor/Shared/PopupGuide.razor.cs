@@ -5,9 +5,9 @@ namespace Direct4Me.Blazor.Shared;
 public partial class PopupGuide
 {
     private bool _skipGuide;
-    [Parameter] public string Title { get; set; }
+    [Parameter] public string Title { get; set; } = null!;
 
-    [Parameter] public string Content { get; set; }
+    [Parameter] public string Content { get; set; } = null!;
 
     [Parameter] public bool IsPopupVisible { get; set; }
 

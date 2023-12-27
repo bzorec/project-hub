@@ -1,28 +1,65 @@
 :root {
     --background-color: #121212; /* Very dark gray, almost black */
+    --sidebar-bg-color: #1C1C1C; /* Dark gray for sidebar background */
     --card-bg-color: #1C1C1C; /* Dark gray for card background */
+    --text-color: #DDD; /* Light gray for text */
     --input-bg-color: #2C2C2C; /* Darker gray for input fields */
     --input-text-color: #DDD; /* Light gray for input text */
     --input-placeholder-color: #666; /* Placeholder text color */
     --input-border-color: #333; /* Border color for input fields */
-    --card-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Realistic shadow */
+    --card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Realistic shadow */
+    --button-bg-color: #333; /* Dark gray for buttons */
+    --button-hover-bg-color: #444; /* Slightly lighter gray for button hover */
+    --button-text-color: #FFF; /* White text on buttons */
 }
 
 body {
     background-color: var(--background-color);
-    color: white;
+    color: var(--text-color);
+    margin: 0; /* Remove default margin */
 }
 
-.card-body-custom {
-    background-color: var(--card-bg-color);
-    color: white; /* White text color */
-    padding: 2rem; /* Larger padding for bigger card */
+.map-layout {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg-color);
+    padding: 20px;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+}
+
+.map {
+    flex-grow: 1;
+    height: 100%;
+}
+
+.sidebar-button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar-button:hover {
+    background-color: var(--button-hover-bg-color);
 }
 
 .form-control-custom {
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
     border: 1px solid var(--input-border-color);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .form-control-custom::placeholder {
@@ -32,14 +69,13 @@ body {
 .form-control-custom:focus {
     border-color: #80bdff;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* A subtle blue glow */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.card-custom-shadow {
-    box-shadow: var(--card-shadow);
-}
-
-/* Optional: Override Bootstrap's default focus glow */
-.form-control:focus {
-    box-shadow: none;
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
 }

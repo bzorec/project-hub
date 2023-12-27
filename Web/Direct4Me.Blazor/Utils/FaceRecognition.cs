@@ -107,7 +107,7 @@ public class FaceRecognitionService : IFaceRecognitionService
                 imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
 
                 content.Add(imageContent, "image", $"{Guid.NewGuid()}.png");
-                content.Add(new StringContent(user), "userId"); // Add the userId parameter
+                content.Add(new StringContent(user ?? throw new InvalidOperationException()), "userId"); // Add the userId parameter
 
                 var response = await _httpClient.PostAsync("localhost:8000/uploadImage", content);
 
