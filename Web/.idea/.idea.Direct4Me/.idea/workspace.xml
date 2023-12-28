@@ -8,11 +8,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="skipped the test">
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspData.cs" afterDir="false" />
+    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="added data parser">
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/City.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/City.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +42,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/DefaultBuilder/src/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/JSInterop/Microsoft.JSInterop/src/JSRuntimeExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -131,7 +136,7 @@
       <workItem from="1703605443290" duration="6655000" />
       <workItem from="1703622171599" duration="4354000" />
       <workItem from="1703663185463" duration="10183000" />
-      <workItem from="1703749492191" duration="3707000" />
+      <workItem from="1703749492191" duration="7218000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -197,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703752326267</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added data parser">
+      <option name="closed" value="true" />
+      <created>1703753329566</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703753329566</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +238,8 @@
     <MESSAGE value="added leaflet to the project as map google is not free anymore, fixed initialization of scripts, fixed nullable warnings" />
     <MESSAGE value="rewrote tsp algorithm to c#, added test where it will ran" />
     <MESSAGE value="skipped the test" />
-    <option name="LAST_COMMIT_MESSAGE" value="skipped the test" />
+    <MESSAGE value="added data parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="added data parser" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -257,30 +271,17 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs</url>
-          <line>21</line>
-          <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.Core\TravellingSalesmanProblem\GeneticAlgorithm.cs" initialLine="21" containingFunctionPresentation="Method 'Execute'">
+          <url>file://$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs</url>
+          <line>22</line>
+          <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.UnitTests\TravellingSalesmanProblemTests\TestTsp.cs" initialLine="22" containingFunctionPresentation="Method 'TestTspAlgorithm'">
             <startOffsets>
-              <option value="579" />
+              <option value="659" />
             </startOffsets>
             <endOffsets>
-              <option value="610" />
+              <option value="705" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs</url>
-          <line>99</line>
-          <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.Core\TravellingSalesmanProblem\TspAlgorithm.cs" initialLine="99" containingFunctionPresentation="Method 'LoadData'">
-            <startOffsets>
-              <option value="3201" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3216" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

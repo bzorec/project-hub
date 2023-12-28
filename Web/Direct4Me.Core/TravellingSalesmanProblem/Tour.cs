@@ -6,7 +6,7 @@ public class Tour
     {
         Distance = tour.Distance;
         Dimension = tour.Dimension;
-        Path = new List<City>(tour.Path.Select(city => new City(city)));
+        Path = tour.Path.Select(city => city != null ? new City(city) : null).ToList();
     }
 
     public Tour(int dimension)
@@ -18,7 +18,7 @@ public class Tour
 
     public double Distance { get; set; }
     public int Dimension { get; }
-    public List<City> Path { get; private set; }
+    public List<City> Path { get; set; }
 
     public Tour Clone()
     {

@@ -3,49 +3,88 @@ namespace Direct4Me.Core.TravellingSalesmanProblem;
 public class TspAlgorithm
 {
     private readonly Random _random;
-    private readonly List<City> Cities = new();
-    private readonly DistanceType DistanceType = DistanceType.Euclidean;
-    private readonly int MaxEvaluations;
-    private string? Name;
-    private int NumberOfCities;
-    private int NumberOfEvaluations;
-    private City? Start;
-    private double[][]? Weights;
+    public List<City> Cities { get; private set; }
+    public DistanceType DistanceType { get; private set; } = DistanceType.Euclidean;
+    public int MaxEvaluations { get; private set; }
+    public string? Name { get; private set; }
+    public int NumberOfCities => Cities.Count;
+    public int NumberOfEvaluations { get; private set; }
+    public City? Start => Cities.FirstOrDefault(); // Assuming the start is always the first city
+    public double[][]? Weights { get; private set; } // If needed
+
 
     public TspAlgorithm(string path, int maxEvaluations)
     {
+        _random = new Random();
+        MaxEvaluations = maxEvaluations;
         LoadData(path);
         NumberOfEvaluations = 0;
-        MaxEvaluations = maxEvaluations;
-        _random = new Random(1);
+    }
+
+    private void LoadData(string path)
+    {
+        Cities = new List<City>();
+
+        var lines = File.ReadAllLines(path);
+        foreach (var line in lines)
+        {
+            if (line.StartsWith("NAME:"))
+                Name = line.Split(':')[1].Trim();
+            else if (line.StartsWith("DIMENSION:"))
+                // Handle dimension line if needed
+                continue;
+            else if (line.StartsWith("NODE_COORD_SECTION"))
+                break; // Start processing city data
+        }
+
+        foreach (var line in lines.SkipWhile(l => !l.StartsWith("NODE_COORD_SECTION")).Skip(1))
+        {
+            if (line == "EOF") break;
+
+            var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var city = new City
+            {
+                Index = int.Parse(parts[0]),
+                CordX = double.Parse(parts[1]),
+                CordY = double.Parse(parts[2])
+            };
+            Cities.Add(city);
+        }
     }
 
     public void Evaluate(Tour tour)
     {
+        if (tour.Path == null || tour.Path.Count != NumberOfCities)
+        {
+            throw new InvalidOperationException("Tour path is not properly initialized or does not cover all cities.");
+        }
+
         double distance = 0;
-        distance += CalculateDistance(Start, tour.Path[0]);
-        for (var index = 0; index < NumberOfCities; index++)
-            if (index + 1 < NumberOfCities)
-                distance += CalculateDistance(tour.Path[index], tour.Path[index + 1]);
-            else
-                distance += CalculateDistance(tour.Path[index], Start);
+
+        // Calculate distance for each leg of the journey
+        for (var index = 0; index < tour.Path.Count - 1; index++)
+        {
+            distance += CalculateDistance(tour.Path[index], tour.Path[index + 1]);
+        }
+
+        // Add distance from the last city back to the start city
+        distance += CalculateDistance(tour.Path.Last(), Start);
+
         tour.Distance = distance;
         NumberOfEvaluations++;
     }
 
     private double CalculateDistance(City? from, City? to)
     {
-        switch (DistanceType)
+        if (from == null || to == null)
+           return double.MaxValue;
+
+        return DistanceType switch
         {
-            case DistanceType.Euclidean:
-                // Implement Euclidean distance calculation
-                return 0;
-            case DistanceType.Weighted:
-                // Implement weighted distance calculation
-                return 0;
-            default:
-                return double.MaxValue;
-        }
+            DistanceType.Euclidean => TspHelper.CalculateEuclideanDistance(from, to),
+            DistanceType.Weighted => TspHelper.CalculateWeightedDistance(from, to, 1D),
+            _ => double.MaxValue
+        };
     }
 
     public Tour GenerateTour()
@@ -58,55 +97,7 @@ public class TspAlgorithm
         return tour;
     }
 
-    public static TspData LoadData(string path)
-    {
-        var tspData = new TspData();
+    public int GetMaxEvaluations() => MaxEvaluations;
 
-        try
-        {
-            var lines = File.ReadAllLines(path);
-            var nodeSectionStarted = false;
-
-            foreach (var line in lines)
-                if (line.StartsWith("NAME"))
-                {
-                    tspData.Name = line.Split(new[] { ':' })[1].Trim();
-                }
-                else if (line.StartsWith("DIMENSION"))
-                {
-                    tspData.Dimension = int.Parse(line.Split(new[] { ':' })[1].Trim());
-                }
-                else if (line.StartsWith("NODE_COORD_SECTION"))
-                {
-                    nodeSectionStarted = true;
-                }
-                else if (nodeSectionStarted)
-                {
-                    if (line.StartsWith("EOF")) break;
-
-                    var parts = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    var index = int.Parse(parts[0]);
-                    var x = double.Parse(parts[1]);
-                    var y = double.Parse(parts[2]);
-
-                    tspData.Cities.Add(new City { Index = index, CordX = x, CordY = y });
-                }
-        }
-        catch (Exception e)
-        {
-            Console.Error.WriteLine("Error loading file " + path + ": " + e.Message);
-        }
-
-        return tspData;
-    }
-
-    public int GetMaxEvaluations()
-    {
-        return MaxEvaluations;
-    }
-
-    public int GetNumberOfEvaluations()
-    {
-        return NumberOfEvaluations;
-    }
+    public int GetNumberOfEvaluations() => NumberOfEvaluations;
 }

@@ -1,4 +1,5 @@
 using Direct4Me.Core.TravellingSalesmanProblem;
+using FluentAssertions;
 
 namespace Direct4Me.UnitTests.TravellingSalesmanProblemTests;
 
@@ -6,7 +7,7 @@ public class TestTsp
 {
     private readonly Random _random = new(123);
 
-    [Fact(Skip = "TODO")]
+    [Fact]
     public void TestTspAlgorithm()
     {
         var basePath = AppDomain.CurrentDomain.BaseDirectory;
@@ -18,13 +19,9 @@ public class TestTsp
             var ga = new GeneticAlgorithm(100, 0.8, 0.1);
             var bestPath = ga.Execute(eilTsp);
 
-            // Here you can assert specific conditions about bestPath
-            // For example, you can check if the bestPath's distance is within expected range
-
-            // Assert.True(bestPath.Distance < someExpectedMaximum);
-            // Assert.True(bestPath.Distance > someExpectedMinimum);
-
-            // Save min, avg, and std
+            bestPath.Should().NotBeNull();
+            bestPath.Path.Count.Should().BeGreaterThan(0);
+            bestPath.Path.Count.Should().Be(101);
         }
     }
 }

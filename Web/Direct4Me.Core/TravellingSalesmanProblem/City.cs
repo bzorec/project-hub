@@ -8,7 +8,8 @@ public class City
 
     public City(City city)
     {
-        if (city == null) throw new ArgumentNullException(nameof(city), "Cannot clone a null City.");
+        if (city == null)
+            throw new ArgumentNullException(nameof(city), "Cannot clone a null City.");
 
         Index = city.Index;
         CordX = city.CordX;
