@@ -10,6 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="6.12.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
         <PackageReference Include="xunit" Version="2.6.3" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.5.5">
@@ -23,7 +24,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Direct4Me.Core\Direct4Me.Core.csproj" />
       <ProjectReference Include="..\Direct4Me.Repository\Direct4Me.Repository.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Data\eil101.tsp" />
+      <Content Include="Data\eil101.tsp">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
