@@ -23,7 +23,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Direct4Me.Core\Direct4Me.Core.csproj" />
       <ProjectReference Include="..\Direct4Me.Repository\Direct4Me.Repository.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Data\eil101.tsp" />
+      <Content Include="Data\eil101.tsp">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

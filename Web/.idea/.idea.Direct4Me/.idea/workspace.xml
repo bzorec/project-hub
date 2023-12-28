@@ -8,46 +8,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="added google maps to project">
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/images/layers-2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/images/layers.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/images/marker-icon-2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/images/marker-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/images/marker-shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet-src.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet-src.esm.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet-src.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet-src.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/jsLibraryMappings.xml" afterDir="false" />
+    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/City.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/DistanceType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Data/a280.tsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Data/bays29.tsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Data/dca1389.tsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Data/eil101.tsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Data/pr1002.tsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Modules/ConfigurationBuilderModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Modules/ConfigurationBuilderModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/History.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/History.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Index.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Index.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Login.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Login.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Logout.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Logout.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Postboxes.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Postboxes.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/User.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/User.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Users.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Users.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/_Host.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Shared/FaceRecognitionComponent.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Shared/FaceRecognitionComponent.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Shared/NavigationMenu.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Shared/NavigationMenu.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Shared/PopupGuide.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Shared/PopupGuide.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Utils/FaceRecognition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Utils/FaceRecognition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/bootstrap-custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/bootstrap-custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Auth/AuthenticationResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Auth/AuthenticationResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Models/History.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Minimal.Api/Models/History.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PostboxHistoryEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PostboxHistoryEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Entities/UserEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Entities/UserEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Services/PostboxService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Services/PostboxService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +48,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/DefaultBuilder/src/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/JSInterop/Microsoft.JSInterop/src/JSRuntimeExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Blazor/Modules/ConfigurationBuilderModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Blazor/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Blazor/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Blazor/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Blazor/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
@@ -168,7 +144,8 @@
       <workItem from="1703597001237" duration="2774000" />
       <workItem from="1703605443290" duration="6655000" />
       <workItem from="1703622171599" duration="4354000" />
-      <workItem from="1703663185463" duration="10087000" />
+      <workItem from="1703663185463" duration="10183000" />
+      <workItem from="1703749492191" duration="2519000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -210,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703666759516</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added leaflet to the project as map google is not free anymore, fixed initialization of scripts, fixed nullable warnings">
+      <option name="closed" value="true" />
+      <created>1703673395281</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1703673395281</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +220,8 @@
     <MESSAGE value="fixed generating the jwt token, also added dev environment to docker-file" />
     <MESSAGE value="fixed warnings" />
     <MESSAGE value="added google maps to project" />
-    <option name="LAST_COMMIT_MESSAGE" value="added google maps to project" />
+    <MESSAGE value="added leaflet to the project as map google is not free anymore, fixed initialization of scripts, fixed nullable warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="added leaflet to the project as map google is not free anymore, fixed initialization of scripts, fixed nullable warnings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
