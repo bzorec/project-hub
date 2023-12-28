@@ -27,9 +27,6 @@ public class ImageCompressor {
             // Debug logs
             Log.d(TAG, "Compression time: " + (endCompressionTime - startCompressionTime) + " ms");
 
-            // Save compressed image to a file
-            saveCompressedImageToFile(context, compressedImageArray);
-
         } catch (Exception e) {
             e.printStackTrace();
             // Debug logs for errors
