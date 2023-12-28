@@ -1,5 +1,7 @@
-﻿using System.Collections;
-using System.Drawing;
+﻿using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp;
+using System.Collections;
+using System.Xml.Linq;
 
 namespace ImageCompressorDecompressor;
 
@@ -24,59 +26,58 @@ public static class ImageProcessingExtensions
     }
 
     // Reverse the prediction to reconstruct the image based on list E
-    public static Bitmap ReversePredict(IReadOnlyList<int> e, int height, int width)
+    public static Image<Argb32> ReversePredict(IReadOnlyList<int> e, int height, int width)
     {
-        var image = new Bitmap(width, height);
+        var image = new Image<Argb32>(width, height);
 
         for (var x = 0; x < width; x++)
-        for (var y = 0; y < height; y++)
-        {
-            var value = e[x * height + y];
-
-            Color color;
-
-            if (x == 0 && y == 0)
+            for (var y = 0; y < height; y++)
             {
-                color = Color.FromArgb(Clamp(value), Clamp(value), Clamp(value));
-            }
-            else if (y == 0)
-            {
-                var x1 = Clamp(image.GetPixel(x - 1, 0).R - value);
-                color = Color.FromArgb(x1, x1, x1);
-            }
-            else if (x == 0)
-            {
-                var y1 = Clamp(image.GetPixel(0, y - 1).R - value);
-                color = Color.FromArgb(y1, y1, y1);
-            }
-            else
-            {
-                int leftNeighbour = image.GetPixel(x - 1, y).R;
-                int upNeighbour = image.GetPixel(x, y - 1).R;
-                int diagonalNeighbour = image.GetPixel(x - 1, y - 1).R;
+                var value = e[x * height + y];
 
-                var max = Math.Max(leftNeighbour, upNeighbour);
-                var min = Math.Min(leftNeighbour, upNeighbour);
+                Argb32 color;
 
-                if (diagonalNeighbour >= max)
+                if (x == 0 && y == 0)
                 {
-                    color = Color.FromArgb(Clamp(min - value), Clamp(min - value),
-                        Clamp(min - value));
+                    var clamp = Clamp(value);
+                    color = new Argb32((byte)value, (byte)value, (byte)value);
                 }
-                else if (diagonalNeighbour <= min)
+                else if (y == 0)
                 {
-                    color = Color.FromArgb(Clamp(max - value), Clamp(max - value),
-                        Clamp(max - value));
+                    var x1 = Clamp(image[x - 1, 0].R - value);
+                    color = new Argb32((byte)x1, (byte)x1, (byte)x1);
+                }
+                else if (x == 0)
+                {
+                    var x1 = Clamp(image[0, y - 1].R - value);
+                    color = new Argb32((byte)x1, (byte)x1, (byte)x1);
                 }
                 else
                 {
-                    var tmp = leftNeighbour + upNeighbour - diagonalNeighbour;
-                    color = Color.FromArgb(Clamp(tmp - value), Clamp(tmp - value), Clamp(tmp - value));
-                }
-            }
+                    int leftNeighbour = image[x - 1, y].R;
+                    int upNeighbour = image[x, y - 1].R;
+                    int diagonalNeighbour = image[x - 1, y - 1].R;
 
-            image.SetPixel(x, y, color);
-        }
+                    var max = Math.Max(leftNeighbour, upNeighbour);
+                    var min = Math.Min(leftNeighbour, upNeighbour);
+
+                    if (diagonalNeighbour >= max)
+                    {
+                        color = new Argb32((byte)Clamp(min - value), (byte)Clamp(min - value), (byte)Clamp(min - value));
+                    }
+                    else if (diagonalNeighbour <= min)
+                    {
+                        color = new Argb32((byte)Clamp(max - value), (byte)Clamp(max - value), (byte)Clamp(max - value));
+                    }
+                    else
+                    {
+                        var tmp = leftNeighbour + upNeighbour - diagonalNeighbour;
+                        color = new Argb32((byte)Clamp(tmp - value), (byte)Clamp(tmp - value), (byte)Clamp(tmp - value));
+                    }
+                }
+
+                image[x, y] = color;
+            }
 
         return image;
     }
@@ -130,8 +131,10 @@ public static class ImageProcessingExtensions
     }
 
     // Decompress the input file and save the decompressed image
-    public static Bitmap Decompress(this byte[] allBytes)
-    { 
+    public static Image<Argb32> Decompress(this byte[] allBytes)
+    {
+        File.WriteAllBytes($"compressed.bin", allBytes);
+
         var bitArray = new BitArray(allBytes);
 
         bitArray.ReorderBytes();
