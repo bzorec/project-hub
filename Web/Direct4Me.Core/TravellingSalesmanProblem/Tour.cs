@@ -6,34 +6,36 @@ public class Tour
     {
         Distance = tour.Distance;
         Dimension = tour.Dimension;
-        Path = (City?[])tour.Path.Clone();
+        Path = new List<City>(tour.Path.Select(city => new City(city)));
     }
 
     public Tour(int dimension)
     {
         Dimension = dimension;
-        Path = new City[dimension];
+        Path = new List<City>(new City[dimension]);
         Distance = double.MaxValue;
     }
 
     public double Distance { get; set; }
     public int Dimension { get; }
-    public City?[] Path { get; private set; }
+    public List<City> Path { get; private set; }
 
     public Tour Clone()
     {
         return new Tour(this);
     }
 
-    public void SetPath(City[] path)
+    public void SetPath(IEnumerable<City> path)
     {
-        Path = (City?[])path.Clone();
+        Path = new List<City>(path.Select(city => new City(city)));
         Distance = double.MaxValue;
     }
 
-    public void SetCity(int index, City? city)
+    public void SetCity(int index, City city)
     {
-        Path[index] = city;
+        while (index >= Path.Count) Path.Add(new City());
+
+        Path[index] = new City(city);
         Distance = double.MaxValue;
     }
 }

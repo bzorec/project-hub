@@ -2,9 +2,10 @@ namespace Direct4Me.Core.TravellingSalesmanProblem;
 
 public class TspAlgorithm
 {
+    private readonly Random _random;
+    private readonly List<City> Cities = new();
     private readonly DistanceType DistanceType = DistanceType.Euclidean;
     private readonly int MaxEvaluations;
-    private List<City> Cities = new();
     private string? Name;
     private int NumberOfCities;
     private int NumberOfEvaluations;
@@ -16,6 +17,7 @@ public class TspAlgorithm
         LoadData(path);
         NumberOfEvaluations = 0;
         MaxEvaluations = maxEvaluations;
+        _random = new Random(1);
     }
 
     public void Evaluate(Tour tour)
@@ -48,25 +50,54 @@ public class TspAlgorithm
 
     public Tour GenerateTour()
     {
-        //TODO: Implement random tour generation logic
-        return null;
+        var shuffledCities = Cities.OrderBy(x => _random.Next()).ToList();
+        var tour = new Tour(shuffledCities.Count);
+
+        for (var i = 0; i < shuffledCities.Count; i++) tour.SetCity(i, shuffledCities[i]);
+
+        return tour;
     }
 
-    private void LoadData(string path)
+    public static TspData LoadData(string path)
     {
-        //TODO: Set starting city, which is always at index 0
+        var tspData = new TspData();
 
-        string[] lines;
         try
         {
-            lines = File.ReadAllLines(path);
+            var lines = File.ReadAllLines(path);
+            var nodeSectionStarted = false;
+
+            foreach (var line in lines)
+                if (line.StartsWith("NAME"))
+                {
+                    tspData.Name = line.Split(new[] { ':' })[1].Trim();
+                }
+                else if (line.StartsWith("DIMENSION"))
+                {
+                    tspData.Dimension = int.Parse(line.Split(new[] { ':' })[1].Trim());
+                }
+                else if (line.StartsWith("NODE_COORD_SECTION"))
+                {
+                    nodeSectionStarted = true;
+                }
+                else if (nodeSectionStarted)
+                {
+                    if (line.StartsWith("EOF")) break;
+
+                    var parts = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    var index = int.Parse(parts[0]);
+                    var x = double.Parse(parts[1]);
+                    var y = double.Parse(parts[2]);
+
+                    tspData.Cities.Add(new City { Index = index, CordX = x, CordY = y });
+                }
         }
         catch (Exception e)
         {
-            Console.Error.WriteLine("File " + path + " not found!");
+            Console.Error.WriteLine("Error loading file " + path + ": " + e.Message);
         }
 
-        //TODO: Parse data from lines
+        return tspData;
     }
 
     public int GetMaxEvaluations()
