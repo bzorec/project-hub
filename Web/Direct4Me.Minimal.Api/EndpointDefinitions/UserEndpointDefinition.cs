@@ -1,4 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Text.Json;
 using Direct4Me.Core.Auth;
 using Direct4Me.Minimal.Api.Infrastructure;
@@ -7,6 +9,7 @@ using Direct4Me.Minimal.Api.Models;
 using Direct4Me.Minimal.Api.Models.FaceUnlock;
 using Direct4Me.Minimal.Api.Models.Login;
 using Direct4Me.Repository.Services.Interfaces;
+using ImageCompressorDecompressor;
 using Microsoft.AspNetCore.Mvc;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
@@ -40,7 +43,17 @@ public class UserEndpointDefinition : IEndpointDefinition
         if (user is { IsFaceUnlock: false }) return Results.Forbid();
 
         var byteImage = Convert.FromBase64String(faceUnlock.Base64Image);
-        using var imageStream = new MemoryStream(byteImage);
+
+        //Decompress image using our own ulta decompresser 9000
+        Bitmap bmp = byteImage.Decompress();
+
+        using var imageStream = new MemoryStream();
+        bmp.Save(imageStream, ImageFormat.Png);
+
+        //reset position of image stream bak to zerooooo 0
+        imageStream.Position = 0;
+
+        //using var imageStream = new MemoryStream(byteImage);
         var content = new MultipartFormDataContent();
         var imageContent = new StreamContent(imageStream);
         imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
