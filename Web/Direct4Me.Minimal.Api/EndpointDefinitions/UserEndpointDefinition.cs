@@ -1,6 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Text.Json;
 using Direct4Me.Core.Auth;
 using Direct4Me.Minimal.Api.Infrastructure;
@@ -11,6 +9,8 @@ using Direct4Me.Minimal.Api.Models.Login;
 using Direct4Me.Repository.Services.Interfaces;
 using ImageCompressorDecompressor;
 using Microsoft.AspNetCore.Mvc;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace Direct4Me.Minimal.Api.EndpointDefinitions;
@@ -45,10 +45,10 @@ public class UserEndpointDefinition : IEndpointDefinition
         var byteImage = Convert.FromBase64String(faceUnlock.Base64Image);
 
         //Decompress image using our own ulta decompresser 9000
-        Bitmap bmp = byteImage.Decompress();
+        Image<Argb32> bmp = byteImage.Decompress();
 
         using var imageStream = new MemoryStream();
-        bmp.Save(imageStream, ImageFormat.Png);
+        bmp.SaveAsPng(imageStream);
 
         //reset position of image stream bak to zerooooo 0
         imageStream.Position = 0;
