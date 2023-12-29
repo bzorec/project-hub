@@ -60,6 +60,11 @@
         <Content Update="wwwroot\css\site.css">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <None Remove="Data\dca1389.tsp" />
+        <None Remove="Data\eil101.tsp" />
+        <Content Include="Data\eil101.tsp">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>

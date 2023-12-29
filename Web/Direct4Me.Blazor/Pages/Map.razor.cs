@@ -14,19 +14,7 @@ public partial class Map
             await LeafletMapService.ShowSpinner();
 
             // Initialize map
-            await LeafletMapService.InitMap(46.1512, 14.9955, 9);
-
-            // // Add markers
-            // await LeafletMapService.AddMarker(51.505, -0.09);
-            // await LeafletMapService.AddMarker(51.515, -0.1);
-            //
-            // // Draw path
-            // var pathPoints = new List<(double Latitude, double Longitude)>
-            // {
-            //     (51.505, -0.09),
-            //     (51.515, -0.1)
-            // };
-            // await LeafletMapService.DrawPath(pathPoints);
+            await LeafletMapService.InitBestPathMap(9);
 
             await LeafletMapService.HideSpinner();
         }

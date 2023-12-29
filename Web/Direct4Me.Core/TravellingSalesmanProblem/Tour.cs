@@ -12,13 +12,13 @@ public class Tour
     public Tour(int dimension)
     {
         Dimension = dimension;
-        Path = new List<City>(new City[dimension]);
+        Path = new List<City?>(new City[dimension]);
         Distance = double.MaxValue;
     }
 
     public double Distance { get; set; }
     public int Dimension { get; }
-    public List<City> Path { get; set; }
+    public List<City?> Path { get; set; }
 
     public Tour Clone()
     {
@@ -27,7 +27,7 @@ public class Tour
 
     public void SetPath(IEnumerable<City> path)
     {
-        Path = new List<City>(path.Select(city => new City(city)));
+        Path = new List<City?>(path.Select(city => new City(city)));
         Distance = double.MaxValue;
     }
 
@@ -37,5 +37,13 @@ public class Tour
 
         Path[index] = new City(city);
         Distance = double.MaxValue;
+    }
+
+    public object ToJavascriptObject()
+    {
+        return new
+        {
+            path = Path.Select(city => new { lat = city!.CordX, lng = city.CordY }).ToList()
+        };
     }
 }

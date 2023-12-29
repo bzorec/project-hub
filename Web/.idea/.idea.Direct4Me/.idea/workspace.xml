@@ -8,15 +8,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="added data parser">
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspHelper.cs" afterDir="false" />
+    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Data/eil101.tsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/City.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/City.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/bootstrap-custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/bootstrap-custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Direct4Me.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Direct4Me.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/ImageProccessing/Interfaces/IImageProcessingService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/ImageProccessing/Interfaces/IPythonAiService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +49,8 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/DefaultBuilder/src/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/0a715692d8e2536c899faa0bb4f0cec2c2e33e36/src/JSInterop/Microsoft.JSInterop/src/JSRuntimeExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Minimal.Api/EndpointDefinitions/UserEndpointDefinition.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/workspace/project-hub/Web/Direct4Me.Minimal.Api/EndpointDefinitions/UserEndpointDefinition.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -54,6 +61,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -136,7 +144,8 @@
       <workItem from="1703605443290" duration="6655000" />
       <workItem from="1703622171599" duration="4354000" />
       <workItem from="1703663185463" duration="10183000" />
-      <workItem from="1703749492191" duration="7218000" />
+      <workItem from="1703749492191" duration="8352000" />
+      <workItem from="1703836144464" duration="2513000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -210,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703753329566</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="finished tsp, and fixed the test">
+      <option name="closed" value="true" />
+      <created>1703756825790</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703756825791</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +256,8 @@
     <MESSAGE value="rewrote tsp algorithm to c#, added test where it will ran" />
     <MESSAGE value="skipped the test" />
     <MESSAGE value="added data parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="added data parser" />
+    <MESSAGE value="finished tsp, and fixed the test" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished tsp, and fixed the test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -269,19 +287,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs</url>
-          <line>22</line>
-          <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.UnitTests\TravellingSalesmanProblemTests\TestTsp.cs" initialLine="22" containingFunctionPresentation="Method 'TestTspAlgorithm'">
-            <startOffsets>
-              <option value="659" />
-            </startOffsets>
-            <endOffsets>
-              <option value="705" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

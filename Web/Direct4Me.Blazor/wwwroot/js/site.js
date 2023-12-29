@@ -90,12 +90,55 @@ window.jsInterop = {
     initMap: initMap,
     addMarker: addMarker,
     drawPath: drawPath,
-    showSpinner: showSpinner,
-    hideSpinner: hideSpinner
+    
+    showSpinner() {
+        document.getElementById('map-spinner').style.display = 'block';
+    },
 
+    hideSpinner() {
+        document.getElementById('map-spinner').style.display = 'none';
+    },
+
+    initBestPathMap: initBestPathMap
 };
-
 let globalMap;
+
+function initBestPathMap(tour, zoomLevel) {
+    const mapContainer = document.getElementById('map');
+    if (!mapContainer) {
+        console.error('Map container not found');
+        return;
+    }
+    if (globalMap) {
+        return;
+    }
+
+    let startCity = tour.path[0];
+    let map = L.map('map').setView([startCity.lat, startCity.lng], zoomLevel);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    globalMap = map;
+
+    addMarkersAndDrawPath(tour);
+}
+
+function addMarkersAndDrawPath(tour) {
+    let latlngs = [];
+
+    tour.path.forEach(city => {
+        let latlng = L.latLng(city.lat, city.lng);
+        latlngs.push(latlng);
+
+        L.marker(latlng).addTo(globalMap);
+    });
+
+    let polyline = L.polyline(latlngs, {color: 'blue'}).addTo(globalMap);
+    globalMap.fitBounds(polyline.getBounds());
+}
 
 function initMap(latitude, longitude, zoomLevel) {
     const mapContainer = document.getElementById('map');
@@ -106,7 +149,7 @@ function initMap(latitude, longitude, zoomLevel) {
     if (globalMap) {
         return;
     }
-    
+
     let map = L.map('map').setView([latitude, longitude], zoomLevel);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -127,9 +170,7 @@ function drawPath(latlngs) {
 }
 
 function showSpinner() {
-    document.getElementById('map-spinner').style.display = 'block';
 }
 
 function hideSpinner() {
-    document.getElementById('map-spinner').style.display = 'none';
 }

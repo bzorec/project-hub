@@ -17,6 +17,7 @@ public class TspAlgorithm
     {
         _random = new Random();
         MaxEvaluations = maxEvaluations;
+        Cities = new List<City>();
         LoadData(path);
         NumberOfEvaluations = 0;
     }

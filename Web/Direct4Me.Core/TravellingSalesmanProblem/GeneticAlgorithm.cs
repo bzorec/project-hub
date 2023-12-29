@@ -21,7 +21,7 @@ public class GeneticAlgorithm
     {
         _population = new List<Tour>();
         _offspring = new List<Tour>();
-        Tour best = null;
+        Tour? best = null;
 
         for (var i = 0; i < _popSize; i++)
         {
@@ -34,7 +34,7 @@ public class GeneticAlgorithm
 
         while (problem.GetNumberOfEvaluations() < problem.GetMaxEvaluations())
         {
-            if (best != null) _offspring.Add(best.Clone());
+            if (best != null) _offspring.Add(best.Clone() ?? throw new InvalidOperationException());
 
             while (_offspring.Count < _popSize)
             {
@@ -50,8 +50,9 @@ public class GeneticAlgorithm
                 }
                 else
                 {
-                    _offspring.Add(parent1.Clone());
-                    if (_offspring.Count < _popSize) _offspring.Add(parent2.Clone());
+                    _offspring.Add(parent1.Clone() ?? throw new InvalidOperationException());
+                    if (_offspring.Count < _popSize)
+                        _offspring.Add(parent2.Clone() ?? throw new InvalidOperationException());
                 }
             }
 

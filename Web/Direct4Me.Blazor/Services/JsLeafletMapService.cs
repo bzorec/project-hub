@@ -1,3 +1,4 @@
+using Direct4Me.Core.TravellingSalesmanProblem;
 using Microsoft.JSInterop;
 
 namespace Direct4Me.Blazor.Services;
@@ -9,6 +10,8 @@ public interface IJsLeafletMapService
     Task DrawPath(List<(double Latitude, double Longitude)> pathPoints);
     Task ShowSpinner();
     Task HideSpinner();
+
+    Task InitBestPathMap(int zoomLevel);
 }
 
 public class JsLeafletMapService : IJsLeafletMapService
@@ -23,6 +26,29 @@ public class JsLeafletMapService : IJsLeafletMapService
     public async Task InitMap(double latitude, double longitude, int zoomLevel)
     {
         await _jsRuntime.InvokeVoidAsync("jsInterop.initMap", latitude, longitude, zoomLevel);
+    }
+
+    public async Task InitBestPathMap(int zoomLevel)
+    {
+        var basePath = AppDomain.CurrentDomain.BaseDirectory;
+        var dataPath = Path.Combine(basePath, "Data", "eil101.tsp");
+
+        Tour? theBestPath = null;
+        for (var i = 0; i < 100; i++)
+        {
+            var eilTsp = new TspAlgorithm(dataPath, 50000);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.1);
+            var bestPath = ga.Execute(eilTsp);
+
+            theBestPath ??= bestPath;
+
+            if (bestPath.Distance <= theBestPath.Distance)
+            {
+                theBestPath = new Tour(bestPath);
+            }
+        }
+
+        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", theBestPath?.ToJavascriptObject(), zoomLevel);
     }
 
     public async Task AddMarker(double latitude, double longitude)
