@@ -1,13 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using Direct4Me.Core.Auth;
+using Direct4Me.Core.ImageDecompressor;
 using Direct4Me.Minimal.Api.Infrastructure;
 using Direct4Me.Minimal.Api.Infrastructure.Interfaces;
 using Direct4Me.Minimal.Api.Models;
 using Direct4Me.Minimal.Api.Models.FaceUnlock;
 using Direct4Me.Minimal.Api.Models.Login;
 using Direct4Me.Repository.Services.Interfaces;
-using ImageCompressorDecompressor;
 using Microsoft.AspNetCore.Mvc;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
@@ -48,7 +48,7 @@ public class UserEndpointDefinition : IEndpointDefinition
         Image<Argb32> bmp = byteImage.Decompress();
 
         using var imageStream = new MemoryStream();
-        bmp.SaveAsPng(imageStream);
+        await bmp.SaveAsPngAsync(imageStream, token);
 
         //reset position of image stream bak to zerooooo 0
         imageStream.Position = 0;

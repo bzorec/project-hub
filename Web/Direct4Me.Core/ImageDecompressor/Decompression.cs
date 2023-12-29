@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace ImageCompressorDecompressor;
+namespace Direct4Me.Core.ImageDecompressor;
 
 internal static class Decompression
 {

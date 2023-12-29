@@ -1,9 +1,8 @@
-﻿using SixLabors.ImageSharp.PixelFormats;
+﻿using System.Collections;
 using SixLabors.ImageSharp;
-using System.Collections;
-using System.Xml.Linq;
+using SixLabors.ImageSharp.PixelFormats;
 
-namespace ImageCompressorDecompressor;
+namespace Direct4Me.Core.ImageDecompressor;
 
 public static class ImageProcessingExtensions
 {
