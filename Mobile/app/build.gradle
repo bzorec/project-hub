@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.um.feri.direct4me.android"
-        minSdk 28
+        minSdk 29
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -51,6 +51,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        buildConfig = true
     }
 }
 
