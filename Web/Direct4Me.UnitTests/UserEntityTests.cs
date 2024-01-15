@@ -9,7 +9,7 @@ public class UserEntityTests
     {
         // Arrange
         var userEntity = new UserEntity();
-        var hashedPassword = userEntity.HashPassword("Abcd1234%");
+        var hashedPassword = userEntity.HashPassword("admin");
 
         // Act
         var result = UserEntity.IsAlreadyHashed(Convert.ToBase64String(hashedPassword));

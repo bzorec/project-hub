@@ -33,6 +33,22 @@
       <Content Include="Data\eil101.tsp">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+      <None Remove="Data\bays29.tsp" />
+      <Content Include="Data\bays29.tsp">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Data\a280.tsp" />
+      <Content Include="Data\a280.tsp">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Data\pr1002.tsp" />
+      <Content Include="Data\pr1002.tsp">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Data\dca1389.tsp" />
+      <Content Include="Data\dca1389.tsp">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

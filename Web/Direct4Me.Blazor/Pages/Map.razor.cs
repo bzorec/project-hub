@@ -9,14 +9,15 @@ public partial class Map
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            await LeafletMapService.ShowSpinner();
+        await LeafletMapService.ShowSpinner();
 
-            // Initialize map
-            await LeafletMapService.InitBestPathMap(9);
+        await LeafletMapService.InitBestPathMap(9);
 
-            await LeafletMapService.HideSpinner();
-        }
+        await LeafletMapService.HideSpinner();
+    }
+
+    protected Task CalculateOptimalRoute()
+    {
+        return Task.Delay(1);
     }
 }

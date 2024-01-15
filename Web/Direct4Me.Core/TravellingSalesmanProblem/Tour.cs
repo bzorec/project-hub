@@ -46,4 +46,9 @@ public class Tour
             path = Path.Select(city => new { lat = city!.CordX, lng = city.CordY }).ToList()
         };
     }
+
+    public override string ToString()
+    {
+        return $"{nameof(Distance)}: {Distance}, {nameof(Dimension)}: {Dimension}";
+    }
 }
