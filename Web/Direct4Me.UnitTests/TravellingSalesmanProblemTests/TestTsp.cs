@@ -67,7 +67,7 @@ public class TestTsp
         _testOutputHelper.WriteLine("Avg: [{0}]", avgDistance);
         _testOutputHelper.WriteLine("Std: [{0}]", stdDistance);
     }
-    
+
     [Theory]
     [InlineData("bays29.tsp", 1000)]
     [InlineData("bays29.tsp", 10000)]
@@ -100,6 +100,41 @@ public class TestTsp
         for (var i = 0; i < 30; i++)
         {
             var eilTsp = new TspAlgorithm(dataPath, maxEfs);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.8);
+            var bestPath = ga.Execute(eilTsp);
+
+            // _testOutputHelper.WriteLine("{0}. [{1}]", i + 1, bestPath);
+            distances.Add(bestPath.Distance);
+
+            if (bestBest.Distance > bestPath.Distance)
+            {
+                bestBest = new Tour(bestPath);
+            }
+
+            bestPath.Should().NotBeNull();
+            bestPath.Path.Count.Should().BeGreaterThan(0);
+        }
+
+        double avgDistance = distances.Average();
+        double stdDistance = Math.Sqrt(distances.Sum(d => Math.Pow(d - avgDistance, 2)) / distances.Count);
+
+        _testOutputHelper.WriteLine("Best: [{0}]", bestBest);
+        _testOutputHelper.WriteLine("Avg: [{0}]", avgDistance);
+        _testOutputHelper.WriteLine("Std: [{0}]", stdDistance);
+    }
+
+    [Fact]
+    public void TestTspAlgorithmReal()
+    {
+        var basePath = AppDomain.CurrentDomain.BaseDirectory;
+        var dataPath = Path.Combine(basePath, "Data", "complete_data.json");
+
+        var bestBest = new Tour(0);
+        var distances = new List<double>();
+
+        for (var i = 0; i < 30; i++)
+        {
+            var eilTsp = new TspAlgorithm(dataPath, 1000, true);
             var ga = new GeneticAlgorithm(100, 0.8, 0.8);
             var bestPath = ga.Execute(eilTsp);
 

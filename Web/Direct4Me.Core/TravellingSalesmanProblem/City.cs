@@ -11,14 +11,14 @@ public class City
         if (city == null)
             throw new ArgumentNullException(nameof(city), "Cannot clone a null City.");
 
-        Index = city.Index;
-        CordX = city.CordX;
-        CordY = city.CordY;
+        index = city.index;
+        cordX = city.cordX;
+        cordY = city.cordY;
     }
 
-    public int Index { get; set; }
+    public int index { get; set; }
 
-    public double CordX { get; set; }
+    public double cordX { get; set; }
 
-    public double CordY { get; set; }
+    public double cordY { get; set; }
 }

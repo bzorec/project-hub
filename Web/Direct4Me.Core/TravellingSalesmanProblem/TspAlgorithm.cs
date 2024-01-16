@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace Direct4Me.Core.TravellingSalesmanProblem;
 
 public class TspAlgorithm
@@ -12,13 +14,37 @@ public class TspAlgorithm
     public City? Start => Cities.FirstOrDefault(); // Assuming the start is always the first city
     public int[][]? Weights { get; private set; }
 
-    public TspAlgorithm(string path, int maxEvaluations)
+    public bool IsRealWorldData { get; private set; }
+    public List<List<int>> DistanceMatrix { get; private set; }
+    public List<List<int>> TimeMatrix { get; private set; }
+    public bool OptimizeForTime { get; set; }
+
+    public TspAlgorithm(string path, int maxEvaluations, bool isRealWorldData = false, bool optimizeForTime = false)
     {
         _random = new Random();
         MaxEvaluations = maxEvaluations;
+        IsRealWorldData = isRealWorldData;
+        OptimizeForTime = optimizeForTime;
         Cities = new List<City>();
-        LoadData(path);
-        NumberOfEvaluations = 0;
+
+        if (IsRealWorldData)
+        {
+            LoadRealWorldData(path);
+        }
+        else
+        {
+            LoadData(path);
+        }
+    }
+
+    private void LoadRealWorldData(string jsonPath)
+    {
+        var json = File.ReadAllText(jsonPath);
+        var data = JsonSerializer.Deserialize<RealWorldData>(json);
+
+        Cities = data?.cities ?? throw new InvalidOperationException("Failed to load data from JSON.");
+        DistanceMatrix = data.distanceMatrix;
+        TimeMatrix = data.timeMatrix;
     }
 
     private void LoadData(string path)
@@ -55,9 +81,9 @@ public class TspAlgorithm
                     var parts = cityLine.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                     var city = new City
                     {
-                        Index = int.Parse(parts[0]),
-                        CordX = double.Parse(parts[1]),
-                        CordY = double.Parse(parts[2])
+                        index = int.Parse(parts[0]),
+                        cordX = double.Parse(parts[1]),
+                        cordY = double.Parse(parts[2])
                     };
                     Cities.Add(city);
                 }
@@ -89,7 +115,7 @@ public class TspAlgorithm
                 {
                     if (weight == "DISPLAY_DATA_SECTION") break;
 
-                    var matrixLine = weight.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries)
+                    var matrixLine = weight.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(int.Parse)
                         .ToArray();
 
@@ -108,9 +134,9 @@ public class TspAlgorithm
                     var parts = cityLine.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                     var city = new City
                     {
-                        Index = int.Parse(parts[0]),
-                        CordX = double.Parse(parts[1]),
-                        CordY = double.Parse(parts[2])
+                        index = int.Parse(parts[0]),
+                        cordX = double.Parse(parts[1]),
+                        cordY = double.Parse(parts[2])
                     };
                     Cities.Add(city);
                 }
@@ -120,24 +146,89 @@ public class TspAlgorithm
 
     public void Evaluate(Tour tour)
     {
-        if (tour.Path == null || tour.Path.Count != NumberOfCities)
+        try
         {
-            throw new InvalidOperationException("Tour path is not properly initialized or does not cover all cities.");
+            if (!IsRealWorldData)
+            {
+                if (tour.Path == null || tour.Path.Count != NumberOfCities)
+                {
+                    throw new InvalidOperationException(
+                        "Tour path is not properly initialized or does not cover all cities.");
+                }
+
+                double distance = 0;
+
+                // Calculate distance for each leg of the journey
+                for (var index = 0; index < tour.Path.Count - 1; index++)
+                {
+                    distance += CalculateDistance(tour.Path[index], tour.Path[index + 1]);
+                }
+
+                // Add distance from the last city back to the start city
+                distance += CalculateDistance(tour.Path.Last(), Start);
+
+                tour.Distance = distance;
+            }
+            else
+            {
+                double metric = 0;
+
+                for (int i = 0; i < tour.Path.Count - 1; i++)
+                {
+                    int fromIndex = tour.Path[i].index;
+                    int toIndex = tour.Path[i + 1].index;
+
+                    if (OptimizeForTime)
+                    {
+                        if (fromIndex >= 0 && fromIndex < TimeMatrix.Count &&
+                            toIndex >= 0 && toIndex < TimeMatrix[fromIndex].Count)
+                        {
+                            metric += TimeMatrix[fromIndex][toIndex];
+                        }
+                    }
+                    else
+                    {
+                        if (fromIndex >= 0 && fromIndex < DistanceMatrix.Count &&
+                            toIndex >= 0 && toIndex < DistanceMatrix[fromIndex].Count)
+                        {
+                            metric += DistanceMatrix[fromIndex][toIndex];
+                        }
+                    }
+                }
+
+
+                // Add distance or time from the last city back to the start city for real-world data
+                if (tour.Path.Count > 0)
+                {
+                    int lastCityIndex = tour.Path.Last().index;
+                    int startCityIndex = tour.Path.First().index;
+                    if (OptimizeForTime)
+                    {
+                        if (lastCityIndex >= 0 && lastCityIndex < TimeMatrix.Count &&
+                            startCityIndex >= 0 && startCityIndex < TimeMatrix[lastCityIndex].Count)
+                        {
+                            metric += TimeMatrix[lastCityIndex][startCityIndex];
+                        }
+                    }
+                    else
+                    {
+                        if (lastCityIndex >= 0 && lastCityIndex < DistanceMatrix.Count &&
+                            startCityIndex >= 0 && startCityIndex < DistanceMatrix[lastCityIndex].Count)
+                        {
+                            metric += DistanceMatrix[lastCityIndex][startCityIndex];
+                        }
+                    }
+                }
+
+                tour.Distance = metric; // Or use another property if you want to store time separately
+
+                NumberOfEvaluations++;
+            }
         }
-
-        double distance = 0;
-
-        // Calculate distance for each leg of the journey
-        for (var index = 0; index < tour.Path.Count - 1; index++)
+        catch (Exception e)
         {
-            distance += CalculateDistance(tour.Path[index], tour.Path[index + 1]);
+            Console.WriteLine("Error {0}", e.Message);
         }
-
-        // Add distance from the last city back to the start city
-        distance += CalculateDistance(tour.Path.Last(), Start);
-
-        tour.Distance = distance;
-        NumberOfEvaluations++;
     }
 
     private double CalculateDistance(City? from, City? to)
@@ -147,7 +238,7 @@ public class TspAlgorithm
 
         if (DistanceType == DistanceType.Weighted && Weights != null)
         {
-            return Weights[from.Index - 1][to.Index - 1]; // Adjust for zero-based index if needed
+            return Weights[from.index - 1][to.index - 1]; // Adjust for zero-based index if needed
         }
 
         if (DistanceType == DistanceType.Euclidean)
@@ -160,15 +251,39 @@ public class TspAlgorithm
 
     public Tour GenerateTour()
     {
-        var shuffledCities = Cities.OrderBy(x => _random.Next()).ToList();
-        var tour = new Tour(shuffledCities.Count);
+        if (!IsRealWorldData)
+        {
+            // Original implementation for generating tours using Cities list
+            var shuffledCities = Cities.OrderBy(x => _random.Next()).ToList();
+            var tour = new Tour(shuffledCities.Count);
+            for (var i = 0; i < shuffledCities.Count; i++)
+                tour.SetCity(i, shuffledCities[i]);
+            return tour;
+        }
+        else
+        {
+            // Generate a tour for real-world data using the indices from the DistanceMatrix or TimeMatrix
+            var cityIndices = Enumerable.Range(0, DistanceMatrix.Count).OrderBy(x => _random.Next()).ToList();
+            var tour = new Tour(cityIndices.Count);
+            for (var i = 0; i < cityIndices.Count; i++)
+            {
+                // Ensure the cities list is populated with real-world city data
+                var city = Cities.FirstOrDefault(c => c.index == cityIndices[i]) ?? new City { index = cityIndices[i] };
+                tour.SetCity(i, city);
+            }
 
-        for (var i = 0; i < shuffledCities.Count; i++) tour.SetCity(i, shuffledCities[i]);
-
-        return tour;
+            return tour;
+        }
     }
 
     public int GetMaxEvaluations() => MaxEvaluations;
 
     public int GetNumberOfEvaluations() => NumberOfEvaluations;
+
+    private class RealWorldData
+    {
+        public List<City> cities { get; set; }
+        public List<List<int>> distanceMatrix { get; set; }
+        public List<List<int>> timeMatrix { get; set; }
+    }
 }

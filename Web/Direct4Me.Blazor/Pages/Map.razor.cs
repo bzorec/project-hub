@@ -25,7 +25,7 @@ public partial class Map
         Tour? theBestPath = null;
         var zoomLevel = 9;
 
-        for (var i = 0; i < 100; i++)
+        for (var i = 0; i < 30; i++)
         {
             await LeafletMapService.ShowSpinner();
             theBestPath = await LeafletMapService.InitBestFakePathMap(zoomLevel, dataPath, theBestPath);

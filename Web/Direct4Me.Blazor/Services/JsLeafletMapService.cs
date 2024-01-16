@@ -48,24 +48,23 @@ public class JsLeafletMapService : IJsLeafletMapService
     public async Task InitBestRealPathMap(int zoomLevel)
     {
         var basePath = AppDomain.CurrentDomain.BaseDirectory;
-        var dataPath = Path.Combine(basePath, "Data", "eil101.tsp");
+        var dataPath = Path.Combine(basePath, "Data", "complete_data.json");
 
-        Tour? theBestPath = null;
-        for (var i = 0; i < 100; i++)
+        var bestBest = new Tour(0);
+
+        for (var i = 0; i < 30; i++)
         {
-            var eilTsp = new TspAlgorithm(dataPath, 50000);
-            var ga = new GeneticAlgorithm(100, 0.8, 0.1);
+            var eilTsp = new TspAlgorithm(dataPath, 1000, true);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.8);
             var bestPath = ga.Execute(eilTsp);
 
-            theBestPath ??= bestPath;
-
-            if (bestPath?.Distance <= theBestPath?.Distance)
+            if (bestBest.Distance > bestPath?.Distance)
             {
-                theBestPath = new Tour(bestPath);
+                bestBest = new Tour(bestPath);
             }
         }
 
-        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", theBestPath?.ToJavascriptObject(), zoomLevel);
+        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestBest?.ToJavascriptObject(), zoomLevel);
     }
 
 

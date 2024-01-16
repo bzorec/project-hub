@@ -9,8 +9,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="fixes">
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Data/complete_data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Data/cities.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Data/complete_data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Data/complete_data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/City.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/City.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,14 +77,14 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "RiderIisExpressOptionsPageId",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\bzorec\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\blazz\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\blazz\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\blazz\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -143,6 +154,8 @@
       <workItem from="1705324129910" duration="2166000" />
       <workItem from="1705411163710" duration="3080000" />
       <workItem from="1705414279705" duration="3424000" />
+      <workItem from="1705422103985" duration="3633000" />
+      <workItem from="1705425797566" duration="3762000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -287,51 +300,6 @@
           <line>67</line>
           <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.Repository\Entities\UserEntity.cs" initialLine="67" containingFunctionPresentation="Method 'IsAlreadyHashed'" />
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs</url>
-          <line>147</line>
-          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\TravellingSalesmanProblem\TspAlgorithm.cs" initialLine="128" containingFunctionPresentation="Method 'CalculateDistance'">
-            <startOffsets>
-              <option value="4787" />
-              <option value="4871" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4848" />
-              <option value="4916" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs</url>
-          <line>130</line>
-          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\TravellingSalesmanProblem\TspAlgorithm.cs" initialLine="114" containingFunctionPresentation="Method 'Evaluate'">
-            <startOffsets>
-              <option value="4272" />
-              <option value="4352" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4329" />
-              <option value="4422" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs</url>
-          <line>105</line>
-          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\TravellingSalesmanProblem\TspAlgorithm.cs" initialLine="107" containingFunctionPresentation="Method 'ParseExplicitWeightData'">
-            <startOffsets>
-              <option value="3466" />
-              <option value="3489" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3488" />
-              <option value="3495" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs</url>

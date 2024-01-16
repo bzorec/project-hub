@@ -43,12 +43,12 @@ public class Tour
     {
         return new
         {
-            path = Path.Select(city => new { lat = city!.CordX, lng = city.CordY }).ToList()
+            path = Path.Select(city => new { lat = city!.cordX, lng = city.cordY }).ToList()
         };
     }
 
     public override string ToString()
     {
-        return $"{nameof(Distance)}: {Distance}, {nameof(Dimension)}: {Dimension}";
+        return $"{nameof(Distance)}: {Distance}";
     }
 }
