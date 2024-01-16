@@ -54,7 +54,7 @@ public class JsLeafletMapService : IJsLeafletMapService
 
         for (var i = 0; i < 30; i++)
         {
-            var eilTsp = new TspAlgorithm(dataPath, 1000, true);
+            var eilTsp = new TspAlgorithm(dataPath, 1000, true, true);
             var ga = new GeneticAlgorithm(100, 0.8, 0.8);
             var bestPath = ga.Execute(eilTsp);
 

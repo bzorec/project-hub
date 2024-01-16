@@ -1,3 +1,4 @@
+using System.Globalization;
 using Direct4Me.Core.TravellingSalesmanProblem;
 using FluentAssertions;
 using Xunit.Abstractions;
@@ -63,9 +64,10 @@ public class TestTsp
         double avgDistance = distances.Average();
         double stdDistance = Math.Sqrt(distances.Sum(d => Math.Pow(d - avgDistance, 2)) / distances.Count);
 
-        _testOutputHelper.WriteLine("Best: [{0}]", bestBest);
-        _testOutputHelper.WriteLine("Avg: [{0}]", avgDistance);
-        _testOutputHelper.WriteLine("Std: [{0}]", stdDistance);
+        CultureInfo invariantCulture = CultureInfo.InvariantCulture;
+        _testOutputHelper.WriteLine("Min: {0}", bestBest);
+        _testOutputHelper.WriteLine("Avg: {0:E3}", avgDistance);
+        _testOutputHelper.WriteLine("Std: {0:E3}", stdDistance);
     }
 
     [Theory]

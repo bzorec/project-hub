@@ -10,9 +10,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Data/complete_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Data/complete_data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,10 +36,8 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/bf5e279d9239bfef5bb1b8d6212f1b971c434606/src/libraries/System.Linq/src/System/Linq/Last.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/bf5e279d9239bfef5bb1b8d6212f1b971c434606/src/libraries/System.Linq/src/System/Linq/Skip.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
