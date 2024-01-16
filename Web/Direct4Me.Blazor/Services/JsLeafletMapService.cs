@@ -11,7 +11,8 @@ public interface IJsLeafletMapService
     Task ShowSpinner();
     Task HideSpinner();
 
-    Task InitBestPathMap(int zoomLevel);
+    Task<Tour?> InitBestFakePathMap(int zoomLevel, string dataPath, Tour? theBestPath);
+    Task InitBestRealPathMap(int zoomLevel);
 }
 
 public class JsLeafletMapService : IJsLeafletMapService
@@ -28,7 +29,23 @@ public class JsLeafletMapService : IJsLeafletMapService
         await _jsRuntime.InvokeVoidAsync("jsInterop.initMap", latitude, longitude, zoomLevel);
     }
 
-    public async Task InitBestPathMap(int zoomLevel)
+    public async Task<Tour?> InitBestFakePathMap(int zoomLevel, string dataPath, Tour? theBestPath)
+    {
+        var eilTsp = new TspAlgorithm(dataPath, 10000);
+        var ga = new GeneticAlgorithm(100, 0.8, 0.1);
+        var bestPath = ga.Execute(eilTsp);
+        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestPath?.ToJavascriptObject(), zoomLevel);
+
+        theBestPath ??= bestPath;
+        if (bestPath?.Distance <= theBestPath?.Distance)
+        {
+            theBestPath = new Tour(bestPath);
+        }
+
+        return theBestPath;
+    }
+
+    public async Task InitBestRealPathMap(int zoomLevel)
     {
         var basePath = AppDomain.CurrentDomain.BaseDirectory;
         var dataPath = Path.Combine(basePath, "Data", "eil101.tsp");
@@ -42,7 +59,7 @@ public class JsLeafletMapService : IJsLeafletMapService
 
             theBestPath ??= bestPath;
 
-            if (bestPath.Distance <= theBestPath.Distance)
+            if (bestPath?.Distance <= theBestPath?.Distance)
             {
                 theBestPath = new Tour(bestPath);
             }
@@ -50,6 +67,7 @@ public class JsLeafletMapService : IJsLeafletMapService
 
         await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", theBestPath?.ToJavascriptObject(), zoomLevel);
     }
+
 
     public async Task AddMarker(double latitude, double longitude)
     {

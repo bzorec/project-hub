@@ -2,7 +2,7 @@ namespace Direct4Me.Core.TravellingSalesmanProblem;
 
 public class Tour
 {
-    public Tour(Tour tour)
+    public Tour(Tour? tour)
     {
         Distance = tour.Distance;
         Dimension = tour.Dimension;

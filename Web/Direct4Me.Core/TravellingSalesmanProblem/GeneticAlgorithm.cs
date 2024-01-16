@@ -17,7 +17,7 @@ public class GeneticAlgorithm
         _random = new Random(1);
     }
 
-    public Tour Execute(TspAlgorithm problem)
+    public Tour? Execute(TspAlgorithm problem)
     {
         _population = new List<Tour>();
         _offspring = new List<Tour>();

@@ -10,8 +10,7 @@ public class TspAlgorithm
     public int NumberOfCities => Cities.Count;
     public int NumberOfEvaluations { get; private set; }
     public City? Start => Cities.FirstOrDefault(); // Assuming the start is always the first city
-    public double[][]? Weights { get; private set; } // If needed
-
+    public int[][]? Weights { get; private set; }
 
     public TspAlgorithm(string path, int maxEvaluations)
     {
@@ -27,29 +26,95 @@ public class TspAlgorithm
         Cities = new List<City>();
 
         var lines = File.ReadAllLines(path);
+
+        if (lines.Contains("NODE_COORD_SECTION"))
+        {
+            DistanceType = DistanceType.Euclidean;
+            ParseEuclideanData(lines);
+        }
+        else
+        {
+            DistanceType = DistanceType.Weighted;
+            ParseExplicitWeightData(lines);
+        }
+    }
+
+    private void ParseEuclideanData(string[] lines)
+    {
+        Cities = new List<City>();
+
         foreach (var line in lines)
         {
-            if (line.StartsWith("NAME:"))
-                Name = line.Split(':')[1].Trim();
-            else if (line.StartsWith("DIMENSION:"))
-                // Handle dimension line if needed
-                continue;
-            else if (line.StartsWith("NODE_COORD_SECTION"))
-                break; // Start processing city data
-        }
-
-        foreach (var line in lines.SkipWhile(l => !l.StartsWith("NODE_COORD_SECTION")).Skip(1))
-        {
-            if (line == "EOF") break;
-
-            var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            var city = new City
+            if (line.StartsWith("NODE_COORD_SECTION"))
             {
-                Index = int.Parse(parts[0]),
-                CordX = double.Parse(parts[1]),
-                CordY = double.Parse(parts[2])
-            };
-            Cities.Add(city);
+                var cityLines = lines.SkipWhile(l => !l.StartsWith("NODE_COORD_SECTION")).Skip(1);
+                foreach (var cityLine in cityLines)
+                {
+                    if (cityLine == "EOF") break;
+
+                    var parts = cityLine.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                    var city = new City
+                    {
+                        Index = int.Parse(parts[0]),
+                        CordX = double.Parse(parts[1]),
+                        CordY = double.Parse(parts[2])
+                    };
+                    Cities.Add(city);
+                }
+
+                break;
+            }
+        }
+    }
+
+    private void ParseExplicitWeightData(string[] lines)
+    {
+        Cities = new List<City>();
+        Weights = Array.Empty<int[]>();
+
+        foreach (var line in lines)
+        {
+            if (line.StartsWith("DIMENSION:"))
+            {
+                var dimension = int.Parse(line.Split(':')[1].Trim());
+                Weights = new int[dimension][];
+                continue;
+            }
+
+            if (line.StartsWith("EDGE_WEIGHT_SECTION"))
+            {
+                var weights = lines.SkipWhile(l => !l.StartsWith("EDGE_WEIGHT_SECTION")).Skip(1);
+                var currentLineIndex = 0;
+                foreach (var weight in weights)
+                {
+                    if (weight == "DISPLAY_DATA_SECTION") break;
+
+                    var matrixLine = weight.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(int.Parse)
+                        .ToArray();
+
+                    Weights[currentLineIndex] = matrixLine;
+                    currentLineIndex++;
+                }
+            }
+
+            if (line.StartsWith("DISPLAY_DATA_SECTION"))
+            {
+                var cityLines = lines.SkipWhile(l => !l.StartsWith("DISPLAY_DATA_SECTION")).Skip(1);
+                foreach (var cityLine in cityLines)
+                {
+                    if (cityLine == "EOF") break;
+
+                    var parts = cityLine.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                    var city = new City
+                    {
+                        Index = int.Parse(parts[0]),
+                        CordX = double.Parse(parts[1]),
+                        CordY = double.Parse(parts[2])
+                    };
+                    Cities.Add(city);
+                }
+            }
         }
     }
 
@@ -78,14 +143,19 @@ public class TspAlgorithm
     private double CalculateDistance(City? from, City? to)
     {
         if (from == null || to == null)
-           return double.MaxValue;
+            return double.MaxValue;
 
-        return DistanceType switch
+        if (DistanceType == DistanceType.Weighted && Weights != null)
         {
-            DistanceType.Euclidean => TspHelper.CalculateEuclideanDistance(from, to),
-            DistanceType.Weighted => TspHelper.CalculateWeightedDistance(from, to, 1D),
-            _ => double.MaxValue
-        };
+            return Weights[from.Index - 1][to.Index - 1]; // Adjust for zero-based index if needed
+        }
+
+        if (DistanceType == DistanceType.Euclidean)
+        {
+            return TspHelper.CalculateEuclideanDistance(from, to);
+        }
+
+        throw new InvalidOperationException("Unsupported distance type or missing weights data.");
     }
 
     public Tour GenerateTour()

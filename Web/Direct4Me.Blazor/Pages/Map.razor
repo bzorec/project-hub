@@ -4,7 +4,8 @@
 
 <div class="map-layout">
     <div class="sidebar">
-        <button @onclick="CalculateOptimalRoute">Calculate Optimal Route</button>
+        <button @onclick="CalculateOptimalRouteFake" value="Fake">Calculate Optimal Route(Fake)</button>
+        <button @onclick="CalculateOptimalRouteReal" value="Real">Calculate Optimal Route(Real)</button>
     </div>
     <div id="map" class="map"></div>
 </div>

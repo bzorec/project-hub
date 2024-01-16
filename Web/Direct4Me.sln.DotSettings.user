@@ -3,5 +3,6 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::C3CB12CF-643B-4A13-82E3-72F9D0183A7C::net8.0::Direct4Me.UnitTests.UserEntityTests.IsAlreadyHashed_ValidHash_ReturnsTrue&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::C3CB12CF-643B-4A13-82E3-72F9D0183A7C::net8.0::Direct4Me.UnitTests.TravellingSalesmanProblemTests.TestTsp.TestTspAlgorithm&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C3CB12CF-643B-4A13-82E3-72F9D0183A7C::net8.0::Direct4Me.UnitTests.TravellingSalesmanProblemTests.TestTsp&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
