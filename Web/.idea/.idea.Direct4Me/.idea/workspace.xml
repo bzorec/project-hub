@@ -8,22 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Data/a280.tsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Data/bays29.tsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Data/dca1389.tsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Data/pr1002.tsp" afterDir="false" />
+    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="fixes">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +142,7 @@
       <workItem from="1705319610113" duration="2677000" />
       <workItem from="1705324129910" duration="2166000" />
       <workItem from="1705411163710" duration="3080000" />
-      <workItem from="1705414279705" duration="3004000" />
+      <workItem from="1705414279705" duration="3424000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -245,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705322193547</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1705417586811</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705417586811</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

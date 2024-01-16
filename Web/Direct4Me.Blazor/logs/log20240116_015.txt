@@ -170,3 +170,171 @@
 2024-01-16 16:05:52.315 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - -
 2024-01-16 16:05:52.315 +01:00 [INF] The file /leaflet/images/marker-shadow.png was not modified
 2024-01-16 16:05:52.316 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - - - 304 - image/png 1.0084ms
+2024-01-16 16:06:47.491 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/map - -
+2024-01-16 16:06:47.492 +01:00 [INF] Executing endpoint '/_Host'
+2024-01-16 16:06:47.493 +01:00 [INF] Route matched with {page = "/_Host"}. Executing page /_Host
+2024-01-16 16:06:47.495 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-01-16 16:06:47.495 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-01-16 16:06:47.502 +01:00 [INF] Executed page /_Host in 9.3291ms
+2024-01-16 16:06:47.502 +01:00 [INF] Executed endpoint '/_Host'
+2024-01-16 16:06:47.503 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/map - - - 200 - text/html;+charset=utf-8 11.9774ms
+2024-01-16 16:06:47.508 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundarykmEEOpBGZjUTVH11 359
+2024-01-16 16:06:47.508 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-16 16:06:47.522 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -
+2024-01-16 16:06:47.523 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-01-16 16:06:47.523 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 0.9653ms
+2024-01-16 16:06:47.528 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] The file /css/bootstrap-utilities.min.css was not modified
+2024-01-16 16:06:47.528 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/site.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] The file /css/bootstrap.rtl.min.css was not modified
+2024-01-16 16:06:47.528 +01:00 [INF] The file /css/bootstrap-reboot.min.css was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -
+2024-01-16 16:06:47.528 +01:00 [INF] The file /css/bootstrap-reboot.rtl.min.css was not modified
+2024-01-16 16:06:47.528 +01:00 [INF] The file /css/bootstrap-utilities.rtl.min.css was not modified
+2024-01-16 16:06:47.528 +01:00 [INF] The file /css/bootstrap-grid.min.css was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] The file /css/site.css was not modified
+2024-01-16 16:06:47.528 +01:00 [INF] The file /css/bootstrap-grid.rtl.min.css was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 0.7921ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 0.9027ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 0.5414ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 0.8673ms
+2024-01-16 16:06:47.529 +01:00 [INF] The file /leaflet/leaflet.css was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 0.9455ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 1.0073ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 0.9784ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 0.4563ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/site.js - -
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 0.5029ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -
+2024-01-16 16:06:47.529 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -
+2024-01-16 16:06:47.529 +01:00 [INF] The file /leaflet/leaflet.js was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] The file /js/site.js was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] The file /js/faceunlock.js was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] The file /js/bootstrap.bundle.min.js was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 0.6050ms
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 0.4164ms
+2024-01-16 16:06:47.529 +01:00 [INF] The file /css/bootstrap-custom.css was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-01-16 16:06:47.529 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 0.5548ms
+2024-01-16 16:06:47.530 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 0.5034ms
+2024-01-16 16:06:47.530 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 0.6378ms
+2024-01-16 16:06:47.530 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 0.4622ms
+2024-01-16 16:06:47.529 +01:00 [INF] The file /leaflet/leaflet-src.js was not modified
+2024-01-16 16:06:47.530 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 0.8109ms
+2024-01-16 16:06:47.530 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 0.7170ms
+2024-01-16 16:06:47.594 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -
+2024-01-16 16:06:47.595 +01:00 [INF] Executing endpoint 'Blazor initializers'
+2024-01-16 16:06:47.595 +01:00 [INF] Executed endpoint 'Blazor initializers'
+2024-01-16 16:06:47.595 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 1.4305ms
+2024-01-16 16:06:47.646 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0
+2024-01-16 16:06:47.646 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2024-01-16 16:06:47.647 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2024-01-16 16:06:47.647 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 1.4774ms
+2024-01-16 16:06:47.658 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=cPwuepw5gsvbq4UUM0USVw - -
+2024-01-16 16:06:47.659 +01:00 [INF] Executing endpoint '/_blazor'
+2024-01-16 16:06:50.734 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-16 16:06:50.735 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundarykmEEOpBGZjUTVH11 359 - 200 - - 3227.3619ms
+2024-01-16 16:06:50.739 +01:00 [INF] Executed endpoint '/_blazor'
+2024-01-16 16:06:50.739 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44343/_blazor?id=Th73krtn-IcMVk9qaaQLSg - - - 101 - - 60861.2324ms
+2024-01-16 16:06:53.146 +01:00 [INF] Generating JWT token for user: admin@gmail.com
+2024-01-16 16:06:53.173 +01:00 [INF] JWT token generated and set successfully
+2024-01-16 16:06:53.186 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/dashboard - -
+2024-01-16 16:06:53.186 +01:00 [INF] Executing endpoint '/_Host'
+2024-01-16 16:06:53.187 +01:00 [INF] Route matched with {page = "/_Host"}. Executing page /_Host
+2024-01-16 16:06:53.188 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-01-16 16:06:53.188 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-01-16 16:06:53.192 +01:00 [INF] Executed page /_Host in 5.0483ms
+2024-01-16 16:06:53.192 +01:00 [INF] Executed endpoint '/_Host'
+2024-01-16 16:06:53.193 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/dashboard - - - 200 - text/html;+charset=utf-8 6.8431ms
+2024-01-16 16:06:53.200 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryuxHlEpzDPCFHjqnr 359
+2024-01-16 16:06:53.200 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-16 16:06:53.201 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-16 16:06:53.201 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryuxHlEpzDPCFHjqnr 359 - 200 - - 1.6759ms
+2024-01-16 16:06:53.202 +01:00 [INF] Executed endpoint '/_blazor'
+2024-01-16 16:06:53.202 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44343/_blazor?id=cPwuepw5gsvbq4UUM0USVw - - - 101 - - 5543.7187ms
+2024-01-16 16:06:53.219 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -
+2024-01-16 16:06:53.220 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-01-16 16:06:53.220 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 1.1743ms
+2024-01-16 16:06:53.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -
+2024-01-16 16:06:53.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -
+2024-01-16 16:06:53.223 +01:00 [INF] The file /css/bootstrap-grid.rtl.min.css was not modified
+2024-01-16 16:06:53.223 +01:00 [INF] The file /css/bootstrap-grid.min.css was not modified
+2024-01-16 16:06:53.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -
+2024-01-16 16:06:53.224 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -
+2024-01-16 16:06:53.224 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 0.7922ms
+2024-01-16 16:06:53.224 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 0.7906ms
+2024-01-16 16:06:53.224 +01:00 [INF] The file /css/bootstrap-reboot.min.css was not modified
+2024-01-16 16:06:53.224 +01:00 [INF] The file /css/bootstrap-reboot.rtl.min.css was not modified
+2024-01-16 16:06:53.224 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 0.6034ms
+2024-01-16 16:06:53.224 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 0.7912ms
+2024-01-16 16:06:53.225 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -
+2024-01-16 16:06:53.225 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -
+2024-01-16 16:06:53.225 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -
+2024-01-16 16:06:53.225 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/site.css - -
+2024-01-16 16:06:53.225 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -
+2024-01-16 16:06:53.226 +01:00 [INF] The file /css/bootstrap-utilities.min.css was not modified
+2024-01-16 16:06:53.226 +01:00 [INF] The file /leaflet/leaflet.css was not modified
+2024-01-16 16:06:53.226 +01:00 [INF] The file /css/bootstrap.rtl.min.css was not modified
+2024-01-16 16:06:53.226 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 0.7763ms
+2024-01-16 16:06:53.226 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 0.9076ms
+2024-01-16 16:06:53.226 +01:00 [INF] The file /css/site.css was not modified
+2024-01-16 16:06:53.226 +01:00 [INF] The file /css/bootstrap-utilities.rtl.min.css was not modified
+2024-01-16 16:06:53.226 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -
+2024-01-16 16:06:53.226 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 1.1233ms
+2024-01-16 16:06:53.226 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 0.6197ms
+2024-01-16 16:06:53.226 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 0.8500ms
+2024-01-16 16:06:53.226 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -
+2024-01-16 16:06:53.226 +01:00 [INF] The file /css/bootstrap-custom.css was not modified
+2024-01-16 16:06:53.226 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 0.3707ms
+2024-01-16 16:06:53.226 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2024-01-16 16:06:53.227 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 0.5259ms
+2024-01-16 16:06:53.227 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -
+2024-01-16 16:06:53.227 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -
+2024-01-16 16:06:53.227 +01:00 [INF] The file /js/faceunlock.js was not modified
+2024-01-16 16:06:53.227 +01:00 [INF] The file /js/bootstrap.bundle.min.js was not modified
+2024-01-16 16:06:53.227 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 0.4276ms
+2024-01-16 16:06:53.227 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 0.4419ms
+2024-01-16 16:06:53.227 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -
+2024-01-16 16:06:53.227 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/site.js - -
+2024-01-16 16:06:53.227 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -
+2024-01-16 16:06:53.227 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -
+2024-01-16 16:06:53.227 +01:00 [INF] The file /leaflet/leaflet-src.js was not modified
+2024-01-16 16:06:53.227 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-01-16 16:06:53.228 +01:00 [INF] The file /leaflet/leaflet.js was not modified
+2024-01-16 16:06:53.228 +01:00 [INF] The file /js/site.js was not modified
+2024-01-16 16:06:53.228 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 0.5065ms
+2024-01-16 16:06:53.228 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 0.4856ms
+2024-01-16 16:06:53.228 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 0.6118ms
+2024-01-16 16:06:53.228 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 0.5697ms
+2024-01-16 16:06:53.303 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -
+2024-01-16 16:06:53.303 +01:00 [INF] Executing endpoint 'Blazor initializers'
+2024-01-16 16:06:53.303 +01:00 [INF] Executed endpoint 'Blazor initializers'
+2024-01-16 16:06:53.304 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 0.8008ms
+2024-01-16 16:06:53.342 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/favicon.ico - -
+2024-01-16 16:06:53.343 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0
+2024-01-16 16:06:53.343 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2024-01-16 16:06:53.343 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2024-01-16 16:06:53.343 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 0.7428ms
+2024-01-16 16:06:53.343 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/favicon.ico - - - 404 - - 1.3481ms
+2024-01-16 16:06:53.355 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/favicon.ico - -
+2024-01-16 16:06:53.356 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=K2s1phBf6R9Gf7d-fmX6pA - -
+2024-01-16 16:06:53.356 +01:00 [INF] Executing endpoint '/_blazor'
+2024-01-16 16:06:53.356 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/favicon.ico - - - 404 - - 0.6021ms
+2024-01-16 16:06:56.093 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - -
+2024-01-16 16:06:56.094 +01:00 [INF] The file /leaflet/images/marker-icon.png was not modified
+2024-01-16 16:06:56.094 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - - - 304 - image/png 0.7893ms
+2024-01-16 16:06:56.109 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - -
+2024-01-16 16:06:56.109 +01:00 [INF] The file /leaflet/images/marker-shadow.png was not modified
+2024-01-16 16:06:56.110 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - - - 304 - image/png 0.6498ms
