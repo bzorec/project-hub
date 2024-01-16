@@ -134,11 +134,11 @@ public class TestTsp
 
         for (var i = 0; i < 30; i++)
         {
-            var eilTsp = new TspAlgorithm(dataPath, 1000, true);
-            var ga = new GeneticAlgorithm(100, 0.8, 0.8);
+            var eilTsp = new TspAlgorithm(dataPath, 1000, true, true);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.1);
             var bestPath = ga.Execute(eilTsp);
 
-            // _testOutputHelper.WriteLine("{0}. [{1}]", i + 1, bestPath);
+            _testOutputHelper.WriteLine("{0}. [{1}]", i + 1, bestPath);
             distances.Add(bestPath.Distance);
 
             if (bestBest.Distance > bestPath.Distance)
