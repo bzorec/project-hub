@@ -214,8 +214,8 @@ public class TspAlgorithm
                 }
 
                 // Weights for distance and time
-                double weightDistance = 0.5; // Adjust these weights as needed
-                double weightTime = 0.5;
+                double weightDistance = _random.NextDouble(); // Adjust these weights as needed
+                double weightTime =  _random.NextDouble();;
 
                 // Combined metric
                 double combinedMetric = weightDistance * totalDistance;

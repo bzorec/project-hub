@@ -66,8 +66,8 @@ public class TestTsp
 
         CultureInfo invariantCulture = CultureInfo.InvariantCulture;
         _testOutputHelper.WriteLine("Min: {0}", bestBest);
-        _testOutputHelper.WriteLine("Avg: {0:E3}", avgDistance);
-        _testOutputHelper.WriteLine("Std: {0:E3}", stdDistance);
+        _testOutputHelper.WriteLine("Avg: {0}", avgDistance);
+        _testOutputHelper.WriteLine("Std: {0}", stdDistance);
     }
 
     [Theory]
@@ -136,7 +136,7 @@ public class TestTsp
 
         for (var i = 0; i < 30; i++)
         {
-            var eilTsp = new TspAlgorithm(dataPath, 1000, true, true);
+            var eilTsp = new TspAlgorithm(dataPath, 100000, true, true);
             var ga = new GeneticAlgorithm(100, 0.8, 0.1);
             var bestPath = ga.Execute(eilTsp);
 

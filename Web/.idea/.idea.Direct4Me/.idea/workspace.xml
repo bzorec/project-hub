@@ -10,11 +10,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_003.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_004.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_005.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240117_008.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240117_008.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +41,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/bf5e279d9239bfef5bb1b8d6212f1b971c434606/src/libraries/System.Linq/src/System/Linq/Last.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/bf5e279d9239bfef5bb1b8d6212f1b971c434606/src/libraries/System.Linq/src/System/Linq/Skip.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6879c9ed20391a5ccfea363be5964fbcfe4f1dfde9558aa84b36df6b6ec92c6/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.Blazor/Services/JsLeafletMapService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -151,7 +154,7 @@
       <workItem from="1705425797566" duration="4279000" />
       <workItem from="1705432960394" duration="1719000" />
       <workItem from="1705434702326" duration="804000" />
-      <workItem from="1705481394062" duration="3531000" />
+      <workItem from="1705481394062" duration="6659000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -273,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705436301174</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1705486781068</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705486781068</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,9 +314,9 @@
     <MESSAGE value="skipped the test" />
     <MESSAGE value="added data parser" />
     <MESSAGE value="finished tsp, and fixed the test" />
-    <MESSAGE value="fixes" />
     <MESSAGE value="fixed README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed README.md" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
