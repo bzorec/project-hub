@@ -10,10 +10,25 @@ public partial class Map
     [Inject] private IJsLeafletMapService LeafletMapService { get; set; } = null!;
     [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
 
-    protected async Task CalculateOptimalRouteReal()
+
+    protected async Task CalculateOptimalRouteRealOptions()
     {
         await LeafletMapService.ShowSpinner();
-        await LeafletMapService.InitBestRealPathMap(9);
+        await LeafletMapService.InitBestRealOptionsPathMap(9);
+        await LeafletMapService.HideSpinner();
+    }
+
+    protected async Task CalculateOptimalRouteRealDistance()
+    {
+        await LeafletMapService.ShowSpinner();
+        await LeafletMapService.InitBestRealDisctancePathMap(9);
+        await LeafletMapService.HideSpinner();
+    }
+
+    protected async Task CalculateOptimalRouteRealTime()
+    {
+        await LeafletMapService.ShowSpinner();
+        await LeafletMapService.InitBestRealTimePathMap(9);
         await LeafletMapService.HideSpinner();
     }
 
@@ -28,7 +43,7 @@ public partial class Map
         for (var i = 0; i < 30; i++)
         {
             await LeafletMapService.ShowSpinner();
-            theBestPath = await LeafletMapService.InitBestFakePathMap(zoomLevel, dataPath, theBestPath);
+            theBestPath = new Tour(await LeafletMapService.InitBestFakePathMap(zoomLevel, dataPath, theBestPath));
             await LeafletMapService.HideSpinner();
         }
 

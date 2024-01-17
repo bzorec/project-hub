@@ -115,7 +115,7 @@ public class TspAlgorithm
                 {
                     if (weight == "DISPLAY_DATA_SECTION") break;
 
-                    var matrixLine = weight.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                    var matrixLine = weight.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries)
                         .Select(int.Parse)
                         .ToArray();
 
@@ -173,7 +173,8 @@ public class TspAlgorithm
             else
             {
                 if (tour.Path == null || tour.Path.Count != NumberOfCities)
-                    throw new InvalidOperationException("Tour path is not properly initialized or does not cover all cities.");
+                    throw new InvalidOperationException(
+                        "Tour path is not properly initialized or does not cover all cities.");
 
                 double totalDistance = 0;
                 double totalTime = 0;
@@ -189,21 +190,27 @@ public class TspAlgorithm
                     if (fromIndex < DistanceMatrix.Count && toIndex < DistanceMatrix[fromIndex].Count)
                         totalDistance += DistanceMatrix[fromIndex][toIndex];
 
-                    if (fromIndex < TimeMatrix.Count && toIndex < TimeMatrix[fromIndex].Count)
-                        totalTime += TimeMatrix[fromIndex][toIndex];
+                    if (OptimizeForTime)
+                    {
+                        if (fromIndex < TimeMatrix.Count && toIndex < TimeMatrix[fromIndex].Count)
+                            totalTime += TimeMatrix[fromIndex][toIndex];
+                    }
                 }
 
                 // Handle the last city back to the start city
                 int lastCityIndex = tour.Path.Last().index;
                 int startCityIndex = tour.Path.First().index;
 
-                if (lastCityIndex >= 0 && startCityIndex >= 0 && lastCityIndex < NumberOfCities && startCityIndex < NumberOfCities)
+                if (lastCityIndex >= 0 && startCityIndex >= 0 && lastCityIndex < NumberOfCities &&
+                    startCityIndex < NumberOfCities)
                 {
                     if (lastCityIndex < DistanceMatrix.Count && startCityIndex < DistanceMatrix[lastCityIndex].Count)
                         totalDistance += DistanceMatrix[lastCityIndex][startCityIndex];
-
-                    if (lastCityIndex < TimeMatrix.Count && startCityIndex < TimeMatrix[lastCityIndex].Count)
-                        totalTime += TimeMatrix[lastCityIndex][startCityIndex];
+                    if (OptimizeForTime)
+                    {
+                        if (lastCityIndex < TimeMatrix.Count && startCityIndex < TimeMatrix[lastCityIndex].Count)
+                            totalTime += TimeMatrix[lastCityIndex][startCityIndex];
+                    }
                 }
 
                 // Weights for distance and time
@@ -211,7 +218,12 @@ public class TspAlgorithm
                 double weightTime = 0.5;
 
                 // Combined metric
-                double combinedMetric = weightDistance * totalDistance + weightTime * totalTime;
+                double combinedMetric = weightDistance * totalDistance;
+                if (OptimizeForTime)
+                {
+                    combinedMetric = weightTime * totalTime;
+                }
+
                 tour.Distance = combinedMetric; // You can use a different property if needed
                 NumberOfEvaluations++;
             }
@@ -259,7 +271,7 @@ public class TspAlgorithm
             foreach (var index in cityIndices)
             {
                 var city = Cities.FirstOrDefault(c => c.index == index) ??
-                           new City { index = index, cordX = 0, cordY = 0 };
+                           new City {index = index, cordX = 0, cordY = 0};
                 tour.SetCity(index, city);
             }
 
