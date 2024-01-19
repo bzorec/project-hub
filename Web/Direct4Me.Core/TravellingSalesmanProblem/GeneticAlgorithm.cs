@@ -17,7 +17,7 @@ public class GeneticAlgorithm
         _random = new Random(1);
     }
 
-    public Tour Execute(TspAlgorithm problem)
+    public Tour? Execute(TspAlgorithm problem)
     {
         _population = new List<Tour>();
         _offspring = new List<Tour>();
@@ -90,13 +90,29 @@ public class GeneticAlgorithm
         var child1 = new Tour(parent1.Dimension);
         var child2 = new Tour(parent2.Dimension);
 
+        // Perform crossover between cut points
         for (var i = cutPoint1; i <= cutPoint2; i++)
         {
             child1.Path[i] = parent2.Path[i];
             child2.Path[i] = parent1.Path[i];
         }
 
+        // Fill in the remaining cities in the child tours
+        FillRemainingCities(child1, parent1, cutPoint1, cutPoint2);
+        FillRemainingCities(child2, parent2, cutPoint1, cutPoint2);
+
         return new[] { child1, child2 };
+    }
+
+    private void FillRemainingCities(Tour child, Tour parent, int cutPoint1, int cutPoint2)
+    {
+        for (int i = 0; i < child.Path.Count; i++)
+        {
+            if (i < cutPoint1 || i > cutPoint2)
+            {
+                child.Path[i] = parent.Path[i];
+            }
+        }
     }
 
     private Tour TournamentSelection()

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2fc13f6b-957f-4346-9d77-6614f837f760" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000" beforeDir="false" afterPath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000/DeliveryEstimateDataGenerator3000.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Web/DockerfileApi" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/DockerfileApi" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2b83uYcFqZtrXqkV8wphWLpWp01" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/misel/source/repos/project-hub/MakineLearning/DeliveryEstimator",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2fc13f6b-957f-4346-9d77-6614f837f760" name="Changes" comment="" />
+      <created>1705583101279</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705583101279</updated>
+      <workItem from="1705583102342" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

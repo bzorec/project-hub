@@ -11,7 +11,11 @@ public interface IJsLeafletMapService
     Task ShowSpinner();
     Task HideSpinner();
 
-    Task InitBestPathMap(int zoomLevel);
+    Task<Tour?> InitBestFakePathMap(int zoomLevel, string dataPath, Tour? theBestPath);
+    Task InitBestRealDisctancePathMap(int zoomLevel);
+
+    Task InitBestRealOptionsPathMap(int zoomLevel);
+    Task InitBestRealTimePathMap(int zoomLevel);
 }
 
 public class JsLeafletMapService : IJsLeafletMapService
@@ -28,27 +32,89 @@ public class JsLeafletMapService : IJsLeafletMapService
         await _jsRuntime.InvokeVoidAsync("jsInterop.initMap", latitude, longitude, zoomLevel);
     }
 
-    public async Task InitBestPathMap(int zoomLevel)
+    public async Task<Tour?> InitBestFakePathMap(int zoomLevel, string dataPath, Tour? theBestPath)
+    {
+        var eilTsp = new TspAlgorithm(dataPath, 10000);
+        var ga = new GeneticAlgorithm(100, 0.8, 0.1);
+        var bestPath = ga.Execute(eilTsp);
+        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestPath?.ToJavascriptObject(), zoomLevel);
+
+        theBestPath ??= bestPath;
+        if (bestPath?.Distance <= theBestPath?.Distance)
+        {
+            theBestPath = new Tour(bestPath);
+        }
+
+        return theBestPath;
+    }
+
+    public async Task InitBestRealOptionsPathMap(int zoomLevel)
     {
         var basePath = AppDomain.CurrentDomain.BaseDirectory;
-        var dataPath = Path.Combine(basePath, "Data", "eil101.tsp");
+        var dataPath = Path.Combine(basePath, "Data", "complete_data.json");
 
-        Tour? theBestPath = null;
-        for (var i = 0; i < 100; i++)
+        var bestBest = new Tour(0);
+
+        for (var i = 0; i < 30; i++)
         {
-            var eilTsp = new TspAlgorithm(dataPath, 50000);
-            var ga = new GeneticAlgorithm(100, 0.8, 0.1);
+            var eilTsp = new TspAlgorithm(dataPath, 1000, true);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.8);
             var bestPath = ga.Execute(eilTsp);
 
-            theBestPath ??= bestPath;
-
-            if (bestPath.Distance <= theBestPath.Distance)
+            if (bestBest.Distance > bestPath?.Distance)
             {
-                theBestPath = new Tour(bestPath);
+                bestBest = new Tour(bestPath);
             }
         }
 
-        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", theBestPath?.ToJavascriptObject(), zoomLevel);
+        var cities = bestBest.Path.Skip(10).Take(10);
+        bestBest.Path = cities.ToList();
+
+        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestBest?.ToJavascriptObject(), zoomLevel);
+    }
+
+    public async Task InitBestRealDisctancePathMap(int zoomLevel)
+    {
+        var basePath = AppDomain.CurrentDomain.BaseDirectory;
+        var dataPath = Path.Combine(basePath, "Data", "complete_data.json");
+
+        var bestBest = new Tour(0);
+
+        for (var i = 0; i < 30; i++)
+        {
+            var eilTsp = new TspAlgorithm(dataPath, 1000, true);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.8);
+            var bestPath = ga.Execute(eilTsp);
+
+            if (bestBest.Distance > bestPath?.Distance)
+            {
+                bestBest = new Tour(bestPath);
+            }
+        }
+
+        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestBest?.ToJavascriptObject(), zoomLevel);
+    }
+
+    public async Task InitBestRealTimePathMap(int zoomLevel)
+    {
+        var basePath = AppDomain.CurrentDomain.BaseDirectory;
+        var dataPath = Path.Combine(basePath, "Data", "complete_data.json");
+
+        var bestBest = new Tour(0);
+
+        for (var i = 0; i < 30; i++)
+        {
+            var eilTsp = new TspAlgorithm(dataPath, 1000, true, true);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.8);
+            var bestPath = ga.Execute(eilTsp);
+
+            if (bestBest.Distance > bestPath?.Distance)
+            {
+                bestBest = new Tour(bestPath);
+            }
+        }
+
+        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestBest?.ToJavascriptObject(), zoomLevel);
     }
 
     public async Task AddMarker(double latitude, double longitude)

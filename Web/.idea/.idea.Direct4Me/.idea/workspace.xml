@@ -9,17 +9,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_26_12_2023_17_09_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_26_12_2023_17_09__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Components/MapBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/Tour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/Direct4Me.UnitTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_003.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_004.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_005.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240117_008.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240117_008.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/UserEntityTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/UserEntityTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +38,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/b506e2cb7b6c0fe787305f8cfdee046b7b3f9a53/src/JSInterop/Microsoft.JSInterop/src/JSRuntimeExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/bf5e279d9239bfef5bb1b8d6212f1b971c434606/src/libraries/System.Linq/src/System/Linq/Last.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/bf5e279d9239bfef5bb1b8d6212f1b971c434606/src/libraries/System.Linq/src/System/Linq/Skip.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6879c9ed20391a5ccfea363be5964fbcfe4f1dfde9558aa84b36df6b6ec92c6/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.Blazor/Services/JsLeafletMapService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -58,7 +62,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express.executor": "Debug",
+    ".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express.executor": "Run",
     ".NET Launch Settings Profile.Direct4Me.Minimal.Api: IIS Express.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -69,7 +73,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "RiderIisExpressOptionsPageId",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -142,7 +146,15 @@
       <workItem from="1704271976051" duration="4375000" />
       <workItem from="1704377726740" duration="1703000" />
       <workItem from="1705318071337" duration="22000" />
-      <workItem from="1705319610113" duration="2550000" />
+      <workItem from="1705319610113" duration="2677000" />
+      <workItem from="1705324129910" duration="2166000" />
+      <workItem from="1705411163710" duration="3080000" />
+      <workItem from="1705414279705" duration="3424000" />
+      <workItem from="1705422103985" duration="3633000" />
+      <workItem from="1705425797566" duration="4279000" />
+      <workItem from="1705432960394" duration="1719000" />
+      <workItem from="1705434702326" duration="804000" />
+      <workItem from="1705481394062" duration="6659000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -224,7 +236,55 @@
       <option name="project" value="LOCAL" />
       <updated>1703756825791</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1705322193547</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705322193547</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1705417586811</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705417586811</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1705429701449</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705429701449</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1705435984569</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705435984569</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fixed README.md">
+      <option name="closed" value="true" />
+      <created>1705436301174</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1705436301174</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1705486781068</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705486781068</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +314,9 @@
     <MESSAGE value="skipped the test" />
     <MESSAGE value="added data parser" />
     <MESSAGE value="finished tsp, and fixed the test" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished tsp, and fixed the test" />
+    <MESSAGE value="fixed README.md" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -270,6 +332,32 @@
           <line>67</line>
           <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.Repository\Entities\UserEntity.cs" initialLine="67" containingFunctionPresentation="Method 'IsAlreadyHashed'" />
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs</url>
+          <line>36</line>
+          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Blazor\Services\JsLeafletMapService.cs" initialLine="33" containingFunctionPresentation="Method 'InitBestFakePathMap'">
+            <startOffsets>
+              <option value="1149" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1196" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs</url>
+          <line>34</line>
+          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\TravellingSalesmanProblem\GeneticAlgorithm.cs" initialLine="34" containingFunctionPresentation="Method 'Execute'">
+            <startOffsets>
+              <option value="1075" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1145" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

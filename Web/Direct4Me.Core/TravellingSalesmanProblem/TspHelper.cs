@@ -4,8 +4,8 @@ public static class TspHelper
 {
     public static double CalculateEuclideanDistance(City from, City to)
     {
-        var deltaX = from.CordX - to.CordX;
-        var deltaY = from.CordY - to.CordY;
+        var deltaX = from.cordX - to.cordX;
+        var deltaY = from.cordY - to.cordY;
         return Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 

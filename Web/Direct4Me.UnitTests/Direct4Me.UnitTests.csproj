@@ -49,6 +49,10 @@
       <Content Include="Data\dca1389.tsp">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Data\complete_data.json" />
+      <Content Include="Data\complete_data.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

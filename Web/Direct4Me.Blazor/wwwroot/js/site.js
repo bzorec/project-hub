@@ -90,7 +90,7 @@ window.jsInterop = {
     initMap: initMap,
     addMarker: addMarker,
     drawPath: drawPath,
-    
+
     showSpinner() {
         document.getElementById('map-spinner').style.display = 'block';
     },
@@ -102,6 +102,8 @@ window.jsInterop = {
     initBestPathMap: initBestPathMap
 };
 let globalMap;
+let markers = [];
+let polyline;
 
 function initBestPathMap(tour, zoomLevel) {
     const mapContainer = document.getElementById('map');
@@ -109,19 +111,31 @@ function initBestPathMap(tour, zoomLevel) {
         console.error('Map container not found');
         return;
     }
-    if (globalMap) {
-        return;
+
+    // Remove existing markers
+    markers.forEach(marker => {
+        globalMap.removeLayer(marker);
+    });
+
+    // Remove existing polyline if it exists
+    if (polyline) {
+        globalMap.removeLayer(polyline);
     }
 
-    let startCity = tour.path[0];
-    let map = L.map('map').setView([startCity.lat, startCity.lng], zoomLevel);
+    if (globalMap) {
+        addMarkersAndDrawPath(tour);
+        return;
+    } else {
+        let startCity = tour.path[0];
+        let map = L.map('map').setView([startCity.lat, startCity.lng], zoomLevel);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
 
-    globalMap = map;
+        globalMap = map;
+    }
 
     addMarkersAndDrawPath(tour);
 }
@@ -133,13 +147,13 @@ function addMarkersAndDrawPath(tour) {
         let latlng = L.latLng(city.lat, city.lng);
         latlngs.push(latlng);
 
-        L.marker(latlng).addTo(globalMap);
+        let marker = L.marker(latlng).addTo(globalMap);
+        markers.push(marker);
     });
 
-    let polyline = L.polyline(latlngs, {color: 'blue'}).addTo(globalMap);
+    polyline = L.polyline(latlngs, {color: 'blue'}).addTo(globalMap);
     globalMap.fitBounds(polyline.getBounds());
 }
-
 function initMap(latitude, longitude, zoomLevel) {
     const mapContainer = document.getElementById('map');
     if (!mapContainer) {

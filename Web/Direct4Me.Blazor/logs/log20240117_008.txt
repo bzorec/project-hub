@@ -1,0 +1,607 @@
+{"@t":"2024-01-17T10:17:48.5822793Z","@mt":"User profile is available. Using '{FullName}' as key repository and Windows DPAPI to encrypt keys at rest.","FullName":"C:\\Users\\bzorec\\AppData\\Local\\ASP.NET\\DataProtection-Keys","EventId":{"Id":63,"Name":"UsingProfileAsKeyRepositoryWithDPAPI"},"SourceContext":"Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager","MachineName":"ENDAUTOPSDMQRF7","ThreadId":1}
+{"@t":"2024-01-17T10:17:48.7648639Z","@mt":"Application started. Press Ctrl+C to shut down.","SourceContext":"Microsoft.Hosting.Lifetime","MachineName":"ENDAUTOPSDMQRF7","ThreadId":1}
+{"@t":"2024-01-17T10:17:48.7654823Z","@mt":"Hosting environment: {EnvName}","EnvName":"Development","SourceContext":"Microsoft.Hosting.Lifetime","MachineName":"ENDAUTOPSDMQRF7","ThreadId":1}
+{"@t":"2024-01-17T10:17:48.7666903Z","@mt":"Content root path: {ContentRoot}","ContentRoot":"D:\\workspace\\project-hub\\Web\\Direct4Me.Blazor","SourceContext":"Microsoft.Hosting.Lifetime","MachineName":"ENDAUTOPSDMQRF7","ThreadId":1}
+{"@t":"2024-01-17T10:17:48.7847291Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/ - -"],"@tr":"c7bb9c72b5dbc439ad6c1e7805fd06dd","@sp":"df691b0048b3fc4c","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/ - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000035-0005-ff00-b63f-84710c7967bb","RequestPath":"/","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:48.7847263Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0"],"@tr":"8acbf95621e52f2640dd56d338868e4b","@sp":"3747e9fa38fc7c2d","Protocol":"HTTP/2","Method":"POST","ContentType":null,"ContentLength":0,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_blazor/negotiate","QueryString":"?negotiateVersion=1","HostingRequestStartingLog":"Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000023-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/negotiate","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:48.8425724Z","@mt":"Executing endpoint '{EndpointName}'","@tr":"8acbf95621e52f2640dd56d338868e4b","@sp":"3747e9fa38fc7c2d","EndpointName":"/_blazor/negotiate","EventId":{"Name":"ExecutingEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000023-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/negotiate","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:48.8425727Z","@mt":"Executing endpoint '{EndpointName}'","@tr":"c7bb9c72b5dbc439ad6c1e7805fd06dd","@sp":"df691b0048b3fc4c","EndpointName":"/_Host","EventId":{"Name":"ExecutingEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000035-0005-ff00-b63f-84710c7967bb","RequestPath":"/","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:48.8560254Z","@mt":"Route matched with {RouteData}. Executing page {PageName}","@tr":"c7bb9c72b5dbc439ad6c1e7805fd06dd","@sp":"df691b0048b3fc4c","RouteData":"{page = \"/_Host\"}","PageName":"/_Host","EventId":{"Id":103,"Name":"PageExecuting"},"SourceContext":"Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker","ActionId":"19a40e4c-ecc8-4aeb-b701-5161970716b8","ActionName":"/_Host","RequestId":"40000035-0005-ff00-b63f-84710c7967bb","RequestPath":"/","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:48.8681737Z","@mt":"Executing an implicit handler method - ModelState is {ValidationState}","@tr":"c7bb9c72b5dbc439ad6c1e7805fd06dd","@sp":"df691b0048b3fc4c","ValidationState":"Valid","EventId":{"Id":107,"Name":"ExecutingImplicitHandlerMethod"},"SourceContext":"Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker","ActionId":"19a40e4c-ecc8-4aeb-b701-5161970716b8","ActionName":"/_Host","RequestId":"40000035-0005-ff00-b63f-84710c7967bb","RequestPath":"/","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:48.8713070Z","@mt":"Executed an implicit handler method, returned result {ActionResult}.","@tr":"c7bb9c72b5dbc439ad6c1e7805fd06dd","@sp":"df691b0048b3fc4c","ActionResult":"Microsoft.AspNetCore.Mvc.RazorPages.PageResult","EventId":{"Id":109,"Name":"ExecutedImplicitHandlerMethod"},"SourceContext":"Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker","ActionId":"19a40e4c-ecc8-4aeb-b701-5161970716b8","ActionName":"/_Host","RequestId":"40000035-0005-ff00-b63f-84710c7967bb","RequestPath":"/","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:48.8738569Z","@mt":"Executed endpoint '{EndpointName}'","@tr":"8acbf95621e52f2640dd56d338868e4b","@sp":"3747e9fa38fc7c2d","EndpointName":"/_blazor/negotiate","EventId":{"Id":1,"Name":"ExecutedEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000023-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/negotiate","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:48.8788453Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 96.3712ms"],"@tr":"8acbf95621e52f2640dd56d338868e4b","@sp":"3747e9fa38fc7c2d","ElapsedMilliseconds":96.3712,"StatusCode":200,"ContentType":"application/json","ContentLength":316,"Protocol":"HTTP/2","Method":"POST","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_blazor/negotiate","QueryString":"?negotiateVersion=1","HostingRequestFinishedLog":"Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 96.3712ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000023-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/negotiate","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:48.8844197Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=9XhoNJy3VdxzbXFRcmiVzg - -"],"@tr":"3b7f42ddcbdf416b1dd9b448892f4019","@sp":"cb5699a66a886027","Protocol":"HTTP/1.1","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_blazor","QueryString":"?id=9XhoNJy3VdxzbXFRcmiVzg","HostingRequestStartingLog":"Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=9XhoNJy3VdxzbXFRcmiVzg - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000025-0006-fa00-b63f-84710c7967bb","RequestPath":"/_blazor","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:48.8879443Z","@mt":"Executing endpoint '{EndpointName}'","@tr":"3b7f42ddcbdf416b1dd9b448892f4019","@sp":"cb5699a66a886027","EndpointName":"/_blazor","EventId":{"Name":"ExecutingEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000025-0006-fa00-b63f-84710c7967bb","RequestPath":"/_blazor","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:49.4153089Z","@mt":"Executed page {PageName} in {ElapsedMilliseconds}ms","@tr":"c7bb9c72b5dbc439ad6c1e7805fd06dd","@sp":"df691b0048b3fc4c","PageName":"/_Host","ElapsedMilliseconds":555.7872,"EventId":{"Id":104,"Name":"PageExecuted"},"SourceContext":"Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker","RequestId":"40000035-0005-ff00-b63f-84710c7967bb","RequestPath":"/","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.4155794Z","@mt":"Executed endpoint '{EndpointName}'","@tr":"c7bb9c72b5dbc439ad6c1e7805fd06dd","@sp":"df691b0048b3fc4c","EndpointName":"/_Host","EventId":{"Id":1,"Name":"ExecutedEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000035-0005-ff00-b63f-84710c7967bb","RequestPath":"/","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.4185467Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/ - - - 200 - text/html;+charset=utf-8 636.3596ms"],"@tr":"c7bb9c72b5dbc439ad6c1e7805fd06dd","@sp":"df691b0048b3fc4c","ElapsedMilliseconds":636.3596,"StatusCode":200,"ContentType":"text/html; charset=utf-8","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/ - - - 200 - text/html;+charset=utf-8 636.3596ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000035-0005-ff00-b63f-84710c7967bb","RequestPath":"/","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.4273552Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -"],"@tr":"7d81f7ae8e542703ebcbff35b92cf655","@sp":"268e43c3953cfd4b","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-reboot.min.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000020-000c-fe00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-reboot.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:49.4273569Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -"],"@tr":"b6c08c31a759c3a5afedb4ddaa409f26","@sp":"c6c853bb11ca0367","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-reboot.rtl.min.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000022-000c-f700-b63f-84710c7967bb","RequestPath":"/css/bootstrap-reboot.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":10}
+{"@t":"2024-01-17T10:17:49.4273561Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -"],"@tr":"f0aaf34b44780d22ad66e110c09c33cb","@sp":"b5f9c2151ed19f6a","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap.min.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000001b-000c-f900-b63f-84710c7967bb","RequestPath":"/css/bootstrap.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":15}
+{"@t":"2024-01-17T10:17:49.4274483Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -"],"@tr":"bc6d220320398891d739d6b9b3be1d24","@sp":"6c656cb313618f24","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-grid.rtl.min.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000005d-000c-ff00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-grid.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":12}
+{"@t":"2024-01-17T10:17:49.4273552Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -"],"@tr":"0c7b8758be279036ead70f37f9bbc280","@sp":"8de7396c8c89405b","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-grid.min.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000002c-000c-fd00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-grid.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.4283611Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -"],"@tr":"03d76157ba2d76982e517c583a95c59b","@sp":"9e6580448c2a81d2","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-utilities.rtl.min.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000010-0002-f300-b63f-84710c7967bb","RequestPath":"/css/bootstrap-utilities.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:49.4287896Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -"],"@tr":"43497d8b7bbe6463553819828465e170","@sp":"48e8dd3d615dcd9d","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-utilities.min.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000001c-0002-f200-b63f-84710c7967bb","RequestPath":"/css/bootstrap-utilities.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":26}
+{"@t":"2024-01-17T10:17:49.4294430Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -"],"@tr":"747885fce50c9179803500c09efa9af7","@sp":"af65dcee455e6d67","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap.rtl.min.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000031-000c-fc00-b63f-84710c7967bb","RequestPath":"/css/bootstrap.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.4296854Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/site.css - -"],"@tr":"3de1bffbf1d20f55be5f84a6f19bf405","@sp":"6d1c350d8d6a6a21","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/site.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/site.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000022-000c-f800-b63f-84710c7967bb","RequestPath":"/css/site.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":28}
+{"@t":"2024-01-17T10:17:49.4300989Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -"],"@tr":"f3f71c6cd8728fce3b5cfb3bbbd734c9","@sp":"ab6fedf88ee8c717","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-custom.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000002-000c-f500-b63f-84710c7967bb","RequestPath":"/css/bootstrap-custom.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":29}
+{"@t":"2024-01-17T10:17:49.4303376Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -"],"@tr":"39eadba8f659c100e2402d5f5fb5ec30","@sp":"9efb0c3a67f91a06","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/leaflet.css","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000002-000c-f600-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":30}
+{"@t":"2024-01-17T10:17:49.4305744Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -"],"@tr":"d5b1d2877a036e9af1390cc5f3c4b610","@sp":"05eb5c841c93d9f6","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_framework/blazor.server.js","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000025-000e-fd00-b63f-84710c7967bb","RequestPath":"/_framework/blazor.server.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":31}
+{"@t":"2024-01-17T10:17:49.4309526Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -"],"@tr":"43feaf65b0798635ac3b607057c5c16a","@sp":"c393b14445a3dad0","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/js/bootstrap.min.js","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000037-0005-ff00-b63f-84710c7967bb","RequestPath":"/js/bootstrap.min.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":32}
+{"@t":"2024-01-17T10:17:49.4311635Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -"],"@tr":"53ab828208ee656458917c46c2147ab2","@sp":"5fe9131f14948b3f","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/js/bootstrap.bundle.min.js","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000016-000d-ff00-b63f-84710c7967bb","RequestPath":"/js/bootstrap.bundle.min.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":33}
+{"@t":"2024-01-17T10:17:49.4314435Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -"],"@tr":"4ef887519903f1075e8691a380628d2b","@sp":"171ce2eef0d66d6c","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/js/faceunlock.js","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000014-000d-fa00-b63f-84710c7967bb","RequestPath":"/js/faceunlock.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":34}
+{"@t":"2024-01-17T10:17:49.4314595Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -"],"@tr":"f812b92e25ebd6b2f9c242fe977c71be","@sp":"5f04f6aa9dd8b63f","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/leaflet.js","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000010-000d-fc00-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":35}
+{"@t":"2024-01-17T10:17:49.4383704Z","@mt":"The file {Path} was not modified","@tr":"03d76157ba2d76982e517c583a95c59b","@sp":"9e6580448c2a81d2","Path":"/css/bootstrap-utilities.rtl.min.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000010-0002-f300-b63f-84710c7967bb","RequestPath":"/css/bootstrap-utilities.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:49.4384541Z","@mt":"The file {Path} was not modified","@tr":"7d81f7ae8e542703ebcbff35b92cf655","@sp":"268e43c3953cfd4b","Path":"/css/bootstrap-reboot.min.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000020-000c-fe00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-reboot.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:49.4384065Z","@mt":"The file {Path} was not modified","@tr":"bc6d220320398891d739d6b9b3be1d24","@sp":"6c656cb313618f24","Path":"/css/bootstrap-grid.rtl.min.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"4000005d-000c-ff00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-grid.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":12}
+{"@t":"2024-01-17T10:17:49.4384826Z","@mt":"The file {Path} was not modified","@tr":"f3f71c6cd8728fce3b5cfb3bbbd734c9","@sp":"ab6fedf88ee8c717","Path":"/css/bootstrap-custom.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000002-000c-f500-b63f-84710c7967bb","RequestPath":"/css/bootstrap-custom.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":29}
+{"@t":"2024-01-17T10:17:49.4383854Z","@mt":"The file {Path} was not modified","@tr":"d5b1d2877a036e9af1390cc5f3c4b610","@sp":"05eb5c841c93d9f6","Path":"/_framework/blazor.server.js","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000025-000e-fd00-b63f-84710c7967bb","RequestPath":"/_framework/blazor.server.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":31}
+{"@t":"2024-01-17T10:17:49.4383683Z","@mt":"The file {Path} was not modified","@tr":"3de1bffbf1d20f55be5f84a6f19bf405","@sp":"6d1c350d8d6a6a21","Path":"/css/site.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000022-000c-f800-b63f-84710c7967bb","RequestPath":"/css/site.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":28}
+{"@t":"2024-01-17T10:17:49.4384371Z","@mt":"The file {Path} was not modified","@tr":"f812b92e25ebd6b2f9c242fe977c71be","@sp":"5f04f6aa9dd8b63f","Path":"/leaflet/leaflet.js","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000010-000d-fc00-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":35}
+{"@t":"2024-01-17T10:17:49.4383836Z","@mt":"The file {Path} was not modified","@tr":"43feaf65b0798635ac3b607057c5c16a","@sp":"c393b14445a3dad0","Path":"/js/bootstrap.min.js","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000037-0005-ff00-b63f-84710c7967bb","RequestPath":"/js/bootstrap.min.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":32}
+{"@t":"2024-01-17T10:17:49.4385125Z","@mt":"The file {Path} was not modified","@tr":"39eadba8f659c100e2402d5f5fb5ec30","@sp":"9efb0c3a67f91a06","Path":"/leaflet/leaflet.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000002-000c-f600-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":30}
+{"@t":"2024-01-17T10:17:49.4387109Z","@mt":"The file {Path} was not modified","@tr":"f0aaf34b44780d22ad66e110c09c33cb","@sp":"b5f9c2151ed19f6a","Path":"/css/bootstrap.min.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"4000001b-000c-f900-b63f-84710c7967bb","RequestPath":"/css/bootstrap.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":15}
+{"@t":"2024-01-17T10:17:49.4383696Z","@mt":"The file {Path} was not modified","@tr":"b6c08c31a759c3a5afedb4ddaa409f26","@sp":"c6c853bb11ca0367","Path":"/css/bootstrap-reboot.rtl.min.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000022-000c-f700-b63f-84710c7967bb","RequestPath":"/css/bootstrap-reboot.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":10}
+{"@t":"2024-01-17T10:17:49.4384977Z","@mt":"The file {Path} was not modified","@tr":"4ef887519903f1075e8691a380628d2b","@sp":"171ce2eef0d66d6c","Path":"/js/faceunlock.js","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000014-000d-fa00-b63f-84710c7967bb","RequestPath":"/js/faceunlock.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":34}
+{"@t":"2024-01-17T10:17:49.4384113Z","@mt":"The file {Path} was not modified","@tr":"0c7b8758be279036ead70f37f9bbc280","@sp":"8de7396c8c89405b","Path":"/css/bootstrap-grid.min.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"4000002c-000c-fd00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-grid.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.4383763Z","@mt":"The file {Path} was not modified","@tr":"53ab828208ee656458917c46c2147ab2","@sp":"5fe9131f14948b3f","Path":"/js/bootstrap.bundle.min.js","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000016-000d-ff00-b63f-84710c7967bb","RequestPath":"/js/bootstrap.bundle.min.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":33}
+{"@t":"2024-01-17T10:17:49.4390331Z","@mt":"The file {Path} was not modified","@tr":"43497d8b7bbe6463553819828465e170","@sp":"48e8dd3d615dcd9d","Path":"/css/bootstrap-utilities.min.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"4000001c-0002-f200-b63f-84710c7967bb","RequestPath":"/css/bootstrap-utilities.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":26}
+{"@t":"2024-01-17T10:17:49.4396036Z","@mt":"The file {Path} was not modified","@tr":"747885fce50c9179803500c09efa9af7","@sp":"af65dcee455e6d67","Path":"/css/bootstrap.rtl.min.css","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000031-000c-fc00-b63f-84710c7967bb","RequestPath":"/css/bootstrap.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.4400513Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 12.6932ms"],"@tr":"0c7b8758be279036ead70f37f9bbc280","@sp":"8de7396c8c89405b","ElapsedMilliseconds":12.6932,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-grid.min.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 12.6932ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000002c-000c-fd00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-grid.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.4400518Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 10.6121ms"],"@tr":"747885fce50c9179803500c09efa9af7","@sp":"af65dcee455e6d67","ElapsedMilliseconds":10.6121,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap.rtl.min.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 10.6121ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000031-000c-fc00-b63f-84710c7967bb","RequestPath":"/css/bootstrap.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.4401166Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 9.7672ms"],"@tr":"39eadba8f659c100e2402d5f5fb5ec30","@sp":"9efb0c3a67f91a06","ElapsedMilliseconds":9.7672,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/leaflet.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 9.7672ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000002-000c-f600-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":30}
+{"@t":"2024-01-17T10:17:49.4400513Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 9.9141ms"],"@tr":"f3f71c6cd8728fce3b5cfb3bbbd734c9","@sp":"ab6fedf88ee8c717","ElapsedMilliseconds":9.9141,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-custom.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 9.9141ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000002-000c-f500-b63f-84710c7967bb","RequestPath":"/css/bootstrap-custom.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":29}
+{"@t":"2024-01-17T10:17:49.4401534Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 8.7102ms"],"@tr":"4ef887519903f1075e8691a380628d2b","@sp":"171ce2eef0d66d6c","ElapsedMilliseconds":8.7102,"StatusCode":304,"ContentType":"text/javascript","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/js/faceunlock.js","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 8.7102ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000014-000d-fa00-b63f-84710c7967bb","RequestPath":"/js/faceunlock.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":34}
+{"@t":"2024-01-17T10:17:49.4400517Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 8.5543ms"],"@tr":"f812b92e25ebd6b2f9c242fe977c71be","@sp":"5f04f6aa9dd8b63f","ElapsedMilliseconds":8.5543,"StatusCode":304,"ContentType":"text/javascript","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/leaflet.js","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 8.5543ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000010-000d-fc00-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":35}
+{"@t":"2024-01-17T10:17:49.4401027Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 9.1401ms"],"@tr":"43feaf65b0798635ac3b607057c5c16a","@sp":"c393b14445a3dad0","ElapsedMilliseconds":9.1401,"StatusCode":304,"ContentType":"text/javascript","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/js/bootstrap.min.js","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 9.1401ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000037-0005-ff00-b63f-84710c7967bb","RequestPath":"/js/bootstrap.min.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":32}
+{"@t":"2024-01-17T10:17:49.4400519Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 9.4437ms"],"@tr":"d5b1d2877a036e9af1390cc5f3c4b610","@sp":"05eb5c841c93d9f6","ElapsedMilliseconds":9.4437,"StatusCode":304,"ContentType":"text/javascript","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_framework/blazor.server.js","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 9.4437ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000025-000e-fd00-b63f-84710c7967bb","RequestPath":"/_framework/blazor.server.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":31}
+{"@t":"2024-01-17T10:17:49.4401692Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 12.8469ms"],"@tr":"b6c08c31a759c3a5afedb4ddaa409f26","@sp":"c6c853bb11ca0367","ElapsedMilliseconds":12.8469,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-reboot.rtl.min.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 12.8469ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000022-000c-f700-b63f-84710c7967bb","RequestPath":"/css/bootstrap-reboot.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":10}
+{"@t":"2024-01-17T10:17:49.4400517Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 8.8493ms"],"@tr":"53ab828208ee656458917c46c2147ab2","@sp":"5fe9131f14948b3f","ElapsedMilliseconds":8.8493,"StatusCode":304,"ContentType":"text/javascript","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/js/bootstrap.bundle.min.js","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 8.8493ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000016-000d-ff00-b63f-84710c7967bb","RequestPath":"/js/bootstrap.bundle.min.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":33}
+{"@t":"2024-01-17T10:17:49.4400772Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 12.6303ms"],"@tr":"bc6d220320398891d739d6b9b3be1d24","@sp":"6c656cb313618f24","ElapsedMilliseconds":12.6303,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-grid.rtl.min.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 12.6303ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000005d-000c-ff00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-grid.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":12}
+{"@t":"2024-01-17T10:17:49.4403038Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -"],"@tr":"21894b01616ff7715981ecc457c3856d","@sp":"575854d4b231c309","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/leaflet-src.js","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000020-000f-fb00-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet-src.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.4403049Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/js/site.js - -"],"@tr":"3c2f5606437bbde0ab1dc186768f3475","@sp":"03794d8ece25dcb5","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/js/site.js","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/js/site.js - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000010-0003-fd00-b63f-84710c7967bb","RequestPath":"/js/site.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.4400516Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 12.6934ms"],"@tr":"f0aaf34b44780d22ad66e110c09c33cb","@sp":"b5f9c2151ed19f6a","ElapsedMilliseconds":12.6934,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap.min.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 12.6934ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000001b-000c-f900-b63f-84710c7967bb","RequestPath":"/css/bootstrap.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":15}
+{"@t":"2024-01-17T10:17:49.4400751Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 12.7397ms"],"@tr":"7d81f7ae8e542703ebcbff35b92cf655","@sp":"268e43c3953cfd4b","ElapsedMilliseconds":12.7397,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-reboot.min.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 12.7397ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000020-000c-fe00-b63f-84710c7967bb","RequestPath":"/css/bootstrap-reboot.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":6}
+{"@t":"2024-01-17T10:17:49.4401889Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 11.9258ms"],"@tr":"03d76157ba2d76982e517c583a95c59b","@sp":"9e6580448c2a81d2","ElapsedMilliseconds":11.9258,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-utilities.rtl.min.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 11.9258ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000010-0002-f300-b63f-84710c7967bb","RequestPath":"/css/bootstrap-utilities.rtl.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:49.4400709Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 11.2786ms"],"@tr":"43497d8b7bbe6463553819828465e170","@sp":"48e8dd3d615dcd9d","ElapsedMilliseconds":11.2786,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/bootstrap-utilities.min.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 11.2786ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000001c-0002-f200-b63f-84710c7967bb","RequestPath":"/css/bootstrap-utilities.min.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":26}
+{"@t":"2024-01-17T10:17:49.4401910Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 10.4951ms"],"@tr":"3de1bffbf1d20f55be5f84a6f19bf405","@sp":"6d1c350d8d6a6a21","ElapsedMilliseconds":10.4951,"StatusCode":304,"ContentType":"text/css","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/css/site.css","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 10.4951ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000022-000c-f800-b63f-84710c7967bb","RequestPath":"/css/site.css","MachineName":"ENDAUTOPSDMQRF7","ThreadId":28}
+{"@t":"2024-01-17T10:17:49.4408980Z","@mt":"The file {Path} was not modified","@tr":"3c2f5606437bbde0ab1dc186768f3475","@sp":"03794d8ece25dcb5","Path":"/js/site.js","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000010-0003-fd00-b63f-84710c7967bb","RequestPath":"/js/site.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.4408957Z","@mt":"The file {Path} was not modified","@tr":"21894b01616ff7715981ecc457c3856d","@sp":"575854d4b231c309","Path":"/leaflet/leaflet-src.js","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000020-000f-fb00-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet-src.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.4411399Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 0.8345ms"],"@tr":"3c2f5606437bbde0ab1dc186768f3475","@sp":"03794d8ece25dcb5","ElapsedMilliseconds":0.8345,"StatusCode":304,"ContentType":"text/javascript","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/js/site.js","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 0.8345ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000010-0003-fd00-b63f-84710c7967bb","RequestPath":"/js/site.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.4411772Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 0.8816ms"],"@tr":"21894b01616ff7715981ecc457c3856d","@sp":"575854d4b231c309","ElapsedMilliseconds":0.8816,"StatusCode":304,"ContentType":"text/javascript","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/leaflet-src.js","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 0.8816ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000020-000f-fb00-b63f-84710c7967bb","RequestPath":"/leaflet/leaflet-src.js","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.5299555Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -"],"@tr":"5f1cef15e86e32734d6e39d41e19d9c6","@sp":"77bdad7689c78751","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_blazor/initializers","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000027-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/initializers","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.5314643Z","@mt":"Executing endpoint '{EndpointName}'","@tr":"5f1cef15e86e32734d6e39d41e19d9c6","@sp":"77bdad7689c78751","EndpointName":"Blazor initializers","EventId":{"Name":"ExecutingEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000027-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/initializers","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.5382943Z","@mt":"Executed endpoint '{EndpointName}'","@tr":"5f1cef15e86e32734d6e39d41e19d9c6","@sp":"77bdad7689c78751","EndpointName":"Blazor initializers","EventId":{"Id":1,"Name":"ExecutedEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000027-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/initializers","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.5386749Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 8.7883ms"],"@tr":"5f1cef15e86e32734d6e39d41e19d9c6","@sp":"77bdad7689c78751","ElapsedMilliseconds":8.7883,"StatusCode":200,"ContentType":"application/json; charset=utf-8","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_blazor/initializers","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 8.7883ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000027-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/initializers","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:49.5776361Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0"],"@tr":"b8d2e46411a581921bd93afff972a39f","@sp":"cd433d2a6844ece3","Protocol":"HTTP/2","Method":"POST","ContentType":null,"ContentLength":0,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_blazor/negotiate","QueryString":"?negotiateVersion=1","HostingRequestStartingLog":"Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000029-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/negotiate","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.5782172Z","@mt":"Executing endpoint '{EndpointName}'","@tr":"b8d2e46411a581921bd93afff972a39f","@sp":"cd433d2a6844ece3","EndpointName":"/_blazor/negotiate","EventId":{"Name":"ExecutingEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000029-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/negotiate","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.5788848Z","@mt":"Executed endpoint '{EndpointName}'","@tr":"b8d2e46411a581921bd93afff972a39f","@sp":"cd433d2a6844ece3","EndpointName":"/_blazor/negotiate","EventId":{"Id":1,"Name":"ExecutedEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"40000029-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/negotiate","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.5791089Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 1.4602ms"],"@tr":"b8d2e46411a581921bd93afff972a39f","@sp":"cd433d2a6844ece3","ElapsedMilliseconds":1.4602,"StatusCode":200,"ContentType":"application/json","ContentLength":316,"Protocol":"HTTP/2","Method":"POST","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_blazor/negotiate","QueryString":"?negotiateVersion=1","HostingRequestFinishedLog":"Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 1.4602ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000029-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor/negotiate","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.5945008Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=2o6TYO_QfTzrLIFGvgDCAQ - -"],"@tr":"70cac850cf0d36ff2bdd57f579e9d3e7","@sp":"b2567120e776a3f0","Protocol":"HTTP/1.1","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/_blazor","QueryString":"?id=2o6TYO_QfTzrLIFGvgDCAQ","HostingRequestStartingLog":"Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=2o6TYO_QfTzrLIFGvgDCAQ - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000002b-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:49.5949774Z","@mt":"Executing endpoint '{EndpointName}'","@tr":"70cac850cf0d36ff2bdd57f579e9d3e7","@sp":"b2567120e776a3f0","EndpointName":"/_blazor","EventId":{"Name":"ExecutingEndpoint"},"SourceContext":"Microsoft.AspNetCore.Routing.EndpointMiddleware","RequestId":"4000002b-000e-fd00-b63f-84710c7967bb","RequestPath":"/_blazor","MachineName":"ENDAUTOPSDMQRF7","ThreadId":27}
+{"@t":"2024-01-17T10:17:54.1013398Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - -"],"@tr":"f43ff4c9aee81c7878dde1930cb952c6","@sp":"538adb9062a201b4","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/images/marker-icon.png","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000024-000c-f800-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-icon.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:54.1023797Z","@mt":"The file {Path} was not modified","@tr":"f43ff4c9aee81c7878dde1930cb952c6","@sp":"538adb9062a201b4","Path":"/leaflet/images/marker-icon.png","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"40000024-000c-f800-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-icon.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:54.1027993Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - - - 304 - image/png 1.4995ms"],"@tr":"f43ff4c9aee81c7878dde1930cb952c6","@sp":"538adb9062a201b4","ElapsedMilliseconds":1.4995,"StatusCode":304,"ContentType":"image/png","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/images/marker-icon.png","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - - - 304 - image/png 1.4995ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"40000024-000c-f800-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-icon.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:54.1115666Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon-2x.png - -"],"@tr":"4fb01eae13cf00b6a60cda38ccc95d1c","@sp":"0c1129311c23a9ea","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/images/marker-icon-2x.png","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon-2x.png - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000002a-000e-f700-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-icon-2x.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:54.1115815Z","@mt":"{HostingRequestStartingLog:l}","@r":["Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - -"],"@tr":"36da87c32058400d1eeb323135ee7ce5","@sp":"555dcb6e60cc68d6","Protocol":"HTTP/2","Method":"GET","ContentType":null,"ContentLength":null,"Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/images/marker-shadow.png","QueryString":"","HostingRequestStartingLog":"Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - -","EventId":{"Id":1},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000004a-000e-f800-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-shadow.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:54.1121854Z","@mt":"The file {Path} was not modified","@tr":"4fb01eae13cf00b6a60cda38ccc95d1c","@sp":"0c1129311c23a9ea","Path":"/leaflet/images/marker-icon-2x.png","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"4000002a-000e-f700-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-icon-2x.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:54.1121855Z","@mt":"The file {Path} was not modified","@tr":"36da87c32058400d1eeb323135ee7ce5","@sp":"555dcb6e60cc68d6","Path":"/leaflet/images/marker-shadow.png","EventId":{"Id":6,"Name":"FileNotModified"},"SourceContext":"Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware","RequestId":"4000004a-000e-f800-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-shadow.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+{"@t":"2024-01-17T10:17:54.1124917Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon-2x.png - - - 304 - image/png 0.9384ms"],"@tr":"4fb01eae13cf00b6a60cda38ccc95d1c","@sp":"0c1129311c23a9ea","ElapsedMilliseconds":0.9384,"StatusCode":304,"ContentType":"image/png","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/images/marker-icon-2x.png","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon-2x.png - - - 304 - image/png 0.9384ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000002a-000e-f700-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-icon-2x.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":11}
+{"@t":"2024-01-17T10:17:54.1124917Z","@mt":"{HostingRequestFinishedLog:l}","@r":["Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - - - 304 - image/png 0.9383ms"],"@tr":"36da87c32058400d1eeb323135ee7ce5","@sp":"555dcb6e60cc68d6","ElapsedMilliseconds":0.9383,"StatusCode":304,"ContentType":"image/png","ContentLength":null,"Protocol":"HTTP/2","Method":"GET","Scheme":"https","Host":"localhost:44343","PathBase":"","Path":"/leaflet/images/marker-shadow.png","QueryString":"","HostingRequestFinishedLog":"Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - - - 304 - image/png 0.9383ms","EventId":{"Id":2},"SourceContext":"Microsoft.AspNetCore.Hosting.Diagnostics","RequestId":"4000004a-000e-f800-b63f-84710c7967bb","RequestPath":"/leaflet/images/marker-shadow.png","MachineName":"ENDAUTOPSDMQRF7","ThreadId":8}
+2024-01-17 11:44:18.502 +01:00 [INF] User profile is available. Using 'C:\Users\bzorec\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-01-17 11:44:18.705 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-17 11:44:18.706 +01:00 [INF] Hosting environment: Development
+2024-01-17 11:44:18.707 +01:00 [INF] Content root path: D:\workspace\project-hub\Web\Direct4Me.Blazor
+2024-01-17 11:44:18.723 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/ - -
+2024-01-17 11:44:19.209 +01:00 [INF] Executing endpoint '/_Host'
+2024-01-17 11:44:19.219 +01:00 [INF] Route matched with {page = "/_Host"}. Executing page /_Host
+2024-01-17 11:44:19.229 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-01-17 11:44:19.231 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-01-17 11:44:20.017 +01:00 [INF] Executed page /_Host in 795.0269ms
+2024-01-17 11:44:20.018 +01:00 [INF] Executed endpoint '/_Host'
+2024-01-17 11:44:20.023 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/ - - - 200 - text/html;+charset=utf-8 1301.0556ms
+2024-01-17 11:44:20.023 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -
+2024-01-17 11:44:20.029 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -
+2024-01-17 11:44:20.029 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -
+2024-01-17 11:44:20.029 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -
+2024-01-17 11:44:20.030 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -
+2024-01-17 11:44:20.031 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -
+2024-01-17 11:44:20.031 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -
+2024-01-17 11:44:20.031 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -
+2024-01-17 11:44:20.032 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/site.css - -
+2024-01-17 11:44:20.032 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -
+2024-01-17 11:44:20.033 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -
+2024-01-17 11:44:20.033 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -
+2024-01-17 11:44:20.033 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/site.js - -
+2024-01-17 11:44:20.035 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -
+2024-01-17 11:44:20.038 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -
+2024-01-17 11:44:20.039 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/bootstrap-utilities.min.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/site.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /js/bootstrap.bundle.min.js was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /leaflet/leaflet.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/bootstrap-reboot.min.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/bootstrap-grid.rtl.min.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/bootstrap-utilities.rtl.min.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/bootstrap-reboot.rtl.min.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/bootstrap-grid.min.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /js/site.js was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /css/bootstrap.rtl.min.css was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /js/faceunlock.js was not modified
+2024-01-17 11:44:20.040 +01:00 [INF] The file /leaflet/leaflet-src.js was not modified
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 3.7050ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 13.5573ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 8.7637ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 7.8864ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 10.7150ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 13.5536ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 10.0178ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 10.9564ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 11.7207ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 19.2083ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 3.5720ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 9.3637ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 10.4506ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 12.0948ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 9.1407ms
+2024-01-17 11:44:20.042 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 12.9670ms
+2024-01-17 11:44:20.043 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -
+2024-01-17 11:44:20.043 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -
+2024-01-17 11:44:20.044 +01:00 [INF] The file /css/bootstrap-custom.css was not modified
+2024-01-17 11:44:20.044 +01:00 [INF] The file /leaflet/leaflet.js was not modified
+2024-01-17 11:44:20.044 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 1.4674ms
+2024-01-17 11:44:20.044 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 1.4877ms
+2024-01-17 11:44:20.148 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -
+2024-01-17 11:44:20.150 +01:00 [INF] Executing endpoint 'Blazor initializers'
+2024-01-17 11:44:20.159 +01:00 [INF] Executed endpoint 'Blazor initializers'
+2024-01-17 11:44:20.159 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 11.7571ms
+2024-01-17 11:44:20.223 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0
+2024-01-17 11:44:20.225 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2024-01-17 11:44:20.238 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2024-01-17 11:44:20.239 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 15.5231ms
+2024-01-17 11:44:20.245 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=s-7lWabB702TbTLQdQgAJg - -
+2024-01-17 11:44:20.245 +01:00 [INF] Executing endpoint '/_blazor'
+2024-01-17 11:44:20.404 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/login - -
+2024-01-17 11:44:20.404 +01:00 [INF] Executing endpoint '/_Host'
+2024-01-17 11:44:20.406 +01:00 [INF] Route matched with {page = "/_Host"}. Executing page /_Host
+2024-01-17 11:44:20.408 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-01-17 11:44:20.408 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-01-17 11:44:20.419 +01:00 [INF] Executed page /_Host in 12.3669ms
+2024-01-17 11:44:20.419 +01:00 [INF] Executed endpoint '/_Host'
+2024-01-17 11:44:20.419 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/login - - - 200 - text/html;+charset=utf-8 15.9179ms
+2024-01-17 11:44:20.437 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundarylIAZ7D43gpTPTpl8 359
+2024-01-17 11:44:20.438 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-17 11:44:20.448 +01:00 [INF] Executed endpoint '/_blazor'
+2024-01-17 11:44:20.453 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44343/_blazor?id=s-7lWabB702TbTLQdQgAJg - - - 101 - - 207.9810ms
+2024-01-17 11:44:20.454 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-17 11:44:20.455 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundarylIAZ7D43gpTPTpl8 359 - 200 - - 17.6033ms
+2024-01-17 11:44:20.459 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -
+2024-01-17 11:44:20.460 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-01-17 11:44:20.460 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 1.4211ms
+2024-01-17 11:44:20.461 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -
+2024-01-17 11:44:20.461 +01:00 [INF] The file /css/bootstrap-grid.min.css was not modified
+2024-01-17 11:44:20.461 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 0.7387ms
+2024-01-17 11:44:20.463 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -
+2024-01-17 11:44:20.464 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -
+2024-01-17 11:44:20.465 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -
+2024-01-17 11:44:20.465 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -
+2024-01-17 11:44:20.466 +01:00 [INF] The file /css/bootstrap-grid.rtl.min.css was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] The file /css/bootstrap-reboot.min.css was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] The file /css/bootstrap-utilities.min.css was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/site.css - -
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -
+2024-01-17 11:44:20.466 +01:00 [INF] The file /css/bootstrap-reboot.rtl.min.css was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 2.7318ms
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -
+2024-01-17 11:44:20.466 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 1.8113ms
+2024-01-17 11:44:20.466 +01:00 [INF] The file /css/bootstrap-utilities.rtl.min.css was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 0.6098ms
+2024-01-17 11:44:20.466 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 0.9489ms
+2024-01-17 11:44:20.466 +01:00 [INF] The file /css/site.css was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -
+2024-01-17 11:44:20.466 +01:00 [INF] The file /css/bootstrap.rtl.min.css was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -
+2024-01-17 11:44:20.466 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] The file /leaflet/leaflet.css was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/site.js - -
+2024-01-17 11:44:20.466 +01:00 [INF] The file /js/bootstrap.bundle.min.js was not modified
+2024-01-17 11:44:20.466 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 0.7587ms
+2024-01-17 11:44:20.467 +01:00 [INF] The file /leaflet/leaflet.js was not modified
+2024-01-17 11:44:20.467 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 1.0600ms
+2024-01-17 11:44:20.467 +01:00 [INF] The file /js/faceunlock.js was not modified
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 1.0046ms
+2024-01-17 11:44:20.467 +01:00 [INF] The file /css/bootstrap-custom.css was not modified
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 1.3224ms
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 0.6766ms
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 1.0379ms
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 1.1645ms
+2024-01-17 11:44:20.467 +01:00 [INF] The file /js/site.js was not modified
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 1.0003ms
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 1.2970ms
+2024-01-17 11:44:20.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 1.6016ms
+2024-01-17 11:44:20.468 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 1.3528ms
+2024-01-17 11:44:20.468 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -
+2024-01-17 11:44:20.468 +01:00 [INF] The file /leaflet/leaflet-src.js was not modified
+2024-01-17 11:44:20.469 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 1.2193ms
+2024-01-17 11:44:20.504 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -
+2024-01-17 11:44:20.505 +01:00 [INF] Executing endpoint 'Blazor initializers'
+2024-01-17 11:44:20.505 +01:00 [INF] Executed endpoint 'Blazor initializers'
+2024-01-17 11:44:20.506 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 1.3893ms
+2024-01-17 11:44:20.548 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0
+2024-01-17 11:44:20.549 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2024-01-17 11:44:20.549 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2024-01-17 11:44:20.550 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 1.7932ms
+2024-01-17 11:44:20.564 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=YW_1R5kwphXgd593b4f__g - -
+2024-01-17 11:44:20.564 +01:00 [INF] Executing endpoint '/_blazor'
+2024-01-17 11:45:27.003 +01:00 [INF] Generating JWT token for user: admin@gmail.com
+2024-01-17 11:45:27.031 +01:00 [INF] JWT token generated and set successfully
+2024-01-17 11:45:27.041 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/dashboard - -
+2024-01-17 11:45:27.043 +01:00 [INF] Executing endpoint '/_Host'
+2024-01-17 11:45:27.043 +01:00 [INF] Route matched with {page = "/_Host"}. Executing page /_Host
+2024-01-17 11:45:27.045 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-01-17 11:45:27.045 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-01-17 11:45:27.055 +01:00 [INF] Executed page /_Host in 11.9095ms
+2024-01-17 11:45:27.055 +01:00 [INF] Executed endpoint '/_Host'
+2024-01-17 11:45:27.056 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/dashboard - - - 200 - text/html;+charset=utf-8 14.5902ms
+2024-01-17 11:45:27.063 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundary2LTrAHU3N4nqutse 359
+2024-01-17 11:45:27.064 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-17 11:45:27.064 +01:00 [INF] Executed endpoint '/_blazor'
+2024-01-17 11:45:27.064 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44343/_blazor?id=YW_1R5kwphXgd593b4f__g - - - 101 - - 66500.1056ms
+2024-01-17 11:45:27.065 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-17 11:45:27.066 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundary2LTrAHU3N4nqutse 359 - 200 - - 2.5997ms
+2024-01-17 11:45:27.081 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -
+2024-01-17 11:45:27.083 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-01-17 11:45:27.083 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 1.4909ms
+2024-01-17 11:45:27.085 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -
+2024-01-17 11:45:27.085 +01:00 [INF] The file /css/bootstrap-grid.min.css was not modified
+2024-01-17 11:45:27.085 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 0.6696ms
+2024-01-17 11:45:27.086 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -
+2024-01-17 11:45:27.086 +01:00 [INF] The file /css/bootstrap-grid.rtl.min.css was not modified
+2024-01-17 11:45:27.086 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 0.4843ms
+2024-01-17 11:45:27.087 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -
+2024-01-17 11:45:27.087 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -
+2024-01-17 11:45:27.087 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -
+2024-01-17 11:45:27.087 +01:00 [INF] The file /css/bootstrap-reboot.rtl.min.css was not modified
+2024-01-17 11:45:27.088 +01:00 [INF] The file /css/bootstrap-reboot.min.css was not modified
+2024-01-17 11:45:27.088 +01:00 [INF] The file /css/bootstrap-utilities.min.css was not modified
+2024-01-17 11:45:27.088 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 0.5203ms
+2024-01-17 11:45:27.088 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 1.0951ms
+2024-01-17 11:45:27.088 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 0.8166ms
+2024-01-17 11:45:27.089 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -
+2024-01-17 11:45:27.089 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/site.css - -
+2024-01-17 11:45:27.089 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -
+2024-01-17 11:45:27.089 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -
+2024-01-17 11:45:27.089 +01:00 [INF] The file /css/site.css was not modified
+2024-01-17 11:45:27.090 +01:00 [INF] The file /css/bootstrap.rtl.min.css was not modified
+2024-01-17 11:45:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -
+2024-01-17 11:45:27.090 +01:00 [INF] The file /leaflet/leaflet.css was not modified
+2024-01-17 11:45:27.090 +01:00 [INF] The file /css/bootstrap-utilities.rtl.min.css was not modified
+2024-01-17 11:45:27.090 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 0.9662ms
+2024-01-17 11:45:27.090 +01:00 [INF] The file /css/bootstrap-custom.css was not modified
+2024-01-17 11:45:27.090 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 0.6339ms
+2024-01-17 11:45:27.090 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 0.9947ms
+2024-01-17 11:45:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -
+2024-01-17 11:45:27.090 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 0.4450ms
+2024-01-17 11:45:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -
+2024-01-17 11:45:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -
+2024-01-17 11:45:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -
+2024-01-17 11:45:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -
+2024-01-17 11:45:27.090 +01:00 [INF] The file /js/bootstrap.bundle.min.js was not modified
+2024-01-17 11:45:27.090 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 0.5383ms
+2024-01-17 11:45:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -
+2024-01-17 11:45:27.090 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 0.3596ms
+2024-01-17 11:45:27.090 +01:00 [INF] The file /js/faceunlock.js was not modified
+2024-01-17 11:45:27.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/site.js - -
+2024-01-17 11:45:27.090 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-01-17 11:45:27.091 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2024-01-17 11:45:27.091 +01:00 [INF] The file /leaflet/leaflet-src.js was not modified
+2024-01-17 11:45:27.091 +01:00 [INF] The file /leaflet/leaflet.js was not modified
+2024-01-17 11:45:27.091 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 1.0809ms
+2024-01-17 11:45:27.091 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 1.1534ms
+2024-01-17 11:45:27.091 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 1.0381ms
+2024-01-17 11:45:27.091 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 1.0755ms
+2024-01-17 11:45:27.091 +01:00 [INF] The file /js/site.js was not modified
+2024-01-17 11:45:27.091 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 0.8607ms
+2024-01-17 11:45:27.091 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 0.9578ms
+2024-01-17 11:45:27.160 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -
+2024-01-17 11:45:27.160 +01:00 [INF] Executing endpoint 'Blazor initializers'
+2024-01-17 11:45:27.161 +01:00 [INF] Executed endpoint 'Blazor initializers'
+2024-01-17 11:45:27.161 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 1.0396ms
+2024-01-17 11:45:27.204 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/favicon.ico - -
+2024-01-17 11:45:27.205 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/favicon.ico - - - 404 - - 1.0609ms
+2024-01-17 11:45:27.208 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0
+2024-01-17 11:45:27.209 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2024-01-17 11:45:27.209 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2024-01-17 11:45:27.209 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 0.8843ms
+2024-01-17 11:45:27.221 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=O2SLM25tylNUpNC7jzZfSw - -
+2024-01-17 11:45:27.221 +01:00 [INF] Executing endpoint '/_blazor'
+2024-01-17 11:45:27.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/favicon.ico - -
+2024-01-17 11:45:27.224 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/favicon.ico - - - 404 - - 0.5192ms
+2024-01-17 11:46:14.099 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - -
+2024-01-17 11:46:14.099 +01:00 [INF] The file /leaflet/images/marker-icon.png was not modified
+2024-01-17 11:46:14.100 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - - - 304 - image/png 0.7536ms
+2024-01-17 11:46:14.113 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon-2x.png - -
+2024-01-17 11:46:14.113 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - -
+2024-01-17 11:46:14.114 +01:00 [INF] The file /leaflet/images/marker-shadow.png was not modified
+2024-01-17 11:46:14.114 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - - - 304 - image/png 0.6729ms
+2024-01-17 11:46:14.114 +01:00 [INF] The file /leaflet/images/marker-icon-2x.png was not modified
+2024-01-17 11:46:14.114 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon-2x.png - - - 304 - image/png 0.9902ms
+2024-01-17 11:54:44.294 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryZzwSLejR77UXoDRe 359
+2024-01-17 11:54:44.295 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-17 11:54:44.296 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-17 11:54:44.296 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryZzwSLejR77UXoDRe 359 - 200 - - 1.3593ms
+2024-01-17 11:54:44.293 +01:00 [WRN] Unhandled exception rendering component: System error.
+System.Security.Authentication.AuthenticationException: System error.
+   at Direct4Me.Blazor.Shared.NavigationMenu.OnAfterRenderAsync(Boolean firstRender) in D:\workspace\project-hub\Web\Direct4Me.Blazor\Shared\NavigationMenu.razor.cs:line 67
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle, ComponentState owningComponentState)
+2024-01-17 11:54:44.314 +01:00 [ERR] Unhandled exception in circuit 'e21fY1mtfEXDn25LZo3S0owc96wY-BNb_O2SUTDSIlA'.
+System.Security.Authentication.AuthenticationException: System error.
+   at Direct4Me.Blazor.Shared.NavigationMenu.OnAfterRenderAsync(Boolean firstRender) in D:\workspace\project-hub\Web\Direct4Me.Blazor\Shared\NavigationMenu.razor.cs:line 67
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle, ComponentState owningComponentState)
+2024-01-17 11:54:44.317 +01:00 [INF] Executed endpoint '/_blazor'
+2024-01-17 11:54:44.317 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44343/_blazor?id=O2SLM25tylNUpNC7jzZfSw - - - 101 - - 557096.6304ms
+2024-01-17 11:54:44.701 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryIXrGeAr7hL5dIbdD 359
+2024-01-17 11:54:44.702 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-17 11:54:44.703 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-17 11:54:44.703 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryIXrGeAr7hL5dIbdD 359 - 200 - - 1.4660ms
+2024-01-17 11:54:45.094 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundarybnBZ6HEJD0zBc6J8 359
+2024-01-17 11:54:45.095 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-17 11:54:45.096 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-17 11:54:45.096 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundarybnBZ6HEJD0zBc6J8 359 - 200 - - 1.9496ms
+2024-01-17 11:54:50.747 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/logout - -
+2024-01-17 11:54:50.748 +01:00 [INF] Executing endpoint '/_Host'
+2024-01-17 11:54:50.748 +01:00 [INF] Route matched with {page = "/_Host"}. Executing page /_Host
+2024-01-17 11:54:50.748 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-01-17 11:54:50.748 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-01-17 11:54:50.750 +01:00 [INF] Executed page /_Host in 2.4541ms
+2024-01-17 11:54:50.750 +01:00 [INF] Executed endpoint '/_Host'
+2024-01-17 11:54:50.751 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/logout - - - 200 - text/html;+charset=utf-8 3.5579ms
+2024-01-17 11:54:50.756 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundary8YXLIPzXXe8mELEn 359
+2024-01-17 11:54:50.756 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-17 11:54:50.757 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-17 11:54:50.757 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundary8YXLIPzXXe8mELEn 359 - 200 - - 1.1241ms
+2024-01-17 11:54:50.780 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -
+2024-01-17 11:54:50.780 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-01-17 11:54:50.781 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 0.7581ms
+2024-01-17 11:54:50.782 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -
+2024-01-17 11:54:50.782 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -
+2024-01-17 11:54:50.782 +01:00 [INF] The file /css/bootstrap-grid.rtl.min.css was not modified
+2024-01-17 11:54:50.782 +01:00 [INF] The file /css/bootstrap-grid.min.css was not modified
+2024-01-17 11:54:50.782 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 0.3721ms
+2024-01-17 11:54:50.782 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -
+2024-01-17 11:54:50.782 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 0.3907ms
+2024-01-17 11:54:50.782 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -
+2024-01-17 11:54:50.782 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -
+2024-01-17 11:54:50.782 +01:00 [INF] The file /css/bootstrap-reboot.min.css was not modified
+2024-01-17 11:54:50.782 +01:00 [INF] The file /css/bootstrap-utilities.min.css was not modified
+2024-01-17 11:54:50.782 +01:00 [INF] The file /css/bootstrap-reboot.rtl.min.css was not modified
+2024-01-17 11:54:50.782 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 0.2384ms
+2024-01-17 11:54:50.782 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 0.3807ms
+2024-01-17 11:54:50.782 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 0.3439ms
+2024-01-17 11:54:50.783 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/site.css - -
+2024-01-17 11:54:50.783 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -
+2024-01-17 11:54:50.783 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -
+2024-01-17 11:54:50.783 +01:00 [INF] The file /css/site.css was not modified
+2024-01-17 11:54:50.783 +01:00 [INF] The file /css/bootstrap.rtl.min.css was not modified
+2024-01-17 11:54:50.783 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 0.2297ms
+2024-01-17 11:54:50.783 +01:00 [INF] The file /css/bootstrap-utilities.rtl.min.css was not modified
+2024-01-17 11:54:50.783 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 0.2914ms
+2024-01-17 11:54:50.783 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 0.3618ms
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -
+2024-01-17 11:54:50.784 +01:00 [INF] The file /css/bootstrap-custom.css was not modified
+2024-01-17 11:54:50.784 +01:00 [INF] The file /leaflet/leaflet.css was not modified
+2024-01-17 11:54:50.784 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2024-01-17 11:54:50.784 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 0.2933ms
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -
+2024-01-17 11:54:50.784 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 0.2818ms
+2024-01-17 11:54:50.784 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 0.2194ms
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -
+2024-01-17 11:54:50.784 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/site.js - -
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -
+2024-01-17 11:54:50.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -
+2024-01-17 11:54:50.784 +01:00 [INF] The file /js/bootstrap.bundle.min.js was not modified
+2024-01-17 11:54:50.784 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 0.2962ms
+2024-01-17 11:54:50.784 +01:00 [INF] The file /leaflet/leaflet.js was not modified
+2024-01-17 11:54:50.784 +01:00 [INF] The file /leaflet/leaflet-src.js was not modified
+2024-01-17 11:54:50.784 +01:00 [INF] The file /js/site.js was not modified
+2024-01-17 11:54:50.785 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 0.2889ms
+2024-01-17 11:54:50.785 +01:00 [INF] The file /js/faceunlock.js was not modified
+2024-01-17 11:54:50.785 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 0.2729ms
+2024-01-17 11:54:50.785 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 0.2597ms
+2024-01-17 11:54:50.785 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 0.3030ms
+2024-01-17 11:54:50.785 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 0.3232ms
+2024-01-17 11:54:50.840 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -
+2024-01-17 11:54:50.841 +01:00 [INF] Executing endpoint 'Blazor initializers'
+2024-01-17 11:54:50.841 +01:00 [INF] Executed endpoint 'Blazor initializers'
+2024-01-17 11:54:50.841 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 0.7953ms
+2024-01-17 11:54:50.881 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0
+2024-01-17 11:54:50.881 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2024-01-17 11:54:50.882 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2024-01-17 11:54:50.882 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 1.1163ms
+2024-01-17 11:54:50.892 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=KRxn-tAKlpCWQTNe9XV1Gg - -
+2024-01-17 11:54:50.893 +01:00 [INF] Executing endpoint '/_blazor'
+2024-01-17 11:54:50.913 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/login - -
+2024-01-17 11:54:50.913 +01:00 [INF] Executing endpoint '/_Host'
+2024-01-17 11:54:50.913 +01:00 [INF] Route matched with {page = "/_Host"}. Executing page /_Host
+2024-01-17 11:54:50.913 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-01-17 11:54:50.913 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-01-17 11:54:50.916 +01:00 [INF] Executed page /_Host in 2.6689ms
+2024-01-17 11:54:50.916 +01:00 [INF] Executed endpoint '/_Host'
+2024-01-17 11:54:50.916 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/login - - - 200 - text/html;+charset=utf-8 3.6225ms
+2024-01-17 11:54:50.920 +01:00 [INF] Executed endpoint '/_blazor'
+2024-01-17 11:54:50.921 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44343/_blazor?id=KRxn-tAKlpCWQTNe9XV1Gg - - - 101 - - 28.5494ms
+2024-01-17 11:54:50.921 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryPCHEJYvdiPB4v0aO 359
+2024-01-17 11:54:50.922 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-17 11:54:50.922 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-17 11:54:50.922 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryPCHEJYvdiPB4v0aO 359 - 200 - - 0.9937ms
+2024-01-17 11:54:50.934 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -
+2024-01-17 11:54:50.934 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-01-17 11:54:50.935 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 0.8239ms
+2024-01-17 11:54:50.935 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -
+2024-01-17 11:54:50.936 +01:00 [INF] The file /css/bootstrap-grid.min.css was not modified
+2024-01-17 11:54:50.936 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 0.5053ms
+2024-01-17 11:54:50.937 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -
+2024-01-17 11:54:50.938 +01:00 [INF] The file /css/bootstrap-grid.rtl.min.css was not modified
+2024-01-17 11:54:50.938 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 0.4446ms
+2024-01-17 11:54:50.938 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -
+2024-01-17 11:54:50.938 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -
+2024-01-17 11:54:50.938 +01:00 [INF] The file /css/bootstrap-reboot.rtl.min.css was not modified
+2024-01-17 11:54:50.938 +01:00 [INF] The file /css/bootstrap-reboot.min.css was not modified
+2024-01-17 11:54:50.938 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 0.3211ms
+2024-01-17 11:54:50.938 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 0.3269ms
+2024-01-17 11:54:50.939 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -
+2024-01-17 11:54:50.939 +01:00 [INF] The file /css/bootstrap-utilities.min.css was not modified
+2024-01-17 11:54:50.939 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 0.2062ms
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/site.css - -
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -
+2024-01-17 11:54:50.940 +01:00 [INF] The file /leaflet/leaflet.css was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] The file /css/bootstrap-custom.css was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] The file /css/bootstrap.rtl.min.css was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] The file /css/site.css was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] The file /css/bootstrap-utilities.rtl.min.css was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 0.3212ms
+2024-01-17 11:54:50.940 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 0.3249ms
+2024-01-17 11:54:50.940 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 0.4322ms
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -
+2024-01-17 11:54:50.940 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 0.3741ms
+2024-01-17 11:54:50.940 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 0.5009ms
+2024-01-17 11:54:50.940 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] The file /js/bootstrap.bundle.min.js was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] The file /leaflet/leaflet.js was not modified
+2024-01-17 11:54:50.940 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 0.7080ms
+2024-01-17 11:54:50.940 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 0.3017ms
+2024-01-17 11:54:50.940 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 0.2867ms
+2024-01-17 11:54:50.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -
+2024-01-17 11:54:50.941 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 0.7290ms
+2024-01-17 11:54:50.941 +01:00 [INF] The file /leaflet/leaflet-src.js was not modified
+2024-01-17 11:54:50.941 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 0.2414ms
+2024-01-17 11:54:50.941 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -
+2024-01-17 11:54:50.941 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/site.js - -
+2024-01-17 11:54:50.941 +01:00 [INF] The file /js/faceunlock.js was not modified
+2024-01-17 11:54:50.941 +01:00 [INF] The file /js/site.js was not modified
+2024-01-17 11:54:50.941 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 0.3218ms
+2024-01-17 11:54:50.941 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 0.4438ms
+2024-01-17 11:54:50.961 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -
+2024-01-17 11:54:50.962 +01:00 [INF] Executing endpoint 'Blazor initializers'
+2024-01-17 11:54:50.962 +01:00 [INF] Executed endpoint 'Blazor initializers'
+2024-01-17 11:54:50.962 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 0.6911ms
+2024-01-17 11:54:50.993 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0
+2024-01-17 11:54:50.993 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2024-01-17 11:54:50.994 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2024-01-17 11:54:50.994 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 1.3037ms
+2024-01-17 11:54:51.004 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=YzjJLL8UYIGvvgMRAdUWhw - -
+2024-01-17 11:54:51.004 +01:00 [INF] Executing endpoint '/_blazor'
+2024-01-17 11:55:00.872 +01:00 [INF] Generating JWT token for user: admin@gmail.com
+2024-01-17 11:55:00.874 +01:00 [INF] JWT token generated and set successfully
+2024-01-17 11:55:00.883 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/dashboard - -
+2024-01-17 11:55:00.883 +01:00 [INF] Executing endpoint '/_Host'
+2024-01-17 11:55:00.883 +01:00 [INF] Route matched with {page = "/_Host"}. Executing page /_Host
+2024-01-17 11:55:00.884 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-01-17 11:55:00.884 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-01-17 11:55:00.885 +01:00 [INF] Executed page /_Host in 1.6088ms
+2024-01-17 11:55:00.885 +01:00 [INF] Executed endpoint '/_Host'
+2024-01-17 11:55:00.885 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/dashboard - - - 200 - text/html;+charset=utf-8 2.5858ms
+2024-01-17 11:55:00.891 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryT2HAm7DZ2vd0KI8U 359
+2024-01-17 11:55:00.891 +01:00 [INF] Executed endpoint '/_blazor'
+2024-01-17 11:55:00.891 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44343/_blazor?id=YzjJLL8UYIGvvgMRAdUWhw - - - 101 - - 9887.6389ms
+2024-01-17 11:55:00.891 +01:00 [INF] Executing endpoint 'Blazor disconnect'
+2024-01-17 11:55:00.892 +01:00 [INF] Executed endpoint 'Blazor disconnect'
+2024-01-17 11:55:00.892 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/disconnect multipart/form-data;+boundary=----WebKitFormBoundaryT2HAm7DZ2vd0KI8U 359 - 200 - - 1.0446ms
+2024-01-17 11:55:00.904 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - -
+2024-01-17 11:55:00.904 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-01-17 11:55:00.904 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.min.css - - - 304 - text/css 0.8184ms
+2024-01-17 11:55:00.910 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - -
+2024-01-17 11:55:00.910 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - -
+2024-01-17 11:55:00.910 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - -
+2024-01-17 11:55:00.911 +01:00 [INF] The file /css/bootstrap-reboot.min.css was not modified
+2024-01-17 11:55:00.911 +01:00 [INF] The file /css/bootstrap-grid.rtl.min.css was not modified
+2024-01-17 11:55:00.911 +01:00 [INF] The file /css/bootstrap-grid.min.css was not modified
+2024-01-17 11:55:00.911 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.rtl.min.css - - - 304 - text/css 0.5921ms
+2024-01-17 11:55:00.911 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.min.css - - - 304 - text/css 0.5940ms
+2024-01-17 11:55:00.911 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-grid.min.css - - - 304 - text/css 0.6092ms
+2024-01-17 11:55:00.911 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - -
+2024-01-17 11:55:00.911 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - -
+2024-01-17 11:55:00.911 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - -
+2024-01-17 11:55:00.911 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - -
+2024-01-17 11:55:00.911 +01:00 [INF] The file /css/bootstrap-utilities.min.css was not modified
+2024-01-17 11:55:00.911 +01:00 [INF] The file /css/bootstrap-reboot.rtl.min.css was not modified
+2024-01-17 11:55:00.911 +01:00 [INF] The file /css/bootstrap.rtl.min.css was not modified
+2024-01-17 11:55:00.911 +01:00 [INF] The file /css/bootstrap-utilities.rtl.min.css was not modified
+2024-01-17 11:55:00.911 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-reboot.rtl.min.css - - - 304 - text/css 0.2676ms
+2024-01-17 11:55:00.911 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.min.css - - - 304 - text/css 0.2676ms
+2024-01-17 11:55:00.912 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap.rtl.min.css - - - 304 - text/css 0.2867ms
+2024-01-17 11:55:00.912 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-utilities.rtl.min.css - - - 304 - text/css 0.3497ms
+2024-01-17 11:55:00.912 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/site.css - -
+2024-01-17 11:55:00.912 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - -
+2024-01-17 11:55:00.912 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - -
+2024-01-17 11:55:00.912 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - -
+2024-01-17 11:55:00.912 +01:00 [INF] The file /css/site.css was not modified
+2024-01-17 11:55:00.913 +01:00 [INF] The file /css/bootstrap-custom.css was not modified
+2024-01-17 11:55:00.913 +01:00 [INF] The file /_framework/blazor.server.js was not modified
+2024-01-17 11:55:00.913 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/site.css - - - 304 - text/css 0.2744ms
+2024-01-17 11:55:00.913 +01:00 [INF] The file /leaflet/leaflet.css was not modified
+2024-01-17 11:55:00.913 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/css/bootstrap-custom.css - - - 304 - text/css 0.2832ms
+2024-01-17 11:55:00.913 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - -
+2024-01-17 11:55:00.913 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.css - - - 304 - text/css 0.4107ms
+2024-01-17 11:55:00.913 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - -
+2024-01-17 11:55:00.913 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_framework/blazor.server.js - - - 304 - text/javascript 0.3288ms
+2024-01-17 11:55:00.913 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-01-17 11:55:00.913 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/faceunlock.js - -
+2024-01-17 11:55:00.913 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.min.js - - - 304 - text/javascript 0.3271ms
+2024-01-17 11:55:00.913 +01:00 [INF] The file /js/bootstrap.bundle.min.js was not modified
+2024-01-17 11:55:00.913 +01:00 [INF] The file /js/faceunlock.js was not modified
+2024-01-17 11:55:00.913 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/bootstrap.bundle.min.js - - - 304 - text/javascript 0.3739ms
+2024-01-17 11:55:00.913 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/faceunlock.js - - - 304 - text/javascript 0.3976ms
+2024-01-17 11:55:00.915 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - -
+2024-01-17 11:55:00.915 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - -
+2024-01-17 11:55:00.915 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/js/site.js - -
+2024-01-17 11:55:00.915 +01:00 [INF] The file /leaflet/leaflet.js was not modified
+2024-01-17 11:55:00.915 +01:00 [INF] The file /leaflet/leaflet-src.js was not modified
+2024-01-17 11:55:00.915 +01:00 [INF] The file /js/site.js was not modified
+2024-01-17 11:55:00.915 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet-src.js - - - 304 - text/javascript 0.2741ms
+2024-01-17 11:55:00.915 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/leaflet.js - - - 304 - text/javascript 0.3443ms
+2024-01-17 11:55:00.915 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/js/site.js - - - 304 - text/javascript 0.3025ms
+2024-01-17 11:55:00.979 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/_blazor/initializers - -
+2024-01-17 11:55:00.980 +01:00 [INF] Executing endpoint 'Blazor initializers'
+2024-01-17 11:55:00.980 +01:00 [INF] Executed endpoint 'Blazor initializers'
+2024-01-17 11:55:00.980 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/_blazor/initializers - - - 200 - application/json;+charset=utf-8 1.0125ms
+2024-01-17 11:55:01.024 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/favicon.ico - -
+2024-01-17 11:55:01.024 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0
+2024-01-17 11:55:01.024 +01:00 [INF] Executing endpoint '/_blazor/negotiate'
+2024-01-17 11:55:01.024 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/favicon.ico - - - 404 - - 0.5079ms
+2024-01-17 11:55:01.024 +01:00 [INF] Executed endpoint '/_blazor/negotiate'
+2024-01-17 11:55:01.024 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44343/_blazor/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 0.7929ms
+2024-01-17 11:55:01.034 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44343/_blazor?id=R-PvYSMriXbfDdW3HK7-dg - -
+2024-01-17 11:55:01.034 +01:00 [INF] Executing endpoint '/_blazor'
+2024-01-17 11:55:01.036 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/favicon.ico - -
+2024-01-17 11:55:01.037 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/favicon.ico - - - 404 - - 0.4569ms
+2024-01-17 11:55:33.020 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - -
+2024-01-17 11:55:33.020 +01:00 [INF] The file /leaflet/images/marker-icon.png was not modified
+2024-01-17 11:55:33.020 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon.png - - - 304 - image/png 0.6654ms
+2024-01-17 11:55:33.037 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon-2x.png - -
+2024-01-17 11:55:33.037 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - -
+2024-01-17 11:55:33.037 +01:00 [INF] The file /leaflet/images/marker-icon-2x.png was not modified
+2024-01-17 11:55:33.037 +01:00 [INF] The file /leaflet/images/marker-shadow.png was not modified
+2024-01-17 11:55:33.038 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-icon-2x.png - - - 304 - image/png 0.5400ms
+2024-01-17 11:55:33.038 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44343/leaflet/images/marker-shadow.png - - - 304 - image/png 0.7007ms
