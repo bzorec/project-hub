@@ -47,4 +47,8 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Direct4Me.Repository\Direct4Me.Repository.csproj" />
+    </ItemGroup>
 </Project>

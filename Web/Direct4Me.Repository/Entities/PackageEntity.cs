@@ -5,20 +5,23 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace Direct4Me.Repository.Entities;
 
 [Serializable]
-public class PostboxEntity : IEntity
+public class PackageEntity : IEntity
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = null!;
 
-    public int PostBoxId { get; set; }
-    public string UserId { get; set; } = null!;
-    public List<string>? AccessList { get; set; } = new();
+    public int PackageId { get; set; }
 
-    public double Latitude { get; set; }
-    public double Longitude { get; set; }
+    public string PostBoxId { get; set; } = null!; // Associated postbox
 
-    public PostboxStatisticsEntity StatisticsEntity { get; set; } = new();
+    public string PackageType { get; set; } = null!; // e.g., perishable, electronics
+
+    public double Weight { get; set; }
+
+    public string DeliveryUrgency { get; set; } = null!; // e.g., standard, expedited
+
     public DateTime CreatedOn { get; set; }
+
     public DateTime? ModifiedOn { get; set; }
 }

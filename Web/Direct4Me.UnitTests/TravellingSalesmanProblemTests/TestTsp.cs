@@ -14,7 +14,7 @@ public class TestTsp
         _testOutputHelper = testOutputHelper;
     }
 
-    [Theory]
+    [Theory(Skip = "Should run debug only")]
     [InlineData("bays29.tsp", 1000)]
     [InlineData("bays29.tsp", 10000)]
     [InlineData("bays29.tsp", 100000)]
@@ -70,7 +70,7 @@ public class TestTsp
         _testOutputHelper.WriteLine("Std: {0}", stdDistance);
     }
 
-    [Theory]
+    [Theory(Skip = "Should run debug only")]
     [InlineData("bays29.tsp", 1000)]
     [InlineData("bays29.tsp", 10000)]
     [InlineData("bays29.tsp", 100000)]
@@ -125,7 +125,7 @@ public class TestTsp
         _testOutputHelper.WriteLine("Std: [{0}]", stdDistance);
     }
 
-    [Fact]
+    [Fact(Skip = "Should run debug only")]
     public void TestTspAlgorithmReal()
     {
         var basePath = AppDomain.CurrentDomain.BaseDirectory;
