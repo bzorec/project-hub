@@ -1,5 +1,6 @@
 using Direct4Me.Blazor.Modules;
 using Direct4Me.Blazor.Utils;
+using Direct4Me.Core.Modules;
 using Direct4Me.Repository;
 using Serilog;
 using Serilog.Formatting.Compact;
@@ -13,6 +14,7 @@ builder.Services.ConfigureAuthServices(builder.Configuration);
 builder.Services.AddJsInteropServices();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.RegisterJavaRunner();
 builder.Services.AddTransient<HttpClient>();
 builder.Services.AddTransient<IFaceRecognitionService, FaceRecognitionService>();
 

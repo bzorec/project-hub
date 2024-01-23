@@ -9,14 +9,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/Modules/JavaRunnerModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_004.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240103_005.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240117_008.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240117_008.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Direct4Me.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Direct4Me.Core.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,30 +58,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.Direct4Me.Minimal.Api: IIS Express.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "dfcad892-e642-4376-a940-bda3150865ce.executor": "Debug",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Direct4Me.Blazor: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.Direct4Me.Minimal.Api: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;dfcad892-e642-4376-a940-bda3150865ce.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\bzorec\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\bzorec\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express">
     <configuration name="Direct4Me.Blazor: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" />
@@ -155,6 +153,7 @@
       <workItem from="1705432960394" duration="1719000" />
       <workItem from="1705434702326" duration="804000" />
       <workItem from="1705481394062" duration="6659000" />
+      <workItem from="1706015331991" duration="1122000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />

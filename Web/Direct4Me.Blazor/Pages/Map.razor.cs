@@ -1,4 +1,5 @@
 using Direct4Me.Blazor.Services;
+using Direct4Me.Core.Runner;
 using Direct4Me.Core.TravellingSalesmanProblem;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -8,8 +9,17 @@ namespace Direct4Me.Blazor.Pages;
 public partial class Map
 {
     [Inject] private IJsLeafletMapService LeafletMapService { get; set; } = null!;
+
     [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
 
+    [Inject] private IJavaRunner JavaRunner { get; set; } = null!;
+
+    protected async Task JavaRunnerExample()
+    {
+        const string filePath = "";
+        const string args = "";
+        await JavaRunner.RunJarAsync(filePath, args);
+    }
 
     protected async Task CalculateOptimalRouteRealOptions()
     {
