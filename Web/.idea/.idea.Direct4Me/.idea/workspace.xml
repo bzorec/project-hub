@@ -8,13 +8,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/Modules/JavaRunnerModule.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs" afterDir="false" />
+    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="added java runner">
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Data/test.arff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/JAR/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/JAR/core.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/JAR/weka.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/JAR/wekaAi.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_002.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_003.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_004.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_005.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_006.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_007.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_008.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/logs/log20240116_009.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Direct4Me.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Direct4Me.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,30 +72,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.Direct4Me.Blazor: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.Direct4Me.Minimal.Api: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;dfcad892-e642-4376-a940-bda3150865ce.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express.executor": "Debug",
+    ".NET Launch Settings Profile.Direct4Me.Minimal.Api: IIS Express.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "dfcad892-e642-4376-a940-bda3150865ce.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\bzorec\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\bzorec\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express">
     <configuration name="Direct4Me.Blazor: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Direct4Me.Blazor/Direct4Me.Blazor.csproj" />
@@ -153,7 +167,7 @@
       <workItem from="1705432960394" duration="1719000" />
       <workItem from="1705434702326" duration="804000" />
       <workItem from="1705481394062" duration="6659000" />
-      <workItem from="1706015331991" duration="1122000" />
+      <workItem from="1706015331991" duration="3963000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -283,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705486781068</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="added java runner">
+      <option name="closed" value="true" />
+      <created>1706017901668</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1706017901668</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +337,8 @@
     <MESSAGE value="finished tsp, and fixed the test" />
     <MESSAGE value="fixed README.md" />
     <MESSAGE value="fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
+    <MESSAGE value="added java runner" />
+    <option name="LAST_COMMIT_MESSAGE" value="added java runner" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -325,12 +348,6 @@
           <line>14</line>
           <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.UnitTests\UserEntityTests.cs" initialLine="14" containingFunctionPresentation="Method 'IsAlreadyHashed_ValidHash_ReturnsTrue'" />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Repository/Entities/UserEntity.cs</url>
-          <line>67</line>
-          <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.Repository\Entities\UserEntity.cs" initialLine="67" containingFunctionPresentation="Method 'IsAlreadyHashed'" />
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs</url>
@@ -357,6 +374,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs</url>
+          <line>21</line>
+          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\Runner\JavaRunner.cs" initialLine="21" containingFunctionPresentation="Method 'RunJarAsync'">
+            <startOffsets>
+              <option value="643" />
+            </startOffsets>
+            <endOffsets>
+              <option value="960" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

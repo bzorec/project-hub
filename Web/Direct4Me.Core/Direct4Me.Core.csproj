@@ -18,5 +18,33 @@
       <Content Include="TravellingSalesmanProblem\Data\complete_data.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <Content Update="JAR\META-INF\MANIFEST.MF">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="JAR\core.jar">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="JAR\weka.jar">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="JAR\wekaAi.jar">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="JAR\core.jar" />
+      <Content Include="JAR\core.jar">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="JAR\weka.jar" />
+      <Content Include="JAR\weka.jar">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="JAR\wekaAi.jar" />
+      <Content Include="JAR\wekaAi.jar">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="JAR\META-INF\MANIFEST.MF" />
+      <Content Include="JAR\META-INF\MANIFEST.MF">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 </Project>

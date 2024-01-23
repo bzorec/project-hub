@@ -1,0 +1,124 @@
+% 1. Title: Discretized Beer Quality Dataset
+%
+% 2. Sources:
+%    (a) Data collected from a list of beers
+%    (b) Date: 31-10-2023
+%    (c) Link: https://wikiliq.org/best-beer/
+% 3. Classified:
+% Correctly Classified Instances          50               51.5464 %
+% With bayes.NaiveBayesUpdatable
+
+@RELATION BeerQuality
+
+@ATTRIBUTE categories {"Pale-Lager","ALE", "Lager", "American-Style-Lager","Amber-Vienna-Lager", "Wheat-Ale", "Witbier", "Dry-Stout", "Stout", "Amber-Red-Ale", "Imperial-Double-IPA", "IPA", "New-England-Hazy-IPA", "Hefeweizen", "Golden-Blonde-Ale", "Sour-Wild-Ale", "Belgian-Style-Ale", "Tripel","Gose", "Session-IPA", "Dortmunder-Export-Lager", "Bock", "Imperial-Stout", "Pilsner", "Seasonal-Beer", "Pale-Ale","ALE-Wheat-Ale"}
+@ATTRIBUTE price {low, moderate, high}
+@ATTRIBUTE rating {low, moderate, high}
+@ATTRIBUTE type {"Craft-Beer", "Other"}
+@ATTRIBUTE abv {very_low, low, moderate, high}
+@ATTRIBUTE ibu {very_low, low, moderate, high}
+@ATTRIBUTE calories_per_serving {low, moderate, high}
+@ATTRIBUTE carbs_per_serving {low, moderate, high}
+@ATTRIBUTE serving_temperature {very_cold, cold, cool}
+@ATTRIBUTE class {Bad, Good, Excellent}
+
+@DATA
+'Pale-Lager', high, high, 'Craft-Beer', low, very_low, low, low, cold, Bad
+'Pale-Lager', high, high, 'Craft-Beer', low, ?, low, low, cold, Excellent
+'Pale-Lager', high, high, 'Craft-Beer', low, ?, low, low, cold, Excellent
+'Pale-Lager', moderate, high, 'Craft-Beer', low, ?, high, low, cold, Excellent
+'Pale-Lager', high, high, 'Craft-Beer', low, ?, low, low, cold, Bad
+'Pale-Lager', moderate, high, 'Craft-Beer', moderate, ?, low, low, cool, Good
+'American-Style-Lager', moderate, high, 'Craft-Beer', low, ?, high, low, cold, Excellent
+'ALE', moderate, high, 'Craft-Beer', low, ?, high, low, cool, Excellent
+'ALE', moderate, high, 'Craft-Beer', moderate, ?, high, low, cool, Good
+'Lager', moderate, high, 'Craft-Beer', moderate, ?, high, low, cool, Good
+'American-Style-Lager', low, high, 'Craft-Beer', moderate, ?, high, low, cold, Excellent
+'ALE', moderate, high, 'Craft-Beer', moderate, ?, high, low, cool, Good
+'American-Style-Lager', moderate, high, 'Craft-Beer', moderate, ?, moderate, low, cold, Excellent
+'ALE', low, high, 'Craft-Beer', moderate, moderate, high, ?, cool, Excellent
+'ALE', 'moderate', 'high', 'Craft-Beer', 'high', 'high', 'high', ?, 'cool', 'Excellent'
+'Amber-Red-Ale', 'moderate', 'high', 'Craft-Beer', 'low', 'low', 'high', ?, ?, 'Bad'
+'American-Style-Lager', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, 'moderate', 'low', 'cold', 'Excellent'
+'ALE', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, ?, ?, 'cool', 'Excellent'
+'IPA', 'moderate', 'high', 'Craft-Beer', ?, 'moderate', ?, ?, ?, 'Good'
+'Imperial-Double-IPA', ?, 'high', 'Craft-Beer', 'high', 'high', ?, ?, 'cool', 'Good'
+'ALE', 'moderate', 'high', 'Craft-Beer', 'moderate', 'low', 'low', ?, 'cool', 'Good'
+'ALE', 'moderate', 'high', 'Craft-Beer', 'moderate', 'moderate', 'low', ?, 'cool', 'Good'
+'ALE', 'low', 'high', 'Craft-Beer', 'high', 'moderate', 'low', ?, 'cool', 'Good'
+'ALE', 'moderate', 'high', 'Craft-Beer', ?, 'moderate', ?, ?, 'cool', 'Bad'
+'American-Style-Lager', 'moderate', 'moderate', 'Craft-Beer', 'low', 'low', ?, ?, 'cold', 'Excellent'
+'ALE', 'low', 'high', 'Craft-Beer', ?, 'high', ?, ?, 'cool', 'Bad'
+'ALE', 'moderate', 'high', 'Craft-Beer', ?, 'low', ?, ?, 'cool', 'Bad'
+'ALE', 'moderate', 'high', 'Craft-Beer', ?, 'moderate', ?, ?, 'very_cold', 'Good'
+'American-Style-Lager', 'moderate', 'high', 'Craft-Beer', ?, 'high', ?, ?, 'cold', 'Bad'
+'ALE', 'moderate', 'high', 'Craft-Beer', ?, 'moderate', ?, ?, 'cold', 'Bad'
+'ALE', 'low', 'moderate', 'Craft-Beer', ?, 'high', ?, ?, 'cool', 'Good'
+'Seasonal-Beer', 'moderate', 'high', 'Craft-Beer', ?, 'high', 'high', ?, ?, 'Excellent'
+'American-Style-Lager', 'high', 'high', 'Craft-Beer', 'low', 'very_low', 'low', 'low', 'cold', 'Bad'
+'ALE', 'moderate', 'high', 'Craft-Beer', 'moderate', 'moderate', 'moderate', ?, 'cool', 'Bad'
+'American-Style-Lager', 'low', 'high', ?, 'moderate', 'low', 'moderate', ?, 'cool', 'Excellent'
+'American-Style-Lager', 'low', 'high', 'Craft-Beer', 'moderate', ?, 'moderate', 'moderate', 'cold', 'Good'
+'Amber-Vienna-Lager', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, 'moderate', ?, ?, 'Excellent'
+'ALE', 'moderate', 'high', ?, ?, 'low', 'low', 'low', ?, 'Good'
+'IPA', 'moderate', 'high', 'Craft-Beer', 'moderate', 'moderate', 'high', ?, 'cool', 'Good'
+'Lager', 'moderate', 'high', 'Craft-Beer', 'moderate', 'low', 'low', ?, 'cool', 'Bad'
+'IPA', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, ?, ?, 'cool', 'Good'
+'IPA', 'low', 'high', 'Craft-Beer', 'moderate',?, ?, ?, 'cool', 'Bad'
+'IPA', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, ?, ?, 'cool', 'Good'
+'Imperial-Double-IPA', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, ?, ?, 'cool', 'Excellent'
+'ALE', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, ?, ?, 'cool', 'Bad'
+'ALE', 'high', 'high', 'Craft-Beer', 'moderate', 'moderate', ?, ?, 'cool', 'Good'
+'ALE', ?, 'high', 'Craft-Beer', 'moderate', 'moderate', ?, ?, 'cool', 'Good'
+'ALE', 'low', 'high', 'Craft-Beer', 'moderate', 'moderate', ?, ?, 'cold', 'Good'
+'ALE', 'low', 'high', 'Craft-Beer', 'moderate', 'moderate', ?, ?, ?, 'Excellent'
+'IPA', 'moderate', 'high', 'Craft-Beer', 'moderate', 'moderate', ?, ?, ?, 'Good'
+'Golden-Blonde-Ale', 'moderate', 'high', 'Craft-Beer', 'moderate', 'moderate', ?, ?, 'very_cold', 'Good'
+'American-Style-Lager', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, ?,?, 'cold', 'Excellent'
+'Wheat-Ale', 'moderate', 'high', 'Craft-Beer','moderate', ?, ?, 'high','cold', 'Bad'
+'ALE', 'low', 'high', 'Craft-Beer','moderate', ?, ?, ?, 'cold', 'Good'
+'ALE', 'moderate', 'high', 'Craft-Beer','moderate', ?, ?, ?, 'cold', 'Good'
+'Seasonal-Beer','moderate','high', 'Craft-Beer', ?, ?, ?, ?, ?, 'Good'
+'ALE','moderate','high', 'Craft-Beer', ?,?,?,?, 'cool', 'Bad'
+'American-Style-Lager', 'moderate', 'high', 'Craft-Beer', ?, ?, ?, ?, 'cold', 'Bad'
+'American-Style-Lager', 'moderate', 'high', 'Craft-Beer', ?, ?, ?, ?, 'cold', 'Good'
+'American-Style-Lager', 'moderate', 'high', 'Craft-Beer', ?, ?, ?, ?, 'cold', 'Good'
+'American-Style-Lager', 'moderate', 'low', 'Craft-Beer', ?, ?, ?, ?, 'cold', 'Bad'
+'ALE', 'moderate', 'high', 'Craft-Beer', ?, ?, ?, ?, 'cool', 'Bad'
+'American-Style-Lager', 'moderate', 'high', ?, ?, ?, ?, ?, 'cold', 'Bad'
+'Amber-Vienna-Lager', 'moderate', 'high', ?, ?,?,?,?,?,'Good'
+'Lager', 'moderate', 'high', ?,?,?,?,?,?,?,'Good'
+'Amber-Vienna-Lager', 'moderate', 'high', 'Craft-Beer', ?, ?, ?, ?, ?,?, 'Good'
+'Dortmunder-Export-Lager', 'moderate', 'high', ?, ?, ?, ?, ?, ?, ?, 'Good'
+'ALE', 'moderate', 'high', 'Craft-Beer', ?, ?, ?, ?, 'cool', 'Good'
+'American-Style-Lager', 'low', 'high', 'Craft-Beer', ?, ?, ?, ?, 'cold', 'Excellent'
+'American-Style-Lager', 'moderate', 'high', 'Other', ?, ?, ?, ?, 'cold', 'Bad'
+'American-Style-Lager', 'moderate', 'high', ?, 'low', ?, 'low', 'low', 'cold', 'Excellent'
+'Dry-Stout', 'moderate', 'high', 'Craft-Beer', 'low', ?, 'low', 'low', 'cool', 'Excellent'
+'Pale-Ale', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, 'low', ?, 'cool', 'Good'
+'IPA', 'moderate', 'high', 'Craft-Beer', 'moderate', ?, 'low', ?, 'cold', 'Good'
+'Stout', 'moderate', 'high', 'Craft-Beer', 'moderate', 'low', 'low', ?, 'cool', 'Good'
+'IPA', 'low', 'high', 'Craft-Beer', 'moderate', 'high', 'high', 'high','cold', 'Good'
+'Bock', 'low', 'high', 'Craft-Beer', 'moderate', 'moderate', 'moderate',?, 'cool', 'Good'
+'American-Style-Lager','high','high',?, 'moderate', 'low', ?, ?, 'cold', 'Good'
+'ALE','moderate','high',?,?,?,?,?, 'cold', 'Good'
+'ALE','moderate','high',?,?,?,?,?,'cool', 'Good'
+'Sour-Wild-Ale', 'moderate',?,?,?,?,?,?,'cool','Good'
+'New-England-Hazy-IPA','moderate',?,?,?,?,?,?, 'cool', 'Good'
+'Tripel','moderate',?,?,?,?,?,?, 'cool', 'Good'
+'American-Style-Lager','moderate',?,?,?,?,?,?, 'very_cold', 'Bad'
+'New-England-Hazy-IPA','moderate',?,?,?,?,?,?, 'very_cold', 'Good'
+'Golden-Blonde-Ale','moderate',?,?,?,?,?,?, 'very_cold', 'Bad'
+'IPA','moderate',?,?,?,?,?,?, 'very_cold', 'Good'
+'New-England-Hazy-IPA','moderate',?,?,?,?,?,?, 'very_cold', 'Excellent'
+'Session-IPA','moderate',?,?,?,?,?,?, 'very_cold', 'Excellent'
+'Pale-Lager','moderate','high',?,?,?,?,?, 'very_cold', 'Bad'
+'IPA','moderate','high',?,?,?,?,?, 'very_cold', 'Excellent'
+'Pale-Lager','moderate','high',?,?,?,?,?, 'very_cold', 'Good'
+'Pale-Lager','moderate','high','Other',?,?,?,?, 'very_cold', 'Excellent'
+'Pale-Lager','moderate','high',?,?,?,?,?, 'very_cold', 'Bad'
+'Lager','moderate','high',?,?,?,?,?, 'very_cold', 'Excellent'
+'Lager','moderate','high',?,?,?,?,?, 'very_cold', 'Good'
+'Lager','moderate','high','Other',?,?,?,?, 'very_cold', 'Excellent'
+'Lager','moderate','high','Other',?,?,?,?, 'very_cold', 'Good'
+'ALE-Wheat-Ale','moderate','high',?,?,?,?,?,'cool', 'Good'
+'Lager','moderate','high',?,?,?,?,?,'very_cold', 'Good'

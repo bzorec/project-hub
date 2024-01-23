@@ -1,24 +1,28 @@
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Direct4Me.Core.Runner;
 
 public interface IJavaRunner
 {
-    Task<string> RunJarAsync(string jarPath, string args = "");
+    Task<string> RunJarAsync(string args = "");
 }
 
 public class JavaRunner : IJavaRunner
 {
-    public async Task<string> RunJarAsync(string jarPath, string args = "")
+    public async Task<string> RunJarAsync(string args = "")
     {
         const string javaExecutablePath = "java";
 
-        var command = $"{javaExecutablePath} -jar \"{jarPath}\" {args}";
+        // Get the directory of the JavaRunner class
+        var assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        var jarPath = Path.Combine(assemblyPath ?? throw new InvalidOperationException(), "JAR", "wekaAi.jar");
 
+        // Correctly setting FileName and Arguments
         var processStartInfo = new ProcessStartInfo
         {
-            FileName = command,
-            Arguments = args,
+            FileName = javaExecutablePath,
+            Arguments = $"-jar \"{jarPath}\" {args}",
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,
@@ -38,7 +42,10 @@ public class JavaRunner : IJavaRunner
         var result = outputTask.Result;
         var errors = errorTask.Result;
 
-        if (!string.IsNullOrEmpty(errors)) throw new Exception(errors);
+        if (!string.IsNullOrEmpty(errors))
+        {
+            throw new Exception(errors);
+        }
 
         return result;
     }

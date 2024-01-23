@@ -1,3 +1,4 @@
+using System.Reflection;
 using Direct4Me.Blazor.Services;
 using Direct4Me.Core.Runner;
 using Direct4Me.Core.TravellingSalesmanProblem;
@@ -16,9 +17,14 @@ public partial class Map
 
     protected async Task JavaRunnerExample()
     {
-        const string filePath = "";
-        const string args = "";
-        await JavaRunner.RunJarAsync(filePath, args);
+        var assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        var arffPath = Path.Combine(assemblyPath ?? throw new InvalidOperationException(), "Data", "test.arff");
+
+        string args = $"{arffPath} NaiveBayesUpdatable 50";
+
+        var result = await JavaRunner.RunJarAsync(args);
+
+        Console.WriteLine(result);
     }
 
     protected async Task CalculateOptimalRouteRealOptions()
