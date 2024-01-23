@@ -16,6 +16,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.RegisterJavaRunner();
 builder.Services.AddTransient<HttpClient>();
+builder.Services.RegisterCommonServices();
 builder.Services.AddTransient<IFaceRecognitionService, FaceRecognitionService>();
 
 Log.Logger = new LoggerConfiguration()
