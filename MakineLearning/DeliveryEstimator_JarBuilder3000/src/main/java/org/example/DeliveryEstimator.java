@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import org.example.models.DeliveryJsonModel;
 import org.example.utils.JsonUtil;
 import org.example.utils.ModelLoader;
+import weka.classifiers.trees.J48;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
@@ -16,11 +17,12 @@ import java.util.List;
 
 public class DeliveryEstimator {
     private static final String MODEL_NAME = "randumTree.model";
+    //private static final String MODEL_NAME = "j48.model";
     private static final String DAY_OF_WEEK = "dayOfWeek";
     private static final String DELIVERY = "delivery";
-    private static final int DELIVERY_STARTING_TIME = 6;
-    private static final int CLASS_INITIAL_VALUE = 62;
-    private static final int CLASS_VALUE_INCREMENT = 32;
+    private static final int DELIVERY_STARTING_TIME = 8;
+    private static final int CLASS_INITIAL_VALUE = 10;
+    private static final int CLASS_VALUE_INCREMENT = 4;
 
     public static void evaluatePath(JsonObject json){
         int dayIndex;
@@ -41,7 +43,6 @@ public class DeliveryEstimator {
         try {
             // Load Weka model
             RandomForest model = ModelLoader.loadModel(MODEL_NAME);
-            System.out.println("Model Information: " + model.toString());
 
             if(!json.has(DELIVERY)){
                 System.err.println("No <delivery> in Json");
@@ -63,16 +64,9 @@ public class DeliveryEstimator {
 
             final List<String> classValues = new ArrayList<>(){
                 {
-                    add("1");
-                    add("2");
-                    add("3");
-                    add("4");
-                    add("5");
-                    add("6");
-                    add("7");
-                    add("8");
-                    add("9");
-                    add("10");
+                    for(int i=1; i <= 50; i++){
+                        add(String.valueOf(i));
+                    }
                 }
             };
             Attribute attributeClass = new Attribute("timeNeeded", classValues);
@@ -90,25 +84,21 @@ public class DeliveryEstimator {
             Instances dataUnpredicted = new Instances("deliveryEstimate", attributes, 1);
             dataUnpredicted.setClassIndex(dataUnpredicted.numAttributes() -1);
 
-            for(int i = 1; i < deliverys.size()-1; i++){
+            for(int i = 1; i < deliverys.size(); i++){
 
                 // Create a new instance with the relevant features
                 int finalI = i;
+                Integer finalDeliveryTime = deliveryTime;
                 DenseInstance unpredictedInstance = new DenseInstance(dataUnpredicted.numAttributes()){
                     {
                         setDataset(dataUnpredicted);
-                        setValue(postbox1, deliverys.get(finalI-1).getAsInt());
-                        setValue(postbox2, deliverys.get(finalI).getAsInt());
-                        setValue(timeOfDay, 8);
-                        setValue(dayOfWeek, 1);
+                        setValue(postbox1, deliverys.get(finalI-1).getAsInt()-1);
+                        setValue(postbox2, deliverys.get(finalI).getAsInt()-1);
+                        setValue(timeOfDay, whatClassOfTIme(finalDeliveryTime) -1);
+                        setValue(dayOfWeek, dayIndex-1);
                         setClassMissing();
                     }
                 };
-                //newInstance.setValue(0, deliveryPath.get(i-1)); //postboxID1
-                //newInstance.setValue(1, deliveryPath.get(i)); //postboxID2
-                //newInstance.setValue(2, deliveryTime + DELIVERY_STARTING_TIME); //timeOfDay
-                //newInstance.setValue(2, 8); //timeOfDay
-                //newInstance.setValue(3, dayIndex); //dayOfWeek
 
                 try {
                     // Classify the new instance
@@ -131,6 +121,27 @@ public class DeliveryEstimator {
     }
 
     private static Integer reverseProcess(double discretizedValue) {
-        return (int) (CLASS_INITIAL_VALUE + (discretizedValue - 1) * CLASS_VALUE_INCREMENT);
+        return (int) (discretizedValue * CLASS_VALUE_INCREMENT);
+    }
+
+    private static int whatClassOfTIme(int minutes){
+        int hours = minutes/60;
+
+        hours += DELIVERY_STARTING_TIME;
+
+        if (hours < DELIVERY_STARTING_TIME) hours = DELIVERY_STARTING_TIME;
+        if (hours > 15) hours = 15;
+
+        return switch (hours) {
+            case 8 -> 1;
+            case 9 -> 8;
+            case 10 -> 15;
+            case 11 -> 22;
+            case 12 -> 29;
+            case 13 -> 36;
+            case 14 -> 43;
+            case 15 -> 50;
+            default -> 1;
+        };
     }
 }

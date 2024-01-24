@@ -10,7 +10,7 @@ public class MakineSmartAI {
         private static final String OUTPUT = "output";
 
     public static void main(String[] args) throws IOException {
-        if (args.length != 2) {
+        if (args.length != 1) {
             System.err.println("Usage: java MakineSmartAI <path_to_json>");
             System.exit(1);
         }
