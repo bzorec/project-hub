@@ -7,11 +7,8 @@
         <button @onclick="CalculateOptimalRouteRealOptions" value="Real">Calculate Optimal Route(Real Options)</button>
         <button @onclick="JavaRunnerExample" value="Real" class="mb-3">JAVA RUNNER (AI)</button>
 
-        <!-- Button to open Estimated Delivery Modal -->
-        <button type="button" class="btn btn-primary" @onclick="() => OpenEstimatedDeliveryModal()">Open Estimated Delivery Modal</button>
-
-        <!-- Button to open Optimized Packages Modal -->
-        <button type="button" class="btn btn-primary" @onclick="() => OpenOptimizedPackagesModal()">Open Optimized Packages Modal</button>
+        <button type="button" class="btn btn-primary" @onclick="OpenEstimatedDeliveryModal">Open Estimated Delivery Modal</button>
+        <button type="button" class="btn btn-primary" @onclick="OpenOptimizedPackagesModal">Open Optimized Packages Modal</button>
     </div>
     <div id="map" class="map"></div>
 </div>
@@ -27,20 +24,19 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if (EstimetDelivery != null && EstimetDelivery.Count > 0)
+                @if (EstimetDelivery.Count > 0)
                 {
                     @foreach (var delivery in EstimetDelivery)
                     {
                         <div class="item-card">
-                            <p>Package ID: @delivery.PackageId</p>
+                            <p>Package ID: @delivery.PostBoxId</p>
                             <p>Estimate Delivery Time: @delivery.EstimatedDeliveryTime</p>
-                            <!-- Add more details as needed -->
                         </div>
                     }
                 }
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @onclick="() => CloseEstimatedDeliveryModal()" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" @onclick="CloseEstimatedDeliveryModal" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -56,16 +52,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if (OptimizedPackagesInfo != null)
+                @if (OptimizedPackagesInfo is { PackageSummaries.Count: > 0 })
                 {
-                    <div class="item-card">
-                        <p>Package ID: @OptimizedPackagesInfo.PackageId</p>
-                        <!-- Add more details from OptimizedPackagesInfo as needed -->
-                    </div>
+                    foreach (var packageSummary in OptimizedPackagesInfo.PackageSummaries)
+                    {
+                        <div class="item-card">
+                            <p>Package ID: @packageSummary.PackageId</p>
+                            <p>PostBox ID: @packageSummary.PostBoxId</p>
+                            <p>Status: @packageSummary.Status</p>
+                            <p>Summary: @packageSummary.Summary</p>
+                        </div>
+                    }
                 }
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @onclick="() => CloseOptimizedPackagesModal()" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" @onclick="CloseOptimizedPackagesModal" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

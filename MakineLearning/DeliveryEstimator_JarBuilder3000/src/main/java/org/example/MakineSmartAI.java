@@ -15,7 +15,7 @@ public class MakineSmartAI {
             System.exit(1);
         }
 
-        JsonObject object = JsonUtil.loadJsonObject(args[0]);
+        JsonObject object = JsonUtil.loadJsonObject(args[1]);
 
         if(!object.has(JSON_MAKINE_STRING)){
             System.err.println("No MAKINE field in json");
@@ -32,6 +32,7 @@ public class MakineSmartAI {
         switch (object.get(JSON_MAKINE_STRING).getAsInt()){
             case 1:
                 //zorec ai
+                PackageOptimizer3000.evaluatePickups(object);
                 break;
 
             case 2:

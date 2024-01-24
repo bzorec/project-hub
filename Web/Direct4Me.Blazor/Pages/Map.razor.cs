@@ -20,17 +20,13 @@ public partial class Map
 
     [Inject] private IRouteHandler RouteHandler { get; set; } = null!;
 
-    private List<EstimetDelivery> EstimetDelivery { get; set; } = new List<EstimetDelivery>
+    private List<EstimetDelivery> EstimetDelivery { get; set; } = new()
     {
         new EstimetDelivery(),
         new EstimetDelivery()
     };
 
-    private OptimizedPackagesInfo OptimizedPackagesInfo { get; set; } =
-        new OptimizedPackagesInfo(new List<PackageEntity>(), new List<PackageEntity>())
-        {
-            PackageId = 1
-        };
+    private OptimizedPackagesInfo OptimizedPackagesInfo { get; set; }
 
     // Method to open Estimated Delivery Modal
     private async Task OpenEstimatedDeliveryModal()
@@ -43,7 +39,7 @@ public partial class Map
     {
         await JsInteropService.CloseOptimizedPackagesModal();
     }
-    
+
     private async Task CloseEstimatedDeliveryModal()
     {
         await JsInteropService.CloseEstimatedDeliveryModal();
@@ -55,19 +51,45 @@ public partial class Map
         await JsInteropService.OpenOptimizedPackagesModal();
     }
 
-    protected async Task JavaRunnerExample()
+    private async Task JavaRunnerExample()
     {
+        var basePath = AppDomain.CurrentDomain.BaseDirectory;
+        var dataPath = Path.Combine(basePath, "Data", "packages.json");
+        var dataPath3 = Path.Combine(basePath, "Data", "delivery.json");
+
         var route = RouteHandler.GenerateMockRoute();
 
-        var packages = RouteHandler.GeneratePackagesForRoute(route);
-        var optimizedPackages = RouteHandler.OptimizePackages(packages, route);
+        var packages = RouteHandler.GeneratePackagesForRoute(route, basePath, dataPath);
+        List<PackageEntity> optimizedPackages;
+        try
+        {
+            optimizedPackages = RouteHandler.OptimizePackages(JavaRunner, packages, basePath, dataPath);
+        }
+        catch (Exception e)
+        {
+            optimizedPackages = new List<PackageEntity>();
+        }
+
+        // Update the route with postboxes that have optimized packages
+        // UpdateRouteWithOptimizedPackages(route, optimizedPackages);
 
         OptimizedPackagesInfo = new OptimizedPackagesInfo(packages, optimizedPackages);
 
-        await LeafletMapService.InitBestRealTimePathMap(9);
-        var aiOptimizedTour = await LeafletMapService.InitBestRealOptionsPathAiVersionMap(9, true);
+        var aiOptimizedTour = await LeafletMapService.InitBestRealOptionsPathAiVersionMap(route, 9);
+        try
+        {
+            EstimetDelivery = RouteHandler.GetEstimetDelivery(JavaRunner, aiOptimizedTour, dataPath3);
+        }
+        catch (Exception e)
+        {
+            EstimetDelivery = new List<EstimetDelivery>();
+        }
+    }
 
-        EstimetDelivery = RouteHandler.GetEstimetDelivery(aiOptimizedTour);
+    private void UpdateRouteWithOptimizedPackages(RouteEntity route, List<PackageEntity> optimizedPackages)
+    {
+        var remainingPostBoxIds = new HashSet<int>(optimizedPackages.Select(p => p.PostBoxId));
+        route.Postboxes = route.Postboxes.Where(postbox => remainingPostBoxIds.Contains(postbox.PostBoxId)).ToList();
     }
 
     protected async Task CalculateOptimalRouteRealOptions()
@@ -112,9 +134,33 @@ public partial class Map
 
 internal class OptimizedPackagesInfo
 {
+    public List<PackageSummary> PackageSummaries { get; private set; } = new List<PackageSummary>();
+
     public OptimizedPackagesInfo(List<PackageEntity> packages, List<PackageEntity> optimizedPackages)
     {
-    }
+        var optimizedPackageIds = new HashSet<string>(optimizedPackages.Select(p => p.Id));
 
-    public object PackageId { get; set; }
+        foreach (var package in packages)
+        {
+            var summary = new PackageSummary
+            {
+                PackageId = package.PackageId,
+                PostBoxId = package.PostBoxId,
+                Status = optimizedPackageIds.Contains(package.Id) ? "Retained" : "Removed",
+                Summary = optimizedPackageIds.Contains(package.Id)
+                    ? $"Package {package.PackageId} in PostBox {package.PostBoxId} was retained."
+                    : $"Package {package.PackageId} in PostBox {package.PostBoxId} was removed."
+            };
+
+            PackageSummaries.Add(summary);
+        }
+    }
+}
+
+internal class PackageSummary
+{
+    public int PackageId { get; set; }
+    public int PostBoxId { get; set; }
+    public string Status { get; set; } // "Retained" or "Removed"
+    public string Summary { get; set; }
 }

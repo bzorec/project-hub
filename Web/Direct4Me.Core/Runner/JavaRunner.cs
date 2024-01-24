@@ -14,15 +14,11 @@ public class JavaRunner : IJavaRunner
     {
         const string javaExecutablePath = "java";
 
-        // Get the directory of the JavaRunner class
-        var assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        var jarPath = Path.Combine(assemblyPath ?? throw new InvalidOperationException(), "JAR", "wekaAi.jar");
-
         // Correctly setting FileName and Arguments
         var processStartInfo = new ProcessStartInfo
         {
             FileName = javaExecutablePath,
-            Arguments = $"-jar \"{jarPath}\" {args}",
+            Arguments = $"D:\\workspace\\project-hub\\MakineLearning\\DeliveryEstimator_JarBuilder3000\\src\\main\\java\\org\\example\\MakineSmartAI.java MakineSmartAI {args}",
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,

@@ -1,3 +1,5 @@
+using Direct4Me.Core.Handler;
+using Direct4Me.Core.Runner;
 using Xunit.Abstractions;
 
 namespace Direct4Me.UnitTests;
@@ -13,6 +15,20 @@ public class ArffGenerator
         _testOutputHelper = testOutputHelper;
     }
 
+    [Fact]
+    public void G()
+    {
+        var basePath = AppDomain.CurrentDomain.BaseDirectory;
+        var dataPath = Path.Combine(basePath, "Data", "packages.json");
+        var runner = new JavaRunner();
+        var handler = new RouteHandler();
+        var route = handler.GenerateMockRoute();
+
+        var packages = handler.GeneratePackagesForRoute(route, basePath, dataPath);
+        var optimizedPackages = handler.OptimizePackages(runner, packages, basePath, dataPath);
+        _testOutputHelper.WriteLine(optimizedPackages.ToString());
+    }
+    
     [Fact]
     public void Generator()
     {

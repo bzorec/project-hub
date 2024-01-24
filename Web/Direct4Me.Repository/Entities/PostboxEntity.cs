@@ -15,8 +15,8 @@ public class PostboxEntity : IEntity
     public string UserId { get; set; } = null!;
     public List<string>? AccessList { get; set; } = new();
 
-    public double Latitude { get; set; }
-    public double Longitude { get; set; }
+    [BsonIgnore] public double Latitude { get; set; }
+    [BsonIgnore] public double Longitude { get; set; }
 
     public PostboxStatisticsEntity StatisticsEntity { get; set; } = new();
     public DateTime CreatedOn { get; set; }
