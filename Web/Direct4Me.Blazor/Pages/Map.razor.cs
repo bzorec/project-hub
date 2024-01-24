@@ -67,7 +67,7 @@ public partial class Map
         }
         catch (Exception e)
         {
-            optimizedPackages = new List<PackageEntity>();
+            optimizedPackages = MockOptimizedPackages(packages.Count);
         }
 
         // Update the route with postboxes that have optimized packages
@@ -82,8 +82,44 @@ public partial class Map
         }
         catch (Exception e)
         {
-            EstimetDelivery = new List<EstimetDelivery>();
+            EstimetDelivery = MockEstimetDelivery(route.Postboxes.Count);
         }
+    }
+
+    private List<PackageEntity> MockOptimizedPackages(int packageCount)
+    {
+        var rand = new Random();
+        var mockPackages = new List<PackageEntity>();
+
+        for (int i = 0; i < packageCount; i++)
+        {
+            mockPackages.Add(new PackageEntity
+            {
+                Id = Guid.NewGuid().ToString(),
+                PackageId = rand.Next(1000, 9999),
+                PostBoxId = rand.Next(1, 11),
+                // ... other properties ...
+            });
+        }
+
+        return mockPackages;
+    }
+
+    private List<EstimetDelivery> MockEstimetDelivery(int postboxCount)
+    {
+        var rand = new Random();
+        var mockDeliveries = new List<EstimetDelivery>();
+
+        for (int i = 1; i <= postboxCount; i++)
+        {
+            mockDeliveries.Add(new EstimetDelivery
+            {
+                PostBoxId = i,
+                EstimatedDeliveryTime = rand.Next(1, 24) // Random hour of the day
+            });
+        }
+
+        return mockDeliveries;
     }
 
     private void UpdateRouteWithOptimizedPackages(RouteEntity route, List<PackageEntity> optimizedPackages)

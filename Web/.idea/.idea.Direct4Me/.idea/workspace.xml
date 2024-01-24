@@ -8,28 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/java/org/example/PackageOptimizer3000.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/java/org/example/models/PickupDecision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/resources/package_pickup.model" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/java/org/example/MakineSmartAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/java/org/example/MakineSmartAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Handler/RealWorldData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Handler/RealWorldData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PackageEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PackageEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PostboxEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PostboxEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Entities/RouteEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Entities/RouteEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Repositories/PackageRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Repositories/RouteRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/ArffGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/ArffGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
-    </list>
+    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="finished ai3000 integration" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +29,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.UnitTests/ArffGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.UnitTests/ArffGenerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -166,7 +146,7 @@
       <workItem from="1706015331991" duration="3963000" />
       <workItem from="1706088027988" duration="532000" />
       <workItem from="1706101310815" duration="2301000" />
-      <workItem from="1706125287393" duration="6955000" />
+      <workItem from="1706125287393" duration="7393000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -328,7 +308,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706031208489</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="finished ai3000 integration">
+      <option name="closed" value="true" />
+      <created>1706132510454</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1706132510454</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +351,8 @@
     <MESSAGE value="fixes" />
     <MESSAGE value="added arff" />
     <MESSAGE value="added route and package to repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="added route and package to repository" />
+    <MESSAGE value="finished ai3000 integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished ai3000 integration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
