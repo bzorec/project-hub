@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fc13f6b-957f-4346-9d77-6614f837f760" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/java/org/example/WekaClassifier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DelliveryEstimatorJarBuilder3000/src/main/java/org/example/WekaClassifierApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DelliveryEstimatorJarBuilder3000/src/main/java/org/example/WekaModelProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Mobile/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/FileContentIndex/read.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web/DockerfileApi" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/DockerfileApi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeliveryEstimator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DeliveryEstimator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_data.arff" beforeDir="false" afterPath="$PROJECT_DIR$/output_data.arff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PostboxInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PostboxInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/java/org/example/DeliveryEstimator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/java/org/example/DeliveryEstimator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/java/org/example/MakineSmartAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/java/org/example/MakineSmartAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/resources/makineModel.model" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/resources/randumTree.model" beforeDir="false" afterPath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/resources/randumTree.model" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/resources/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/resources/test.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,12 +42,15 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/misel/source/repos/project-hub/MakineLearning/DeliveryEstimator",
+    "last_opened_file_path": "C:/Users/misel/source/repos/project-hub/MakineLearning/weka.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -65,10 +65,22 @@
       <workItem from="1705583102342" duration="27000" />
       <workItem from="1706038460812" duration="198000" />
       <workItem from="1706040054968" duration="3850000" />
+      <workItem from="1706131485851" duration="475000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

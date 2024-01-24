@@ -12,7 +12,9 @@ import java.util.Random;
 
 public class DataGenerator {
 
-    private static final int NUMBER_OF_DATA_INSTANCES = 2000;
+    private static final int NUMBER_OF_DATA_INSTANCES = 10000;
+    private static final int DELIVERY_START_HOUR = 8;
+    private static final int DELIVERY_HOURS = 8;
     public static void main(String[] args) {
 
         Postbox[] postboxes = PostboxInitializer.initializePostboxes();
@@ -39,7 +41,7 @@ public class DataGenerator {
             while (p1 == p2){
                 p2 = random.nextInt(10) + 1;
             }
-            int rTime = random.nextInt(16) + 6;
+            int rTime = random.nextInt(DELIVERY_HOURS) + DELIVERY_START_HOUR;
             int rDay = random.nextInt(5) + 1;
 
             double timeCoefficient = getTimeCoefficient(rTime);
@@ -133,22 +135,28 @@ public class DataGenerator {
         // Apply time coefficients
         if (hour < 10) {
             return 1.0;
-        } else if (hour >= 10 && hour < 14) {
-            return 1.2;
-        } else {
+        } else if (hour < 11) {
             return 1.1;
+        }
+        else if (hour <= 13) {
+            return 1.3;
+        }
+        else if (hour == 14) {
+            return 1.1;
+        } else {
+            return 1.0;
         }
     }
 
     private static double getDayCoefficient(int day) {
         // Apply day coefficients
         return switch (day) {
-            case 1 -> 1.08; //mon
-            case 2 -> 1.05; //tue
-            case 3 -> 1.04; //wed
-            case 4 -> 1.06; //thu
-            case 5 -> 1.01; //fri
-            default -> 1.0;
+            case 1 -> 1.5; //mon 10 -> 15 min
+            case 2 -> 1.4; //tue 10 -> 14 min
+            case 3 -> 1.4; //wed 10 -> 14 min
+            case 4 -> 1.1; //thu 10 -> 11 min
+            case 5 -> 0.8; //fri 10 -> 8 min
+            default -> 1.0; // 10 -> 10 min
         };
     }
 
