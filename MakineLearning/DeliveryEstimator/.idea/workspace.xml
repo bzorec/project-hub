@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2fc13f6b-957f-4346-9d77-6614f837f760" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000" beforeDir="false" afterPath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeliveryEstimateDataGenerator3000/DeliveryEstimateDataGenerator3000.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeliveryEstimator_JarBuilder3000/src/main/java/org/example/WekaClassifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DelliveryEstimatorJarBuilder3000/src/main/java/org/example/WekaClassifierApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DelliveryEstimatorJarBuilder3000/src/main/java/org/example/WekaModelProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Mobile/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/app/src/main/java/com/um/feri/direct4me/android/ui/login/LoginFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Mobile/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mobile/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/FileContentIndex/read.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/.vs/Direct4Me/v17/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Web/DockerfileApi" beforeDir="false" afterPath="$PROJECT_DIR$/../../Web/DockerfileApi" afterDir="false" />
     </list>
@@ -25,9 +31,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2b83uYcFqZtrXqkV8wphWLpWp01" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,6 +46,10 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/misel/source/repos/project-hub/MakineLearning/DeliveryEstimator",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -53,6 +63,8 @@
       <option name="presentableId" value="Default" />
       <updated>1705583101279</updated>
       <workItem from="1705583102342" duration="27000" />
+      <workItem from="1706038460812" duration="198000" />
+      <workItem from="1706040054968" duration="3850000" />
     </task>
     <servers />
   </component>
