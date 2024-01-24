@@ -1,14 +1,9 @@
 using Direct4Me.Repository.Infrastructure.Interfaces;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace Direct4Me.Repository.Entities;
 
-[Serializable]
-public class RouteEntity : IEntity
+public class RouteEntity
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = null!;
 
     public List<PostboxEntity> Postboxes { get; set; } = new(); // List of postboxes in the route
@@ -18,4 +13,5 @@ public class RouteEntity : IEntity
 
     public DateTime CreatedOn { get; set; }
     public DateTime? ModifiedOn { get; set; }
+    public List<List<int>> DistanceMatrix { get; set; }
 }

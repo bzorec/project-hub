@@ -1,4 +1,5 @@
 using System.Globalization;
+using Direct4Me.Core.Handler;
 using Direct4Me.Core.TravellingSalesmanProblem;
 using FluentAssertions;
 using Xunit.Abstractions;
@@ -138,6 +139,42 @@ public class TestTsp
         {
             var eilTsp = new TspAlgorithm(dataPath, 100000, true, true);
             var ga = new GeneticAlgorithm(100, 0.8, 0.1);
+            var bestPath = ga.Execute(eilTsp);
+
+            _testOutputHelper.WriteLine("{0}. [{1}]", i + 1, bestPath);
+            distances.Add(bestPath.Distance);
+
+            if (bestBest.Distance > bestPath.Distance)
+            {
+                bestBest = new Tour(bestPath);
+            }
+
+            bestPath.Should().NotBeNull();
+            bestPath.Path.Count.Should().BeGreaterThan(0);
+        }
+
+        double avgDistance = distances.Average();
+        double stdDistance = Math.Sqrt(distances.Sum(d => Math.Pow(d - avgDistance, 2)) / distances.Count);
+
+        _testOutputHelper.WriteLine("Best: [{0}]", bestBest);
+        _testOutputHelper.WriteLine("Avg: [{0}]", avgDistance);
+        _testOutputHelper.WriteLine("Std: [{0}]", stdDistance);
+    }
+
+    [Fact]
+    public void TestTspAlgorithmReal2()
+    {
+        var routeHandler = new RouteHandler();
+        var bestBest = new Tour(0);
+        var distances = new List<double>();
+
+        var route = routeHandler.GenerateMockRoute();
+
+        for (var i = 0; i < 30; i++)
+        {
+            // Use the new TspAlgorithm constructor with the generated route
+            var eilTsp = new TspAlgorithm(route, route.DistanceMatrix, 1000);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.8);
             var bestPath = ga.Execute(eilTsp);
 
             _testOutputHelper.WriteLine("{0}. [{1}]", i + 1, bestPath);

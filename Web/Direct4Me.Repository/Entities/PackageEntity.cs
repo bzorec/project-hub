@@ -4,24 +4,24 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Direct4Me.Repository.Entities;
 
-[Serializable]
-public class PackageEntity : IEntity
+public class PackageEntity
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = null!;
 
     public int PackageId { get; set; }
 
-    public string PostBoxId { get; set; } = null!; // Associated postbox
+    public int PostBoxId { get; set; } // Now an integer
 
-    public string PackageType { get; set; } = null!; // e.g., perishable, electronics
-
+    public string PackageType { get; set; } = null!;
     public double Weight { get; set; }
-
-    public string DeliveryUrgency { get; set; } = null!; // e.g., standard, expedited
+    public string DeliveryUrgency { get; set; } = null!;
+    public string DayOfWeek { get; set; } = null!; // Added for Java compatibility
+    public string PaymentType { get; set; } = null!; // Added for Java compatibility
+    public string NeedSignature { get; set; } = null!; // Added for Java compatibility
+    public int NumPeopleHome { get; set; } // Added for Java compatibility
+    public int PostboxCapacity { get; set; } // Added for Java compatibility
+    public string RepeatDelivery { get; set; } = null!; // Added for Java compatibility
 
     public DateTime CreatedOn { get; set; }
-
     public DateTime? ModifiedOn { get; set; }
 }

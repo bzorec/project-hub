@@ -9,17 +9,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_21_09_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_21_09__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_23_01_2024_17_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_23_01_2024_17_17__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/java/org/example/PackageOptimizer3000.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/java/org/example/models/PickupDecision.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/resources/package_pickup.model" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/java/org/example/MakineSmartAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MakineLearning/DeliveryEstimator_JarBuilder3000/src/main/java/org/example/MakineSmartAI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsInteropService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsInteropService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/bootstrap-custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/bootstrap-custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Handler/RealWorldData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Handler/RealWorldData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/TspAlgorithm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PackageEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PackageEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PostboxEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Entities/PostboxEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Entities/RouteEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Repository/Entities/RouteEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Repositories/PackageRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Repository/Repositories/RouteRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/ArffGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/ArffGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.UnitTests/TravellingSalesmanProblemTests/TestTsp.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +49,8 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/b506e2cb7b6c0fe787305f8cfdee046b7b3f9a53/src/Components/Components/src/ComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8aeca8dfcec95a81b42a28e5c138e1c321e89def3fed605511172a8beaec/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.UnitTests/ArffGenerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -78,9 +86,9 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\bzorec\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\bzorec\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\blazz\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\blazz\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\blazz\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -158,6 +166,7 @@
       <workItem from="1706015331991" duration="3963000" />
       <workItem from="1706088027988" duration="532000" />
       <workItem from="1706101310815" duration="2301000" />
+      <workItem from="1706125287393" duration="6955000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -355,5 +364,73 @@
     <MESSAGE value="added arff" />
     <MESSAGE value="added route and package to repository" />
     <option name="LAST_COMMIT_MESSAGE" value="added route and package to repository" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs</url>
+          <line>174</line>
+          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\Handler\RouteHandler.cs" initialLine="174" containingFunctionPresentation="Method 'OptimizePackages'">
+            <startOffsets>
+              <option value="6295" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6320" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs</url>
+          <line>87</line>
+          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\Handler\RouteHandler.cs" initialLine="87" containingFunctionPresentation="Method 'GeneratePackagesForRoute'">
+            <startOffsets>
+              <option value="3109" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3125" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs</url>
+          <line>155</line>
+          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\Handler\RouteHandler.cs" initialLine="155" containingFunctionPresentation="Method 'OptimizePackages'">
+            <startOffsets>
+              <option value="5419" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5461" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs</url>
+          <line>120</line>
+          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Blazor\Services\JsLeafletMapService.cs" initialLine="124" containingFunctionPresentation="Method 'InitBestRealOptionsPathAiVersionMap'">
+            <startOffsets>
+              <option value="3980" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4085" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Frame#Direct4Me.Core.Handler.RouteHandler.OptimizePackages" memberName="dataPath" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="RiderUnitTests">
+        <watch expression="new System.Collections.Generic.ICollectionDebugView&lt;Direct4Me.Core.Handler.PackageDecision&gt;(packageDecisions).Items[20]" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

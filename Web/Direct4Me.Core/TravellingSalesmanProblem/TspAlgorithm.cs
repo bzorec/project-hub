@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Direct4Me.Repository.Entities;
 
 namespace Direct4Me.Core.TravellingSalesmanProblem;
 
@@ -35,6 +36,30 @@ public class TspAlgorithm
         {
             LoadData(path);
         }
+    }
+
+    public TspAlgorithm(RouteEntity route, List<List<int>> distanceMatrix, int maxEvaluations,
+        bool optimizeForTime = false)
+    {
+        _random = new Random();
+        DistanceMatrix = distanceMatrix;
+        MaxEvaluations = maxEvaluations;
+        OptimizeForTime = optimizeForTime;
+        IsRealWorldData = true;
+
+        // Map the postboxes from the route to cities for TSP
+        Cities = MapPostboxesToCities(route.Postboxes);
+    }
+
+    // Mapper function to convert PostboxEntity to City
+    private List<City> MapPostboxesToCities(List<PostboxEntity> postboxes)
+    {
+        return postboxes.Select((postbox, index) => new City
+        {
+            index = index,
+            cordX = postbox.Latitude,
+            cordY = postbox.Longitude
+        }).ToList();
     }
 
     private void LoadRealWorldData(string jsonPath)
@@ -115,7 +140,7 @@ public class TspAlgorithm
                 {
                     if (weight == "DISPLAY_DATA_SECTION") break;
 
-                    var matrixLine = weight.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries)
+                    var matrixLine = weight.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(int.Parse)
                         .ToArray();
 
@@ -215,7 +240,8 @@ public class TspAlgorithm
 
                 // Weights for distance and time
                 double weightDistance = _random.NextDouble(); // Adjust these weights as needed
-                double weightTime =  _random.NextDouble();;
+                double weightTime = _random.NextDouble();
+                ;
 
                 // Combined metric
                 double combinedMetric = weightDistance * totalDistance;
@@ -271,7 +297,7 @@ public class TspAlgorithm
             foreach (var index in cityIndices)
             {
                 var city = Cities.FirstOrDefault(c => c.index == index) ??
-                           new City {index = index, cordX = 0, cordY = 0};
+                           new City { index = index, cordX = 0, cordY = 0 };
                 tour.SetCity(index, city);
             }
 

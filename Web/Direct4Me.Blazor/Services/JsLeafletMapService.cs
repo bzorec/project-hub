@@ -1,4 +1,5 @@
 using Direct4Me.Core.TravellingSalesmanProblem;
+using Direct4Me.Repository.Entities;
 using Microsoft.JSInterop;
 
 namespace Direct4Me.Blazor.Services;
@@ -16,8 +17,8 @@ public interface IJsLeafletMapService
 
     Task InitBestRealOptionsPathMap(int zoomLevel);
     Task InitBestRealTimePathMap(int zoomLevel);
-
-    Task<Tour?> InitBestRealOptionsPathAiVersionMap(int zoomLevel, bool useAi);
+    Task<Tour?> InitBestRealOptionsPathAiVersionMap(RouteEntity route, int zoomLevel);
+    Task<Tour?> InitBestRealOptionsPathMap(RouteEntity route, int zoomLevel);
 }
 
 public class JsLeafletMapService : IJsLeafletMapService
@@ -75,16 +76,16 @@ public class JsLeafletMapService : IJsLeafletMapService
         await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestBest?.ToJavascriptObject(), zoomLevel);
     }
 
-    public async Task<Tour?> InitBestRealOptionsPathAiVersionMap(int zoomLevel, bool useAi)
+    public async Task<Tour?> InitBestRealOptionsPathMap(RouteEntity route, int zoomLevel)
     {
-        var basePath = AppDomain.CurrentDomain.BaseDirectory;
-        var dataPath = Path.Combine(basePath, "Data", "complete_data.json");
-
         var bestBest = new Tour(0);
+
+        route.Postboxes.RemoveAt(4);
+        route.Postboxes.RemoveAt(6);
 
         for (var i = 0; i < 30; i++)
         {
-            var eilTsp = new TspAlgorithm(dataPath, 1000, true);
+            var eilTsp = new TspAlgorithm(route, route.DistanceMatrix, 1000);
             var ga = new GeneticAlgorithm(100, 0.8, 0.8);
             var bestPath = ga.Execute(eilTsp);
 
@@ -98,11 +99,31 @@ public class JsLeafletMapService : IJsLeafletMapService
         bestBest.Path = cities.ToList();
 
         await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestBest?.ToJavascriptObject(), zoomLevel);
-        
+
         return bestBest;
     }
 
-    
+    public async Task<Tour?> InitBestRealOptionsPathAiVersionMap(RouteEntity route, int zoomLevel)
+    {
+        var bestBest = new Tour(0);
+      
+        for (var i = 0; i < 30; i++)
+        {
+            var eilTsp = new TspAlgorithm(route, route.DistanceMatrix, 1000);
+            var ga = new GeneticAlgorithm(100, 0.8, 0.8);
+            var bestPath = ga.Execute(eilTsp);
+
+            if (bestBest.Distance > bestPath?.Distance)
+            {
+                bestBest = new Tour(bestPath);
+            }
+        }
+        await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestBest?.ToJavascriptObject(), zoomLevel);
+
+        return bestBest;
+    }
+
+
     public async Task InitBestRealDisctancePathMap(int zoomLevel)
     {
         var basePath = AppDomain.CurrentDomain.BaseDirectory;
