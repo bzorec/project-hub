@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Direct4Me.Core.RouteHandler;
+using Direct4Me.Core.TravellingSalesmanProblem;
 using Direct4Me.Repository.Entities;
 
 namespace Direct4Me.Core.Handler;
@@ -7,6 +8,15 @@ namespace Direct4Me.Core.Handler;
 public interface IRouteHandler
 {
     RouteEntity GenerateMockRoute();
+    List<PackageEntity> GeneratePackagesForRoute(RouteEntity route);
+    List<PackageEntity> OptimizePackages(List<PackageEntity> packages, RouteEntity route);
+    List<EstimetDelivery> GetEstimetDelivery(Tour? aiOptimizedTour);
+}
+
+public class EstimetDelivery
+{
+    public object PackageId { get; set; }
+    public object EstimatedDeliveryTime { get; set; }
 }
 
 public class RouteHandler : IRouteHandler
@@ -27,6 +37,21 @@ public class RouteHandler : IRouteHandler
         };
 
         return route;
+    }
+
+    public List<PackageEntity> GeneratePackagesForRoute(RouteEntity route)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<PackageEntity> OptimizePackages(List<PackageEntity> packages, RouteEntity route)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<EstimetDelivery> GetEstimetDelivery(Tour? aiOptimizedTour)
+    {
+        throw new NotImplementedException();
     }
 
     private static List<PostboxEntity> GeneratePostboxesFromCities(string jsonPath)

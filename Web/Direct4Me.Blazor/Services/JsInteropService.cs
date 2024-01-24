@@ -19,6 +19,11 @@ public interface IJsInteropService
     Task<byte[]> FaceUnlockEnable(string userModelId);
     ValueTask CloseModalHistoryWindow();
     ValueTask OpenModalHistoryWindow();
+    ValueTask OpenEstimatedDeliveryModal();
+    ValueTask OpenOptimizedPackagesModal();
+
+    ValueTask CloseEstimatedDeliveryModal();
+    ValueTask CloseOptimizedPackagesModal();
 }
 
 public class JsInteropService : IJsInteropService
@@ -103,5 +108,25 @@ public class JsInteropService : IJsInteropService
     public ValueTask OpenModalHistoryWindow()
     {
         return _jsRuntime.InvokeVoidAsync("jsInterop.openHistoryModal");
+    }
+
+    public ValueTask OpenEstimatedDeliveryModal()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.openEstimatedDeliveryModal");
+    }
+
+    public ValueTask OpenOptimizedPackagesModal()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.openOptimizedPackagesModal");
+    }
+
+    public ValueTask CloseEstimatedDeliveryModal()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.closeEstimatedDeliveryModal");
+    }
+
+    public ValueTask CloseOptimizedPackagesModal()
+    {
+        return _jsRuntime.InvokeVoidAsync("jsInterop.closeOptimizedPackagesModal");
     }
 }

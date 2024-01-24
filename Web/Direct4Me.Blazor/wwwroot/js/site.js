@@ -1,8 +1,7 @@
 window.jsInterop = {
     getBoundingClientRect: function (element) {
         return element.getBoundingClientRect();
-    },
-    setToken: function (token) {
+    }, setToken: function (token) {
         document.cookie = "JWTToken=" + token + "; expires=" + (new Date(Date.now() + 5 * 60 * 1000)).toUTCString() + "; path=/; secure; samesite=none";
     },
 
@@ -77,9 +76,7 @@ window.jsInterop = {
 
     openModal() {
         $('#updateModal').modal('show');
-    },
-
-    closeHistoryModal() {
+    }, closeHistoryModal() {
         $('#grantAccessModal').modal('hide');
     },
 
@@ -87,9 +84,23 @@ window.jsInterop = {
         $('#grantAccessModal').modal('show');
     },
 
-    initMap: initMap,
-    addMarker: addMarker,
-    drawPath: drawPath,
+    openEstimatedDeliveryModal() {
+        $('#estimatedDeliveryModal').modal('show');
+    },
+
+    closeEstimatedDeliveryModal() {
+        $('#estimatedDeliveryModal').modal('hide');
+    },
+
+    openOptimizedPackagesModal() {
+        $('#optimizedPackagesModal').modal('show');
+    },
+
+    closeOptimizedPackagesModal() {
+        $('#optimizedPackagesModal').modal('hide');
+    },
+
+    initMap: initMap, addMarker: addMarker, drawPath: drawPath,
 
     showSpinner() {
         document.getElementById('map-spinner').style.display = 'block';
@@ -130,8 +141,7 @@ function initBestPathMap(tour, zoomLevel) {
         let map = L.map('map').setView([startCity.lat, startCity.lng], zoomLevel);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
         globalMap = map;
@@ -154,6 +164,7 @@ function addMarkersAndDrawPath(tour) {
     polyline = L.polyline(latlngs, {color: 'blue'}).addTo(globalMap);
     globalMap.fitBounds(polyline.getBounds());
 }
+
 function initMap(latitude, longitude, zoomLevel) {
     const mapContainer = document.getElementById('map');
     if (!mapContainer) {
@@ -167,8 +178,7 @@ function initMap(latitude, longitude, zoomLevel) {
     let map = L.map('map').setView([latitude, longitude], zoomLevel);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
     globalMap = map;

@@ -8,13 +8,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="added route and package to repository">
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/Handler/RealWorldData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Direct4Me.Core/Modules/CommonModule.cs" afterDir="false" />
+    <list default="true" id="b699fef0-5fb9-48d4-a00e-f3652f7122c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_21_09_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_21_09__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_23_01_2024_17_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/shelf/Uncommitted_changes_before_Update_at_23_01_2024_17_17__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Direct4Me/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/RouteHandler/RouteHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Pages/Map.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsInteropService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsInteropService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/bootstrap-custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/css/bootstrap-custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/js/site.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Direct4Me.Core/Handler/RouteHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +40,9 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/b506e2cb7b6c0fe787305f8cfdee046b7b3f9a53/src/Components/Components/src/ComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8aeca8dfcec95a81b42a28e5c138e1c321e89def3fed605511172a8beaec/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Direct4Me.Blazor/wwwroot/leaflet/leaflet.js.map" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.UnitTests/ArffGenerator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/workspace/project-hub/Web/Direct4Me.UnitTests/ArffGenerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -57,7 +62,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.Direct4Me.Blazor: IIS Express.executor": "Debug",
     ".NET Launch Settings Profile.Direct4Me.Minimal.Api: IIS Express.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -151,6 +156,8 @@
       <workItem from="1705434702326" duration="804000" />
       <workItem from="1705481394062" duration="6659000" />
       <workItem from="1706015331991" duration="3963000" />
+      <workItem from="1706088027988" duration="532000" />
+      <workItem from="1706101310815" duration="2301000" />
     </task>
     <task id="LOCAL-00001" summary="cleanup">
       <option name="closed" value="true" />
@@ -348,56 +355,5 @@
     <MESSAGE value="added arff" />
     <MESSAGE value="added route and package to repository" />
     <option name="LAST_COMMIT_MESSAGE" value="added route and package to repository" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.UnitTests/UserEntityTests.cs</url>
-          <line>14</line>
-          <properties documentPath="C:\workspace\project-hub\Web\Direct4Me.UnitTests\UserEntityTests.cs" initialLine="14" containingFunctionPresentation="Method 'IsAlreadyHashed_ValidHash_ReturnsTrue'" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Blazor/Services/JsLeafletMapService.cs</url>
-          <line>36</line>
-          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Blazor\Services\JsLeafletMapService.cs" initialLine="33" containingFunctionPresentation="Method 'InitBestFakePathMap'">
-            <startOffsets>
-              <option value="1149" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1196" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Core/TravellingSalesmanProblem/GeneticAlgorithm.cs</url>
-          <line>34</line>
-          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\TravellingSalesmanProblem\GeneticAlgorithm.cs" initialLine="34" containingFunctionPresentation="Method 'Execute'">
-            <startOffsets>
-              <option value="1075" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1145" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Direct4Me.Core/Runner/JavaRunner.cs</url>
-          <line>21</line>
-          <properties documentPath="D:\workspace\project-hub\Web\Direct4Me.Core\Runner\JavaRunner.cs" initialLine="21" containingFunctionPresentation="Method 'RunJarAsync'">
-            <startOffsets>
-              <option value="643" />
-            </startOffsets>
-            <endOffsets>
-              <option value="960" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -1,14 +1,72 @@
 @page "/map"
-
-<div id="map-spinner" class="spinner"></div>
-
 <div class="map-layout">
     <div class="sidebar">
         <button @onclick="CalculateOptimalRouteFake" value="Fake">Calculate Optimal Route(Fake)</button>
         <button @onclick="CalculateOptimalRouteRealTime" value="Real">Calculate Optimal Route(Real Time)</button>
         <button @onclick="CalculateOptimalRouteRealDistance" value="Real">Calculate Optimal Route(Real Distance)</button>
         <button @onclick="CalculateOptimalRouteRealOptions" value="Real">Calculate Optimal Route(Real Options)</button>
-        <button @onclick="JavaRunnerExample" value="Real">JAVA RUNNER (AI)</button>
+        <button @onclick="JavaRunnerExample" value="Real" class="mb-3">JAVA RUNNER (AI)</button>
+
+        <!-- Button to open Estimated Delivery Modal -->
+        <button type="button" class="btn btn-primary" @onclick="() => OpenEstimatedDeliveryModal()">Open Estimated Delivery Modal</button>
+
+        <!-- Button to open Optimized Packages Modal -->
+        <button type="button" class="btn btn-primary" @onclick="() => OpenOptimizedPackagesModal()">Open Optimized Packages Modal</button>
     </div>
     <div id="map" class="map"></div>
+</div>
+<div id="map-spinner" class="spinner"></div>
+
+<div class="modal fade" id="estimatedDeliveryModal" tabindex="-1" role="dialog" aria-labelledby="estimatedDeliveryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="estimatedDeliveryModalLabel">Estimated Delivery Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if (EstimetDelivery != null && EstimetDelivery.Count > 0)
+                {
+                    @foreach (var delivery in EstimetDelivery)
+                    {
+                        <div class="item-card">
+                            <p>Package ID: @delivery.PackageId</p>
+                            <p>Estimate Delivery Time: @delivery.EstimatedDeliveryTime</p>
+                            <!-- Add more details as needed -->
+                        </div>
+                    }
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="() => CloseEstimatedDeliveryModal()" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="optimizedPackagesModal" tabindex="-1" role="dialog" aria-labelledby="optimizedPackagesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="optimizedPackagesModalLabel">Optimized Packages Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if (OptimizedPackagesInfo != null)
+                {
+                    <div class="item-card">
+                        <p>Package ID: @OptimizedPackagesInfo.PackageId</p>
+                        <!-- Add more details from OptimizedPackagesInfo as needed -->
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="() => CloseOptimizedPackagesModal()" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -24,6 +24,21 @@ body {
     height: 100vh;
 }
 
+.item-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds card height */
+    max-height: 150px; /* Fixed height for the item cards */
+}
+
+/* Style for smaller titles */
+.card-title {
+    font-size: 14px; /* Adjust the font size as needed */
+}
 .sidebar {
     width: 250px;
     background-color: var(--sidebar-bg-color);
