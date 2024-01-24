@@ -7,15 +7,13 @@ import java.io.*;
 import java.net.URL;
 
 public class ModelLoader {
-    public static RandomForest loadModel(String modelResourceName) throws Exception {
+    public static <T> T loadModel(String modelResourceName) throws Exception {
         ClassLoader classLoader = MakineSmartAI.class.getClassLoader();
-        URL modelUrl = classLoader.getResource(modelResourceName);
+        InputStream modelStream = classLoader.getResourceAsStream(modelResourceName);
 
-        if (modelUrl != null) {
-            try (InputStream modelStream = new FileInputStream(new File(modelUrl.getFile()));
-                 ObjectInputStream objectInputStream = new ObjectInputStream(modelStream)) {
-
-                return (RandomForest) objectInputStream.readObject();
+        if (modelStream != null) {
+            try (ObjectInputStream objectInputStream = new ObjectInputStream(modelStream)) {
+                return (T) objectInputStream.readObject();
             }
         } else {
             throw new FileNotFoundException("Model file not found in resources: " + modelResourceName);
