@@ -23,12 +23,13 @@ public class MakineSmartAI {
         private static final String JSON_MAKINE_STRING = "MAKINE";
 
     public static void main(String[] args) throws IOException {
-        if (args.length != 1) {
-            System.err.println("Usage: java MakineSmartAI <path_to_json>");
+        if (args.length != 2) {
+            System.err.println("Usage: java MakineSmartAI <path_to_json> <jsonSavePath - absPath/file.json>");
             System.exit(1);
         }
 
         JsonObject object = JsonUtil.loadJsonObject(args[0]);
+        JsonUtil.JSON_OUTPUT_PATH = args[1];
 
         if(!object.has(JSON_MAKINE_STRING)){
             System.err.println("No MAKINE field in json");

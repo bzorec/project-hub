@@ -17,8 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JsonUtil {
-    private static final String JSON_OUTPUT_PATH = "C:\\Users\\misel\\source\\repos\\project-hub\\MakineLearning\\DeliveryEstimator_JarBuilder3000\\src\\main\\resources\\";
-    private static final String JSON_NAME = "output.json";
+    public static String JSON_OUTPUT_PATH = "";
     public static JsonObject loadJsonObject(String absFilePath) {
         Path path = Paths.get(absFilePath);
         try(Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)){
@@ -35,7 +34,7 @@ public class JsonUtil {
         Gson gson = new Gson();
         String s = gson.toJson(obj.postboxTimeNeededPairs);
 
-        try(FileWriter writer = new FileWriter(JSON_OUTPUT_PATH + JSON_NAME)){
+        try(FileWriter writer = new FileWriter(JSON_OUTPUT_PATH)){
             writer.write(s);
             writer.close();
         } catch (Exception e) {
@@ -47,7 +46,7 @@ public class JsonUtil {
         Gson gson = new Gson();
 
         try {
-            gson.toJson(object, new FileWriter(JSON_OUTPUT_PATH + JSON_NAME));
+            gson.toJson(object, new FileWriter(JSON_OUTPUT_PATH));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
