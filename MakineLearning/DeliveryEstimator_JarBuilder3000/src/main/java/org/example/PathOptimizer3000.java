@@ -82,16 +82,16 @@ public class PathOptimizer3000 {
             DenseInstance unpredictedInstance = new DenseInstance(newUnpredictedInstance.numAttributes()){
                 {
                     setDataset(newUnpredictedInstance);
-                    setValue(p1, tourArray.get(0).getAsInt() -1);
-                    setValue(p2, tourArray.get(1).getAsInt() -1);
-                    setValue(p3, tourArray.get(2).getAsInt() -1);
-                    setValue(p4, tourArray.get(3).getAsInt() -1);
-                    setValue(p5, tourArray.get(4).getAsInt() -1);
-                    setValue(p6, tourArray.get(5).getAsInt() -1);
-                    setValue(p7, tourArray.get(6).getAsInt() -1);
-                    setValue(p8, tourArray.get(7).getAsInt() -1);
-                    setValue(p9, tourArray.get(8).getAsInt() -1);
-                    setValue(p10, tourArray.get(9).getAsInt() -1);
+                    setValue(p1, tourArray.get(0).getAsInt());
+                    setValue(p2, tourArray.get(1).getAsInt());
+                    setValue(p3, tourArray.get(2).getAsInt());
+                    setValue(p4, tourArray.get(3).getAsInt());
+                    setValue(p5, tourArray.get(4).getAsInt());
+                    setValue(p6, tourArray.get(5).getAsInt());
+                    setValue(p7, tourArray.get(6).getAsInt());
+                    setValue(p8, tourArray.get(7).getAsInt());
+                    setValue(p9, tourArray.get(8).getAsInt());
+                    setValue(p10, tourArray.get(9).getAsInt());
                     setClassMissing();
                 }
             };

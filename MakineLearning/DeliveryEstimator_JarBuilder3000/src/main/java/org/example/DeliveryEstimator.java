@@ -92,8 +92,8 @@ public class DeliveryEstimator {
                 DenseInstance unpredictedInstance = new DenseInstance(dataUnpredicted.numAttributes()){
                     {
                         setDataset(dataUnpredicted);
-                        setValue(postbox1, deliverys.get(finalI-1).getAsInt()-1);
-                        setValue(postbox2, deliverys.get(finalI).getAsInt()-1);
+                        setValue(postbox1, deliverys.get(finalI-1).getAsInt());
+                        setValue(postbox2, deliverys.get(finalI).getAsInt());
                         setValue(timeOfDay, whatClassOfTIme(finalDeliveryTime) -1);
                         setValue(dayOfWeek, dayIndex-1);
                         setClassMissing();
