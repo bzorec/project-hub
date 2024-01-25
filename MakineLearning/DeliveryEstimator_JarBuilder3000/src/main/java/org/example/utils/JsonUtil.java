@@ -34,12 +34,7 @@ public class JsonUtil {
         Gson gson = new Gson();
         String s = gson.toJson(obj.postboxTimeNeededPairs);
 
-        try(FileWriter writer = new FileWriter(JSON_OUTPUT_PATH)){
-            writer.write(s);
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        saveJsonString(s);
     }
 
     public static void saveJsonObject(JsonObject object){
@@ -49,6 +44,15 @@ public class JsonUtil {
             gson.toJson(object, new FileWriter(JSON_OUTPUT_PATH));
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+
+    }
+
+    public static void saveJsonString(String jsonString){
+        try(FileWriter writer = new FileWriter(JSON_OUTPUT_PATH)){
+            writer.write(jsonString);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

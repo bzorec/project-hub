@@ -15,7 +15,7 @@ public class MakineSmartAI {
             System.exit(1);
         }
 
-        JsonObject object = JsonUtil.loadJsonObject(args[1]);
+        JsonObject object = JsonUtil.loadJsonObject(args[0]);
 
         if(!object.has(JSON_MAKINE_STRING)){
             System.err.println("No MAKINE field in json");
@@ -37,6 +37,7 @@ public class MakineSmartAI {
 
             case 2:
                 //bezo ai
+                PathOptimizer3000.evaluateTour(object);
                 break;
 
             default:

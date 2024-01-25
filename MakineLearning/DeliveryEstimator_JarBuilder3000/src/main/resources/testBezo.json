@@ -1,7 +1,6 @@
 {
-  "MAKINE" : 3,
+  "MAKINE" : 2,
   "output": "C:\\Users\\misel\\source\\repos\\project-hub\\MakineLearning\\DeliveryEstimator_JarBuilder3000\\src\\main\\resources\\output.json",
-  "dayOfWeek": "MONDAY",
   "delivery": [
     1,
     2,
