@@ -55,6 +55,7 @@ public partial class Map
     {
         var basePath = AppDomain.CurrentDomain.BaseDirectory;
         var dataPath = Path.Combine(basePath, "Data", "packages.json");
+        var dataPath2 = Path.Combine(basePath, "Data", "path.json");
         var dataPath3 = Path.Combine(basePath, "Data", "delivery.json");
 
         var route = RouteHandler.GenerateMockRoute();
@@ -75,10 +76,12 @@ public partial class Map
 
         OptimizedPackagesInfo = new OptimizedPackagesInfo(packages, optimizedPackages);
 
-        var aiOptimizedTour = await LeafletMapService.InitBestRealOptionsPathAiVersionMap(route, 9);
+        var aiOptimizedTour =
+            await LeafletMapService.InitBestRealOptionsPathAiVersionMap(RouteHandler, JavaRunner, route, basePath,
+                dataPath2, 9);
         try
         {
-            EstimetDelivery = RouteHandler.GetEstimetDelivery(JavaRunner, aiOptimizedTour, dataPath3);
+            EstimetDelivery = RouteHandler.GetEstimetDelivery(JavaRunner, aiOptimizedTour, basePath, dataPath3);
         }
         catch (Exception e)
         {
@@ -98,7 +101,6 @@ public partial class Map
                 Id = Guid.NewGuid().ToString(),
                 PackageId = rand.Next(1000, 9999),
                 PostBoxId = rand.Next(1, 11),
-                // ... other properties ...
             });
         }
 

@@ -1,6 +1,8 @@
+using Direct4Me.Core.Runner;
 using Direct4Me.Core.TravellingSalesmanProblem;
 using Direct4Me.Repository.Entities;
 using Microsoft.JSInterop;
+using IRouteHandler = Direct4Me.Core.Handler.IRouteHandler;
 
 namespace Direct4Me.Blazor.Services;
 
@@ -17,7 +19,11 @@ public interface IJsLeafletMapService
 
     Task InitBestRealOptionsPathMap(int zoomLevel);
     Task InitBestRealTimePathMap(int zoomLevel);
-    Task<Tour?> InitBestRealOptionsPathAiVersionMap(RouteEntity route, int zoomLevel);
+
+    Task<Tour?> InitBestRealOptionsPathAiVersionMap(IRouteHandler handler, IJavaRunner runner,
+        RouteEntity route,
+        string basePath, string dataPath, int zoomLevel);
+
     Task<Tour?> InitBestRealOptionsPathMap(RouteEntity route, int zoomLevel);
 }
 
@@ -103,10 +109,20 @@ public class JsLeafletMapService : IJsLeafletMapService
         return bestBest;
     }
 
-    public async Task<Tour?> InitBestRealOptionsPathAiVersionMap(RouteEntity route, int zoomLevel)
+    public async Task<Tour?> InitBestRealOptionsPathAiVersionMap(IRouteHandler handler, IJavaRunner runner,
+        RouteEntity route,
+        string basePath, string dataPath, int zoomLevel)
     {
+        // TODO:bzorec generate json
+        handler.SaveToJson(route.Postboxes.Select(i => i.PostBoxId).ToList(), basePath, dataPath, "path.json");
+
+        // TODO:bzorec javaRunner
+        await runner.RunJarAsync(dataPath);
+
+        // TODO:bzorec get output json
+        // TODO:bzorec remove boxes with ids number less the 1
         var bestBest = new Tour(0);
-      
+
         for (var i = 0; i < 30; i++)
         {
             var eilTsp = new TspAlgorithm(route, route.DistanceMatrix, 1000);
@@ -118,6 +134,7 @@ public class JsLeafletMapService : IJsLeafletMapService
                 bestBest = new Tour(bestPath);
             }
         }
+
         await _jsRuntime.InvokeVoidAsync("jsInterop.initBestPathMap", bestBest?.ToJavascriptObject(), zoomLevel);
 
         return bestBest;

@@ -12,37 +12,48 @@ public class JavaRunner : IJavaRunner
 {
     public async Task<string> RunJarAsync(string args = "")
     {
-        const string javaExecutablePath = "java";
-
-        // Correctly setting FileName and Arguments
-        var processStartInfo = new ProcessStartInfo
+        try
         {
-            FileName = javaExecutablePath,
-            Arguments = $"D:\\workspace\\project-hub\\MakineLearning\\DeliveryEstimator_JarBuilder3000\\src\\main\\java\\org\\example\\MakineSmartAI.java MakineSmartAI {args}",
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
+            const string javaExecutablePath = "java";
 
-        using var process = new Process();
-        process.StartInfo = processStartInfo;
+            var arguments =
+                "-jar \"D:\\workspace\\project-hub\\MakineLearning\\DeliveryEstimator_JarBuilder3000\\lib\\DeliveryEstimator_JarBuilder3000-1.0-SNAPSHOT-jar-with-dependencies.jar\"";
 
-        process.Start();
+            // Correctly setting FileName and Arguments
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = javaExecutablePath,
+                Arguments = $"{arguments} {args}",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
 
-        var outputTask = process.StandardOutput.ReadToEndAsync();
-        var errorTask = process.StandardError.ReadToEndAsync();
+            using var process = new Process();
+            process.StartInfo = processStartInfo;
 
-        await Task.WhenAll(process.WaitForExitAsync(), outputTask, errorTask);
+            process.Start();
 
-        var result = outputTask.Result;
-        var errors = errorTask.Result;
+            var outputTask = process.StandardOutput.ReadToEndAsync();
+            var errorTask = process.StandardError.ReadToEndAsync();
 
-        if (!string.IsNullOrEmpty(errors))
-        {
-            throw new Exception(errors);
+            await Task.WhenAll(process.WaitForExitAsync(), outputTask, errorTask);
+
+            var result = outputTask.Result;
+            var errors = errorTask.Result;
+
+            if (!string.IsNullOrEmpty(errors))
+            {
+                throw new Exception(errors);
+            }
+
+            return result;
         }
-
-        return result;
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return "";
+        }
     }
 }

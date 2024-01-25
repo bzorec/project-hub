@@ -15,7 +15,10 @@ public interface IRouteHandler
         string basePath, string dataPath);
 
     List<EstimetDelivery> GetEstimetDelivery(IJavaRunner javaRunner, Tour? aiOptimizedTour,
+        string basePath,
         string deliveryJsonPath);
+
+    void SaveToJson(List<int> deliveries, string basePath, string dataPath, string outJson);
 }
 
 public class EstimetDelivery
@@ -99,13 +102,13 @@ public class RouteHandler : IRouteHandler
         };
 
         var jsonString =
-            JsonSerializer.Serialize(packageDataWrapper, new JsonSerializerOptions { WriteIndented = true });
+            JsonSerializer.Serialize(packageDataWrapper, new JsonSerializerOptions {WriteIndented = true});
         File.WriteAllText(jsonFilePath, jsonString);
     }
 
     private string GetRandomDayOfWeek(Random rand)
     {
-        var days = new[] { "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" };
+        var days = new[] {"monday", "tuesday", "wednesday", "thursday", "friday"};
         return days[rand.Next(days.Length)];
     }
 
@@ -118,7 +121,7 @@ public class RouteHandler : IRouteHandler
 
     private string GetRandomPaymentType(Random rand)
     {
-        var types = new[] { "manual", "prepaid" };
+        var types = new[] {"manual", "prepaid"};
         return types[rand.Next(types.Length)];
     }
 
@@ -134,13 +137,13 @@ public class RouteHandler : IRouteHandler
 
     private string GetRandomPackageType(Random rand)
     {
-        string[] types = { "perishable", "electronics", "clothing", "others" };
+        string[] types = {"perishable", "electronics", "clothing", "others"};
         return types[rand.Next(types.Length)];
     }
 
     private string GetRandomDeliveryUrgency(Random rand)
     {
-        string[] urgencies = { "standard", "expedited", "immediate" };
+        string[] urgencies = {"standard", "expedited", "immediate"};
         return urgencies[rand.Next(urgencies.Length)];
     }
 
@@ -177,47 +180,60 @@ public class RouteHandler : IRouteHandler
 
 
     public List<EstimetDelivery> GetEstimetDelivery(IJavaRunner javaRunner, Tour? aiOptimizedTour,
+        string basePath,
         string deliveryJsonPath)
     {
+        SaveToJson(aiOptimizedTour?.Path.Select(i => i.index).ToList(), basePath, deliveryJsonPath);
+
         // Run the Java program to get delivery estimations
         javaRunner.RunJarAsync(deliveryJsonPath);
 
         // Load the delivery time estimates from the JSON file
-        var deliveryTimes = DeserializeDeliveryTimes(deliveryJsonPath);
+        var deliveryTimes = DeserializeDeliveryTimes(Path.Combine(basePath, "Data", "deliveries_output.json"));
 
         // Create a list of EstimetDelivery based on aiOptimizedTour and deliveryTimes
-        var estimetDeliveries = new List<EstimetDelivery>();
-        if (aiOptimizedTour != null)
-        {
-            foreach (var city in aiOptimizedTour.Path)
+        int i = 1;
+
+        return aiOptimizedTour.Path.OfType<City>()
+            .Select(city => new EstimetDelivery
             {
-                if (city != null && deliveryTimes.postboxTimeNeededPairs.TryGetValue(city.index, out int deliveryTime))
-                {
-                    estimetDeliveries.Add(new EstimetDelivery
-                    {
-                        PostBoxId = city.index,
-                        EstimatedDeliveryTime = deliveryTime // Assuming this is the desired format
-                    });
-                }
-            }
-        }
-
-        return estimetDeliveries;
+                PostBoxId = city.index,
+                EstimatedDeliveryTime =
+                    Convert.ToInt32(deliveryTimes[$"_{city.index}"]) // Assuming this is the desired format
+            })
+            .ToList();
     }
 
-    private DeliveryJsonModel DeserializeDeliveryTimes(string jsonFilePath)
+    private DeliveryResultJson DeserializeDeliveryTimes(string combine)
     {
-        var jsonString = File.ReadAllText(jsonFilePath);
-        return System.Text.Json.JsonSerializer.Deserialize<DeliveryJsonModel>(jsonString) ??
-               throw new InvalidOperationException();
+        var json = File.ReadAllText(combine);
+        return JsonSerializer.Deserialize<DeliveryResultJson>(json) ??
+               throw new InvalidOperationException("Failed to load data from JSON.");
     }
 
+    public void SaveToJson(List<int> deliveries, string basePath, string dataPath,
+        string outJson = "deliveries_output.json")
+    {
+        var outpath = Path.Combine(basePath, "Data", outJson);
+
+        var deliveryEstimateJson = new DeliveryEstimateJson()
+        {
+            MAKINE = 3,
+            DayOfWeek = GetRandomDayOfWeek(new Random()).ToUpperInvariant(),
+            Output = outpath,
+            Delivery = deliveries
+        };
+
+        var jsonString =
+            JsonSerializer.Serialize(deliveryEstimateJson, new JsonSerializerOptions {WriteIndented = true});
+        File.WriteAllText(dataPath, jsonString);
+    }
 
     private static (List<PostboxEntity>, List<List<int>>) GeneratePostboxesFromCities(string jsonPath)
     {
         var realWorldData = LoadRealWorldData(jsonPath);
 
-        return (realWorldData.Cities.Select(city => new PostboxEntity
+        return (realWorldData.Cities.Skip(1).Select(city => new PostboxEntity
                 {
                     Id = Guid.NewGuid().ToString(),
                     PostBoxId = city.index,
@@ -243,6 +259,26 @@ public class RouteHandler : IRouteHandler
         var json = File.ReadAllText(jsonPath);
         return JsonSerializer.Deserialize<RealWorldData>(json) ??
                throw new InvalidOperationException("Failed to load data from JSON.");
+    }
+}
+
+internal class DeliveryResultJson
+{
+    [JsonPropertyName("1")] public int _1 { get; set; }
+    [JsonPropertyName("2")] public int _2 { get; set; }
+    [JsonPropertyName("3")] public int _3 { get; set; }
+    [JsonPropertyName("4")] public int _4 { get; set; }
+    [JsonPropertyName("5")] public int _5 { get; set; }
+    [JsonPropertyName("6")] public int _6 { get; set; }
+    [JsonPropertyName("7")] public int _7 { get; set; }
+    [JsonPropertyName("8")] public int _8 { get; set; }
+    [JsonPropertyName("9")] public int _9 { get; set; }
+    [JsonPropertyName("10")] public int _10 { get; set; }
+
+    public object this[string propertyName]
+    {
+        get => GetType().GetProperty(propertyName)?.GetValue(this, null);
+        set => GetType().GetProperty(propertyName)?.SetValue(this, value, null);
     }
 }
 
