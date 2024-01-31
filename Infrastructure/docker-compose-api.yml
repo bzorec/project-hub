@@ -3,6 +3,13 @@ version: '3.4'
 services:
   myblazorapi:
     image: myblazorapi
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+      update_config:
+        parallelism: 1        # Number of replicas to update at a time
+        delay: 10s            # Delay between updates
     build:
       context: ../Web
       dockerfile: DockerfileApi
